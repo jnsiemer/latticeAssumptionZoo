@@ -1,0 +1,52 @@
+title: Lattice Assumption Zoo
+subtitle: Cryptographic Assumptions based on Lattices
+repository: jnsiemer/latticeAssumptionZoo
+logo: /assets/images/logo.png
+locale: en
+description: "TODO For SEO"
+url: "https://latticeassumptionzoo.org"
+baseurl: ""
+
+theme: "minimal-mistakes-jekyll"
+minimal_mistakes_skin: "dirt"
+sass:
+  quiet_deps: true
+  silence_deprecations:
+    - import
+
+plugins:
+  - jekyll-include-cache
+  - jekyll-relative-links
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-scholar
+relative_links:
+  enabled: true
+  collections: true
+
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/mmistakes"
+
+collections:
+  assumptions:
+    output: true
+    permalink: /:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: assumptions
+    values:
+      layout: assumption
+      toc: true
+      toc_sticky: true
+      toc_label: "On This Page"
+      toc_icon: "fas fa-list"
+      scholar:
+        style: association-for-computing-machinery
+        source: ./_bibliography
+        bibliography: references.bib
+        bibliography_list_tag: ul

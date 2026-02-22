@@ -1,0 +1,35 @@
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      //tags: 'ams' 
+    }
+  };
+</script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+{% if page.collection == 'assumptions' %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const bibLists = document.querySelectorAll('.bibliography');
+
+    const bibItems = document.querySelectorAll('.bibliography li');
+    bibItems.forEach(item => {
+      // Add a space after the key
+      let content = item.innerHTML.replace(/(\[\d+\])(?! )/, '$1 ');
+      
+      // Auto-link any URLs
+      const urlRegex = /(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/g;
+      content = content.replace(urlRegex, function(url) {
+        return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + '</a>';
+      });
+
+      // Apply the updated HTML
+      item.innerHTML = content;
+    });
+  });
+</script>
+{% endif %}
