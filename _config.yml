@@ -3,9 +3,10 @@ subtitle: Cryptographic Assumptions based on Lattices
 repository: jnsiemer/latticeAssumptionZoo
 logo: /assets/images/logo.png
 locale: en
-description: "TODO For SEO"
+description: "Lattice Assumption Zoo | Cryptographic Assumptions based on Lattices"
 url: "https://latticeassumptionzoo.org"
 baseurl: ""
+search: true
 
 theme: "minimal-mistakes-jekyll"
 minimal_mistakes_skin: "dirt"
@@ -20,6 +21,7 @@ plugins:
   - jekyll-redirect-from
   - jekyll-seo-tag
   - jekyll-scholar
+  - jekyll-feed
 relative_links:
   enabled: true
   collections: true
@@ -28,7 +30,7 @@ footer:
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/mmistakes"
+      url: "https://github.com/jnsiemer/latticeassumptionzoo"
 
 collections:
   assumptions:
@@ -40,9 +42,10 @@ defaults:
       path: ""
       type: assumptions
     values:
+      sidebar:
+        nav: "main"
       layout: assumption
       toc: true
-      toc_sticky: true
       toc_label: "On This Page"
       toc_icon: "fas fa-list"
       scholar:
@@ -50,3 +53,12 @@ defaults:
         source: ./_bibliography
         bibliography: references.bib
         bibliography_list_tag: ul
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      classes: wide
+      sidebar:
+        nav: "main"

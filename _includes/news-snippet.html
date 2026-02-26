@@ -1,0 +1,16 @@
+<div class="news-entry" style="margin-bottom: 1.5em; border-left: 4px solid #e0e0e0; padding-left: 1em;">
+  <h3 class="archive__item-title" style="margin-top: 0; margin-bottom: 0em; font-size: 1em;">
+    <a href="{{ post.url | relative_url }}">{{ post.title | xml_escape }}</a>
+  </h3>
+
+  <p class="page__meta" style="margin-top: 0.2em; margin-bottom: 0.5em; font-size: 0.8em; color: #888;">
+    <i class="far fa-calendar-alt" aria-hidden="true"></i> 
+    {{ post.date | date: "%B %d, %Y" }}
+  </p>
+
+  {% if post.excerpt %}
+    <div class="archive__item-excerpt" style="font-size: 0.9em;">
+      {{ post.excerpt | markdownify | strip_html | truncatewords: 20 }}
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>LAZ Graph</title>
+
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript">
+      function updateMaxYear() {
+        document.getElementById("maxYearPrinted").textContent = "Introduced before " + maxYearSlider.value;
+      }
+    </script>
+
+    <style type="text/css">
+      /* From visjs example */
+      html, body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+          "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        font-family:
+          source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+      }
+
+      /* Div containing graph */
+      #mynetwork {
+        width: 100%;
+        height: 100%;
+        background-color: #EEE;
+      }
+
+      /* Div around filters */
+      #filters {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border-style: solid;
+        border-color: grey;
+        border-width: 1px;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: #222;
+        color: #EEE;
+        font-size: 1.25em;
+      }
+      #filtersToggle {
+        user-select: none; /* Prevents text highlighting when clicking */
+      }
+
+      [data-tooltip]:hover::after {
+        display: block;
+        position: absolute;
+        content: attr(data-tooltip);
+        border: 2px solid black;
+        background: #eee;
+        padding: .25em;
+        color: black;
+      }
+
+      /* Hide full-display button, which seems to be non-functional */
+      div.vis-button.vis-zoomExtends {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mynetwork"></div>
+    <div id="filters">
+      <h2 id="filtersToggle" style="margin-bottom: 5px; margin-top: 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+        Lattice Assumption Graph <span id="toggleIcon" style="font-size: 0.7em;">▼</span>
+      </h2>
+
+      <div id="filtersContent">
+        <b>Filter by Assumptions</b><br> 
+        <label>
+          <input type="checkbox" name="nodesFilter" id="includeVariants">
+          <span>Include Variants of Assumptions</span>
+        </label>
+        <br>
+        <label id="maxYearPrinted" for="maxYear">Introduced before 2027</label>
+        <input type="range" name="nodesFilter" id="maxYear" min="1996" max="2027" value="2027" oninput="updateMaxYear()">
+        <br />
+        <br />
+        <b>Filter by Primitives build from them</b>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="Commitment" checked />
+            <span data-tooltip="Any kind of commitments such as vector, homomorphic, set, polynomial commitments, etc.">Commitment</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="ZK" checked />
+            <span data-tooltip="Anything related to zero-knowledge such as identification protocols, ZKP, NIZKs, etc.">Zero-Knowledge</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="Sign" checked />
+            <span data-tooltip="Digital signatures including stateful, stateless, or deterministic ones.">Signature</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="PrivEnhSign" checked />
+            <span data-tooltip="Privacy-enhancing signatures such as blind, group, ring, identity/attribute-based, or functional signatures as well as anonymous credentials.">Privacy-Enhancing Signature</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="EffEnhSign" checked />
+            <span data-tooltip="Efficiency-enhancing signatures such as multi, aggregate, or redactable signatures.">Efficiency-Enhancing Signature</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="TresholdSign" checked />
+            <span data-tooltip="k-out-of-n signatures">Threshold Signature</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="COAD" checked />
+            <span data-tooltip="(Fully) homomorphic signatures and related primitives.">Computing on Authenticated Data</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="KEX" checked />
+            <span data-tooltip="Key Exchange Protocols and Key Exchange Mechanisms in any form or variation.">Key Exchange Protocol or KEM</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="PKE" checked />
+            <span data-tooltip="Public-Key Encryption with any sensible security notion.">Public-Key Encryption</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="PrivEnhEnc" checked />
+            <span data-tooltip="Privacy-enhancing encryption such as (H)IBE, ABE, FE, RBE, or Oblivious Encryption.">Privacy-Enhancing Encryption</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="EffEnhEnc" checked />
+            <span data-tooltip="Efficiency-enhancing encryptions such as group or broadcast encryption.">Efficiency-Enhancing Encryption</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="TresholdEnc" checked />
+            <span data-tooltip="Secret key is split among k-out-of-n parties.">Threshold Encryption</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="nodesFilter" value="COED" checked />
+            <span data-tooltip="(Fully) homomorphic encryption and related primitives.">Computing on Encrypted Data</span>
+          </label>
+        </div>
+        <br />
+        <b>Filter by Type of Relation</b><br>
+        <div>
+          <label>
+            <input type="checkbox" name="edgesFilter" value="reducesTo" checked />
+            <span style="color: #0A9396">Reductions</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="edgesFilter" value="partiallyReducesTo" checked />
+            <span style="color: #0ecacc">Partial Reductions</span>
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" name="edgesFilter" value="generalisedBy" checked />
+            <span style="color: #EE9B00">Generalisations</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      // Toggle Filters logic
+      const filtersToggle = document.getElementById("filtersToggle");
+      const filtersContent = document.getElementById("filtersContent");
+      const toggleIcon = document.getElementById("toggleIcon");
+
+      filtersToggle.addEventListener("click", () => {
+        if (filtersContent.style.display === "none") {
+          filtersContent.style.display = "block";
+          toggleIcon.textContent = "▼";
+        } else {
+          filtersContent.style.display = "none";
+          toggleIcon.textContent = "▲";
+        }
+      });
+
+      // Hide the filters div if in an iframe
+      const isInIframe = window.self !== window.top;
+      if (isInIframe) {
+        document.getElementById("filters").style.display = "none";
+      }
+
+      const nodeFilters = document.getElementsByName("nodesFilter");
+      const edgeFilters = document.getElementsByName("edgesFilter");
+      const maxYearSlider = document.getElementById("maxYear");
+      const includeVariantsCheckbox = document.getElementById("includeVariants");
+
+      // Import the data from 'data.js' in 'DataSet's
+      const nodes = new vis.DataSet(assumptions);
+      const edges = new vis.DataSet(relations);
+
+      // filter values are updated in the outer scope. in order to apply filters to new values, DataView.refresh() should be called
+      let nodesFilterValues = {
+        Commitment: true,
+        ZK: true,
+        // Signature-based
+        Sign: true,
+        PrivEnhSign: true,
+        EffEnhSign: true,
+        TresholdSign: true,
+        AdvFuncSign: true,
+        // KEX & Encryption-based
+        KEX: true,
+        PKE: true,
+        PrivEnhEnc: true,
+        EffEnhEnc: true,
+        TresholdEnc: true,
+        AdvFuncEnc: true,
+        // More Advanced
+        AnonCred: true,
+      };
+      const edgesFilterValues = {
+        reducesTo: true,
+        partiallyReducesTo: true,
+        generalisedBy: true,
+      };
+
+      // filter function should return true or false based on whether item in DataView satisfies a given condition.
+      const nodesFilter = (node) => {
+        if (node.is_variant && !includeVariantsCheckbox.checked) {
+          return false;
+        }
+        if (node.published >= maxYearSlider.value) {
+            return false;
+        }
+        for (var k in nodesFilterValues) {
+            if (node.primitives && nodesFilterValues[k] && node.primitives.includes(k)) {
+                return true;
+            }
+        }
+        return false;
+      };
+
+      const edgesFilter = (edge) => {
+        return edgesFilterValues[edge.relation];
+      };
+
+      const nodesView = new vis.DataView(nodes, { filter: nodesFilter });
+      const edgesView = new vis.DataView(edges, { filter: edgesFilter });
+
+      // Filter change updates network view
+      nodeFilters.forEach((filter) => 
+        filter.addEventListener("change", (e) => {
+          const { value, checked } = e.target;
+          nodesFilterValues[value] = checked;
+          nodesView.refresh();
+        }),
+      );
+
+      edgeFilters.forEach((filter) =>
+        filter.addEventListener("change", (e) => {
+          const { value, checked } = e.target;
+          edgesFilterValues[value] = checked;
+          edgesView.refresh();
+        }),
+      );
+
+      // Start container with defaults defined in 'options'
+      const container = document.getElementById("mynetwork");
+      const options = {
+        physics: {
+          stabilization: {
+            enabled: true,
+            iterations: 50,
+          },
+          barnesHut: {
+            springConstant: 0.03,
+          }
+        },
+        interaction: {
+          navigationButtons: !isInIframe,
+          keyboard: false,
+        },
+        nodes: {
+          borderWidth: 2,
+          shadow: {
+            enabled: true,
+            size: 5,
+            x: 0,
+            y: 0,
+          },
+        },
+        edges: {
+          arrows: "to",
+          width: 2,
+          shadow: {
+            enabled: true,
+            size: 2,
+            x: 0,
+            y: 0,
+          },
+        },
+        groups: {
+          SIS: { color: "#FFD6A5" },
+          LWE: { color: "#A0C4FF" },
+          NTRU: { color: "#CAFFBF" },
+          LIP: { color: "#FDFFB6" },
+          LPN: { color: "#9BF6FF" },
+          // Further colors from palette: #FFADAD, #BDB2FF, #FFC6FF
+        }
+      };
+      const network = new vis.Network(container, {nodes: nodesView, edges: edgesView}, options);
+
+      // Click on node opens "node.url" in a new tab
+      network.on("selectNode", function (params) {
+          if (params.nodes.length === 1) {
+            var node = nodes.get(params.nodes[0]);
+            window.open(node.url, '_blank');
+          }
+        }
+      );
+
+      // If URL contains "#node_id", then zoom in on it and select it
+      var fragment = window.location.hash.substring(1);
+      // If assumption does not exist, do not zoom in
+      if (assumptions.some(obj => obj.id === fragment)) {
+        network.once("stabilizationIterationsDone", function () {
+          network.focus(fragment, {
+            scale: 2,
+            animation: false
+          });
+        });
+        network.selectNodes([fragment]);
+      }
+    </script>
+  </body>
+</html>

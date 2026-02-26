@@ -4,6 +4,7 @@ seo_title: "Concise title without math"
 family: "SIS"
 subfamily: "SIS with Hints"
 
+last_modified_at: 2026-02-25
 published: false
 redirect_from:
   - /assumption_template/

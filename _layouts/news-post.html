@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<div id="main" role="main">
+  
+  {% include sidebar.html %}
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <div class="page__inner-wrap">
+      
+      <header>
+        <h1 class="page__title" itemprop="headline" style="margin-bottom: 0.5em;">
+          {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
+        </h1>
+        
+        <p class="page__meta" style="color: #888; font-size: 0.9em; margin-top: 0;">
+          <i class="far fa-calendar-alt" aria-hidden="true"></i> 
+          {{ page.date | date: "%B %d, %Y" }}
+        </p>
+      </header>
+
+      <section class="page__content news-body" itemprop="text">
+        {{ content }}
+      </section>
+
+      <hr />
+      <footer class="page__meta">
+        <p class="text-center">
+          <a href="/news/" class="btn btn--primary"><i class="fas fa-arrow-left"></i> Back to all news</a>
+        </p>
+      </footer>
+
+    </div>
+  </article>
+</div>
