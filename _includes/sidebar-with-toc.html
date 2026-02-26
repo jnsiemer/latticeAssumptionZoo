@@ -1,0 +1,17 @@
+<div class="sidebar" style="margin-top: -1em;">
+  <div style="width: 100%;">
+    {% include sidebar.html %}
+  </div>
+
+  {% if page.toc %}
+    <nav class="toc" style="position: relative !important; top: auto !important; display: inline-block; width: 100%; font-size: 1.5rem;">
+      <header>
+        <h4 class="nav__title" style="font-size: 0.8rem;">
+          <i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> 
+          {{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}
+        </h4>
+      </header>
+      {% include toc.html sanitize=true html=content h_min=1 h_max=3 class="toc__menu" skip_no_ids=true %}
+    </nav>
+  {% endif %}
+</div>
