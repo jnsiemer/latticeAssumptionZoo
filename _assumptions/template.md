@@ -12,6 +12,8 @@ redirect_from:
 
 A brief introduction and classification of the assumption with some citation {% cite STOC:Regev05 %}. Please add new references to `_bibliography/references.bib` with keys of the form known from [cryptobib](https://cryptobib.di.ens.fr/) and preferably bibtex records from [dblp](https://dblp.org/) or [eprint](https://eprint.iacr.org/) with `doi` and/or `url`-fields s.t. everyone can reach the paper within one click.
 
+If you are referring to other problems or websites, please [link](/sis/) to them.
+
 ## Definition
 
 ### Abbreviation$_{\mathsf{params}}$
@@ -30,18 +32,18 @@ Any reductions in this section should be reflected as an edge in the [`graph`](/
 ## Constructions built from AssumptionName (Optional)
 
 A list of constructions whose security is based on the assumption or described variants of it with references, e.g.
-* One-way functions {% cite STOC:Ajtai96 %}
-* Public-key encryption {% cite STOC:Regev05 %}
+- One-way functions {% cite STOC:Ajtai96 %}
+- Public-key encryption {% cite STOC:Regev05 %}
 
 ## Related Assumptions (Optional)
 
 If there are any immediately related assumptions, list them here (potentially with a brief description of their relationship or key differences), e.g.
-* [Randomised One-More-ISIS](/rom-isis/) doubles the length of matrix $\mathbf{A}$ and requires the vector multiplied by the second part to be binary (compared to One-More-ISIS).
+- [Randomised One-More-ISIS](/rom-isis/) doubles the length of matrix $\mathbf{A}$ and requires the vector multiplied by the second part to be binary (compared to One-More-ISIS).
 
 ## Further Reading Suggestions (Optional)
 
 If there are any specific sections in papers, lecture notes, or well-written websites, which provide more insights on this assumption or immediately related topics, can be listed here, e.g.
-* [Lecture notes](https://people.csail.mit.edu/vinodv/CS294/) by Vinod Vaikuntanathan
-  * Lecture 3 on _Smoothing Parameter and Worst-case to Average-case Reduction for SIS_
-  * Lecture 10 on _Ideal Lattices and Ring Learning with Errors_
+- [Lecture notes](https://people.csail.mit.edu/vinodv/CS294/) by Vinod Vaikuntanathan
+  - Lecture 3 on _Smoothing Parameter and Worst-case to Average-case Reduction for SIS_
+  - Lecture 10 on _Ideal Lattices and Ring Learning with Errors_
 

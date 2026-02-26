@@ -1,5 +1,5 @@
 ---
-title: "Catalogue"
+title: "Catalogued Assumptions"
 permalink: /catalogue/
 ---
 
@@ -28,8 +28,3 @@ permalink: /catalogue/
 
 {% endfor %}
 </ul>
-
-<hr>
-<p style="text-align: center;">
-  <a href="/" class="btn btn--primary">Back to Home</a>
-</p>

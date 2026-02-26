@@ -4,6 +4,65 @@
       inlineMath: [['$', '$'], ['\\(', '\\)']],
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
       //tags: 'ams' 
+      macros: {
+        // mimic most important bits of cryptocode
+        // operators
+        sample: "\\leftarrow",
+        floor: ["\\lfloor #1 \\rfloor", 1],
+        ceil: ["\\lceil #1 \\rceil", 1],
+        round: ["\\lfloor #1 \\rceil", 1],
+        angle: ["\\langle #1 \\rangle", 1],
+        abs: ["\\lvert #1 \\rvert", 1],
+        norm: ["\\lVert #1 \\rVert", 1],
+        concat: "\\|",
+        emptystring: "\\varepsilon",
+
+        // adversary
+        adv: "\\mathcal{A}",
+        bdv: "\\mathcal{B}",
+        cdv: "\\mathcal{C}",
+        ddv: "\\mathcal{D}",
+        edv: "\\mathcal{E}",
+
+        // landau
+        bigO: ["\\mathcal{O}\\left( #1 \\right)", 1],
+        smallO: ["\\text{o}\\left( #1 \\right)", 1],
+        bigOmega: ["\\Omega\\left( #1 \\right)", 1],
+        smallOmega: ["\\omega\\left( #1 \\right)", 1],
+        bigTheta: ["\\Theta\\left( #1 \\right)", 1],
+
+        // probability
+        prob: ["\\operatorname{Pr}\\left[ #1 \\right]", 1],
+        probsub: ["\\operatorname{Pr}_{#1}\\left[ #2 \\right]", 2],
+        condprob: ["\\operatorname{Pr}\\left[ #1 \\left|\\,#2 \\right. \\right]", 2],
+        condprobsub: ["\\operatorname{Pr}_{#1}\\left[ #2 \\left|\\,#3 \\right. \\right]", 3],
+        expect: ["\\mathbb{E}\\left[ #1 \\right]", 1],
+        expsub: ["\\mathbb{E}_{#1}\\left[ #2 \\right]", 2],
+        condexp: ["\\mathbb{E}\\left[ #1 \\left|\\,#2 \\right. \\right]", 2],
+        condexpsub: ["\\mathbb{E}_{#1}\\left[ #2 \\left|\\,#3 \\right. \\right]", 3],
+        supp: ["\\operatorname{Supp}\\left( #1 \\right)", 1],
+
+        // sets
+        set: ["\\left{ #1 \\right}", 1],
+        sequence: ["\\left( #1 \\right)", 1],
+        bin: "\\{0,1\\}",
+        NN: "\\mathbb{N}",
+        ZZ: "\\mathbb{Z}",
+        QQ: "\\mathbb{Q}",
+        RR: "\\mathbb{R}",
+        CC: "\\mathbb{C}",
+        PP: "\\mathbb{P}",
+        FF: "\\mathbb{F}",
+        GG: "\\mathbb{G}",
+
+        // asymptotics
+        negl: ["\\mathsf{negl}\\left( #1 \\right)", 1],
+        poly: ["\\mathsf{poly}\\left( #1 \\right)", 1],
+
+        // custom
+        mat: ["\\mathbf{#1}", 1],
+        vec: ["\\mathbf{#1}", 1],
+      }
     }
   };
 </script>
