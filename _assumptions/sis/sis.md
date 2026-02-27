@@ -9,7 +9,7 @@ redirect_from:
   - /short-integer-solution/
 ---
 
-Short Integer Solution (SIS) is an average-case problem, which was introduced in 1996 by Miklós Ajtai {% cite STOC:Ajtai96 %}. He introduced a family of one-way functions based on SIS and showed that SIS is hard to solve on average if a version of the [shortest vector problem](https://en.wikipedia.org/wiki/Lattice_problem#Shortest_vector_problem_.28SVP.29) is hard in a worst-case scenario.
+Short Integer Solution (SIS) is an average-case problem, which was introduced in 1996 by Miklós Ajtai {% cite STOC:Ajtai96 %}. He introduced a family of one-way functions based on SIS and showed that SIS is hard to solve on average if a version of the [shortest vector problem](https://en.wikipedia.org/wiki/Lattice_problem#Shortest_vector_problem_.28SVP.29){:target="_blank"} is hard in a worst-case scenario.
 
 ## Definition
 
@@ -17,7 +17,7 @@ Short Integer Solution (SIS) is an average-case problem, which was introduced in
 _Let matrix $\mat{A} \in \ZZ_q^{n \times m}$ be chosen uniformly at random. An adversary is asked to find a short non-zero vector $\vec{s} \in \ZZ_q^m$ satisfying $\mat{A} \cdot \vec{s} = \vec{0} \bmod q \land 0 < \norm{\vec{s}} \leq \beta$._
 
 SIS intuitively states that it is hard to find a short vector in the kernel of matrix $\mat{A}$.
-A solution to SIS without the condition $\norm{\vec{s}} \leq \beta$ can be found using [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination). Thus, the condition $\beta < q$ is required as otherwise $(q, 0, \dots, 0) \in \ZZ^m$ yields a trivial solution.
+A solution to SIS without the condition $\norm{\vec{s}} \leq \beta$ can be found using [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination){:target="_blank"}. Thus, the condition $\beta < q$ is required as otherwise $(q, 0, \dots, 0) \in \ZZ^m$ yields a trivial solution.
 
 ### Ring-SIS$_{m,q,\beta,\mathcal{R}}$
 _Let matrix $\vec{a} \in \mathcal{R}_q^{n \times m}$ be chosen uniformly at random. An adversary is asked to find a short non-zero vector $\vec{s} \in \mathcal{R}^{n \times m}$ satisfying $\vec{a}^T \cdot \vec{s} = \vec{0} \bmod q \land 0 < \norm{\vec{s}} \leq \beta$._
@@ -75,8 +75,8 @@ This is a non-exhaustive list of constructions, whose security is or can be base
 
 ## Further Reading Suggestions
 
-- [Section 4.1](https://eprint.iacr.org/2015/939.pdf#page=20) in _A decade of lattice cryptography_ {% cite FTTCS:Peikert16 %}
-- [Lecture notes](https://people.csail.mit.edu/vinodv/CS294/) by Vinod Vaikuntanathan
+- [Section 4.1](https://eprint.iacr.org/2015/939.pdf#page=20){:target="_blank"} in _A decade of lattice cryptography_ {% cite FTTCS:Peikert16 %}
+- [Lecture notes](https://people.csail.mit.edu/vinodv/CS294/){:target="_blank"} by Vinod Vaikuntanathan
   - Lecture 3 on _Smoothing Parameter and Worst-case to Average-case Reduction for SIS_
   - Lecture 10 on _Ideal Lattices and Ring Learning with Errors_
 

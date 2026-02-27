@@ -40,4 +40,4 @@ If you prefer a list as a structured format, you can find a searchable index of 
 ## ✏️ Contribute
 This wiki relies on the expertise of the cryptographic community. Anyone can contribute -- whether it is adding a novel assumption, updating a hardness estimates, providing further details, or linking a new construction.
 
-Spot a missing link or an outdated result? [Propose a change on GitHub](https://github.com/jnsiemer/latticeassumptionzoo).
+Spot a missing link or an outdated result? [Propose a change on GitHub](https://github.com/jnsiemer/latticeassumptionzoo){:target="_blank"}.

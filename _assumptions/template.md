@@ -18,7 +18,7 @@ If you are referring to other problems or websites, please [link](/sis/) to them
 
 ### Abbreviation$_{\mathsf{params}}$
 _A formal definition of the assumption using math with math delimiters $a = b$, \\(b = c\\), or \\[c = d.\\]_
-If you're ever missing braces $\\{\\}$ or subscripts SIS$\_{n,m,q,\beta}$, make sure to escape these.
+If you're ever missing braces $\\{\\}$ or subscripts SIS$\_{n,m,q,\beta}$ or $\*$, make sure to escape these properly s.t. the markdown compiler doesn't assume these are markdown.
 
 ## Variants (Optional)
 
@@ -44,6 +44,6 @@ If there are any immediately related assumptions, list them here (potentially wi
 ## Further Reading Suggestions (Optional)
 
 If there are any specific sections in papers, lecture notes, or well-written websites, which provide more insights on this assumption or immediately related topics, can be listed here, e.g.
-- [Lecture notes](https://people.csail.mit.edu/vinodv/CS294/) by Vinod Vaikuntanathan
+- [Lecture notes](https://people.csail.mit.edu/vinodv/CS294/){:target="_blank"} by Vinod Vaikuntanathan
   - Lecture 3 on _Smoothing Parameter and Worst-case to Average-case Reduction for SIS_
   - Lecture 10 on _Ideal Lattices and Ring Learning with Errors_
