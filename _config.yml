@@ -1,7 +1,7 @@
 title: Lattice Assumption Zoo
 subtitle: Cryptographic Assumptions based on Lattices
 repository: jnsiemer/latticeAssumptionZoo
-logo: /assets/images/logo.png
+logo: /assets/images/logo.svg
 locale: en
 description: "Lattice Assumption Zoo | Cryptographic Assumptions based on Lattices"
 url: "https://latticeassumptionzoo.org"
