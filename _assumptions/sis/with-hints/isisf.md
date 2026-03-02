@@ -10,7 +10,7 @@ redirect_from:
   - /isis_f/
 ---
 
-The ISIS$\_f$ assumption was introduced by Bootle, Lyubashevsky, Nguyen, and Sorniotti in 2023 {% cite CRYPTO:BLNS23 %}. It introduces a function $f$ that removes the requirement of a static target vector and passes additional hints to the adversary.
+The ISIS$\_f$ assumption was introduced by Bootle, Lyubashevsky, Nguyen, and Sorniotti in 2023 {% cite C:BLNS23 %}. It introduces a function $f$ that removes the requirement of a static target vector and passes additional hints to the adversary.
 
 ## Definition
 
@@ -44,17 +44,17 @@ _An adversary is asked to find a new tuple $(x^{\*}, \vec{s}^{\*}, \vec{m}^{\*},
 
 If $f$ is a random oracle then the ISIS$\_f$ instance, is at least as hard as SIS {% cite STOC:GenPeiVai08 %}.
 
-Bootle et al. {% cite CRYPTO:BLNS23 %} set $f$ to be $f(x) = \mat{B} \cdot \operatorname{bin}(x)$, where $\operatorname{bin}: [N] \rightarrow \ZZ^{\ceil{\log N}}$ outputs the binary encoding of $x \in [N]$. They call this problem ISIS$\_{\operatorname{bin}}$. The authors analyse direct lattice reduction as well as exploiting relations on the image space for ISIS$\_{\operatorname{bin}}$.
+Bootle et al. {% cite C:BLNS23 %} set $f$ to be $f(x) = \mat{B} \cdot \operatorname{bin}(x)$, where $\operatorname{bin}: [N] \rightarrow \ZZ^{\ceil{\log N}}$ outputs the binary encoding of $x \in [N]$. They call this problem ISIS$\_{\operatorname{bin}}$. The authors analyse direct lattice reduction as well as exploiting relations on the image space for ISIS$\_{\operatorname{bin}}$.
 
-In Theorem 3.3, Bootle et al. {% cite CRYPTO:BLNS23 %} show that interactive ISIS$\_f$ is at least as hard as ISIS$\_f$. The reduction uses $\mat{C} = \mat{A} \cdot \mat{R}$ for a uniformly chosen $\mat{R} \in \bin^{m \times (\ell_m + \ell_r)}$, rejection sampling, the entropy that $x \sample [N]$ and $\vec{s} \sample D_{\Lambda_q^{f(x)}, s}$ are sampled with and introduces a polynomial loss factor depending on the number of allowed queries to $O\_\text{pre}$. This polynomial loss-factor is removed in a tight reduction given in Theorem 4.3 of {% cite EPRINT:2026/291 %} for [Generalised ISIS$\_f$](/genisisf/).
+In Theorem 3.3, Bootle et al. {% cite C:BLNS23 %} show that interactive ISIS$\_f$ is at least as hard as ISIS$\_f$. The reduction uses $\mat{C} = \mat{A} \cdot \mat{R}$ for a uniformly chosen $\mat{R} \in \bin^{m \times (\ell_m + \ell_r)}$, rejection sampling, the entropy that $x \sample [N]$ and $\vec{s} \sample D_{\Lambda_q^{f(x)}, s}$ are sampled with and introduces a polynomial loss factor depending on the number of allowed queries to $O\_\text{pre}$. This polynomial loss-factor is removed in a tight reduction given in Theorem 4.3 of {% cite EPRINT:2026/291 %} for [Generalised ISIS$\_f$](/genisisf/).
 
 ## Constructions built from ISIS$\_f$
 
-Bootle et al. {% cite CRYPTO:BLNS23 %} provide a framework to generically build the following constructions from any interactive ISIS$\_f$ instance.
-- Signatures {% cite CRYPTO:BLNS23 %}
-- Group signatures {% cite CRYPTO:BLNS23 %}
-- Blind signatures {% cite CRYPTO:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
-- Anonymous credentials {% cite CRYPTO:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
+Bootle et al. {% cite C:BLNS23 %} provide a framework to generically build the following constructions from any interactive ISIS$\_f$ instance.
+- Signatures {% cite C:BLNS23 %}
+- Group signatures {% cite C:BLNS23 %}
+- Blind signatures {% cite C:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
+- Anonymous credentials {% cite C:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
 
 ## Related Assumptions
 

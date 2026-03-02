@@ -52,7 +52,7 @@ $\mat{A}$ by $\mat{A}_0$ and define the NFSIS challenge matrix by $\mat{A}_0^{-1
 
 ## Hardness
 
-The initial hardness results of Ajtai {% cite STOC:Ajtai96 %} in 1996 were later refined by a series of works {% cite FOCS:MicReg04 %}{% cite STOC:GenPeiVai08 %}{% cite CRYPTO:MicPei13 %}. All results follow are instances of the following theorem.
+The initial hardness results of Ajtai {% cite STOC:Ajtai96 %} in 1996 were later refined by a series of works {% cite FOCS:MicReg04 %}{% cite STOC:GenPeiVai08 %}{% cite C:MicPei13 %}. All results follow are instances of the following theorem.
 
 **Theorem** {% cite FTTCS:Peikert16 %} For any $m = \poly{n}$, any $\beta > 0$, and any sufficiently large $q \geq \beta \cdot \poly{n}$, solving SIS$\_{n,m,q,\beta}$ with non-negligible probability is at least as hard as solving the decisional approximate shortest vector problem GapSVP$\_\gamma$ and the approximate shortest independent vectors problems SIVP$\_\gamma$ (among others) on arbitrary n-dimensional lattices (i.e., in the worst case) with overwhelming probability, for some $\gamma = \beta \cdot \poly{n}$.
 
@@ -65,7 +65,7 @@ This is a non-exhaustive list of constructions, whose security is or can be base
 - Collision-resistant hash function
 - Preimage Sampleable Function {% cite STOC:GenPeiVai08 %}
 - Signatures {% cite EC:Lyubashevsky12 %}{% cite STOC:GenPeiVai08 %}{% cite PKC:Boyen10 %}
-- Commitments {% cite SCN:BDLOP18 %}{% cite CRYPTO:LyuNguPla22 %}
+- Commitments {% cite SCN:BDLOP18 %}{% cite C:LyuNguPla22 %}
 - Vector and functional commitments {% cite TCC:PeiPepSha21 %}
 
 ## Related Assumptions

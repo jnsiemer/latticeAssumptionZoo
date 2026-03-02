@@ -16,7 +16,7 @@ redirect_from:
   - /generalised-isisf/
 ---
 
-The Generalised ISIS$\_f$ assumption (GenISIS$\_f$) was introduced by Dubois, Klooß, Lai, and Woo in 2025 {% cite PKC:DKLW25 %}. As the name suggests, it is a generalisation of the [ISIS$\_f$ assumption](/isisf/) introduced in {% cite CRYPTO:BLNS23 %}. It removes two restrictions imposed by ISIS$\_f$, which enables reducing to GenISIS$\_f$. Furthermore, GenISIS$\_f$ inherits the ISIS$\_f$ framework to generically generate constructions for several primitives.
+The Generalised ISIS$\_f$ assumption (GenISIS$\_f$) was introduced by Dubois, Klooß, Lai, and Woo in 2025 {% cite PKC:DKLW25 %}. As the name suggests, it is a generalisation of the [ISIS$\_f$ assumption](/isisf/) introduced in {% cite C:BLNS23 %}. It removes two restrictions imposed by ISIS$\_f$, which enables reducing to GenISIS$\_f$. Furthermore, GenISIS$\_f$ inherits the ISIS$\_f$ framework to generically generate constructions for several primitives.
 
 ## Definition
 
@@ -56,17 +56,17 @@ Compared to the interactive version of ISIS$\_f$, interactive GenISIS$\_f$ intro
 
 If $f$ is a random oracle then the GenISIS$\_f$ instance, is at least as hard as SIS {% cite STOC:GenPeiVai08 %}. Furthermore, Lemma C.1 in {% cite EPRINT:2026/291 %} shows that the standard-model signature given in {% cite EC:MicPei12 %} can be adapted to GenISIS$\_f$ s.t. the adapted GenISIS$\_f$ instance is at least as hard as SIS in the standard model.
 
-Dubois et al. {% cite PKC:DKLW25 %} provide a translation of Theorem 3.3 from {% cite CRYPTO:BLNS23 %} to GenISIS$\_f$, which states that interactive GenISIS$\_f$ is at least as hard as GenISIS$\_f$. This reduction comes with a polynomial loss factor within the size of queries to $O\_\text{pre}$. This polynomial loss-factor is removed in a tight reduction given in Theorem 4.3 of {% cite EPRINT:2026/291 %}.
+Dubois et al. {% cite PKC:DKLW25 %} provide a translation of Theorem 3.3 from {% cite C:BLNS23 %} to GenISIS$\_f$, which states that interactive GenISIS$\_f$ is at least as hard as GenISIS$\_f$. This reduction comes with a polynomial loss factor within the size of queries to $O\_\text{pre}$. This polynomial loss-factor is removed in a tight reduction given in Theorem 4.3 of {% cite EPRINT:2026/291 %}.
 
 Otherwise, the authors {% cite PKC:DKLW25 %} show in Theorem 7 that GenISIS$\_f$ is equivalent to the sEUF-RMA experiment for signatures based on vanishing SIS, which are introduced in the same work.
 
 ## Constructions built from GenISIS$\_f$
 
-Bootle et al. {% cite CRYPTO:BLNS23 %} provide a framework to generically build the following constructions from any interactive ISIS$\_f$ instance. As any ISIS$\_f$ instance is also a GenISIS$\_f$ instance, GenISIS$\_f$ inherits this framework.
-- Signatures {% cite CRYPTO:BLNS23 %}
-- Group signatures {% cite CRYPTO:BLNS23 %}
-- Blind signatures {% cite CRYPTO:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
-- Anonymous credentials {% cite CRYPTO:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
+Bootle et al. {% cite C:BLNS23 %} provide a framework to generically build the following constructions from any interactive ISIS$\_f$ instance. As any ISIS$\_f$ instance is also a GenISIS$\_f$ instance, GenISIS$\_f$ inherits this framework.
+- Signatures {% cite C:BLNS23 %}
+- Group signatures {% cite C:BLNS23 %}
+- Blind signatures {% cite C:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
+- Anonymous credentials {% cite C:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
 
 ## Related Assumptions
 
