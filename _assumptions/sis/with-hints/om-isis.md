@@ -3,6 +3,7 @@ title: "One-More-ISIS (OM-ISIS)"
 seo_title: "One-More-ISIS"
 family: "SIS"
 subfamily: "SIS with Hints"
+graph_id: OM-ISIS
 
 last_modified_at: 2026-02-27
 redirect_from:

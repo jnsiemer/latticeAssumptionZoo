@@ -356,11 +356,19 @@
       var fragment = window.location.hash.substring(1);
       // If assumption does not exist, do not zoom in
       if (assumptions.some(obj => obj.id === fragment)) {
-        network.once("stabilizationIterationsDone", function () {
-          network.focus(fragment, {
-            scale: 2,
-            animation: false
-          });
+        network.once("stabilized", function () {
+          if (isInIframe) {
+            network.focus(fragment, {
+              scale: 1,
+              animation: true
+            });
+          }
+          else {
+            network.focus(fragment, {
+              scale: 2,
+              animation: true
+            });
+          }
         });
         network.selectNodes([fragment]);
       }

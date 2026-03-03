@@ -7,6 +7,12 @@ classes: wide
   .page__content h3 {
     margin-top: 0.5em !important;
   }
+
+  @media (min-width: 1024px) {
+    .sidebar {
+      margin-top: -0.5em;
+    }
+  }
 </style>
 
 <div id="main" role="main">
@@ -32,6 +38,36 @@ classes: wide
       <section class="page__content" itemprop="text">
         
         {{ content }}
+
+        {% if page.graph_id %}
+        <div id="mobile-graph-destination"></div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            const widget = document.getElementById("lattice-graph-widget");
+            const desktopOrigin = document.getElementById("desktop-graph-origin");
+            const mobileDest = document.getElementById("mobile-graph-destination");
+            
+            // Minimal Mistakes mobile breakpoint
+            const mediaQuery = window.matchMedia("(max-width: 1024px)");
+
+            function graphRelocation(e) {
+              if (!widget) return;
+              
+              if (e.matches && mobileDest) {
+                mobileDest.appendChild(widget);
+              } else if (desktopOrigin) {
+                desktopOrigin.appendChild(widget);
+              }
+            }
+
+            // Listen for screen size changes
+            mediaQuery.addEventListener("change", graphRelocation);
+
+            graphRelocation(mediaQuery);
+          });
+        </script>
+        {% endif %}
 
         <h2 id="references">References</h2>
         {% bibliography --cited %}

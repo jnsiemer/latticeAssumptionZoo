@@ -3,6 +3,7 @@ title: "Assumption Template - title may contain math, long form and abbreviation
 seo_title: "Concise title without math"
 family: "SIS"
 subfamily: "SIS with Hints"
+graph_id: ID-in-graph
 
 last_modified_at: 2026-02-25
 published: false

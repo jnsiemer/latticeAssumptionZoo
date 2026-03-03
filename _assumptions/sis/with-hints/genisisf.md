@@ -3,6 +3,7 @@ title: "Generalised ISIS$_f$ (GenISIS$_f$)"
 seo_title: "Generalised ISIS-f"
 family: "SIS"
 subfamily: "SIS with Hints"
+graph_id: GenISISf
 
 last_modified_at: 2026-02-27
 redirect_from:

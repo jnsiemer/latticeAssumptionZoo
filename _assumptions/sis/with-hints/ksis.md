@@ -3,6 +3,7 @@ title: "k-SIS"
 seo_title: "k-SIS"
 family: "SIS"
 subfamily: "SIS with Hints"
+graph_id: k-SIS
 
 last_modified_at: 2026-02-26
 redirect_from:

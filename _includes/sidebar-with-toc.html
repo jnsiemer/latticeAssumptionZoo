@@ -4,7 +4,7 @@
   </div>
 
   {% if page.toc %}
-    <nav class="toc" style="position: relative !important; top: auto !important; display: inline-block; width: 100%; font-size: 1.5rem;">
+    <nav class="toc" style="position: relative !important; top: auto !important; display: inline-block; width: 100%; font-size: 1.5rem; margin-top: 0;">
       <header>
         <h4 class="nav__title" style="font-size: 0.8rem;">
           <i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> 
@@ -13,5 +13,23 @@
       </header>
       {% include toc.html sanitize=true html=content h_min=1 h_max=3 class="toc__menu" skip_no_ids=true %}
     </nav>
+  {% endif %}
+
+  {% if page.graph_id %}
+  <div id="desktop-graph-origin" style="margin-top: 0;">
+    <div id="lattice-graph-widget" style="position: relative; width: 100%;">
+      <iframe src="/graph/index.html#{{ page.graph_id }}" 
+              style="width: 100%; height: 100%; border: 1px solid #ccc; border-radius: 5px;" 
+              title="Lattice Assumption Graph">
+      </iframe>
+
+      <a href="/graph/#{{ page.graph_id }}" 
+        target="_blank" 
+        style="position: absolute; bottom: 15px; right: 15px; font-size: 9pt;"
+        class="btn btn--primary">
+        View Full Graph & Filters
+      </a>
+    </div>
+  </div>
   {% endif %}
 </div>

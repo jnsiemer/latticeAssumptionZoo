@@ -2,6 +2,7 @@
 title: "Short Integer Solution (SIS)"
 seo_title: "SIS"
 family: "SIS"
+graph_id: SIS
 
 last_modified_at: 2026-02-26
 redirect_from:

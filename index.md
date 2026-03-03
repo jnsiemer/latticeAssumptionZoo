@@ -7,7 +7,7 @@ This wiki catalogues average-case lattice assumptions, helping cryptographers tr
 ## 🧭 Explore the Lattice Assumption Graph
 This interactive graph visualises the landscape of lattice-based assumptions, illustrating relationships such as reductions and generalizations. You can tailor the view to your needs -- filtering by cryptographic primitive, historical timeline, or specific assumption variants.
 
-<div style="position: relative; width: 100%; aspect-ratio: 4 / 3; max-height: 600px;">
+<div style="position: relative; width: 100%; aspect-ratio: 2 / 1; max-height: 600px;">
   <iframe src="/graph/index.html" 
           style="width: 100%; height: 100%; border: 1px solid #ccc; border-radius: 5px;" 
           title="Lattice Assumption Graph">
