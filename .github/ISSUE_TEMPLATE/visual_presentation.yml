@@ -1,0 +1,57 @@
+name: Visual Presentation
+description: Report a visual bug, bad presentation, rendering issue, or UI glitch.
+title: "[Visual]: "
+labels: ["presentation", "bug", "ui"]
+body:
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the Bug
+      description: What is visually broken or misrepresented?
+      placeholder: E.g., The math block overlaps with the right sidebar on mobile...
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      description: What device are you using?
+      placeholder: E.g., Desktop, MacBook Pro, iPhone 15, iPad
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: What operating system are you using?
+      placeholder: E.g., Windows 11 25H2, MacOS 26 Tahoe, Ubuntu 24.04.4
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser & Version
+      description: What browser are you seeing this issue on?
+      placeholder: E.g., Chrome 122, Safari, Firefox 123
+    validations:
+      required: true
+
+  - type: input
+    id: window-size
+    attributes:
+      label: Window Size / Screen Resolution
+      description: Are you using the browser in fullscreen, split-screen, or a specific resolution?
+      placeholder: E.g., 1920x1080 Fullscreen, Half-screen width
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Please drag and drop screenshots of the visual glitch here. A picture is worth a thousand words!
+    validations:
+      required: true

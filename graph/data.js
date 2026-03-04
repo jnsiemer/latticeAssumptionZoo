@@ -10,11 +10,11 @@ var relations = [];
  *     TresholdSign, COAD, KEX, PKE, PrivEnhEnc, EffEnhEnc, TresholdEnc, COED.
  *     Please add further / more specific ones as a comment
  * - 'url': URL to lattice assumption zoo page of this assumption
- * - 'group': The single group of assumptions that this assumption belongs to.
+ * - 'family': The single family of assumptions that this assumption belongs to.
  *     Possible values are currently ['SIS', 'LWE', 'NTRU', 'LPN', 'LIP']
  * - 'is_variant': Optional parameter. Set this to true, if this assumption is a variant of another assumption.
 */
-function assumption(label, full_name, published, primitives, url, group, is_variant=false) {
+function assumption(label, full_name, published, primitives, url, family, is_variant=false) {
   assumptions.push({
     id: label,
     label: label,
@@ -23,7 +23,7 @@ function assumption(label, full_name, published, primitives, url, group, is_vari
     is_variant: is_variant,
     primitives: primitives,
     url: url,
-    group: group,
+    group: family,
   });
 }
 
@@ -112,7 +112,7 @@ function assumptionFamily(familyID, members, edgeLength = 50) {
 
 /*** Assumptions ***/
 
-// SIS-based assumptions - group, i.e. last parameter is always 'SIS'
+// SIS-based assumptions - family, i.e. last parameter is always 'SIS'
 assumption('SIS', 'Short Integer Solution', 1996, ['Commitment', 'ZK', 'Sign'], '/sis/', 'SIS');
 assumption('NFSIS', 'Normal Form SIS', 2001, ['Commitment', 'ZK', 'Sign'], '/sis/#normal-form-sis_nmqbeta', 'SIS', true); // Micciancio - Improving Lattice Based Cryptosystems Using the Hermite Normal Form
 assumption('ISIS', 'Inhomogeneous SIS', 1997, ['Commitment', 'ZK', 'Sign'], '/sis/#inhomogeneous-sis_nmqbeta', 'SIS', true); // Ajtai–Dwork - A Public-Key Cryptosystem with Worst-Case/Average-Case Equivalence
@@ -131,19 +131,19 @@ assumption('rOM-ISIS', 'Randomised One-More-ISIS', 2024, ['Sign', 'PrivEnhSign']
 assumptionFamily('OM-ISIS', ['OM-ISIS', 'rOM-ISIS']);
 
 
-// LWE-based assumptions - group, i.e. last parameter is always 'LWE'
+// LWE-based assumptions - family, i.e. last parameter is always 'LWE'
 assumption('LWE', 'Learning with Errors', 2005, ['KEX', 'PKE'], '/lwe/', 'LWE');
 
 
-// NTRU-based assumptions - group, i.e. last parameter is always 'NTRU'
+// NTRU-based assumptions - family, i.e. last parameter is always 'NTRU'
 assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['KEX', 'PKE', 'Sign'], '/ntru/', 'NTRU');
 
 
-// LIP-based assumptions - group, i.e. last parameter is always 'LIP'
+// LIP-based assumptions - family, i.e. last parameter is always 'LIP'
 assumption('LIP', 'Lattice Isomorphism Problem', 2019, ['Sign'], '/lip/', 'LIP'); /*First consideration in crypto-context*/
 
 
-// LPN-based assumptions - group, i.e. last parameter is always 'LPN'
+// LPN-based assumptions - family, i.e. last parameter is always 'LPN'
 assumption('LPN', 'Learning Parity with Noise', 2000, ['PKE'], '/lpn/', 'LPN'); /*First consideration in crypto-context*/
 
 

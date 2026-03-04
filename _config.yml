@@ -62,3 +62,10 @@ defaults:
       classes: wide
       sidebar:
         nav: "main"
+
+exclude:
+  - CONTRIBUTING.md
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock

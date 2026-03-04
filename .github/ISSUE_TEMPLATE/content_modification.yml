@@ -1,0 +1,53 @@
+name: Content Correction or Addition
+description: Report missing assumptions, reductions, cryptanalysis, papers, or incorrect statements.
+title: "[Content Correction or Addition]: "
+labels: ["content", "enhancement", "correction", "addition"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us keep the Lattice Assumption Zoo accurate and up-to-date. 
+        
+        *Note: If you already have the formal definitions or exact text ready, you might find it faster to submit a [Pull Request](../CONTRIBUTING.md) directly! Otherwise, please provide as much detail as possible below.*
+
+  - type: dropdown
+    id: content-type
+    attributes:
+      label: What type of content issue is this?
+      description: Select the category that best fits your report.
+      options:
+        - Missing Assumption or Variant
+        - Missing Reduction or Generalisation
+        - Missing Cryptanalysis
+        - Missing Application
+        - Missing Relevant Paper
+        - Incorrect Statement
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-state
+    attributes:
+      label: What is missing or wrong?
+      description: Describe the specific information that is currently absent or incorrect on the website.
+      placeholder: E.g., The page for One-More-ISIS currently states that it reduces to X.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-correction
+    attributes:
+      label: Proposed Addition / Correction
+      description: What is the correct information, or what exactly should be added?
+      placeholder: E.g., It actually reduces to Z under the condition...
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: Relevant References
+      description: Please provide links to the relevant papers supporting this addition or correction so we can easily verify and cite them.
+      placeholder: E.g., https://eprint.iacr.org/2026/XXXX
+    validations:
+      required: true
