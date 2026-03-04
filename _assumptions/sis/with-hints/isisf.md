@@ -3,7 +3,7 @@ title: "ISIS$_f$"
 seo_title: "ISIS-f"
 family: "SIS"
 subfamily: "SIS with Hints"
-graph_id: ISISf
+graph_id: "ISISf"
 
 last_modified_at: 2026-02-27
 redirect_from:

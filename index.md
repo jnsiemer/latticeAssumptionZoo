@@ -2,7 +2,11 @@
 title: Lattice Assumption Zoo
 ---
 
-This wiki catalogues average-case lattice assumptions, helping cryptographers track novel assumptions, quickly evaluate their hardness and applications, and stay informed on the latest cryptanalysis.
+This comprehensive wiki catalogues average-case lattice assumptions so that cryptography-affine readers can quickly build an intuition for each assumption, understand the rationale behind its hardness, explore its applications, access all relevant literature in one place, and stay informed on the latest cryptanalysis.
+
+Furthermore, this resource is built with two additional goals in mind:
+- For **designers**: This website facilitates keeping track of novel assumptions to encourage reusing established assumptions rather than introducing new, ad-hoc ones.
+- For **cryptanalysts**: This repository serves as an organised index of targets, simplifying the identification of compelling assumptions to analyse.
 
 ## 🧭 Explore the Lattice Assumption Graph
 This interactive graph visualises the landscape of lattice-based assumptions, illustrating relationships such as reductions and generalizations. You can tailor the view to your needs -- filtering by cryptographic primitive, historical timeline, or specific assumption variants.

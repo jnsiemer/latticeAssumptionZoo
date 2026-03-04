@@ -13,6 +13,63 @@ classes: wide
       margin-top: -0.5em;
     }
   }
+
+  .status-badge {
+    display: inline-block;
+    font-size: 0.45em;
+    vertical-align: middle;
+    padding: 0.2em 0.6em;
+    margin-left: 0.7em;
+    margin-bottom: 0.3em;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff !important;
+    text-decoration: none !important;
+    position: relative; 
+    cursor: pointer;
+  }
+  .status-broken { background-color: #d9534f; }
+  .status-standard { background-color: #5cb85c; }
+
+  .status-badge:hover {
+    text-decoration: none !important;
+    color: #fff !important;
+  }
+
+  .status-badge::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: normal;
+    text-transform: none;
+    line-height: 1.4;
+    width: max-content;
+    max-width: 250px;
+    white-space: normal;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 100;
+    pointer-events: none;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  .status-badge:hover::after,
+  .status-badge:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
 </style>
 
 <div id="main" role="main">
@@ -24,7 +81,29 @@ classes: wide
     
     <div class="page__inner-wrap">
       <header>
-        {% if page.title %}<h1 id="page-title" class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+        {% if page.title %}
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
+            
+            {% if page.assumption_status %}
+
+              {% capture tooltip_text %}
+                {% case page.assumption_status | downcase %}
+                  {% when "standard" %}This is a standard assumption or there is a reduction from a standard assumption that does not impose unusually strict conditions on the parameters.
+                  {% when "broken" %}This assumption has been compromised by known attacks.
+                  {% else %}Unknown assumption status.
+                {% endcase %}
+              {% endcapture %}
+
+              <a href="{{ page.url }}#hardness" 
+                class="status-badge status-{{ page.assumption_status | downcase }}" 
+                data-tooltip="{{ tooltip_text | strip }}">
+                {{ page.assumption_status }}
+              </a>
+            {% endif %}
+            
+          </h1>
+        {% endif %}
 
         <a href="https://github.com/jnsiemer/latticeassumptionzoo/tree/main/{{ page.path }}" class="btn btn--primary btn--small" target="_blank" rel="noopener noreferrer" style="float: right;">
           <i class="fas fa-edit"></i> Propose Edit

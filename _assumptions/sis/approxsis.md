@@ -2,7 +2,8 @@
 title: "Approximate SIS"
 seo_title: "Approximate SIS"
 family: "SIS"
-graph_id: ApproxSIS
+graph_id: "ApproxSIS"
+assumption_status: "standard"
 
 last_modified_at: 2026-02-26
 redirect_from:
