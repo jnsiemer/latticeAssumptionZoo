@@ -20,6 +20,7 @@
         document.getElementById("maxYearPrinted").textContent = "Introduced before " + maxYearSlider.value;
       }
     </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style type="text/css">
       /* From visjs example */
@@ -59,7 +60,7 @@
         padding: 5px;
         background-color: #222;
         color: #EEE;
-        font-size: 1.25em;
+        font-size: 1em;
       }
       #filtersToggle {
         user-select: none; /* Prevents text highlighting when clicking */
@@ -120,8 +121,14 @@
         </div>
         <div>
           <label>
+            <input type="checkbox" name="nodesFilter" value="FuncSign" checked />
+            <span data-tooltip="Functional signatures as well as (hierarchical) identity-based, attribute-based, or registration-based signatures.">Functional Signature</span>
+          </label>
+        </div>
+        <div>
+          <label>
             <input type="checkbox" name="nodesFilter" value="PrivEnhSign" checked />
-            <span data-tooltip="Privacy-enhancing signatures such as blind, group, ring, identity/attribute-based, or functional signatures as well as anonymous credentials.">Privacy-Enhancing Signature</span>
+            <span data-tooltip="Privacy-enhancing signatures such as blind, group, ring, designated-verifier, or deniable signatues as well as anonymous credentials.">Privacy-Enhancing Signature</span>
           </label>
         </div>
         <div>
@@ -144,20 +151,20 @@
         </div>
         <div>
           <label>
-            <input type="checkbox" name="nodesFilter" value="KEX" checked />
-            <span data-tooltip="Key Exchange Protocols and Key Exchange Mechanisms in any form or variation.">Key Exchange Protocol or KEM</span>
+            <input type="checkbox" name="nodesFilter" value="PKE" checked />
+            <span data-tooltip="Public-Key Encryption with any sensible security notion, including key exchange protocols or key exchange mechanisms.">Public-Key Encryption</span>
           </label>
         </div>
         <div>
           <label>
-            <input type="checkbox" name="nodesFilter" value="PKE" checked />
-            <span data-tooltip="Public-Key Encryption with any sensible security notion.">Public-Key Encryption</span>
+            <input type="checkbox" name="nodesFilter" value="FuncEnc" checked />
+            <span data-tooltip="Functional encryption as well as (hierarchical) identity-based, attribute-based, or registration-based encryption.">Functional Encryption</span>
           </label>
         </div>
         <div>
           <label>
             <input type="checkbox" name="nodesFilter" value="PrivEnhEnc" checked />
-            <span data-tooltip="Privacy-enhancing encryption such as (H)IBE, ABE, FE, RBE, or Oblivious Encryption.">Privacy-Enhancing Encryption</span>
+            <span data-tooltip="Privacy-enhancing encryption such as anonymous or deniable encryption.">Privacy-Enhancing Encryption</span>
           </label>
         </div>
         <div>
@@ -216,6 +223,12 @@
         }
       });
 
+      // Toggle filters on mobile
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        filtersContent.style.display = "none";
+        toggleIcon.textContent = "▲";
+      }
+
       // Hide the filters div if in an iframe
       const isInIframe = window.self !== window.top;
       if (isInIframe) {
@@ -237,19 +250,18 @@
         ZK: true,
         // Signature-based
         Sign: true,
+        FuncSign: true,
         PrivEnhSign: true,
         EffEnhSign: true,
         TresholdSign: true,
-        AdvFuncSign: true,
-        // KEX & Encryption-based
-        KEX: true,
+        COAD: true,
+        // Encryption-based
         PKE: true,
+        FuncEnc: true,
         PrivEnhEnc: true,
         EffEnhEnc: true,
         TresholdEnc: true,
-        AdvFuncEnc: true,
-        // More Advanced
-        AnonCred: true,
+        COED: true,
       };
       const edgesFilterValues = {
         reducesTo: true,
@@ -262,7 +274,7 @@
         if (node.is_variant && !includeVariantsCheckbox.checked) {
           return false;
         }
-        if (node.published >= maxYearSlider.value) {
+        if (node.year_published >= maxYearSlider.value) {
             return false;
         }
         for (var k in nodesFilterValues) {

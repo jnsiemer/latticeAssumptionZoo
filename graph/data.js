@@ -4,22 +4,22 @@ var relations = [];
 /* Adds an assumption with required parameters:
  * - 'label': Displayed label in node (double serves as id), e.g. 'SIS'
  * - 'full_name': Full name of the assumption (displayed on hover), e.g. 'Short Integer Solution'
- * - 'published': Year of publication, e.g. 1996
+ * - 'year_published': Year of publication, e.g. 1996
  * - 'primitives': Array should contain primitive if a construction exists, which builds on this assumption
- *     List of primitives is currently limited to: Commitment, ZK, Sign, PrivEnhSign, EffEnhSign,
- *     TresholdSign, COAD, KEX, PKE, PrivEnhEnc, EffEnhEnc, TresholdEnc, COED.
+ *     List of primitives is currently limited to: Commitment, ZK, Sign, PrivEnhSign, FuncSign, EffEnhSign, TresholdSign, COAD,
+ *     PKE, FuncEnc, PrivEnhEnc, EffEnhEnc, TresholdEnc, COED.
  *     Please add further / more specific ones as a comment
  * - 'url': URL to lattice assumption zoo page of this assumption
  * - 'family': The single family of assumptions that this assumption belongs to.
  *     Possible values are currently ['SIS', 'LWE', 'NTRU', 'LPN', 'LIP']
  * - 'is_variant': Optional parameter. Set this to true, if this assumption is a variant of another assumption.
 */
-function assumption(label, full_name, published, primitives, url, family, is_variant=false) {
+function assumption(label, full_name, year_published, primitives, url, family, is_variant=false) {
   assumptions.push({
     id: label,
     label: label,
     title: full_name,
-    published: published,
+    year_published: year_published,
     is_variant: is_variant,
     primitives: primitives,
     url: url,
@@ -132,11 +132,12 @@ assumptionFamily('OM-ISIS', ['OM-ISIS', 'rOM-ISIS']);
 
 
 // LWE-based assumptions - family, i.e. last parameter is always 'LWE'
-assumption('LWE', 'Learning with Errors', 2005, ['KEX', 'PKE'], '/lwe/', 'LWE');
+assumption('LWE', 'Learning with Errors', 2005, ['PKE', 'FuncEnc', 'COED'], '/lwe/', 'LWE');
+assumption('ssLWE', 'Short secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/#short-secret-lwe_nmqchi', 'LWE', true);
 
 
 // NTRU-based assumptions - family, i.e. last parameter is always 'NTRU'
-assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['KEX', 'PKE', 'Sign'], '/ntru/', 'NTRU');
+assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['PKE', 'Sign'], '/ntru/', 'NTRU');
 
 
 // LIP-based assumptions - family, i.e. last parameter is always 'LIP'
@@ -163,6 +164,7 @@ reducesTo('GenISISf', 'IntGenISISf');
 reducesTo('rOM-ISIS', 'OM-ISIS');
 
 reducesTo('LWE', 'SIS', 400);
+reducesTo('ssLWE', 'LWE');
 
 
 // Partial Reductions - "partially reduces to"
