@@ -12,6 +12,7 @@ redirect_from:
 ---
 
 Short Integer Solution (SIS) is an average-case problem, which was introduced in 1996 by Miklós Ajtai {% cite STOC:Ajtai96 %}. He introduced a family of one-way functions based on SIS and showed that SIS is hard to solve on average if a version of the [shortest vector problem](https://en.wikipedia.org/wiki/Lattice_problem#Shortest_vector_problem_.28SVP.29){:target="_blank"} is hard in a worst-case scenario.
+SIS is one of the, if not the single most fundamental computational assumption in lattice-based cryptography, enabling the construction of any minicrypt {% cite SCT:Impagliazzo95 %} primitives such as collision-resistant hash functions, commitments, and unforgeable signatures.
 
 ## Definition
 
@@ -22,7 +23,7 @@ SIS intuitively states that it is hard to find a short vector in the kernel of m
 A solution to SIS without the condition $\norm{\vec{s}} \leq \beta$ can be found using [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination){:target="_blank"}. Thus, the condition $\beta < q$ is required as otherwise $(q, 0, \dots, 0) \in \ZZ^m$ yields a trivial solution.
 
 ### Ring-SIS$_{m,q,\beta,\mathcal{R}}$
-_Let matrix $\vec{a} \in \mathcal{R}_q^{n \times m}$ be chosen uniformly at random. An adversary is asked to find a short non-zero vector $\vec{s} \in \mathcal{R}^{n \times m}$ satisfying $\vec{a}^T \cdot \vec{s} = \vec{0} \bmod q \land 0 < \norm{\vec{s}} \leq \beta$._
+_Let matrix $\vec{a} \in \mathcal{R}_q^{m}$ be chosen uniformly at random. An adversary is asked to find a short non-zero vector $\vec{s} \in \mathcal{R}^{m}$ satisfying $\vec{a}^T \cdot \vec{s} = \vec{0} \bmod q \land 0 < \norm{\vec{s}} \leq \beta$._
 
 Let $\mathcal{R}$ denote a polynomial ring $\ZZ_q[X]/(f(X))$. The function $f(X)$ is usually chosen as $(X^d + 1)$ with special interest in $d$ being a power of $2$ {% cite EC:LyuPeiReg10 %}. However, the Ring SIS (R-SIS) problem has also been studied for other choices such as $f(X) = (X^d - 1)$ {% cite FOCS:Micciancio02 %}{% cite TCC:PeiRos06 %}{% cite ICALP:LyuMic06 %}.
 
@@ -72,8 +73,8 @@ This is a non-exhaustive list of constructions, whose security is or can be base
 
 ## Related Assumptions
 
-- [Approximate SIS](/approxsis/)
-- [Learning with Errors](/lwe/) 
+- [Approximate SIS](/approxsis/) replaces the fixed target vector by a small ball of valid target vectors.
+- [Learning with Errors](/lwe/) can be seen as a dual of SIS.
 
 ## Further Reading Suggestions
 
