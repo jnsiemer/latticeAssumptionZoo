@@ -26,12 +26,12 @@ Without the error vector $\vec{e}$, finding $\vec{s}$ would require solving a sy
 _Let matrix $\mat{A} \in \ZZ_q^{m \times n}$ and secret vector $\vec{s} \in \ZZ_q^n$ be chosen uniformly at random. Let $\vec{e} \in \ZZ_q^m$ be sampled from the error distribution $\chi$. An adversary is asked to distinguish between the LWE distribution $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e} \bmod q)$ and a uniformly random distribution over $\ZZ_q^{m \times n} \times \ZZ_q^m$._
 
 For cryptographic constructions, Decision LWE is often more directly applicable (e.g., for achieving indistinguishability in encryption schemes). Search and Decision LWE are polynomially equivalent for typical parameter choices {% cite STOC:Regev05 %}. Thus, we only give the decision version of LWE below.
-The polynomial $f(X)$ is typically a [cyclotomic polynomial](https://en.wikipedia.org/wiki/Cyclotomic_polynomial){:target="_blank"}, such as $X^d + 1$ where $d$ is a power of 2.
 
 ### Ring-LWE$_{m,q,\chi,\mathcal{R}}$
 _Let $\mathcal{R}_q$ be the polynomial ring $\ZZ_q[X]/(f(X))$. Let $\vec{a} \in \mathcal{R}_q^m$ and $s \in \mathcal{R}_q$ be chosen uniformly at random, and let $\vec{e} \in \mathcal{R}_q^m$ be drawn from the error distribution $\chi$. The adversary is asked to distinguish the LWE distribution $(\vec{a}, \vec{b} = \vec{a} \cdot s + \vec{e} \bmod q)$ from a uniformly random distribution over $\mathcal{R}_q^m \times \mathcal{R}_q^m$ ._
 
 Ring-LWE (R-LWE) {% cite EC:LyuPeiReg10 %} adds more structure to LWE by replacing matrix-vector multiplications with polynomial multiplications. In applications, this results in reduced key sizes and accelerated execution times (using the [NTT](https://en.wikipedia.org/wiki/Discrete_Fourier_transform_over_a_ring#Number-theoretic_transform){:target="_blank"}).
+The polynomial $f(X)$ is typically a [cyclotomic polynomial](https://en.wikipedia.org/wiki/Cyclotomic_polynomial){:target="_blank"}, such as $X^d + 1$ where $d$ is a power of 2.
 
 ### Module-LWE$_{n,m,q,\chi,\mathcal{R}}$
 _Let $\mat{A} \in \mathcal{R}_q^{m \times n}$ be a uniformly random matrix and $\vec{s} \in \mathcal{R}_q^n$ be a random secret vector. Let $\vec{e} \in \mathcal{R}_q^m$ be sampled from the error distribution $\chi$. The adversary is asked to distinguish the LWE distribution $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e} \bmod q)$ from a uniformly random distribution over $\mathcal{R}_q^{m \times n} \times \mathcal{R}_q^m$._

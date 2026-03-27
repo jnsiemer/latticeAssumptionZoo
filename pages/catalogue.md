@@ -28,7 +28,7 @@ permalink: /catalogue/
   .status-standard { background-color: #5cb85c; }
 </style>
 
-The Lattice Assumption Zoo currently catalogues {{ site.assumptions.size }} assumptions; <span id="variants-count">0</span> counting all variants.
+The Lattice Assumption Zoo currently catalogues {{ site.assumptions.size }} assumptions; <span id="variants-count">couting...</span> counting variants.<!-- excluding ring-/module-variants or equivalent search/decision versions -->
 
 <script
   type="text/javascript"

@@ -145,7 +145,7 @@ assumption('LIP', 'Lattice Isomorphism Problem', 2019, ['Sign'], '/lip/', 'LIP')
 
 
 // LPN-based assumptions - family, i.e. last parameter is always 'LPN'
-assumption('LPN', 'Learning Parity with Noise', 2000, ['PKE'], '/lpn/', 'LPN'); /*First consideration in crypto-context*/
+assumption('LPN', 'Learning Parity with Noise', 2000, ['Commitment', 'ZK'], '/lpn/', 'LPN'); /*First consideration in crypto-context*/
 
 
 
