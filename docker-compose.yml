@@ -1,0 +1,14 @@
+services:
+  wiki:
+    build: .
+    ports:
+      - "4000:4000"
+      - "35729:35729" # Port for LiveReload
+    volumes:
+      - .:/app
+      # Prevents container's installed gems from being overwritten 
+      # if a user has a local vendor/bundle directory
+      - bundle_cache:/usr/local/bundle
+
+volumes:
+  bundle_cache:

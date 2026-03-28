@@ -69,3 +69,5 @@ exclude:
   - LICENSE
   - Gemfile
   - Gemfile.lock
+  - Dockerfile
+  - docker-compose.yml
