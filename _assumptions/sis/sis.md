@@ -30,7 +30,7 @@ Let $\mathcal{R}$ denote a polynomial ring $\ZZ_q[X]/(f(X))$. The function $f(X)
 ### Module-SIS$_{n,m,q,\beta,\mathcal{R}}$
 _Let matrix $\mat{A} \in \mathcal{R}_q^{n \times m}$ be chosen uniformly at random. An adversary is asked to find a short non-zero vector $\vec{s} \in \mathcal{R}^m$ satisfying $\mat{A} \cdot \vec{s} = \vec{0} \bmod q \land 0 < \norm{\vec{s}} \leq \beta$._
 
-While M-SIS is a less compact variant of SIS than R-SIS, the M-SIS problem is asymptotically at least as hard as R-SIS and therefore gives a tighter bound on the hardness assumption of SIS. This makes assuming the hardness of M-SIS a safer, but less efficient underlying assumption when compared to R-SIS {% cite DCC:LanSte15 %}.
+By using vectors/matrices over the ring $\mathcal{R}_q$, Module-SIS (M-SIS) {% cite DCC:LanSte15 %} can be seen as a generalisation of SIS and R-SIS whose definitions can be recovered by setting $\mathcal{R} = \ZZ$ and $n=1$ respectively.
 
 ## Variants
 
@@ -59,7 +59,7 @@ The initial hardness results of Ajtai {% cite STOC:Ajtai96 %} in 1996 were later
 
 **Theorem** {% cite FTTCS:Peikert16 %} For any $m = \poly{n}$, any $\beta > 0$, and any sufficiently large $q \geq \beta \cdot \poly{n}$, solving SIS$\_{n,m,q,\beta}$ with non-negligible probability is at least as hard as solving the decisional approximate shortest vector problem GapSVP$\_\gamma$ and the approximate shortest independent vectors problems SIVP$\_\gamma$ (among others) on arbitrary n-dimensional lattices (i.e., in the worst case) with overwhelming probability, for some $\gamma = \beta \cdot \poly{n}$.
 
-Similar reductions exist for R-SIS and M-SIS but their hardness relies on the worst-case hardness of SIVP over ideal and module lattices respectively {% cite EC:LyuPeiReg10 %}{% cite DCC:LanSte15 %}. R-SIS as defined above is broken for cyclic lattices, i.e. $\mathcal{R} = \ZZ[X]/(X^d - 1)$, but there are refined versions for cyclic lattices with worst-case to average-case reductions {% cite FOCS:Micciancio02 %}{% cite TCC:PeiRos06 %}{% cite ICALP:LyuMic06 %}.
+Similar reductions exist for R-SIS and M-SIS (over cyclotomic rings, i.e. $\mathcal{R} = \ZZ[X]/(X^d + 1)$ with $d$ a power of two) but their hardness relies on the worst-case hardness of SIVP over ideal and module lattices respectively {% cite EC:LyuPeiReg10 %}{% cite DCC:LanSte15 %}. R-SIS is broken for cyclic lattices, i.e. $\mathcal{R} = \ZZ[X]/(X^d - 1)$, but there are refined versions with worst-case to average-case reductions {% cite FOCS:Micciancio02 %}{% cite TCC:PeiRos06 %}{% cite ICALP:LyuMic06 %}.
 
 ## Constructions built from SIS
 
@@ -78,7 +78,7 @@ This is a non-exhaustive list of constructions, whose security is or can be base
 
 ## Further Reading Suggestions
 
-- [Section 4.1](https://eprint.iacr.org/2015/939.pdf#page=20){:target="_blank"} in _A decade of lattice cryptography_ {% cite FTTCS:Peikert16 %}
+- [Section 4.1 and 4.3](https://eprint.iacr.org/2015/939.pdf#page=20){:target="_blank"} in _A decade of lattice cryptography_ {% cite FTTCS:Peikert16 %}
 - [Lecture notes](https://people.csail.mit.edu/vinodv/CS294/){:target="_blank"} by Vinod Vaikuntanathan
   - Lecture 3 on _Smoothing Parameter and Worst-case to Average-case Reduction for SIS_
   - Lecture 10 on _Ideal Lattices and Ring Learning with Errors_

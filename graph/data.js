@@ -137,7 +137,7 @@ assumption('ssLWE', 'Short secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/
 
 
 // NTRU-based assumptions - family, i.e. last parameter is always 'NTRU'
-assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['PKE', 'Sign'], '/ntru/', 'NTRU');
+assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['Sign', 'PKE', 'COED'], '/ntru/', 'NTRU');
 
 
 // LIP-based assumptions - family, i.e. last parameter is always 'LIP'
@@ -165,6 +165,8 @@ reducesTo('rOM-ISIS', 'OM-ISIS');
 
 reducesTo('LWE', 'SIS', 400);
 reducesTo('ssLWE', 'LWE');
+
+reducesTo('NTRU', 'LWE', 400);
 
 
 // Partial Reductions - "partially reduces to"

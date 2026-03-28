@@ -28,13 +28,13 @@ _Let matrix $\mat{A} \in \ZZ_q^{m \times n}$ and secret vector $\vec{s} \in \ZZ_
 For cryptographic constructions, Decision LWE is often more directly applicable (e.g., for achieving indistinguishability in encryption schemes). Search and Decision LWE are polynomially equivalent for typical parameter choices {% cite STOC:Regev05 %}. Thus, we only give the decision version of LWE below.
 
 ### Ring-LWE$_{m,q,\chi,\mathcal{R}}$
-_Let $\mathcal{R}_q$ be the polynomial ring $\ZZ_q[X]/(f(X))$. Let $\vec{a} \in \mathcal{R}_q^m$ and $s \in \mathcal{R}_q$ be chosen uniformly at random, and let $\vec{e} \in \mathcal{R}_q^m$ be drawn from the error distribution $\chi$. The adversary is asked to distinguish the LWE distribution $(\vec{a}, \vec{b} = \vec{a} \cdot s + \vec{e} \bmod q)$ from a uniformly random distribution over $\mathcal{R}_q^m \times \mathcal{R}_q^m$ ._
+_Let $\mathcal{R}_q$ be the polynomial ring $\ZZ_q[X]/(f(X))$. Let $\vec{a} \in \mathcal{R}_q^m$ and $s \in \mathcal{R}_q$ be chosen uniformly at random, and let $\vec{e} \in \mathcal{R}_q^m$ be drawn from the error distribution $\chi$. The adversary is asked to distinguish the LWE distribution $(\vec{a}, \vec{b} = \vec{a} \cdot s + \vec{e})$ from a uniformly random distribution over $\mathcal{R}_q^m \times \mathcal{R}_q^m$ ._
 
 Ring-LWE (R-LWE) {% cite EC:LyuPeiReg10 %} adds more structure to LWE by replacing matrix-vector multiplications with polynomial multiplications. In applications, this results in reduced key sizes and accelerated execution times (using the [NTT](https://en.wikipedia.org/wiki/Discrete_Fourier_transform_over_a_ring#Number-theoretic_transform){:target="_blank"}).
 The polynomial $f(X)$ is typically a [cyclotomic polynomial](https://en.wikipedia.org/wiki/Cyclotomic_polynomial){:target="_blank"}, such as $X^d + 1$ where $d$ is a power of 2.
 
 ### Module-LWE$_{n,m,q,\chi,\mathcal{R}}$
-_Let $\mat{A} \in \mathcal{R}_q^{m \times n}$ be a uniformly random matrix and $\vec{s} \in \mathcal{R}_q^n$ be a random secret vector. Let $\vec{e} \in \mathcal{R}_q^m$ be sampled from the error distribution $\chi$. The adversary is asked to distinguish the LWE distribution $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e} \bmod q)$ from a uniformly random distribution over $\mathcal{R}_q^{m \times n} \times \mathcal{R}_q^m$._
+_Let $\mat{A} \in \mathcal{R}_q^{m \times n}$ be a uniformly random matrix and $\vec{s} \in \mathcal{R}_q^n$ be a random secret vector. Let $\vec{e} \in \mathcal{R}_q^m$ be sampled from the error distribution $\chi$. The adversary is asked to distinguish the LWE distribution $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e})$ from a uniformly random distribution over $\mathcal{R}_q^{m \times n} \times \mathcal{R}_q^m$._
 
 By using vectors/matrices over the ring $\mathcal{R}_q$, Module-LWE (M-LWE) {% cite DCC:LanSte15 %} can be seen as a generalisation of LWE and R-LWE whose definitions can be recovered by setting $\mathcal{R} = \ZZ$ and $n=1$ respectively.
 
@@ -58,7 +58,9 @@ Regev {% cite STOC:Regev05 %} proved a worst-case hardness theorem for LWE.
 
 **Theorem** _For any $m=\poly{n}$, any modulus $q \leq 2^{\poly{n}}$, and any (discretised) Gaussian error distribution $\chi$ of parameter $\alpha q \geq 2\sqrt{n}$ where $0 < \alpha < 1$, solving the decision-LWE$\_{n,m,q,\chi}$ problem is at least as hard as quantumly solving GapSVP$\_\gamma$ and SIVP$\_\gamma$ on arbitrary $n$-dimensional lattices, for some $\gamma = \bigO{n/\alpha}$._
 
-Later, a completely _classical_ reduction to LWE was established {% cite STOC:Peikert09 %} and a dimension-modulus trade-off in the classical reduction established {% cite STOC:BLPRS13 %}. 
+Later, a completely _classical_ reduction to LWE was established {% cite STOC:Peikert09 %} and a dimension-modulus trade-off in the classical reduction established {% cite STOC:BLPRS13 %}.
+
+Similar reductions exist for R-LWE and M-LWE for cyclotomic rings but their hardness relies on the worst-case hardness of GapSVP and SIVP over ideal and module lattices respectively {% cite EC:LyuPeiReg10 %}{% cite DCC:LanSte15 %}. Furthermore, R-LWE is at least as hard as [NTRU](/ntru/) as sketched in Section 4.4.4 of {% cite FTTCS:Peikert16 %}.
 
 Cryptanalytically there are two families of strategies to solve LWE, which can be outlined in the following way:
 - _Primal Attack:_ Transform an LWE challenge $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e})$ into a (unique) shortest vector problem defined by $$\mat{B} = \begin{bmatrix} \mat{A}^T &0 \\ \vec{b}^T &1 \end{bmatrix}$$, which contains an unusually short vector since $\begin{bmatrix} -\vec{s}^T &1 \end{bmatrix} \cdot \mat{B} = \begin{bmatrix} \vec{e}^T &1 \end{bmatrix}$. Assuming an adversary recovers this short vector from the uSVP instance (using [basis reduction algorithms](https://en.wikipedia.org/wiki/Lattice_reduction){:target="_blank"}), it recovered the error vector, which enables recovery of the secret vector $\vec{s}$ using [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination){:target="_blank"} with $\mat{A}$ and $\vec{b} - \vec{e}$.
