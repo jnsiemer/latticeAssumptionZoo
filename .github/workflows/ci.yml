@@ -1,0 +1,44 @@
+name: Check build, docker, and for broken links
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # Test native Ruby/Jekyll build and check for broken links
+  build-and-broken-links:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Actions checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build Jekyll site natively
+        run: bundle exec jekyll build
+
+      - name: Check for broken links
+        run: |
+          gem install html-proofer
+          htmlproofer ./_site --disable-external --no-check-external-hash --ignore-urls "/\/graph\/#/,/\/TODO\//"
+
+  # Test Dockerfile and site build
+  test-docker:
+    name: Test Docker Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker compose build
+
+      - name: Build inside Docker
+        run: docker compose run -u root laz bundle exec jekyll build

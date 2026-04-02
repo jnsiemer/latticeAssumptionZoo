@@ -1,5 +1,5 @@
 services:
-  wiki:
+  laz:
     build: .
     # prevents root-owned files from being created on the host machine
     user: "${UID:-1000}:${GID:-1000}"
