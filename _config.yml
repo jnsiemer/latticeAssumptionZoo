@@ -11,6 +11,8 @@ search: true
 theme: "minimal-mistakes-jekyll"
 minimal_mistakes_skin: "dirt"
 sass:
+  sass_dir: _sass
+  style: compressed
   quiet_deps: true
   silence_deprecations:
     - import
