@@ -5,7 +5,7 @@ family: "LWE"
 graph_id: "LWE"
 assumption_status: "standard"
 
-last_modified_at: 2026-03-26
+last_modified_at: 2026-04-11
 redirect_from:
   - /learning_with_errors/
   - /learning-with-errors/
@@ -63,8 +63,8 @@ Later, a completely _classical_ reduction to LWE was established {% cite STOC:Pe
 Similar reductions exist for R-LWE and M-LWE for cyclotomic rings but their hardness relies on the worst-case hardness of GapSVP and SIVP over ideal and module lattices respectively {% cite EC:LyuPeiReg10 %}{% cite DCC:LanSte15 %}. Furthermore, R-LWE is at least as hard as [NTRU](/ntru/) as sketched in Section 4.4.4 of {% cite FTTCS:Peikert16 %}.
 
 Cryptanalytically there are two families of strategies to solve LWE, which can be outlined in the following way:
-- _Primal Attack:_ Transform an LWE challenge $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e})$ into a (unique) shortest vector problem defined by $$\mat{B} = \begin{bmatrix} \mat{A}^T &0 \\ \vec{b}^T &1 \end{bmatrix}$$, which contains an unusually short vector since $\begin{bmatrix} -\vec{s}^T &1 \end{bmatrix} \cdot \mat{B} = \begin{bmatrix} \vec{e}^T &1 \end{bmatrix}$. Assuming an adversary recovers this short vector from the uSVP instance (using [basis reduction algorithms](https://en.wikipedia.org/wiki/Lattice_reduction){:target="_blank"}), it recovered the error vector, which enables recovery of the secret vector $\vec{s}$ using [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination){:target="_blank"} with $\mat{A}$ and $\vec{b} - \vec{e}$.
-- _Dual Attack:_ To build a distinguisher for decision LWE, an adversary tries to solve the (scaled) dual [SIS](/sis/) challenge. Assuming it succeeds in finding a short non-zero SIS solution $\vec{u}^T$ s.t. $\vec{u}^T \cdot \mat{A} = \vec{0}$. If the challenger handed out the LWE challenge $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e})$, then $\langle \vec{u}, \vec{b} \rangle = \langle \vec{u}, \vec{e} \rangle$ remains short. Otherwise, the result is uniformly distributed in $\ZZ_q$.
+- _Primal Attack:_ Transform an LWE challenge $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e})$ into a (unique) shortest vector problem. We know the $q$-ary lattice defined by $$\mat{B} = \begin{bmatrix} \mat{A}^T &\vec{0} \\ \vec{b}^T &1 \end{bmatrix}$$ contains an unusually short vector since $\begin{bmatrix} -\vec{s}^T &1 \end{bmatrix} \cdot \mat{B} = \begin{bmatrix} \vec{e}^T &1 \end{bmatrix}$. Assuming an adversary recovers this short vector from the uSVP instance (using [basis reduction algorithms](https://en.wikipedia.org/wiki/Lattice_reduction){:target="_blank"}), it recovered the error vector, which enables recovery of the secret vector $\vec{s}$ using [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination){:target="_blank"} with $\mat{A}$ and $\vec{b} - \vec{e}$.
+- _Dual Attack:_ To build a distinguisher for decision LWE, an adversary tries to solve the (scaled) dual [SIS](/sis/) challenge. Assuming it succeeds in finding a short non-zero SIS solution $\vec{u}^T$ s.t. $\vec{u}^T \cdot \mat{A} = \vec{0}$. If the challenger handed out the LWE challenge $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e})$ then $\langle \vec{u}, \vec{b} \rangle = \langle \vec{u}, \vec{e} \rangle$ remains short. Otherwise, the result is uniformly distributed in $\ZZ_q$.
 
 ## Constructions built from LWE
 
@@ -79,7 +79,7 @@ This is a non-exhaustive list of constructions, whose security is or can be base
 
 - [Short Integer Solution](/sis/) can be seen as a dual of LWE.
 - [Learning Parity with Noise](/lpn/) yields a specialisation of LWE.
-- [Learning with Rounding](/TODO/) TODO
+- [Learning with Rounding](/lwr/) replaces the randomised noise vector by a deterministic rounding operation compared to LWE.
 
 ## Further Reading Suggestions
 

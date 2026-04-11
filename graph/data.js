@@ -134,6 +134,7 @@ assumptionFamily('OM-ISIS', ['OM-ISIS', 'rOM-ISIS']);
 // LWE-based assumptions - family, i.e. last parameter is always 'LWE'
 assumption('LWE', 'Learning with Errors', 2005, ['PKE', 'FuncEnc', 'COED'], '/lwe/', 'LWE');
 assumption('ssLWE', 'Short secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/#short-secret-lwe_nmqchi', 'LWE', true);
+assumption('LWR', 'Learning with Rounding', 2012, ['PKE'], '/lwr/', 'LWE');
 
 
 // NTRU-based assumptions - family, i.e. last parameter is always 'NTRU'
@@ -165,6 +166,7 @@ reducesTo('rOM-ISIS', 'OM-ISIS');
 
 reducesTo('LWE', 'SIS', 400);
 reducesTo('ssLWE', 'LWE');
+reducesTo('LWR', 'LWE');
 
 reducesTo('NTRU', 'LWE', 400);
 
