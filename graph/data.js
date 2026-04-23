@@ -135,7 +135,9 @@ assumptionFamily('OM-ISIS', ['OM-ISIS', 'rOM-ISIS']);
 assumption('LWE', 'Learning with Errors', 2005, ['PKE', 'FuncEnc', 'COED'], '/lwe/', 'LWE');
 assumption('ssLWE', 'Short secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/#short-secret-lwe_nmqchi', 'LWE', true);
 assumption('LWR', 'Learning with Rounding', 2012, ['PKE'], '/lwr/', 'LWE');
+assumption('Hint-MLWE', 'Hint Learning with Errors', 2023, ['ZK', 'Sign', 'TresholdSign'], '/hint-mlwe/', 'LWE');
 
+// assumptionFamily('LeakyLWE', ['Leaky-LWE', 'Hint-MLWE']);
 
 // NTRU-based assumptions - family, i.e. last parameter is always 'NTRU'
 assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['Sign', 'PKE', 'COED'], '/ntru/', 'NTRU');
@@ -175,6 +177,7 @@ reducesTo('NTRU', 'LWE', 400);
 partiallyReducesTo('SIS', 'GenISISf', 'f = RO or f = A_m * x + u');
 partiallyReducesTo('SIS', 'ISISf', 'f = RO');
 
+partiallyReducesTo('LWE', 'Hint-MLWE', 'secrets/errors follow Discrete Gaussian Distributions');
 
 // Generalisations - "generalised by"
 generalisedBy('ISISf', 'GenISISf', 200);
