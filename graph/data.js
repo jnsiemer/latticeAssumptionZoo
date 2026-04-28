@@ -130,6 +130,14 @@ assumption('OM-ISIS', 'One-More-ISIS', 2022, ['Sign', 'PrivEnhSign'], '/omisis/'
 assumption('rOM-ISIS', 'Randomised One-More-ISIS', 2024, ['Sign', 'PrivEnhSign'], '/romisis/', 'SIS');
 assumptionFamily('OM-ISIS', ['OM-ISIS', 'rOM-ISIS']);
 
+assumption('BASIS', 'Basis-Augmented SIS', 2023, ['Commitment'], '/basis/', 'SIS');
+assumption('BASIS_rand', 'BASIS_rand', 2023, ['Commitment'], '/basis/#BASIS_rand', 'SIS', true);
+assumption('BASIS_struct', 'BASIS_struct', 2023, ['Commitment'], '/basis/#BASIS_struct', 'SIS', true);
+assumption('BASIS_power', 'BASIS_power', 2023, ['Commitment'], '/basis/#BASIS_power', 'SIS', true);
+assumption('h-BASIS', 'h-Basis-Augmented SIS', 2024, ['Commitment'], '/h-basis/', 'SIS');
+assumption('h-PRISIS', 'h-PRISIS', 2024, ['Commitment'], '/h-basis/#h-prisis', 'SIS', true);
+assumptionFamily('BASIS', ['BASIS', 'BASIS_rand', 'BASIS_struct', 'BASIS_power', 'h-BASIS', 'h-PRISIS']);
+
 
 // LWE-based assumptions - family, i.e. last parameter is always 'LWE'
 assumption('LWE', 'Learning with Errors', 2005, ['PKE', 'FuncEnc', 'COED'], '/lwe/', 'LWE');
@@ -164,6 +172,10 @@ reducesTo('GenISISf', 'IntGenISISf');
 
 reducesTo('rOM-ISIS', 'OM-ISIS');
 
+reducesTo('SIS', 'BASIS_rand');
+reducesTo('BASIS_power', 'h-PRISIS');
+reducesTo('k-M-ISIS', 'BASIS_struct'); // To come
+
 reducesTo('LWE', 'SIS', 400);
 reducesTo('ssLWE', 'LWE');
 reducesTo('LWR', 'LWE');
@@ -175,7 +187,18 @@ reducesTo('NTRU', 'LWE', 400);
 partiallyReducesTo('SIS', 'GenISISf', 'f = RO or f = A_m * x + u');
 partiallyReducesTo('SIS', 'ISISf', 'f = RO');
 
+partiallyReducesTo('SIS', 'BASIS', 'SIS reduces to BASIS_rand and M-SIS to PRISIS for l=2');
+partiallyReducesTo('SIS', 'BASIS_power', 'M-SIS reduces to PRISIS for l=2');
+partiallyReducesTo('SIS', 'h-PRISIS', 'M-SIS reduces to h-PRISIS for l=2');
+
 
 // Generalisations - "generalised by"
-generalisedBy('ISISf', 'GenISISf', 200);
+generalisedBy('ISISf', 'GenISISf');
+generalisedBy('IntISISf', 'IntGenISISf');
 generalisedBy('LPN', 'LWE', 400);
+
+generalisedBy('BASIS_rand', 'BASIS');
+generalisedBy('BASIS_struct', 'BASIS');
+generalisedBy('BASIS_power', 'BASIS');
+generalisedBy('h-PRISIS', 'h-BASIS');
+generalisedBy('BASIS', 'h-BASIS');
