@@ -29,7 +29,7 @@ In the same manner, it is easy to break the assumption if $\mat{B}\_i$ contains 
 Only one concrete instantiations of the sampling algorithm $\mathsf{Samp}$ is considered in literature so far.
 
 ### $h$-PRISIS
-_The sampling algorithm $\mathsf{Samp}(\mat{A})$ samples a vector $\vec{a} \sample \RR_q^m$ and an invertible polynomial $w \sample \RR_q^{\times}$. Set $\mat{A^{\*}}^T = \begin{bmatrix} \vec{a} & \mat{A}^T \end{bmatrix}$ and output_
+_The sampling algorithm $\mathsf{Samp}(\mat{A})$ samples a vector $\vec{a} \sample \mathcal{R}_q^m$ and an invertible polynomial $w \sample \mathcal{R}_q^{\times}$. Set $\mat{A^{\*}}^T = \begin{bmatrix} \vec{a} & \mat{A}^T \end{bmatrix}$ and output_
 
 $$ \mat{B} = \left[ \begin{array}{ccc|c}
 	w^0 \mat{A^*}	&	&	&-\mat{G}_{n} \\
@@ -43,7 +43,7 @@ In Theorem 5.10 of {% cite EC:AFLN24 %}, the $h$-PRISIS assumption is utilised t
 For $h$-PRISIS, the authors of {% cite EC:AFLN24 %} reduce [M-SIS](/sis/#module-sis) to $h$-PRISIS for $\ell=2$ in their Theorem 3.3.
 Furthermore, they provide a reduction from a single instance [PRISIS](/basis/#BASIS_power) to $h$-PRISIS for constant $\ell \in \bigO{1}$ in Theorem 3.5 of {% cite EC:AFLN24 %}.
 
-## Constructions built from BASIS {#constructions}
+## Constructions built from $h$-BASIS {#constructions}
 - Succinct polynomial commitment {% cite EC:AFLN24 %}
 
 ## Related Assumptions

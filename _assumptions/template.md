@@ -32,7 +32,7 @@ Any reductions or cryptanalytic results providing confidence in the hardness of 
 
 Any reductions in this section should be reflected as an edge in the [`graph`](/graph/).
 
-## Constructions built from AssumptionName (Optional)
+## Constructions built from AssumptionName (Optional) {#constructions}
 
 A list of constructions whose security is based on the assumption or described variants of it with references, e.g.
 - One-way functions {% cite STOC:Ajtai96 %}

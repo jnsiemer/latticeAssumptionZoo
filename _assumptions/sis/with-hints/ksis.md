@@ -1,5 +1,5 @@
 ---
-title: "k-SIS"
+title: "$k$-SIS"
 seo_title: "k-SIS"
 family: "SIS"
 subfamily: "SIS with Hints"
