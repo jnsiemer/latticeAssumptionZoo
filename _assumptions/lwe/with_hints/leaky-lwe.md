@@ -19,12 +19,12 @@ Following new works on relaxed versions of [LWE](/lwe/), Lai, Swarnakar, and Woo
 
 ## Definition
 
-### (Decision) Leaky-MLWE$^{\ell,\chi\_\mathbf{y}, \mathcal{\Gamma}}_{n,m,q,\chi\_\mathbf{s},\chi\_\mathbf{e}}$
+### (Decision) Leaky-MLWE$^{\ell,\chi\_\mathbf{y}, \Gamma}_{n,m,q,\chi\_\mathbf{s},\chi\_\mathbf{e},\mathcal{R}}$
 
-We recall the standard [MLWE](/lwe/#module-lwe_nmqchimathcalr) parameters $n, q, m> 0$ with a distribution $\chi$ over $\mathcal{R}^{m+n}$. 
+We recall the standard [MLWE](/lwe/#module-lwe_nmqchimathcalr) parameters $n, m, q> 0$ with a distribution $\chi$ over $\mathcal{R}^{m+n}$. 
 We consider $\ell > 0$ hints each with an associated distribution $\chi\_\mathbf{y}$ over $\\mathcal{R}^{m+n}$ and a set of hint-matrices $\Gamma := \\{ \mat{H} = (\mat{H}\_\mathbf{s},\mat{H}\_\mathbf{e}) \in \mathcal{R}^{\ell \times  n} \times \mathcal{R}^{\ell \times  m}: \\|\mat{H}^\top \mat{H}\\| \leq \beta\\}$.
 
-Consider the original [MLWE](/lwe/#module-lwe_nmqchimathcalr) construction for a random matrix $\mat{A} \leftarrow \mathcal{U}(\mathcal{R}_q^{m\times n})$ and $\mathbf{r} := \begin{bmatrix}\mathbf{s} \\\\ \mathbf{e}\end{bmatrix}$ where $\mathbf{s} \leftarrow \chi\_\mathbf{s}$ and $\mathbf{e} \leftarrow \chi\_\mathbf{e}$. An adversary can select $\ell$ hint-matrices $\mat{H}_i$ knowing $ \mat{A}$, then it is given the associated $\ell$ hints as $\mathbf{z}_i = \mat{H}_i \mathbf{r} + \mathbf{y}_i$, where $\mat{H}_i \leftarrow \Gamma$ and $\mathbf{y}_i\leftarrow \chi\_i$. 
+Consider the original [MLWE](/lwe/#module-lwe_nmqchimathcalr) construction for a random matrix $\mat{A} \leftarrow \mathcal{U}(\mathcal{R}_q^{m\times n})$ and $\mathbf{r} := \begin{bmatrix}\mathbf{s} \\\\ \mathbf{e}\end{bmatrix}$ where $\mathbf{s} \leftarrow \chi\_\mathbf{s}$ and $\mathbf{e} \leftarrow \chi\_\mathbf{e}$. An adversary can select $\ell$ hint-matrices $\mat{H}_i$ knowing $ \mat{A}$, in order to generate $\ell$ hints as $\mathbf{z}_i = \mat{H}_i \mathbf{r} + \mathbf{y}_i$, where $\mathbf{y}_i\leftarrow \chi\_\mathbf{y}$. 
 
 Finally, the adversary is asked to distinguish between the LWE distribution $(\mat{A}, \vec{b} = \mat{A}\vec{s} + \vec{e} \bmod q)$ and a uniformly random distribution over $\mathcal{R}\_q^{m \times n} \times \mathcal{R}\_q^m$ given $\ell$ honest hints $\mat{z}\_i$ and the involved hint-matrices $\mat{H}_i$.
 
@@ -32,13 +32,38 @@ Finally, the adversary is asked to distinguish between the LWE distribution $(\m
 
 ## Hardness
 
-[LWE](/lwe/) to Hint-MLWE when secrets and errors follow Discrete Gaussians Distribution. 
+The hardness of Leaky-MLWE was proven by the initial authors for two parameters regimes encompassing both [Hint-MLWE](/hint-mlwe/) and [Error-Leakage](/hint-mlwe/#). Their proofs are more permissive and enable the choice of better parameters.  
+
+We analyse the two regimes for Leaky-MLWE$^{\ell,\chi\_\mathbf{y}, \Gamma}\_{n,m,q,\chi\_\mathbf{s},\chi\_\mathbf{e},\mathcal{R}}$ that have been proven secure in {% cite CiC:LaiSwaWoo25 %}.
+
+#### Condition 1: Leakage over the secret and the error{#condition-1}
+
+- For Leaky-LWE, three positive definite matrices $\mat{\Sigma\_\mathbf{y}} \in \mathbb{R}^{d\ell \times d\ell},\mat{\Sigma\_\mathbf{s}} \in \mathbb{R}^{dn \times dn},\mat{\Sigma\_\mathbf{e}} \in \mathbb{R}^{dm \times dm},$
+- and distributions $\chi\_\mathbf{y} = \mathcal{D}\_{\mathcal{R}^\ell, \sqrt{\mat{\Sigma\_\mathbf{y}}}}, \chi\_\mathbf{s}= \mathcal{D}\_{\mathcal{R}^n, \sqrt{\mat{\Sigma\_\mathbf{s}}}}, \chi\_\mathbf{e}= \mathcal{D}\_{\mathcal{R}^m, \sqrt{\mat{\Sigma\_\mathbf{e}}}},$
+- For the LWE assumption reduced from, two positive definite matrices $\mat{\Sigma'\_\mathbf{s}} \in \mathbb{R}^{dn \times dn},\mat{\Sigma'\_\mathbf{e}} \in \mathbb{R}^{dm \times dm},$
+- and distributions $\chi'\_\mathbf{s}= \mathcal{D}\_{\mathcal{R}^n, \sqrt{\mat{\Sigma'\_\mathbf{s}}}}, \chi'\_\mathbf{e}= \mathcal{D}\_{\mathcal{R}^m, \sqrt{\mat{\Sigma'\_\mathbf{e}}}}$
+- $s\_\\textsf{min}\\left(\begin{bmatrix}\mat{\Sigma'\_\mathbf{s}} & \mat{0} \\\\ \mat{0} & \mat{\Sigma'\_\mathbf{e}} \end{bmatrix}\\right) \geq 2 \eta\_\varepsilon(\mathcal{R}^{n+m})^2,$
+- $\Gamma := \\{ \mat{H} = (\mat{H}\_\mathbf{s},\mat{H}\_\mathbf{e}) \in \mathcal{R}^{\ell \times  n} \times \mathcal{R}^{\ell \times  m}: \\|\mat{H}^\top \mat{H}\\| \leq \beta\\}$ where $\beta = s\_\\textsf{min}\\left(\mat{\Sigma\_y}\\right)\\left(2 \eta\_\varepsilon(\mathcal{R}^{n+m})^2 + s\_\\textsf{max}\\left(\begin{bmatrix}\mat{\Sigma'\_\mathbf{s}} & \mat{0} \\\\ \mat{0} & \mat{\Sigma'\_\mathbf{e}} \end{bmatrix}\\right)^{-1} - s\_\\textsf{min}\\left(\begin{bmatrix}\mat{\Sigma\_\mathbf{s}} & \mat{0} \\\\ \mat{0} & \mat{\Sigma\_\mathbf{e}} \end{bmatrix}\\right)^{-1}\\right).$
+
+#### Condition 2: Leakage over the error {#condition-2} 
+
+- In this setup, $\chi_\mathbf{s} = \chi_\mathbf{s'}$ is any distribution over $\mathcal{R}^n,$
+- For Leaky-LWE, three positive definite matrices $\mat{\Sigma\_\mathbf{y}} \in \mathbb{R}^{d\ell \times d\ell},\mat{\Sigma\_\mathbf{e}} \in \mathbb{R}^{dm \times dm},$
+- and distributions $\chi\_\mathbf{y} = \mathcal{D}\_{\mathcal{R}^\ell, \sqrt{\mat{\Sigma\_\mathbf{y}}}}, \chi\_\mathbf{e}= \mathcal{D}\_{\mathcal{R}^m, \sqrt{\mat{\Sigma\_\mathbf{e}}}},$
+- For the LWE assumption reduced from, two positive definite matrices $\mat{\Sigma'\_\mathbf{e}} \in \mathbb{R}^{dm \times dm},$
+- and a distribution $\chi'\_\mathbf{e}= \mathcal{D}\_{\mathcal{R}^m, \sqrt{\mat{\Sigma'\_\mathbf{e}}}}$
+- $s\_\\textsf{min}\\left(\begin{bmatrix}\mat{\Sigma'\_\mathbf{s}} & \mat{0} \\\\ \mat{0} & \mat{\Sigma'\_\mathbf{e}} \end{bmatrix}\\right) \geq 2 \eta\_\varepsilon(\mathcal{R}^{n+m})^2,$
+- $\Gamma := \\{ \mat{H} = (\cdot,\mat{H}\_\mathbf{e}) \in \emptyset \times \mathcal{R}^{\ell \times  m}: \\|\mat{H}^\top \mat{H}\\| \leq \beta\\}$ where $\beta = s\_\\textsf{min}\\left(\mat{\Sigma\_y}\\right)\\left(2 \eta\_\varepsilon(\mathcal{R}^{n+m})^2 + s\_\\textsf{max}\\left(\mat{\Sigma'\_\mathbf{e}}\\right)^{-1} - s\_\\textsf{min}\\left(\mat{\Sigma\_\mathbf{e}}\\right)^{-1}\\right).$
+
+There is a reduction from MLWE$\_{n,m,q,\chi\_\mathbf{s'},\chi\_\mathbf{e'},\mathcal{R}}$ to Leaky-MLWE$^{\ell,\chi\_\mathbf{y}, \Gamma}\_{n,m,q,\chi\_\mathbf{s},\chi\_\mathbf{e},\mathcal{R}}$ if the parameters satisfy any of the conditions above
+
+*The idea follows the original proof from [Hint-MLWE](/hint-mlwe/) with an additional analysis about the statistical closeness of the constructed hints. The proof also differs in that it is a direct reduction from LWE rather than the Normal Form of LWE.*
 
 <!-- ## Constructions built from Leaky-MLWE -->
 
 ## Related Assumptions
 
-- As presented before, [Hint-MLWE](/hint-mlwe/) is a special instance of LeakyLWE: $\\textsf{Hint-MLWE}^\{\ell,(\chi\_\mathbf{y})\_{i \in [\ell]}, \mathcal{U}(\mathcal{\Gamma})\}\_\{n,m,q,\chi\_\mathbf{s},\chi\_\mathbf{e}\} := \\textsf{Leaky-MLWE}^{\ell,\chi\_\mathbf{y}, \mathcal{\Gamma}}_{n,m,q,\chi\_\mathbf{s},\chi\_\mathbf{e}}$.
+- As presented before, [Hint-MLWE](/hint-mlwe/) is a special instance of LeakyLWE: $\\textsf{Hint-MLWE}^\{\ell,(\chi\_\mathbf{y})\_{i \in [\ell]}, \mathcal{U}(\mathcal{\Gamma})\}\_\{n,m,q,\chi^{n+m}\} := \\textsf{Leaky-MLWE}^{\ell,\chi\_\mathbf{y}, \mathcal{\Gamma}}_{n,m,q,\chi^n,\chi^m}$. ([condition 1](#condition-1))
 
 <!-- ## Further Reading Suggestions (Optional)
 
