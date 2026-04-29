@@ -68,4 +68,4 @@ The idea of the proofs follows the original proof from [Hint-MLWE](/hint-mlwe/) 
 ## Related Assumptions
 
 - [Hint-MLWE](/hint-mlwe/) is a specialised instance of Leaky LWE, i.e. $$\textsf{Hint-MLWE}^{\ell,(\chi_\mathbf{y})_{i \in [\ell]}, \mathcal{U}(\mathcal{\Gamma})}_{n,m,q,\chi^{n+m}} := \textsf{Leaky-MLWE}^{\ell,\chi_\mathbf{y}, \mathcal{\Gamma}}_{n,m,q,\chi^n,\chi^m}$$ according to [Condition 1](#condition-1).
-- [Error-Leakage LWE](/TODO/) is a specialised instance Leaky LWE (in the [Condition 2](/#condition-2) regime), which only allow error leakages.
+- [Error-Leakage LWE](/TODO/) is a specialised instance Leaky LWE (in the [Condition 2](#condition-2) regime), which only allow error leakages.
