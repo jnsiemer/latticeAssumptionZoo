@@ -28,7 +28,7 @@ Baldimtsi et al. {% cite AC:BCGY24 %} dedicate Section 6.1 towards cryptanalysis
 
 In Theorem 5.3 of {% cite EPRINT:2026/291 %}, Nguyen and Siemer show that One-More-ISIS is at least as hard as Randomised One-More-ISIS. Furthermore, they analyse a binary version of rOM-ISIS switching the restriction from $\vec{u}\_i \in \set{-1,1}^m$ to $\vec{u}\_i \in \bin^m$ and show their equivalence in Lemma D.1.
 
-## Constructions built from rOM-ISIS
+## Constructions built from rOM-ISIS {#constructions}
 
 - Non-interactive blind signature {% cite AC:BCGY24 %}
 
@@ -36,5 +36,5 @@ In Theorem 5.3 of {% cite EPRINT:2026/291 %}, Nguyen and Siemer show that One-Mo
 
 - [One-More-ISIS](/om-isis/) inspired Randomised One-More-ISIS
 - One-More-RSA {% cite JC:BNPS03 %} inspired One-More-ISIS
-- [Interactive ISIS$\_f$](/isisf/#interactiveisis_f) for $f = \operatorname{bin}$ shares several similarities with rOM-ISIS
+- [Interactive ISIS$\_f$](/isisf/#interactive-isis_f) for $f = \operatorname{bin}$ shares several similarities with rOM-ISIS
 - [Interactive GenISIS$\_f$](/genisisf/#interactive-genisis_f) for $f = \operatorname{bin}$ shares several similarities with rOM-ISIS

@@ -22,26 +22,26 @@ _Let matrix $\mat{A} \in \ZZ_q^{n \times m}$ be chosen uniformly at random. An a
 SIS intuitively states that it is hard to find a short vector in the kernel of matrix $\mat{A}$.
 A solution to SIS without the condition $\norm{\vec{s}} \leq \beta$ can be found using [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination){:target="_blank"}. Thus, the condition $\beta < q$ is required as otherwise $(q, 0, \dots, 0) \in \ZZ^m$ yields a trivial solution.
 
-### Ring-SIS$_{m,q,\beta,\mathcal{R}}$
+### Ring-SIS$_{m,q,\beta,\mathcal{R}}$ {#ring-sis}
 _Let matrix $\vec{a} \in \mathcal{R}_q^{m}$ be chosen uniformly at random. An adversary is asked to find a short non-zero vector $\vec{s} \in \mathcal{R}^{m}$ satisfying $\vec{a}^T \cdot \vec{s} = \vec{0} \bmod q \land 0 < \norm{\vec{s}} \leq \beta$._
 
 Let $\mathcal{R}$ denote a polynomial ring $\ZZ_q[X]/(f(X))$. The function $f(X)$ is usually chosen as $(X^d + 1)$ with special interest in $d$ being a power of $2$ {% cite EC:LyuPeiReg10 %}. However, the Ring SIS (R-SIS) problem has also been studied for other choices such as $f(X) = (X^d - 1)$ {% cite FOCS:Micciancio02 %}{% cite TCC:PeiRos06 %}{% cite ICALP:LyuMic06 %}.
 
-### Module-SIS$_{n,m,q,\beta,\mathcal{R}}$
+### Module-SIS$_{n,m,q,\beta,\mathcal{R}}$ {#module-sis}
 _Let matrix $\mat{A} \in \mathcal{R}_q^{n \times m}$ be chosen uniformly at random. An adversary is asked to find a short non-zero vector $\vec{s} \in \mathcal{R}^m$ satisfying $\mat{A} \cdot \vec{s} = \vec{0} \bmod q \land 0 < \norm{\vec{s}} \leq \beta$._
 
 By using vectors/matrices over the ring $\mathcal{R}_q$, Module-SIS (M-SIS) {% cite DCC:LanSte15 %} can be seen as a generalisation of SIS and R-SIS whose definitions can be recovered by setting $\mathcal{R} = \ZZ$ and $n=1$ respectively.
 
 ## Variants
 
-### Inhomogeneous SIS$_{n,m,q,\beta}$
+### Inhomogeneous SIS$_{n,m,q,\beta}$ {#inhomogeneous-sis}
 _Let matrix $\mat{A} \in \ZZ_q^{n \times m}$ and target vector $\vec{t} \in \ZZ_q^n$ be chosen uniformly at random. An adversary is asked to find a short vector $\vec{s} \in \ZZ^m$ satisfying $\mat{A} \cdot \vec{s} = \vec{t} \bmod q \land \norm{\vec{s}} \leq \beta$._
 
 The inhomogeneous version of SIS (ISIS) introduces a target vector $\vec{t} \in \ZZ_q^n$, which is chosen uniformly at random. The probability of ending up in the homogeneous case with $\vec{t} = \vec{0}$ happens with probability $q^{-n}$, which allows removing the condition $\vec{s} \neq \vec{0}$.
 
 ISIS is as hard as SIS. A SIS instance can be reduced to ISIS using the last column of $\mat{A}$ as target vector for ISIS. Any solution $\vec{s} \in \ZZ^{m-1}$ of the ISIS instance with challenge matrix $\mat{A}_{[1:m-1]}$ and target vector $\vec{a}_m$ yields a valid SIS solution $(\vec{s}, 1) \in \ZZ^m$ of slightly larger norm. The reduction from ISIS to SIS requires index guessing a non-zero entry in the SIS solution and embedding the target vector at this position in the challenge matrix $\mat{A}$.
 
-### Normal Form SIS$_{n,m,q,\beta}$
+### Normal Form SIS$_{n,m,q,\beta}$ {#normal-form-sis}
 _Let matrix $\bar{\mat{A}} \in \ZZ_q^{n \times (m-n)}$ be chosen uniformly at random and define $\mat{A} = \begin{bmatrix} \mat{I}_n &\bar{\mat{A}} \end{bmatrix}$. An adversary is asked to find a short non-zero vector $\vec{s} \in \ZZ^m$ satisfying $\mat{A} \cdot \vec{s} = \vec{0} \bmod q \land 0 < \norm{\vec{s}} \leq \beta$._
 
 Normal Form SIS (NFSIS) is related to the Hermite normal form of a uniformly random matrix $\mat{A} \in \ZZ_q^{n \times m}$. The normal form version of SIS is often used to reduce public key sizes by size $n$ as the static part of the matrix, the identity matrix $\mat{I}_n$, can be omitted for data transmission.
@@ -61,7 +61,7 @@ The initial hardness results of Ajtai {% cite STOC:Ajtai96 %} in 1996 were later
 
 Similar reductions exist for R-SIS and M-SIS (over cyclotomic rings, i.e. $\mathcal{R} = \ZZ[X]/(X^d + 1)$ with $d$ a power of two) but their hardness relies on the worst-case hardness of SIVP over ideal and module lattices respectively {% cite EC:LyuPeiReg10 %}{% cite DCC:LanSte15 %}. R-SIS is broken for cyclic lattices, i.e. $\mathcal{R} = \ZZ[X]/(X^d - 1)$, but there are refined versions with worst-case to average-case reductions {% cite FOCS:Micciancio02 %}{% cite TCC:PeiRos06 %}{% cite ICALP:LyuMic06 %}.
 
-## Constructions built from SIS
+## Constructions built from SIS {#constructions}
 
 This is a non-exhaustive list of constructions, whose security is or can be based on SIS (or R-SIS and M-SIS).
 - One-way function {% cite STOC:Ajtai96 %}

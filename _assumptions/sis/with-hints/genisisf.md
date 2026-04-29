@@ -31,7 +31,7 @@ _Given the matrix $\mat{A}$, the key $\kappa$, and the set of hints $\set{(x_i, 
 
 The provided definition {% cite EPRINT:2026/291 %} simplifies notation and removes the condition $\vec{s}^{\*} \neq \vec{0}$ compared to {% cite PKC:DKLW25 %}.
 
-**Intuition.** GenISIS$\_f$ essentially expects the adversary to either successfully solve [ISIS](/sis/#inhomogeneous-sis_nmqbeta) or compute a preimage of the function $f(\kappa, \cdot)$. Thus, the hardness of GenISIS$\_f$ depends on the choice of $f$. We list few examples for insecure choices of $f$.
+**Intuition.** GenISIS$\_f$ essentially expects the adversary to either successfully solve [ISIS](/sis/#inhomogeneous-sis) or compute a preimage of the function $f(\kappa, \cdot)$. Thus, the hardness of GenISIS$\_f$ depends on the choice of $f$. We list few examples for insecure choices of $f$.
 - Additively homomorphic functions imply trivial solutions by adding or subtracting two hints.
 - Any efficiently invertible function using public information enables choosing $\vec{s}^{\*} \in \mathcal{R}^m$ short and finding a preimage of $\mat{A} \cdot \vec{s}^{\*}$.
 - Assume $f$ is a linear function and $D = \ZZ_q$. Then, any hint $(x\_i, \vec{s}\_i)$ can be used to generate a valid GenISIS$\_f$ solution $(-x\_i, \vec{s}\_i)$.
@@ -61,7 +61,7 @@ Dubois et al. {% cite PKC:DKLW25 %} provide a translation of Theorem 3.3 from {%
 
 Otherwise, the authors {% cite PKC:DKLW25 %} show in Theorem 7 that GenISIS$\_f$ is equivalent to the sEUF-RMA experiment for signatures based on vanishing SIS, which are introduced in the same work.
 
-## Constructions built from GenISIS$\_f$
+## Constructions built from GenISIS$\_f$ {#constructions}
 
 Bootle et al. {% cite C:BLNS23 %} provide a framework to generically build the following constructions from any interactive ISIS$\_f$ instance. As any ISIS$\_f$ instance is also a GenISIS$\_f$ instance, GenISIS$\_f$ inherits this framework.
 - Signatures {% cite C:BLNS23 %}

@@ -17,30 +17,30 @@ LWE serves as the foundational pillar for a vast majority of modern lattice-base
 ## Definition
 The LWE problem comes in two versions: Search and Decision. Both rely on a secret vector $\vec{s}$, a uniformly random matrix $\mat{A}$, and a short error vector $\vec{e}$ sampled from an error distribution $\chi$ (typically discrete Gaussian).
 
-### Search LWE$_{n,m,q,\chi}$
+### Search LWE$_{n,m,q,\chi}$ {#search-lwe}
 _Let matrix $\mat{A} \in \ZZ_q^{m \times n}$ and secret vector $\vec{s} \in \ZZ_q^n$ be chosen uniformly at random. Let $\vec{e} \in \ZZ_q^m$ be sampled from the error distribution $\chi$. Given the matrix $\mat{A}$ and the vector $\vec{b} = \mat{A} \cdot \vec{s} + \vec{e} \bmod q$, an adversary is asked to find the secret vector $\vec{s}$._
 
 Without the error vector $\vec{e}$, finding $\vec{s}$ would require solving a system of linear equations, efficiently solvable using [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination){:target="_blank"}. The error $\vec{e}$ is supposed to _blur_ the structure of the underlying lattice.
 
-### Decision LWE$_{n,m,q,\chi}$
+### Decision LWE$_{n,m,q,\chi}$ {#decision-lwe}
 _Let matrix $\mat{A} \in \ZZ_q^{m \times n}$ and secret vector $\vec{s} \in \ZZ_q^n$ be chosen uniformly at random. Let $\vec{e} \in \ZZ_q^m$ be sampled from the error distribution $\chi$. An adversary is asked to distinguish between the LWE distribution $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e} \bmod q)$ and a uniformly random distribution over $\ZZ_q^{m \times n} \times \ZZ_q^m$._
 
 For cryptographic constructions, Decision LWE is often more directly applicable (e.g., for achieving indistinguishability in encryption schemes). Search and Decision LWE are polynomially equivalent for typical parameter choices {% cite STOC:Regev05 %}. Thus, we only give the decision version of LWE below.
 
-### Ring-LWE$_{m,q,\chi,\mathcal{R}}$
+### Ring-LWE$_{m,q,\chi,\mathcal{R}}$ {#ring-lwe}
 _Let $\mathcal{R}_q$ be the polynomial ring $\ZZ_q[X]/(f(X))$. Let $\vec{a} \in \mathcal{R}_q^m$ and $s \in \mathcal{R}_q$ be chosen uniformly at random, and let $\vec{e} \in \mathcal{R}_q^m$ be drawn from the error distribution $\chi$. The adversary is asked to distinguish the LWE distribution $(\vec{a}, \vec{b} = \vec{a} \cdot s + \vec{e})$ from a uniformly random distribution over $\mathcal{R}_q^m \times \mathcal{R}_q^m$ ._
 
 Ring-LWE (R-LWE) {% cite EC:LyuPeiReg10 %} adds more structure to LWE by replacing matrix-vector multiplications with polynomial multiplications. In applications, this results in reduced key sizes and accelerated execution times (using the [NTT](https://en.wikipedia.org/wiki/Discrete_Fourier_transform_over_a_ring#Number-theoretic_transform){:target="_blank"}).
 The polynomial $f(X)$ is typically a [cyclotomic polynomial](https://en.wikipedia.org/wiki/Cyclotomic_polynomial){:target="_blank"}, such as $X^d + 1$ where $d$ is a power of 2.
 
-### Module-LWE$_{n,m,q,\chi,\mathcal{R}}$
+### Module-LWE$_{n,m,q,\chi,\mathcal{R}}$ {#module-lwe}
 _Let $\mat{A} \in \mathcal{R}_q^{m \times n}$ be a uniformly random matrix and $\vec{s} \in \mathcal{R}_q^n$ be a random secret vector. Let $\vec{e} \in \mathcal{R}_q^m$ be sampled from the error distribution $\chi$. The adversary is asked to distinguish the LWE distribution $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e})$ from a uniformly random distribution over $\mathcal{R}_q^{m \times n} \times \mathcal{R}_q^m$._
 
 By using vectors/matrices over the ring $\mathcal{R}_q$, Module-LWE (M-LWE) {% cite DCC:LanSte15 %} can be seen as a generalisation of LWE and R-LWE whose definitions can be recovered by setting $\mathcal{R} = \ZZ$ and $n=1$ respectively.
 
 ## Variants
 
-### Short Secret LWE$_{n,m,q,\chi}$
+### Short Secret LWE$_{n,m,q,\chi}$ {#short-secret-lwe}
 _Let matrix $\mat{A} \in \ZZ_q^{m \times n}$ be chosen uniformly at random. Let the **short** secret vector $\vec{s} \in \ZZ_q^n$ and $\vec{e} \in \ZZ_q^m$ be sampled from the error distribution $\chi$. An adversary is asked to distinguish between the LWE distribution $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e} \bmod q)$ and a uniformly random distribution over $\ZZ_q^{m \times n} \times \ZZ_q^m$._
 
 Short secret LWE (ssLWE) is also known as normal-form LWE and often referred to as LWE itself due to its frequent usage.
@@ -66,7 +66,7 @@ Cryptanalytically there are two families of strategies to solve LWE, which can b
 - _Primal Attack:_ Transform an LWE challenge $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e})$ into a (unique) shortest vector problem. We know the $q$-ary lattice defined by $$\mat{B} = \begin{bmatrix} \mat{A}^T &\vec{0} \\ \vec{b}^T &1 \end{bmatrix}$$ contains an unusually short vector since $\begin{bmatrix} -\vec{s}^T &1 \end{bmatrix} \cdot \mat{B} = \begin{bmatrix} \vec{e}^T &1 \end{bmatrix}$. Assuming an adversary recovers this short vector from the uSVP instance (using [basis reduction algorithms](https://en.wikipedia.org/wiki/Lattice_reduction){:target="_blank"}), it recovered the error vector, which enables recovery of the secret vector $\vec{s}$ using [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination){:target="_blank"} with $\mat{A}$ and $\vec{b} - \vec{e}$.
 - _Dual Attack:_ To build a distinguisher for decision LWE, an adversary tries to solve the (scaled) dual [SIS](/sis/) challenge. Assuming it succeeds in finding a short non-zero SIS solution $\vec{u}^T$ s.t. $\vec{u}^T \cdot \mat{A} = \vec{0}$. If the challenger handed out the LWE challenge $(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e})$ then $\langle \vec{u}, \vec{b} \rangle = \langle \vec{u}, \vec{e} \rangle$ remains short. Otherwise, the result is uniformly distributed in $\ZZ_q$.
 
-## Constructions built from LWE
+## Constructions built from LWE {#constructions}
 
 This is a non-exhaustive list of constructions, whose security is or can be based on LWE (or R-LWE and M-LWE).
 - Public-key encryption {% cite STOC:Regev05 %}{% cite STOC:GenPeiReg08 %}{% cite CTRSA:LinPei11 %}

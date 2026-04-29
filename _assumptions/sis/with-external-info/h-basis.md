@@ -40,7 +40,7 @@ $$ \mat{B} = \left[ \begin{array}{ccc|c}
 In Theorem 5.10 of {% cite EC:AFLN24 %}, the $h$-PRISIS assumption is utilised to prove the binding property of a polynomial commitment scheme with $\ell = 2$.
 
 ## Hardness
-For $h$-PRISIS, the authors of {% cite EC:AFLN24 %} reduce [M-SIS](/sis/#module-sis_nmqbetamathcalr) to $h$-PRISIS for $\ell=2$ in their Theorem 3.3.
+For $h$-PRISIS, the authors of {% cite EC:AFLN24 %} reduce [M-SIS](/sis/#module-sis) to $h$-PRISIS for $\ell=2$ in their Theorem 3.3.
 Furthermore, they provide a reduction from a single instance [PRISIS](/basis/#BASIS_power) to $h$-PRISIS for constant $\ell \in \bigO{1}$ in Theorem 3.5 of {% cite EC:AFLN24 %}.
 
 ## Constructions built from BASIS {#constructions}

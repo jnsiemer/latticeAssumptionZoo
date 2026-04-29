@@ -47,7 +47,7 @@ All other matrices $\mat{A}\_i$ with $i \neq i^{\*}$ are chosen with a trapdoor.
 Using these trapdoors, we can find short $\vec{z}\_i$ s.t. $\mat{A}\_i \cdot \vec{z}\_i = \mat{G}\_{n+1} \cdot \vec{z}\_{\mat{G}}$ holds for all $i \neq i^{\*}$.
 
 In Section 7.2 of {% cite TCC:BCFL23 %}, a reduction from a modified ring-version of BASIS$_\rand$ to [Twin k-M-ISIS](/todo/) is sketched.
-Nevertheless, a formal connection to standard assumptions like [R-SIS](/sis/#ring-sis_mqbetamathcalr) or [M-SIS](/sis/#module-sis_nmqbetamathcalr) is missing.
+Nevertheless, a formal connection to standard assumptions like [R-SIS](/sis/#ring-sis) or [M-SIS](/sis/#module-sis) is missing.
 
 ### BASIS$_{\text{struct}}$ {#BASIS_struct}
 _The sampling algorithm $\mathsf{Samp}(\mat{A})$ samples $\mat{W}\_i \sample \ZZ_q^{n \times n}$ for all $i \in [\ell]$ and outputs_

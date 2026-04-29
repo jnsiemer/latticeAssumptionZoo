@@ -12,7 +12,7 @@ redirect_from:
   - /one_more_isis/
 ---
 
-One-More-ISIS (OM-ISIS) was introduced in 2022 by Agrawal, Kirshanova, Stehlé, and Yadav {% cite CCS:AKSY22 %}. The assumption states that, given an [ISIS](/sis/#inhomogeneous-sis_nmqbeta) solver, it remains hard to compute an additional preimage for a polynomial number of possible ISIS targets.
+One-More-ISIS (OM-ISIS) was introduced in 2022 by Agrawal, Kirshanova, Stehlé, and Yadav {% cite CCS:AKSY22 %}. The assumption states that, given an [ISIS](/sis/#inhomogeneous-sis) solver, it remains hard to compute an additional preimage for a polynomial number of possible ISIS targets.
 
 ## Definition
 
@@ -28,7 +28,7 @@ The hardness of One-More-ISIS is analysed using direct cryptanalysis in the orig
 
 **Lattice Attack.** The adversary requests more than $m$ preimages of zero. Then, the adversary can produce a short basis trapdoor for $\mat{A}$. This trapdoor is of degraded quality relative to the trapdoor used by the challenger. They explore further options to improve the quality of the short basis trapdoor.
 
-## Constructions built from One-More-ISIS
+## Constructions built from One-More-ISIS {#constructions}
 
 - Blind signature {% cite CCS:AKSY22 %}
 - Non-interactive blind signature constructed in {% cite AC:BCGY24 %} based on the reduction in Theorem 5.3 of {% cite EPRINT:2026/291 %}
@@ -37,7 +37,7 @@ The hardness of One-More-ISIS is analysed using direct cryptanalysis in the orig
 
 - [Randomised One-More-ISIS](/rom-isis/) imposes additional constraints on the preimages $\vec{s}\_i$ in that some components are required to be in $\set{-1,1}$.
 - One-More-RSA {% cite JC:BNPS03 %} inspired One-More-ISIS
-- [Interactive ISIS$\_f$](/isisf/#interactiveisis_f) shares similar interaction capabilities with One-More-ISIS
+- [Interactive ISIS$\_f$](/isisf/#interactive-isis_f) shares similar interaction capabilities with One-More-ISIS
 - [Interactive GenISIS$\_f$](/genisisf/#interactive-genisis_f) shares similar interaction capabilities with One-More-ISIS
 
 ## Further Reading Suggestions

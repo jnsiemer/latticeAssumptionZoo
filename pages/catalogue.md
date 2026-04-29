@@ -89,6 +89,7 @@ The Lattice Assumption Zoo currently catalogues {{ site.assumptions.size }} assu
     </a>
   </li>
   {% endfor %}
+  </ul>
 {% endif %}
 {% endfor %}
 </ul>

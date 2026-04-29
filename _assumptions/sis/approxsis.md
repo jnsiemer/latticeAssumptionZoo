@@ -22,7 +22,7 @@ Approximate SIS is an assumption introduced in 2019 by Chen, Genise, and Mukherj
 _Let matrix $\mat{A} \in \ZZ_q^{n \times m}$ be chosen uniformly at random. An adversary is asked to find a short non-zero vector $\vec{s} \in \ZZ^m$ satisfying_
 \\[\mat{A} \cdot \vec{s} = \vec{t} \bmod q \land 0 < \norm{\vec{s}} \leq \beta \land \norm{\vec{t}} \leq \alpha.\\]
 
-Approximate SIS intuitively states that it is hard to find a short preimage of $\mat{A}$ of a ball of target vectors surrounding $\vec{0}$. Therefore, Approximate SIS can be seen as a specific multi-instance of [ISIS](/sis/#inhomogeneous-sis_nmqbeta), where the target vectors form a ball around $\vec{0}$.
+Approximate SIS intuitively states that it is hard to find a short preimage of $\mat{A}$ of a ball of target vectors surrounding $\vec{0}$. Therefore, Approximate SIS can be seen as a specific multi-instance of [ISIS](/sis/#inhomogeneous-sis), where the target vectors form a ball around $\vec{0}$.
 
 ## Variants
 
@@ -30,7 +30,7 @@ Chen, Genise, and Mukherjee introduce Approximate Inhomogeneous SIS and Approxim
 
 ## Hardness
 
-Approximate SIS is at least as hard as normal form SIS. Any [normal form SIS](/sis/#normal-form-sis_nmqbeta) instance $\begin{bmatrix} \mat{I}_n &\bar{\mat{A}} \end{bmatrix}$ provides an approximate SIS instance $\bar{\mat{A}}$. Any solution $(\vec{s}, \vec{t}) \in \ZZ^{m-n} \times \ZZ_q^n$ to the approximate SIS instance is a solution to the normal form SIS instance $(-\vec{t}, \vec{s}) \in \ZZ^m$ of norm at most $\alpha + \beta$.
+Approximate SIS is at least as hard as normal form SIS. Any [normal form SIS](/sis/#normal-form-sis) instance $\begin{bmatrix} \mat{I}_n &\bar{\mat{A}} \end{bmatrix}$ provides an approximate SIS instance $\bar{\mat{A}}$. Any solution $(\vec{s}, \vec{t}) \in \ZZ^{m-n} \times \ZZ_q^n$ to the approximate SIS instance is a solution to the normal form SIS instance $(-\vec{t}, \vec{s}) \in \ZZ^m$ of norm at most $\alpha + \beta$.
 
 Chen et al. {% cite AC:CheGenMuk19 %} provide further reductions for the inhomogeneous version and its normal form from standard assumptions such as ISIS as well as [LWE](/lwe/).
 

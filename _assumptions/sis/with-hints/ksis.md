@@ -36,7 +36,7 @@ The initial proof {% cite PKC:BonFre11 %} relies on the following observation. L
 
 A proof for the module-variant was provided in {% cite EPRINT:2025/1852 %}.
 
-## Constructions built from k-SIS
+## Constructions built from k-SIS {#constructions}
 
 - Linearly homomorphic signatures {% cite PKC:BonFre11 %}
 - Standard model k-time GPV-signature {% cite PKC:BonFre11 %}

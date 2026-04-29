@@ -23,12 +23,12 @@ _Let $(n,m,q,\beta,k,s,\mathcal{R})$ be public parameters, matrix $\mat{A} \in \
 _Given the matrix $\mat{A}$ and the set of hints $\set{(x_i, \vec{s}_i)}\_{i \in [k]}$, the adversary is asked to find a new tuple $(x^{\*}, \vec{s}^{\*}) \in [N] \times \mathcal{R}^m$ satisfying_
 \\[\mat{A} \cdot \vec{s}^{\*} = f(x^{\*}) \bmod q \land 0 < \norm{\vec{s}^{\*}} \leq \beta \land (x^{\*}, \vec{s}^{\*}) \notin \set{(x\_i, \vec{s}\_i)}\_{i \in [k]}.\\]
 
-**Intuition.** ISIS$\_f$ essentially expects the adversary to either successfully solve [ISIS](/sis/#inhomogeneous-sis_nmqbeta) or compute a preimage of the function $f$. Thus, the hardness of ISIS$\_f$ depends on the choice of $f$. We list few examples for insecure choices of $f$.
+**Intuition.** ISIS$\_f$ essentially expects the adversary to either successfully solve [ISIS](/sis/#inhomogeneous-sis) or compute a preimage of the function $f$. Thus, the hardness of ISIS$\_f$ depends on the choice of $f$. We list few examples for insecure choices of $f$.
 - Additively homomorphic functions imply trivial solutions by adding or subtracting two hints.
 - Any efficiently invertible function using public information enables choosing $\vec{s}^{\*} \in \mathcal{R}^m$ short and finding a preimage of $\mat{A} \cdot \vec{s}^{\*}$.
 - Assume $f$ is a linear function and the domain of $f$ was mapped to $\ZZ_N$. Then, any hint $(x\_i, \vec{s}\_i)$ can be used to generate a valid ISIS$\_f$ solution $(-x\_i, \vec{s}\_i)$.
 
-### InteractiveISIS$_f$
+### Interactive ISIS$_f$
 _Let $(n,m,\ell\_m,\ell\_r,q,\beta\_s,\beta\_m,s,\mathcal{R})$ be public parameters, matrices $\mat{A} \in \mathcal{R}\_q^{n \times m}$, $\mat{C} \in \mathcal{R}\_q^{n \times (\ell\_m + \ell\_r)}$ be chosen uniformly at random, $f$ be a specified function $f: [N] \rightarrow \mathcal{R}\_q^n$, and $\mathcal{M} = \emptyset$. Given the matrices $\mat{A}$ and $\mat{C}$, an adversary is able to query an oracle $O\_\text{pre}$ adaptively, which on input $(\vec{m}, \vec{r}) \in \mathcal{R}^{(\ell\_m + \ell\_r)}$ proceeds as follows._
 1. if $\norm{(\vec{m}, \vec{r})} > \beta\_m$ then return $\perp$
 2. $x \sample [N]$
@@ -49,7 +49,7 @@ Bootle et al. {% cite C:BLNS23 %} set $f$ to be $f(x) = \mat{B} \cdot \operatorn
 
 In Theorem 3.3, Bootle et al. {% cite C:BLNS23 %} show that interactive ISIS$\_f$ is at least as hard as ISIS$\_f$. The reduction uses $\mat{C} = \mat{A} \cdot \mat{R}$ for a uniformly chosen $\mat{R} \in \bin^{m \times (\ell_m + \ell_r)}$, rejection sampling, the entropy that $x \sample [N]$ and $\vec{s} \sample D_{\Lambda_q^{f(x)}, s}$ are sampled with and introduces a polynomial loss factor depending on the number of allowed queries to $O\_\text{pre}$. This polynomial loss-factor is removed in a tight reduction given in Theorem 4.3 of {% cite EPRINT:2026/291 %} for [Generalised ISIS$\_f$](/genisisf/).
 
-## Constructions built from ISIS$\_f$
+## Constructions built from ISIS$\_f$ {#constructions}
 
 Bootle et al. {% cite C:BLNS23 %} provide a framework to generically build the following constructions from any interactive ISIS$\_f$ instance.
 - Signatures {% cite C:BLNS23 %}
