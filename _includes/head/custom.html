@@ -97,7 +97,7 @@
     const bibItems = document.querySelectorAll('.bibliography li');
     bibItems.forEach(item => {
       // Add a space after the key
-      let content = item.innerHTML.replace(/(\[\d+\])(?! )/, '$$1 ');
+      let content = item.innerHTML.replace(/(\[\d+\])(?! )/, '$1 ');
       
       // Auto-link any URLs
       const urlRegex = /(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/g;
