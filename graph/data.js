@@ -143,7 +143,8 @@ assumption('BASIS_struct', 'BASIS_struct', 2023, ['Commitment'], '/basis/#BASIS_
 assumption('BASIS_power', 'BASIS_power', 2023, ['Commitment'], '/basis/#BASIS_power', 'SIS', true);
 assumption('h-BASIS', 'h-Basis-Augmented SIS', 2024, ['Commitment'], '/h-basis/', 'SIS');
 assumption('h-PRISIS', 'h-PRISIS', 2024, ['Commitment'], '/h-basis/#h-prisis', 'SIS', true);
-assumptionFamily('BASIS', ['BASIS', 'BASIS_rand', 'BASIS_struct', 'BASIS_power', 'h-BASIS', 'h-PRISIS']);
+assumption('l-succinct-SIS', 'l-succinct SIS', 2024, ['Commitment'], '/l-succinct-sis/', 'SIS');
+assumptionFamily('BASIS', ['BASIS', 'BASIS_rand', 'BASIS_struct', 'BASIS_power', 'h-BASIS', 'h-PRISIS', 'l-succinct-SIS']);
 
 
 // LWE-based assumptions - family, i.e. last parameter is always 'LWE'
@@ -190,6 +191,7 @@ reducesTo('rOM-ISIS', 'OM-ISIS');
 reducesTo('SIS', 'BASIS_rand');
 reducesTo('BASIS_power', 'h-PRISIS');
 reducesTo('k-M-ISIS', 'BASIS_struct');
+reducesTo('BASIS_struct', 'l-succinct-SIS');
 
 reducesTo('LWE', 'SIS', 400);
 reducesTo('ssLWE', 'LWE');

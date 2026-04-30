@@ -95,4 +95,4 @@ For the general BASIS assumption, there are no known hardness results as its har
 ## Related Assumptions
 - [k-M-ISIS](/kmisis/) is related to BASIS$$_\struct$$ and was utilised for build similar construction.
 - [$$h$$-BASIS](/h-basis/) is a multi-instance of BASIS.
-- [$$\ell$$-Succinct SIS](/TODO/) was inspired by BASIS$$_\struct$$ and provides a similar structure.
+- [$$\ell$$-Succinct SIS](/l-succinct-sis/) was inspired by BASIS$$_\struct$$. It can be seen as a slightly less-structured version of BASIS$$_\struct$$.

@@ -18,7 +18,7 @@ redirect_from:
 
 Albrecht, Cini, Lai, Malavolta, and Thyagarajan {% cite C:ACLMT22 %} provide a _knowledge_ variant of $$k$$-M-ISIS.
 They utilise this assumption to build a succinct non-interactive argument of knowledge (SNARK).
-Wee and Wu invalidated this assumption (at least morally) in {% cite AC:WeeW23b %}.
+Wee and Wu invalidated this assumption (at least morally) in {% cite AC:WeeWu23b %}.
 
 ## Definition
 
@@ -37,7 +37,7 @@ In other words, the assumption states that no adversary $$\adv$$ can compute $$(
 
 
 ## Hardness
-The assumption is invalidated – at least "morally" – in {% cite AC:WeeW23b %}. Roughly speaking, the attack uses that the preimages of $$g(\vec{v}) \cdot \vec{t}$$ span a short basis of the submodule spanned by $$\vec{t}$$: essentially an Ajtai-style trapdoor. Then, sampling an arbitrary, not-necessarily short, preimage of some $$c \cdot \vec{t}$$, Babai rounding can be applied to obtain a short preimage of some other, random $$\bar{c} \cdot \vec{t}$$.
+The assumption is invalidated – at least "morally" – in {% cite AC:WeeWu23b %}. Roughly speaking, the attack uses that the preimages of $$g(\vec{v}) \cdot \vec{t}$$ span a short basis of the submodule spanned by $$\vec{t}$$: essentially an Ajtai-style trapdoor. Then, sampling an arbitrary, not-necessarily short, preimage of some $$c \cdot \vec{t}$$, Babai rounding can be applied to obtain a short preimage of some other, random $$\bar{c} \cdot \vec{t}$$.
 
 An implementation of the attack in SageMath is available [here](https://gist.github.com/malb/7c8b86520c675560be62eda98dab2a6f){:target="_blank"}.
 
