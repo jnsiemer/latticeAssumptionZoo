@@ -2,7 +2,6 @@
 title: "NTRU"
 family: "NTRU"
 graph_id: "NTRU"
-assumption_status: "standard"
 
 last_modified_at: 2026-03-27
 ---
@@ -43,11 +42,7 @@ For $$\chi$$ chosen as a discrete Gaussian distribution $$D_{\ZZ^d, \sigma}$$, $
 
 Nevertheless, the reduction sketched out in Section 4.4.4 of {% cite FTTCS:Peikert16 %} shows that [R-LWE](/lwe/#ring-lwe) is at least as hard as NTRU, providing an _upper bound_ to the hardness of NTRU.
 
-After all, the hardness of NTRU crucially relies on the choice of $$\chi$$, $$\mathcal{R}$$ and $$q$$ as well as the specified wiggle room for the NTRU solution. There are several partial reductions to and from NTRU for specific choices of parameters as well as 25 years of cryptanalysis. Their results are decently summarised (and partially provided) in the following two papers:
-- [On the hardness of NTRU](https://ia.cr/2021/821) {% cite AC:PelSte21 %}
-- [Lattice attacks on NTRU and LWE: a history of refinements](https://ia.cr/2021/799) {% cite EPRINT:2021/799 %}
-
-Any reductions in this section should be reflected as an edge in the [`graph`](/graph/).
+After all, the hardness of NTRU crucially relies on the choice of $$\chi$$, $$\mathcal{R}$$ and $$q$$ as well as the specified wiggle room for the NTRU solution. There are several partial reductions to and from NTRU for specific choices of parameters as well as 25 years of cryptanalysis.
 
 ## Constructions built from NTRU {#constructions}
 
@@ -57,4 +52,9 @@ Any reductions in this section should be reflected as an edge in the [`graph`](/
 
 ## Related Assumptions
 
-- [Ring-LWE](/lwe/#ring-lwe) provides similar capabilities and operates on more general lattices.
+- [Ring-LWE](/lwe/#ring-lwe) provides similar constructive capabilities while operating on ideal lattices with small noise vectors to hide the structure of the lattice.
+
+## Further Reading Suggestions
+
+- [On the hardness of NTRU](https://ia.cr/2021/821) {% cite AC:PelSte21 %}
+- [Lattice attacks on NTRU and LWE: a history of refinements](https://ia.cr/2021/799) {% cite EPRINT:2021/799 %}
