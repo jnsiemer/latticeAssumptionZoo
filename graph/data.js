@@ -121,6 +121,12 @@ assumption('NFSIS', 'Normal Form SIS', 2001, ['Commitment', 'ZK', 'Sign'], '/sis
 assumption('ISIS', 'Inhomogeneous SIS', 1997, ['Commitment', 'ZK', 'Sign'], '/sis/#inhomogeneous-sis', 'SIS', true); // Ajtai–Dwork - A Public-Key Cryptosystem with Worst-Case/Average-Case Equivalence
 assumption('ApproxSIS', 'Approximate SIS', 2019, ['Sign'], '/approxsis/', 'SIS');
 
+assumption('vSIS', 'Vanishing SIS', 2023, ['ZK', 'Sign', 'COAD'], '/vsis/', 'SIS');
+assumption('Hint-vSIS', 'Hinted vSIS', 2025, ['Sign'], '/vsis/#hint-vsis', 'SIS', true);
+assumption('s-Hint-vSIS', 'Strong Hinted vSIS', 2025, ['Sign'], '/vsis/#s-hint-vsis', 'SIS', true);
+assumption('s-$Hint-vSIS', 'Strong Random Hinted vSIS', 2025, ['Sign'], '/vsis/#s-random-hint-vsis', 'SIS', true);
+assumptionFamily('vSIS', ['vSIS', 'Hint-vSIS', 's-Hint-vSIS', 's-$Hint-vSIS']);
+
 assumption('k-SIS', 'k-SIS', 2011, ['Sign', 'TresholdSign', 'COAD'], '/ksis/', 'SIS');
 assumption('k-M-ISIS', 'k-M-ISIS', 2022, ['Commitment'], '/kmisis/', 'SIS');
 assumption('Twin-k-M-ISIS', 'Twin k-M-ISIS', 2023, ['Commitment'], '/twin-kmisis/', 'SIS');
