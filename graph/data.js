@@ -161,6 +161,7 @@ assumptionFamily('LeakyLWE', ['Leaky-LWE', 'Hint-MLWE','Coset-Hint-LWE']);
 
 assumption('l-succinct-LWE', 'l-succinct LWE', 2024, ['FuncEnc', 'EffEnhEnc'], '/l-succinct-lwe/', 'LWE');
 
+assumption('Hollow-LWE', 'Hollow LWE', 2025, ['PKE'], '/hollow-lwe/', 'LWE');
 
 // NTRU-based assumptions - family, i.e. last parameter is always 'NTRU'
 assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['Sign', 'PKE', 'COED'], '/ntru/', 'NTRU');
@@ -210,6 +211,8 @@ reducesTo('Hint-LWE', 'Coset-Hint-LWE');
 reducesTo('LWE','Leaky-LWE');
 
 reducesTo('Evasive-LWE', 'l-succinct-LWE'); // to come
+
+reducesTo('LWE', 'Hollow-LWE');
 
 // NTRU
 reducesTo('NTRU', 'LWE', 500);
