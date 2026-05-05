@@ -14,7 +14,7 @@ redirect_from:
   - /hintlwe/
 ---
 
-The assumption is a natural relaxed version of the classical [LWE](/lwe/) assumption where the adversary is also given linear noisy information about the secret $$\vec{s}$$ and the error $$\vec{e}$$. It was first  introduced by Mera, Karmakar, Marc, and Soleimanian {% cite PKC:MKMS22 %} in the ring setting and later extended in 2023 by Kim, Lee, Seo, and Song {% cite C:KLSS23b %}, to formalise it to the well-known Hint-MLWE assumption. 
+The assumption is a natural relaxed version of the classical [LWE](/lwe/) assumption where the adversary is also given linear noisy information about the secret $$\vec{s}$$ and the error $$\vec{e}$$. It was first introduced by Mera, Karmakar, Marc, and Soleimanian in 2022 {% cite PKC:MKMS22 %} in the ring setting and later extended by Kim, Lee, Seo, and Song {% cite C:KLSS23b %}, to formalise it to the well-known Hint-MLWE assumption.
 
 It is important to note that this assumption has been generalised as the [Leaky LWE](/leaky-lwe/) assumption, enabling a more powerful reduction with $$\mathbf{s}$$ and $$\mathbf{e}$$ that follow different distributions, with a semi-adaptive choice of the hints. However, since this assumption is frequently used in practice, we provide an independent instance in this Zoo.
 
@@ -67,6 +67,8 @@ _Consider the original [M-LWE](/lwe/#module-lwe) construction for a random matri
 
 _An adversary is asked to distinguish between the LWE distribution $$(\mat{A}, \vec{B} = \mat{A}\vec{S} + \vec{E} \bmod q)$$ and a uniformly random distribution over $$\mathcal{R}_q^{m \times n} \times \mathcal{R}_q^{m\times m}$$ given $$\ell$$ honest hints $$\mat{z}_i$$ and the public elements involved $$\mat{A}_2, \vec{c}_i$$._
 
+Note that each hint-vector $$\mathbf{z}_i$$ maps to a fixed predefined target $$\mathbf{r}_i$$ under the matrix $$\begin{bmatrix} \mat{A}_1 &\mat{A}_2 \end{bmatrix}$$. This means the assumption can be used for security of standard model primitives.
+
 Lapiha and Prest {% cite AC:LapPre25 %} gave a reduction from Hint-MLWE$$^{\ell,(\mathcal{D}_\sigma)_{i \in [\ell]}, \mathcal{H}_\beta}_{n,m,q,\chi,\mathcal{R}}$$ to Coset-Hint-MLWE$$^{\ell,(\vec{r}_i)_{i \in [\ell]}, \sigma, \beta}_{n,m,q,\chi,\mathcal{R}}$$ which works for $$m$$ secrets. The core idea of this assumption is to sample the hint-errors from a lattice coset, depending on the hint $$\vec{c}_i$$ and the initial randomness $$\vec{u}_i$$. The definition is not generic but it may be useful for constructing advanced primitives, where the error might be dependant on the hint-matrix chosen.
 
 ## Hardness
@@ -91,9 +93,8 @@ The hardness was also proven for non-noisy leakages for some specific regimes (w
 - Polynomial commitment schemes {% cite C:HwaSeoSon24 %}
 - KEM (with properties): Katana {% cite EC:DJKPS25 %}, {% cite AC:LapPre25 %}
 
-
 ## Related Assumptions
 The adaptive case has been studied in {% cite PQC:BouKel25 %} and {% cite CiC:LaiSwaWoo25 %}.
 
 - [Leaky LWE](/leaky-lwe/) yields a generalisation of Hint-MLWE extending the notion of linear leakages over the secret/error pair and allowing for a wider range of hints.
-
+- [Error-Leakage LWE](/TODO/) is a similar assumption restricting to leakage on the error-term of LWE.
