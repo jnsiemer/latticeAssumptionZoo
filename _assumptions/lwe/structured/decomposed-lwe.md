@@ -53,7 +53,7 @@ $$\mat{T} = \begin{bmatrix} \mat{T}_{0,0} & \cdots & \mat{T}_{0,t-1} \\ \vdots &
 The trapdoor $$\mat{T}$$ is a Gaussian preimage such that $$\mat{AT}_{i,j} = \mat{G}\cdot \delta_{i,j} - \mat{W}_i\mat{B}_j$$.
 The targets of the Decomposed instance are constructed as $$\vec{b}_{i,j}' = \vec{b}\mat{T}_{i,j} + \vec{e}_{i,j}$$ where $$\vec{e}_{i,j} \leftarrow \mathcal{D}_{\sigma_\vec{e}}^m$$. With an appropriate choice of Gaussian parameters, $$\vec{e}_{i,j}$$ will flood the noise of $$\vec{b}$$ (multiplied by $$\mat{T}_{i,j}$$). Finally, the $$\ell$$-Decomposed LWE instance is defined as $$\{-\mat{W}_i, \mat{B}_j,\vec{b}_{i,j}'\}_{i,j \in [\ell]}$$.
 
-## Constructions built from Decomposed LWE (Optional) {#constructions}
+## Constructions built from Decomposed LWE {#constructions}
 
 - Succinct Randomised Encodings {% cite C:AbrMalRoy25 %}
 - Attribute-based Encryption (ABE) with additional properties {% cite C:AbrMalRoy25 %}{% cite EC:Wee25 %}
