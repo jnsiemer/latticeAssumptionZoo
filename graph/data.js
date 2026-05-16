@@ -159,6 +159,7 @@ assumption('Coset-Hint-LWE', 'Coset Hint Learning with Errors', 2025, ['Treshold
 assumption('Leaky-LWE', 'Leaky Learning with Errors', 2023, ['FuncEnc', 'TresholdEnc'], '/leaky-lwe/', 'LWE');
 assumptionFamily('LeakyLWE', ['Leaky-LWE', 'Hint-MLWE','Coset-Hint-LWE']);
 
+assumption('l-Decomposed-LWE', 'l-Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/', 'LWE');
 assumption('l-succinct-LWE', 'l-succinct LWE', 2024, ['FuncEnc', 'EffEnhEnc'], '/l-succinct-lwe/', 'LWE');
 
 assumption('Hollow-LWE', 'Hollow LWE', 2025, ['PKE'], '/hollow-lwe/', 'LWE');
@@ -211,6 +212,8 @@ reducesTo('Hint-LWE', 'Coset-Hint-LWE');
 reducesTo('LWE','Leaky-LWE');
 
 reducesTo('Evasive-LWE', 'l-succinct-LWE'); // to come
+
+reducesTo('l-succinct-LWE', 'l-Decomposed-LWE');
 
 reducesTo('LWE', 'Hollow-LWE');
 

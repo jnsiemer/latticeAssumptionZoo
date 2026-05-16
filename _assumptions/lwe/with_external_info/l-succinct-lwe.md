@@ -26,7 +26,7 @@ Intuitively, the assumption states that [Decision LWE](/lwe/#decision-lwe) is ha
 ## Hardness
 Wee proved that $$\ell$$-succinct LWE is at least as hard as [public-coin evasive LWE](/TODO/) in Lemma 3 of {% cite C:Wee24 %}.
 
-Trivially, LWE implies $$\ell$$-succinct LWE$$_{n, m, \ell m, q, \chi, \poly(\lambda, \ell, m)}$$ and 1-succinct LWE by following the trapdoor delegation approach {% cite EC:CHKP10 %} and sampling $$\mat{W}$$ along with a trapdoor to derive a trapdoor for $$\mat{B}$$.
+Trivially, LWE implies $$\ell$$-succinct LWE$$_{n, m, \ell m, q, \chi, \poly{\lambda, \ell, m}}$$ and 1-succinct LWE by following the trapdoor delegation approach {% cite EC:CHKP10 %} and sampling $$\mat{W}$$ along with a trapdoor to derive a trapdoor for $$\mat{B}$$.
 
 ## Constructions built from $$\ell$$-succinct LWE {#constructions}
 
