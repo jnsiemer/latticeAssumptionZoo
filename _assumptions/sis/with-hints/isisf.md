@@ -16,9 +16,9 @@ The ISIS$$_f$$ assumption was introduced by Bootle, Lyubashevsky, Nguyen, and So
 ## Definition
 
 ### ISIS$$_f$$
-_Let $$(n,m,q,\beta,k,s,\mathcal{R})$$ be public parameters, matrix $$\mat{A} \in \mathcal{R}_q^{n \times m}$$ be chosen uniformly at random, and $$f$$ be a specified function $$f: [N] \rightarrow \mathcal{R}_q^n$$. The challenger generates $$k$$ hints $$(x_i, \vec{s}_i)$$ in the following way._
-- $$x_i \sample [N]$$
-- $$\vec{s}_i \sample \mat{A}_s^{-1}(f(x_i))$$
+_Let $$(n,m,q,\beta,k,s,\mathcal{R})$$ be public parameters, matrix $$\mat{A} \in \mathcal{R}_q^{n \times m}$$ be chosen uniformly at random, and $$f$$ be a specified function $$f: [N] \rightarrow \mathcal{R}_q^n$$. The challenger generates $$k$$ hints $$(x_i, \vec{s}_i)$$ in the following way:_
+- $$x_i \sample [N]$$,
+- $$\vec{s}_i \sample \mat{A}_s^{-1}(f(x_i))$$.
 
 _Given the matrix $$\mat{A}$$ and the set of hints $$\set{(x_i, \vec{s}_i)}_{i \in [k]}$$, the adversary is asked to find a new tuple $$(x^{*}, \vec{s}^{*}) \in [N] \times \mathcal{R}^m$$ satisfying_
 
@@ -32,9 +32,9 @@ $$ \mat{A} \cdot \vec{s}^{*} = f(x^{*}) \bmod q \land 0 < \norm{\vec{s}^{*}} \le
 ### Interactive ISIS$$_f$$
 _Let $$(n,m,\ell_m,\ell_r,q,\beta_s,\beta_m,s,\mathcal{R})$$ be public parameters, matrices $$\mat{A} \in \mathcal{R}_q^{n \times m}$$, $$\mat{C} \in \mathcal{R}_q^{n \times (\ell_m + \ell_r)}$$ be chosen uniformly at random, $$f$$ be a specified function $$f: [N] \rightarrow \mathcal{R}_q^n$$, and $$\mathcal{M} = \emptyset$$. Given the matrices $$\mat{A}$$ and $$\mat{C}$$, an adversary is able to query an oracle $$O_\text{pre}$$ adaptively, which on input $$(\vec{m}, \vec{r}) \in \mathcal{R}^{(\ell_m + \ell_r)}$$ proceeds as follows._
 1. if $$\norm{(\vec{m}, \vec{r})} > \beta_m$$ then return $$\perp$$
-2. $$x \sample [N]$$
-3. $$\vec{s} \sample \mat{A}_s^{-1}(f(x) + \mat{C} \cdot (\vec{m}, \vec{r}))$$
-4. $$\mathcal{M} \leftarrow \mathcal{M} \cup \set{\vec{m}}$$
+2. $$x \sample [N]$$,
+3. $$\vec{s} \sample \mat{A}_s^{-1}(f(x) + \mat{C} \cdot (\vec{m}, \vec{r}))$$,
+4. $$\mathcal{M} \leftarrow \mathcal{M} \cup \set{\vec{m}}$$,
 5. return $$(x, \vec{s})$$
 
 _An adversary is asked to find a new tuple $$(x^{*}, \vec{s}^{*}, \vec{m}^{*}, \vec{r}^{*})$$ satisfying_
