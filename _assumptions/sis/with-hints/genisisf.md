@@ -23,8 +23,8 @@ The Generalised ISIS$$_f$$ assumption (GenISIS$$_f$$) was introduced by Dubois, 
 
 ### GenISIS$$_{f}$$
 _Let $$(n,m,q,\beta,k,s,\mathcal{R})$$ be public parameters, matrix $$\mat{A} \in \mathcal{R}_q^{n \times m}$$ be chosen uniformly at random, $$f$$ be a keyed function $$f: \mathcal{K} \times D \rightarrow \mathcal{R}_q^n$$, and $$\chi$$ be a distribution over $$D$$. The challenger chooses a key $$\kappa \sample \mathcal{K}$$ uniformly and generates $$k$$ hints $$(x_i, \vec{s}_i)$$ in the following way._
-- $$x_i \sample \chi$$
-- $$\vec{s}_i \sample \mat{A}_s^{-1}(f(\kappa, x_i))$$
+- $$x_i \sample \chi$$,
+- $$\vec{s}_i \sample \mat{A}_s^{-1}(f(\kappa, x_i))$$.
 
 _Given the matrix $$\mat{A}$$, the key $$\kappa$$, and the set of hints $$\set{(x_i, \vec{s}_i)}_{i \in [k]}$$, the adversary is asked to find a new tuple $$(x^{*}, \vec{s}^{*}) \in D \times \mathcal{R}^m$$ satisfying_
 
@@ -42,9 +42,9 @@ Compared to ISIS$$_f$$, GenISIS$$_f$$ allows hints to be chosen from any distrib
 ### Interactive GenISIS$$_f$$
 _Let $$(n,m,\ell,q,\beta_s,\beta_m,s,\mathcal{R})$$ be public parameters, matrices $$\mat{A} \in \mathcal{R}_q^{n \times m}$$, $$\mat{C} \in \mathcal{R}_q^{n \times \ell}$$ be chosen uniformly at random, $$f$$ be a keyed function $$f: \mathcal{K} \times D \rightarrow \mathcal{R}_q^n$$, $$\chi$$ be a distribution over $$D$$, $$\mathcal{H} = \emptyset$$, and a uniformly chosen key $$\kappa \in \mathcal{K}$$. Given the matrices $$\mat{A}$$, $$\mat{C}$$, and the key $$\kappa$$, an adversary is able to query an oracle $$O_\text{pre}$$ adaptively, which on input $$\vec{m} \in \mathcal{R}^\ell$$ proceeds as follows._
 1. if $$\norm{\vec{m}} > \beta_m$$ then return $$\perp$$
-2. $$x \sample \chi$$
-3. $$\vec{s} \sample \mat{A}_s^{-1}(f(x) + \mat{C} \cdot \vec{m})$$
-4. $$\mathcal{H} \leftarrow \mathcal{H} \cup \set{x,\vec{s},\vec{m}}$$
+2. $$x \sample \chi$$,
+3. $$\vec{s} \sample \mat{A}_s^{-1}(f(x) + \mat{C} \cdot \vec{m})$$,
+4. $$\mathcal{H} \leftarrow \mathcal{H} \cup \set{x,\vec{s},\vec{m}}$$,
 5. return $$(x, \vec{s})$$
 
 _An adversary is asked to find a new tuple $$(x^{*}, \vec{s}^{*}, \vec{m}^{*})$$ satisfying_
