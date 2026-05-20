@@ -166,6 +166,7 @@ assumptionFamily('LeakyLWE', ['Leaky-LWE', 'Hint-MLWE','Coset-Hint-LWE']);
 
 assumption('l-succinct-LWE', 'l-succinct LWE', 2024, ['FuncEnc', 'EffEnhEnc'], '/l-succinct-lwe/', 'LWE');
 
+assumption('Sparse-Matrix-LWE', 'Sparse Matrix LWE', 2024, ['COED'], '/sparse-matrix-lwe/', 'LWE');
 assumption('Hollow-LWE', 'Hollow LWE', 2025, ['PKE'], '/hollow-lwe/', 'LWE');
 
 // NTRU-based assumptions - family, i.e. last parameter is always 'NTRU'
@@ -219,6 +220,8 @@ reducesTo('Evasive-LWE', 'l-succinct-LWE'); // to come
 
 reducesTo('LWE', 'Hollow-LWE');
 
+reducesTo('LWE', 'Sparse-Matrix-LWE');
+
 // NTRU
 reducesTo('NTRU', 'LWE', 500);
 
@@ -239,6 +242,7 @@ partiallyReducesTo('SIS', 'h-PRISIS', 'M-SIS reduces to h-PRISIS for l=2', 300);
 
 // LWE
 partiallyReducesTo('LWE', 'l-succinct-LWE', 'If W is wide and embeds a trapdoor', 300);
+
 
 // Generalisations - "generalised by"
 //SIS
