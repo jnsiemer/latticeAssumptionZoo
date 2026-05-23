@@ -119,7 +119,12 @@ function assumptionFamily(familyID, members, edgeLength = 50) {
 assumption('SIS', 'Short Integer Solution', 1996, ['Commitment', 'ZK', 'Sign'], '/sis/', 'SIS');
 assumption('NFSIS', 'Normal Form SIS', 2001, ['Commitment', 'ZK', 'Sign'], '/sis/#normal-form-sis', 'SIS', true); // Micciancio - Improving Lattice Based Cryptosystems Using the Hermite Normal Form
 assumption('ISIS', 'Inhomogeneous SIS', 1997, ['Commitment', 'ZK', 'Sign'], '/sis/#inhomogeneous-sis', 'SIS', true); // Ajtai–Dwork - A Public-Key Cryptosystem with Worst-Case/Average-Case Equivalence
+
 assumption('ApproxSIS', 'Approximate SIS', 2019, ['Sign'], '/approxsis/', 'SIS');
+
+assumption('t-M-ISIS', 't-Module ISIS', 2024, ['Sign'], '/t-misis/', 'SIS');
+assumption('t-M-SPISIS', 't-Module Second Preimage ISIS', 2024, ['Sign'], '/t-misis/#t-m-spisis', 'SIS', true);
+assumptionFamily('t-M-ISIS', ['t-M-ISIS', 't-M-SPISIS']);
 
 assumption('k-SIS', 'k-SIS', 2011, ['Sign', 'TresholdSign', 'COAD'], '/ksis/', 'SIS');
 assumption('k-M-ISIS', 'k-M-ISIS', 2022, ['Commitment'], '/kmisis/', 'SIS');
@@ -188,7 +193,11 @@ assumption('LPN', 'Learning Parity with Noise', 2000, ['Commitment', 'ZK'], '/lp
 //SIS
 reducesTo('SIS', 'NFSIS');
 reducesTo('SIS', 'ISIS');
+
 reducesTo('SIS', 'ApproxSIS');
+
+reducesTo('SIS', 't-M-ISIS');
+reducesTo('SIS', 't-M-SPISIS');
 
 reducesTo('SIS', 'k-SIS');
 reducesTo('k-M-ISIS', 'Twin-k-M-ISIS');
