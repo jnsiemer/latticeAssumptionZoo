@@ -137,6 +137,8 @@ assumption('H-SIS', 'H-SIS', 2026, ['Sign'], '/h-isis/#h-sis', 'SIS', true);
 assumption('H-SIGS', 'H-Short Integer Generating Set', 2026, ['Sign'], '/h-isis/#h-sigs', 'SIS', true);
 assumptionFamily('H-SIS', ['H-SIS', 'H-ISIS', 'H-SIGS']);
 
+assumption('SelfTargetMSIS', 'SelfTargetMSIS', 2018, ['Sign'], '/selftargetmsis/', 'SIS');
+
 assumption('ISISf', 'ISISf', 2023, ['Sign', 'PrivEnhSign'], '/isisf/', 'SIS');
 assumption('IntISISf', 'Interactive ISISf', 2023, ['Sign', 'PrivEnhSign'], '/isisf/#interactive-isis_f', 'SIS', true);
 assumption('GenISISf', 'Generalised ISISf', 2025, ['Sign', 'PrivEnhSign'], '/genisisf/', 'SIS');
@@ -245,6 +247,8 @@ partiallyReducesTo('SIS', 'k-M-ISIS', 'k-R-ISIS is at least as hard as R-SIS wit
 partiallyReducesTo('SIS', 'H-ISIS', 'Assuming the space-time hardness of SIS', 250);
 partiallyReducesTo('SIS', 'H-SIGS', 'Assuming the space-time hardness of SIS');
 partiallyReducesTo('H-SIGS', 'H-ISIS', 'Assuming the space-time hardness of SIS', 70);
+
+partiallyReducesTo('SIS', 'SelfTargetMSIS', 'If H=RO');
 
 partiallyReducesTo('SIS', 'GenISISf', 'f = RO or f = A_m * x + u', 300);
 partiallyReducesTo('SIS', 'ISISf', 'f = RO', 300);
