@@ -14,7 +14,7 @@ redirect_from:
 ---
 
 $$t$$-Module-ISIS was introduced in 2024 by Gajland, Janneck, and Kiltz {% cite EPRINT:GajJanKil24 %}. It yields a natural extension of [Inhomogeneous SIS](/sis/#inhomogeneous-sis), which provides multiple target vectors and the adversary can choose which one it provides a preimage of.
-The authors utilise the specialised NTRU-based ring-version of this $$t$$-Module-ISIS to reduce reduce to the Falcon signature scheme.
+The authors utilise the specialised NTRU-based ring-version of this $$t$$-Module-ISIS to reduce to the Falcon signature scheme.
 
 ## Definition
 
@@ -25,7 +25,7 @@ $$ \mat{A} \cdot \vec{s} \in \mathcal{T} \bmod q \land \norm{\vec{s}} \leq \beta
 
 Gajland, Janneck, and Kiltz {% cite EPRINT:GajJanKil24 %} originally introduce a NTRU-based ring version of $$t$$-M-ISIS, i.e. $$n=1$$, which they denote as $$t$$-R-ISIS.
 
-The multi-target approach roughly outlines the intuition that $$t$$-M-ISIS can at most offer a multiplicative advantage factor over ISIS. Alongside a preimage oracle, this intuition has also been captured in [One-More-ISIS](/om-isis/).
+The multi-target approach roughly outlines the intuition that $$t$$-M-ISIS can be at least $$t$$-times easier ISIS. Alongside a preimage oracle, this intuition has also been captured in [One-More-ISIS](/om-isis/), which trivially implies $$t$$-M-ISIS.
 
 ## Variants
 
@@ -40,7 +40,7 @@ Gajland, Janneck, and Kiltz {% cite EPRINT:GajJanKil24 %} originally introduce a
 
 ## Hardness
 
-[M-SIS](/sis/#module-sis)$$_{n,m,q,2\beta,\mathcal{R}}$$ can be reduced to $$t$$-M-ISIS$$_{n,m,q,\beta,\mathcal{R}}$$ by sampling $$t$$ discrete Gaussian vectors $$\vec{s}_i \sample D_{\mathcal{R}^m, s}$$. Then, the target vectors $$\vec{t}_i = \mat{A} \cdot \vec{s}_i \in \mathcal{T}$$ are dstributed statistcally close to uniform over $$\mathcal{R}_q^n$$ and the reduction algorithm can recover a M-SIS solution from any $$t$$-M-ISIS solution $$\vec{s}$$ for target vector $$j$$ by outputting $$\vec{s} - \vec{s}_j$$.
+[M-SIS](/sis/#module-sis)$$_{n,m,q,2\beta,\mathcal{R}}$$ can be reduced to $$t$$-M-ISIS$$_{n,m,q,\beta,\mathcal{R}}$$ by sampling $$t$$ discrete Gaussian vectors $$\vec{s}_i \sample D_{\mathcal{R}^m, s}$$. Then, the target vectors $$\vec{t}_i = \mat{A} \cdot \vec{s}_i \in \mathcal{T}$$ are distributed statistcally close to uniform over $$\mathcal{R}_q^n$$ and the reduction algorithm can recover a M-SIS solution from any $$t$$-M-ISIS solution $$\vec{s}$$ for target vector $$j$$ by outputting $$\vec{s} - \vec{s}_j$$.
 
 We refer to the original paper {% cite EPRINT:GajJanKil24 %} regarding statements about the hardness of $$t$$-R-ISIS based on NTRU.
 

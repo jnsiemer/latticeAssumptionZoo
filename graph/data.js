@@ -198,6 +198,8 @@ reducesTo('SIS', 'ApproxSIS');
 
 reducesTo('SIS', 't-M-ISIS');
 reducesTo('SIS', 't-M-SPISIS');
+reducesTo('OM-ISIS', 't-M-ISIS', 200);
+reducesTo('OM-ISIS', 't-M-SPISIS', 200);
 
 reducesTo('SIS', 'k-SIS');
 reducesTo('k-M-ISIS', 'Twin-k-M-ISIS');
