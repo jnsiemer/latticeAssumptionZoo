@@ -204,6 +204,8 @@ reducesTo('OM-ISIS', 't-M-SPISIS', 200);
 reducesTo('SIS', 'k-SIS');
 reducesTo('k-M-ISIS', 'Twin-k-M-ISIS');
 
+reducesTo('OM-ISIS', 'H-ISIS', 200);
+
 reducesTo('ISISf', 'GenISISf');
 reducesTo('ISISf', 'IntISISf');
 reducesTo('GenISISf', 'IntGenISISf');

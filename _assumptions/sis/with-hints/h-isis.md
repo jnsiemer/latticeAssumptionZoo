@@ -58,6 +58,8 @@ For the H-SIS and H-SIGS variant, the problem is considered hard if $$\beta$$ is
 
 The reduction from worst-case approximate SVP first reduces to SIS. Then, a H-ISIS solver is turned into an entropic H-SIS solver with $$\beta$$ bigger than the norm of the hints in polynomial time. As a next step, the reduction turns such an entropic solver into another H-SI(G)S solver for $$\beta$$ smaller than the norms of the hints. Recursively feeding the outputs of this algorithm to an H-ISIS solver that expects hints with smaller norms but outputs solutions for a smaller $$\beta$$ then allows to solve SIS with tight norm bounds.
 
+Further, the authors {% cite EPRINT:2026/187 %} essentially provide a lower bound on the hardness of H-ISIS by reducing [One-More-ISIS](/om-isis/) to H-ISIS.
+
 ## Constructions built from H-ISIS {#constructions}
 
 - Proof-friendly [ISIS$$_\mathsf{bin}$$](/isisf/#hardness)-style signature {% cite TODO %}
