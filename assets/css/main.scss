@@ -1,0 +1,26 @@
+---
+---
+
+@charset "utf-8";
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.45em;
+  vertical-align: middle;
+  padding: 0.2em 0.6em;
+  margin-left: 0.7em;
+  margin-bottom: 0.3em;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff !important;
+  text-decoration: none !important;
+  position: relative; 
+  cursor: pointer;
+}
+.status-broken { background-color: #d9534f; }
+.status-implied { background-color: #5c9abd; }
+.status-standard { background-color: #5cb85c; }
