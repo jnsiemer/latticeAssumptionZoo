@@ -49,14 +49,14 @@ If $$f$$ is a random oracle then the ISIS$$_f$$ instance, is at least as hard as
 
 Bootle et al. {% cite C:BLNS23 %} set $$f$$ to be $$f(x) = \mat{B} \cdot \operatorname{bin}(x)$$, where $$\operatorname{bin}: [N] \rightarrow \ZZ^{\ceil{\log N}}$$ outputs the binary encoding of $$x \in [N]$$. They call this problem ISIS$$_{\operatorname{bin}}$$. The authors analyse direct lattice reduction as well as exploiting relations on the image space for ISIS$$_{\operatorname{bin}}$$.
 
-In Theorem 3.3, Bootle et al. {% cite C:BLNS23 %} show that interactive ISIS$$_f$$ is at least as hard as ISIS$$_f$$. The reduction uses $$\mat{C} = \mat{A} \cdot \mat{R}$$ for a uniformly chosen $$\mat{R} \in \bin^{m \times (\ell_m + \ell_r)}$$, rejection sampling, the entropy that $$x \sample [N]$$ and $$\vec{s} \sample D_{\Lambda_q^{f(x)}, s}$$ are sampled with and introduces a polynomial loss factor depending on the number of allowed queries to $$O_\text{pre}$$. This polynomial loss-factor is removed in a tight reduction given in Theorem 4.3 of {% cite EPRINT:2026/291 %} for [Generalised ISIS$$_f$$](/genisisf/).
+In Theorem 3.3, Bootle et al. {% cite C:BLNS23 %} show that interactive ISIS$$_f$$ is at least as hard as ISIS$$_f$$. The reduction uses $$\mat{C} = \mat{A} \cdot \mat{R}$$ for a uniformly chosen $$\mat{R} \in \bin^{m \times (\ell_m + \ell_r)}$$, rejection sampling, the entropy that $$x \sample [N]$$ and $$\vec{s} \sample D_{\Lambda_q^{f(x)}, s}$$ are sampled with and introduces a polynomial loss factor depending on the number of allowed queries to $$O_\text{pre}$$. This polynomial loss-factor is removed in a tight reduction given in Theorem 4.3 of {% cite PKC:NguSie26 %} for [Generalised ISIS$$_f$$](/genisisf/).
 
 ## Constructions built from ISIS$$_f$$ {#constructions}
 
 Bootle et al. {% cite C:BLNS23 %} provide a framework to generically build the following constructions from any interactive ISIS$$_f$$ instance.
 - Signatures {% cite C:BLNS23 %}
 - Group signatures {% cite C:BLNS23 %}
-- Blind signatures {% cite C:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
+- (Non-interactive batched) blind signatures {% cite C:BLNS23 %}{% cite CCS:LyuSeiSte24 %}{% cite PKC:BalGoyYad26 %}
 - Anonymous credentials {% cite C:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
 
 ## Related Assumptions

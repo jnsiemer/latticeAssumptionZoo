@@ -32,7 +32,7 @@ The hardness of One-More-ISIS is analysed using direct cryptanalysis in the orig
 ## Constructions built from One-More-ISIS {#constructions}
 
 - Blind signature {% cite CCS:AKSY22 %}
-- Non-interactive blind signature constructed in {% cite AC:BCGY24 %} based on the reduction in Theorem 5.3 of {% cite EPRINT:2026/291 %}
+- Non-interactive blind signature constructed in {% cite AC:BCGY24 %} based on the reduction in Theorem 5.3 of {% cite PKC:NguSie26 %}
 
 ## Related Assumptions
 

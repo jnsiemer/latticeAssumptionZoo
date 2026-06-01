@@ -32,7 +32,7 @@ $$k$$-SIS$$_{n,m,q,\beta,s,\ZZ}$$ is at least as hard as SIS$$_{n,m-k,q,\beta',\
 
 The initial proof {% cite PKC:BonFre11 %} relies on the following observation. Let $$\mat{A} \in \ZZ_q^{n \times m}$$, $$\vec{e} \sample D_{\ZZ^{m-1},s}$$, and $$e_m$$ a short $$\ZZ_q$$-invertible entry. Define $$\mat{A}' = \begin{bmatrix} \mat{A} &-\mat{A} \cdot \vec{e} \cdot e_m^{-1} \end{bmatrix}$$ and $$\vec{e}' = (\vec{e}, e_m)$$. Then, $$\mat{A}' \cdot \vec{e}' = \mat{A} \cdot \vec{e} - \mat{A} \cdot \vec{e} \cdot e_m^{-1} \cdot e_m = \vec{0}$$. In this way, the proof embeds a hint for each added column to the challenge matrix. Embedding multiple hints and recovering a SIS solution requires several technical details, which we omit here.
 
-A proof for the module-variant was provided in {% cite EPRINT:2025/1852 %}.
+A proof for the module-variant was provided in {% cite EC:AFLLW26 %}.
 
 ## Constructions built from $$k$$-SIS {#constructions}
 

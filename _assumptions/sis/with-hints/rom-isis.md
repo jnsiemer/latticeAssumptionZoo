@@ -27,11 +27,11 @@ $$ \forall i \in [k+1]: \mat{A} \cdot \vec{s}_i + \mat{B} \cdot \vec{u}_i \in T 
 
 Baldimtsi et al. {% cite AC:BCGY24 %} dedicate Section 6.1 towards cryptanalysis of their assumption, where they recall and generalise the cryptanalytic approaches from {% cite CCS:AKSY22 %} mounted on One-More-ISIS, and essentially show that the restriction $$\vec{u}_i \in \set{-1,1}^m$$ renders these attacks impractical. This leads them to their claim that Randomised One-More-ISIS is more robust than One-More-ISIS and more importantly, that they can pick parameters with significantly more freedom than for One-More-ISIS.
 
-In Theorem 5.3 of {% cite EPRINT:2026/291 %}, Nguyen and Siemer show that One-More-ISIS is at least as hard as Randomised One-More-ISIS. Furthermore, they analyse a binary version of rOM-ISIS switching the restriction from $$\vec{u}_i \in \set{-1,1}^m$$ to $$\vec{u}_i \in \bin^m$$ and show their equivalence in Lemma D.1.
+In Theorem 5.3 of {% cite PKC:NguSie26 %}, Nguyen and Siemer show that One-More-ISIS is at least as hard as Randomised One-More-ISIS. Furthermore, they analyse a binary version of rOM-ISIS switching the restriction from $$\vec{u}_i \in \set{-1,1}^m$$ to $$\vec{u}_i \in \bin^m$$ and show their equivalence in Lemma D.1.
 
 ## Constructions built from rOM-ISIS {#constructions}
 
-- Non-interactive blind signature {% cite AC:BCGY24 %}
+- Non-interactive (batched) blind signature {% cite AC:BCGY24 %}{% cite PKC:BalGoyYad26 %}
 
 ## Related Assumptions
 
