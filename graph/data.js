@@ -168,6 +168,8 @@ assumption('LWE', 'Learning with Errors', 2005, ['PKE', 'FuncEnc', 'COED'], '/lw
 assumption('ssLWE', 'Short secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/#short-secret-lwe', 'LWE', true);
 assumption('LWR', 'Learning with Rounding', 2012, ['PKE'], '/lwr/', 'LWE');
 
+assumption('Binary-Matrix-LWE', 'Binary-Matrix LWE', 2013, ['PKE'], '/binary-matrix-lwe/', 'LWE');
+
 assumption('k-LWE', 'k-LWE', 2014, ['PKE'], '/klwe/', 'LWE');
 
 assumption('Hint-LWE', 'Hint Learning with Errors', 2022, ['Commitment', 'ZK', 'Sign', 'TresholdSign'], '/hint-mlwe/', 'LWE');
@@ -230,6 +232,8 @@ reducesTo('BASIS_struct', 'l-succinct-SIS');
 reducesTo('LWE', 'SIS', 1000);
 reducesTo('ssLWE', 'LWE');
 reducesTo('LWR', 'LWE');
+
+reducesTo('LWE', 'Binary-Matrix-LWE');
 
 reducesTo('LWE', 'k-LWE');
 

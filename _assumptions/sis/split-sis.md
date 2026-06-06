@@ -38,8 +38,6 @@ According to Theorem 1 in {% cite JoCUoPaT:WYBJ16 %}, the problem is at least as
 According to Theorem 1 in {% cite PKC:NguZhaZha15 %}, Split-SIS$$_{n,m,q,\beta,N}$$ is at least as hard as SIS$$_{n,2m,q,\beta}$$ if $$q \geq \beta \cdot \omega(\sqrt{n \log n}) > N$$.
 Roughly outlined, the reduction algorithm guesses $$h$$ and scales the first part of the challenge matrix corresponding to $$\mat{A}_0$$ in advance. If $$h$$ was picked correctly, the Split-SIS solution should also be a SIS solution.
 
-Any reductions in this section should be reflected as an edge in the [`graph`](/graph/).
-
 ## Constructions built from Split-SIS {#constructions}
 
 - Group signature {% cite PKC:NguZhaZha15 %}
