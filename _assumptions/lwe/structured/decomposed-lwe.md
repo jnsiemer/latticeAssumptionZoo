@@ -19,28 +19,37 @@ Decomposed LWE was proposed by Abram, Malavolta, and Roy in 2025 {% cite C:AbrMa
 
 ## Definition
 
-We recall the definition of gadget matrix $$\mat{G}_{n,q} := \mat{I}_n \otimes \begin{bmatrix} 1 & 2 & \cdots & b^{\lceil \log q \rceil- 1}\end{bmatrix}$$.
+We recall the definition of a gadget matrix $$\mat{G}_n = \mat{I}_n \otimes \vec{g}^\intercal$$, where $$\vec{g}^\intercal = \begin{bmatrix} 1 & 2 & \cdots & b^{\lceil \log q \rceil- 1}\end{bmatrix}$$.
 
 ### $$\ell$$-Decomposed LWE$$_{n,m,\hat{m},q,\sigma_\mat{B},\sigma_{\vec{e}}}$$ {#decomposed-lwe}
 
-_Let $$\ell$$ matrices $$\mat{W}_i \xleftarrow{\$} \ZZ_q^{n \times m}, \mat{B}_j \leftarrow \mathcal{D}_{\sigma_\mat{B}}^{m \times \hat{m}}$$ and construct $$\mat{A}_{i,j} = \mat{W}_i\mat{B}_j + \mat{G}\cdot \delta_{i,j}$$. Let $$\vec{s} \in \ZZ_q^n$$ be chosen uniformly at random and noise errors $$\vec{e}_{i,j} \leftarrow \mathcal{D}_{\sigma_\vec{e}}^{\hat{m}}$$. An adversary is asked to distinguish between the distributions $$\{\mat{W}_i,\mat{B}_j,\vec{b}_{i,j} = \vec{s}^\intercal\mat{A}_{i,j} + \vec{e}_{i,j} \bmod q\}_{i,j \in [\ell]}$$ and a tuple sampled from $$\mathcal{U}(\ZZ_q^{m \times n})^\ell \times (\mathcal{D}_{\sigma_\mat{B}}^{m \times \hat{m}})^\ell \times \mathcal{U}(\ZZ_q^{m})^{\ell^2}$$._
+_Let $$\ell$$ matrices $$\mat{W}_i \sample \ZZ_q^{n \times m}, \mat{B}_j \sample D_{\sigma_\mat{B}}^{m \times \hat{m}}$$ and construct $$\mat{A}_{i,j} = \mat{W}_i\mat{B}_j + \delta_{i,j} \cdot \mat{G}$$. Let $$\vec{s} \in \ZZ_q^n$$ be chosen uniformly at random and noise errors $$\vec{e}_{i,j} \sample D_{\sigma_\vec{e}}^{\hat{m}}$$. An adversary is asked to distinguish between the distribution $$\{\mat{W}_i,\mat{B}_j,\vec{b}_{i,j} = \vec{s}^\intercal\mat{A}_{i,j} + \vec{e}_{i,j}\}_{i,j \in [\ell]}$$ and a tuple sampled from $$\mathcal{U}(\ZZ_q^{n \times m})^\ell \times (D_{\sigma_\mat{B}}^{m \times \hat{m}})^\ell \times \mathcal{U}(\ZZ_q^{m})^{\ell^2}$$._
 
-The Decomposed LWE assumption can also be viewed as an instance similar to [$$\ell$$-succinct LWE](/l-succinct-lwe/), as presented by Wee {% cite EC:Wee25 %} where $$\textsf{vec}$$ denotes the concatenation of the columns of a matrix. In this setup, let $$\mat{W} \xleftarrow{\$} \ZZ_q^{n \times \ell m}$$ and $$\mat{B} \leftarrow \mathcal{D}_{\sigma_\mat{B}}^{m \times \ell\hat{m}}$$ and consider $$\mat{A}$$ constructed as
+The Decomposed LWE assumption can also be viewed as an instance similar to [$$\ell$$-succinct LWE](/l-succinct-lwe/), as presented by Wee {% cite EC:Wee25 %} where $$\textsf{vec}$$ denotes the concatenation of the columns of a matrix. In this setup, let $$\mat{W} \sample \ZZ_q^{n \times \ell m}$$ and $$\mat{B} \sample D_{\sigma_\mat{B}}^{m \times \ell\hat{m}}$$ and consider $$\mat{A}$$ constructed as
 
-$$\mat{A} = \mat{W} \cdot (\mat{I}_\ell \otimes \mat{B}) + \textsf{vec}(\mat{I}_\ell) \otimes \mathbf{G}$$
+$$\mat{A} = \mat{W} \cdot (\mat{I}_\ell \otimes \mat{B}) + \textsf{vec}(\mat{I}_\ell) \otimes \mathbf{G}.$$
 
-<!-- 
-
-The variants are not presented yet.
 ## Variants
 
-### Small-Secret Extended $$\ell$$-Decomposed LWE$$_{n,m,\hat{m},q,\sigma_\mat{B},\sigma_{\vec{e}}}$$ {#sse-decomposed-lwe}
+### Small-Secret Extended $$\ell$$-Decomposed LWE$$_{n,m,\hat{m},q,\sigma_\mat{B},\sigma_{\vec{s}},\sigma_{\mat{E}},t}$$ {#sse-decomposed-lwe}
 
-[TODO]
+_Let matrices $$\mat{W} \sample \ZZ_q^{(n\cdot \ell) \times m}$$, $$\mat{B} \sample D_{\sigma_\mat{B}}^{m \times (\hat{m}\cdot \ell)}$$, $$\mat{Q} \sample \mathsf{GL}_n(\ZZ_q)$$, $$\mat{M} \sample \ZZ_q^{n \times t}$$ and construct $$\mat{A} = \mat{W}\cdot\mat{B} + \mat{I}_\ell \otimes (\mat{Q} \cdot \mat{G})$$. Let $$\vec{s} \sample D_{\sigma_{\vec{s}}}^n$$ and errors $$\vec{e} \sample D_{\sigma_{\vec{s}}}^t$$, $$\mat{E} \sample D_{\sigma_{\mat{E}}}^{\ell \times (\hat{m} \cdot \ell)}$$. An adversary is asked to distinguish the distributions_
 
-### Small-Secret Circular $$\ell$$-Decomposed LWE$$_{n,m,\hat{m},q,\sigma_\mat{B},\sigma_{\vec{e}}}$$ {#sse-decomposed-lwe}
+$$ \left\{\mat{W},\mat{B},\mat{Q},\mat{M},\vec{s}^\intercal\cdot \mat{M} + \vec{e}^\intercal,(\mat{I}_\ell \otimes \vec{s}^\intercal)\cdot\mat{A} + \mat{E}\right\}, $$
 
-[TODO] -->
+$$ \mathcal{U}\left(\ZZ_q^{(n\cdot \ell) \times m}\right) \times D_{\sigma_\mat{B}}^{m \times (\hat{m} \cdot \ell)} \times \mathsf{GL}_n(\ZZ_q) \times \mathcal{U}\left(\ZZ_q^{n \times t}\right) \times \mathcal{U}\left(\ZZ_q^{1 \times t}\right) \times \mathcal{U}\left(\ZZ_q^{\ell \times (\hat{m} \cdot \ell)}\right). $$
+
+As the name suggests, this version utilises a short-secret. Additionally, it extends the assumption via an invertible matrix $$\mat{Q}$$ and $$t$$ additional LWE samples with respect to the matrix $$\mat{M}$$. According to Theorem 4.4 in {% cite C:AbrMalRoy25 %}, Small-Secret Extended $$\ell$$-Decomposed LWE is at least as hard as $$\ell$$-Decomposed LWE if $$\sigma_{\vec{s}} / (\sigma_{\mat{B}} \cdot \sigma_{\mat{E}}) \in \lambda^{\omega(1)}$$ and $$\ell \in \poly{\lambda}$$.
+
+### Small-Secret Circular $$\ell$$-Decomposed LWE$$_{n,m,\hat{m},q,\sigma_\mat{B},\sigma_{\vec{s}},\sigma_{\mat{E}},\sigma_{\bar{\vec{e}}},t}$$ {#sse-decomposed-lwe}
+
+_Let matrices $$\mat{W} \sample \ZZ_q^{(n\cdot \ell) \times m}$$, $$\mat{B} \sample D_{\sigma_\mat{B}}^{m \times (\hat{m}\cdot \ell)}$$, $$\mat{Q} \sample \mathsf{GL}_n(\ZZ_q)$$, $$\mat{M} \sample \ZZ_q^{n \times t}$$, $$\mat{K} \sample \ZZ_q^{n \times \hat{m}\cdot(\hat{m} + \log q)}$$, and construct $$\mat{A} = \mat{W}\cdot\mat{B} + \mat{I}_\ell \otimes (\mat{Q} \cdot \mat{G})$$. Let $$\vec{s} \sample D_{\sigma_{\vec{s}}}^n$$ and errors $$\vec{e} \sample D_{\sigma_{\vec{s}}}^t$$, $$\bar{\vec{e}} \sample D_{\sigma_{\bar{\vec{e}}}}^{\hat{m}\cdot(\hat{m} + \log q)}$$, $$\mat{E} \sample D_{\sigma_{\mat{E}}}^{\ell \times (\hat{m} \cdot \ell)}$$. An adversary is asked to distinguish the distributions_
+
+$$ \left\{\mat{W},\mat{B},\mat{Q},\mat{M},\vec{s}^\intercal\cdot \mat{M} + \vec{e}^\intercal,(\mat{I}_\ell \otimes \vec{s}^\intercal)\cdot\mat{A} + \mat{E}, \begin{bmatrix} \mat{K}\\ \vec{s}^\intercal \mat{K} + \bar{\vec{e}}^\intercal \end{bmatrix} - \mathsf{Bits}(\vec{s})^\intercal \otimes \mat{I}_{n+1} \otimes \vec{g}^\intercal \right\}, $$
+
+$$ \mathcal{U}\left(\ZZ_q^{(n\cdot \ell) \times m}\right) \times D_{\sigma_\mat{B}}^{m \times (\hat{m} \cdot \ell)} \times \mathsf{GL}_n(\ZZ_q) \times \mathcal{U}\left(\ZZ_q^{n \times t}\right) \times \mathcal{U}\left(\ZZ_q^{1 \times t}\right) \times \mathcal{U}\left(\ZZ_q^{\ell \times (\hat{m} \cdot \ell)}\right) \times \mathcal{U}\left(\ZZ_q^{(n+1) \times \hat{m}\cdot (\hat{m} + \log q)}\right). $$
+
+The circular variant is supposed to correspond to Small-Secret Extended $$\ell$$-Decomposed LWE, where the distinguisher is provided an additional GSW encryption {% cite C:GenSahWat13 %}. However, this intution is provided in {% cite C:AbrMalRoy25 %} without any formal arguments.
 
 ## Hardness
 
@@ -50,8 +59,8 @@ The reduction is done by transforming the $$\ell$$-succinct LWE instance $$(\mat
 
 $$\mat{T} = \begin{bmatrix} \mat{T}_{0,0} & \cdots & \mat{T}_{0,t-1} \\ \vdots & \ddots & \vdots \\ \mat{T}_{t-1,0} & \cdots & \mat{T}_{t-1,t-1} \\ \mat{B}_0 & \cdots & \mat{B}_{t-1} \end{bmatrix}.$$
 
-The trapdoor $$\mat{T}$$ is a Gaussian preimage such that $$\mat{AT}_{i,j} = \mat{G}\cdot \delta_{i,j} - \mat{W}_i\mat{B}_j$$.
-The targets of the Decomposed instance are constructed as $$\vec{b}_{i,j}' = \vec{b}\mat{T}_{i,j} + \vec{e}_{i,j}$$ where $$\vec{e}_{i,j} \leftarrow \mathcal{D}_{\sigma_\vec{e}}^m$$. With an appropriate choice of Gaussian parameters, $$\vec{e}_{i,j}$$ will flood the noise of $$\vec{b}$$ (multiplied by $$\mat{T}_{i,j}$$). Finally, the $$\ell$$-Decomposed LWE instance is defined as $$\{-\mat{W}_i, \mat{B}_j,\vec{b}_{i,j}'\}_{i,j \in [\ell]}$$.
+The trapdoor $$\mat{T}$$ is a Gaussian preimage such that $$\mat{AT}_{i,j} = \delta_{i,j} \cdot \mat{G} - \mat{W}_i\mat{B}_j$$.
+The targets of the Decomposed instance are constructed as $$\vec{b}_{i,j}' = \vec{b}\mat{T}_{i,j} + \vec{e}_{i,j}$$ where $$\vec{e}_{i,j} \sample D_{\sigma_\vec{e}}^m$$. With an appropriate choice of Gaussian parameters, $$\vec{e}_{i,j}$$ will flood the noise of $$\vec{b}$$ (multiplied by $$\mat{T}_{i,j}$$). Finally, the $$\ell$$-Decomposed LWE instance is defined as $$\{-\mat{W}_i, \mat{B}_j,\vec{b}_{i,j}'\}_{i,j \in [\ell]}$$.
 
 ## Constructions built from Decomposed LWE {#constructions}
 
@@ -63,8 +72,8 @@ The targets of the Decomposed instance are constructed as $$\vec{b}_{i,j}' = \ve
 
 ## Related Assumptions
 
-As mention in the definition section, one can find similarities with the [$$\ell$$-succinct LWE](/l-succinct-lwe/) assumption.
+- [$$\ell$$-succinct LWE](/l-succinct-lwe/) shows similarities to $$\ell$$-Decomposed LWE.
 
-## Further Suggestions
+## Further Reading Suggestions
 
 - [Workshop session from Simons Institute](https://simons.berkeley.edu/talks/david-wu-ut-austin-2025-06-24) by David Wu.

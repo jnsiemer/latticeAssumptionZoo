@@ -160,6 +160,10 @@ assumption('Leaky-LWE', 'Leaky Learning with Errors', 2023, ['FuncEnc', 'Treshol
 assumptionFamily('LeakyLWE', ['Leaky-LWE', 'Hint-MLWE','Coset-Hint-LWE']);
 
 assumption('l-Decomposed-LWE', 'l-Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/', 'LWE');
+assumption('ssE-l-Decomposed-LWE', 'Small-Secret Extended l-Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/#sse-decomposed-lwe', 'LWE', true);
+assumption('ssC-l-Decomposed-LWE', 'Small-Secret Circular l-Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/#ssc-decomposed-lwe', 'LWE', true);
+assumptionFamily('l-Decomposed-LWE', ['l-Decomposed-LWE', 'ssE-l-Decomposed-LWE', 'ssC-l-Decomposed-LWE']);
+
 assumption('l-succinct-LWE', 'l-succinct LWE', 2024, ['FuncEnc', 'EffEnhEnc'], '/l-succinct-lwe/', 'LWE');
 
 assumption('Hollow-LWE', 'Hollow LWE', 2025, ['PKE'], '/hollow-lwe/', 'LWE');
@@ -213,7 +217,7 @@ reducesTo('LWE','Leaky-LWE');
 
 reducesTo('Evasive-LWE', 'l-succinct-LWE'); // to come
 
-reducesTo('l-succinct-LWE', 'l-Decomposed-LWE');
+reducesTo('l-Decomposed-LWE', 'ssE-l-Decomposed-LWE');
 
 reducesTo('LWE', 'Hollow-LWE');
 
@@ -233,6 +237,8 @@ partiallyReducesTo('SIS', 'h-PRISIS', 'M-SIS reduces to h-PRISIS for l=2', 300);
 
 // LWE
 partiallyReducesTo('LWE', 'l-succinct-LWE', 'If W is wide and embeds a trapdoor', 300);
+
+partiallyReducesTo('l-succinct-LWE', 'l-Decomposed-LWE', 'For super-polynomial modulus to noise ratio');
 
 // Generalisations - "generalised by"
 //SIS
