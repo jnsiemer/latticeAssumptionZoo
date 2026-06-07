@@ -32,7 +32,7 @@ The hardness of One-More-ISIS is analysed using direct cryptanalysis in the orig
 ## Constructions built from One-More-ISIS {#constructions}
 
 - Blind signature {% cite CCS:AKSY22 %}
-- Non-interactive blind signature constructed in {% cite AC:BCGY24 %} based on the reduction in Theorem 5.3 of {% cite EPRINT:2026/291 %}
+- Non-interactive blind signature constructed in {% cite AC:BCGY24 %} based on the reduction in Theorem 5.3 of {% cite PKC:NguSie26 %}
 
 ## Related Assumptions
 
@@ -40,6 +40,7 @@ The hardness of One-More-ISIS is analysed using direct cryptanalysis in the orig
 - One-More-RSA {% cite JC:BNPS03 %} inspired One-More-ISIS
 - [Interactive ISIS$$_f$$](/isisf/#interactive-isis_f) shares similar interaction capabilities with One-More-ISIS
 - [Interactive GenISIS$$_f$$](/genisisf/#interactive-genisis_f) shares similar interaction capabilities with One-More-ISIS
+- [H-ISIS](/h-isis/) provides SIS hints and asks for an ISIS solution
 
 ## Further Reading Suggestions
 

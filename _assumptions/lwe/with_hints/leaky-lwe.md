@@ -4,7 +4,7 @@ seo_title: "Leaky LWE"
 family: "LWE"
 subfamily: "LWE with Hints"
 graph_id: "Leaky-LWE"
-assumption_status: "standard"
+assumption_status: "implied"
 
 last_modified_at: 2026-04-30
 redirect_from:

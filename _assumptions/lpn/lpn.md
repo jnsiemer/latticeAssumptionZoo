@@ -36,7 +36,7 @@ The polynomial $$f(X)$$ is typically an [irreducible polynomial](https://en.wiki
 ## Hardness
 
 The close connection of LPN to the NP-hard problem of decoding random linear codes {% cite TIT:BerMcETil78 %} is an indicator of its hardness.
-Furthermore, we can assess against the best known algorithms to solve LPN. A famous algorithm for solving LPN is the BKW algorithm {% cite STOC:BluKalWas00 %} requiring $$2^{\bigO{n / \log n}}$$ operations and $$m=2^{\bigO{n / \log n}}$$ samples. This approach was later refined in {% cite SCN:LevFou06 %} and {% cite IMACC:DelEssMay19 %}. If given only polynomially many samples $$m=\poly(n)$$, the running time of the best algorithm goes up to $$2^{\bigO{n / \log \log n}}$$ {% cite APPROX:Lyubashevsky05 %}.
+Furthermore, we can assess against the best known algorithms to solve LPN. A famous algorithm for solving LPN is the BKW algorithm {% cite STOC:BluKalWas00 %} requiring $$2^{\bigO{n / \log n}}$$ operations and $$m=2^{\bigO{n / \log n}}$$ samples. This approach was later refined in {% cite SCN:LevFou06 %} and {% cite IMACC:DelEssMay19 %}. If given only polynomially many samples $$m=\poly{n}$$, the running time of the best algorithm goes up to $$2^{\bigO{n / \log \log n}}$$ {% cite APPROX:Lyubashevsky05 %}.
 
 ## Constructions built from LPN {#constructions}
 
@@ -46,8 +46,8 @@ Furthermore, we can assess against the best known algorithms to solve LPN. A fam
   - Pseudorandom Permutations (PRP)
 - Secret-key Encryption {% cite ICALP:GilRobSeu08 %}
 - Secret-key Identification and Authentication {% cite AC:HopBlu01 %}{% cite C:JueWei05 %}{% cite EC:KatShi06 %}
-- Commitments {% cite EPRINT:2012/513 %}
-- Zero-Knowledge Proof of Knowledge {% cite EPRINT:2012/513 %}
+- Commitments {% cite AC:JKPT12 %}
+- Zero-Knowledge Proof of Knowledge {% cite AC:JKPT12 %}
 
 ## Related Assumptions
 

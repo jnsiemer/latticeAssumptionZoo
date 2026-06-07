@@ -1,0 +1,248 @@
+---
+layout: single
+---
+
+<style>
+  .page__content h3 {
+    margin-top: 0.5em !important;
+  }
+
+  /* Color Palette for Accordion */
+  .assumptions-catalogue {
+    --cat-bg: #faf9f7;       /* 1. Main Background */
+    --cat-text: #343434;     /* 2. Text, Chevrons, and Links */
+    --cat-border: #d5d0c4;   /* 3. Borders and Tree-lines */
+  }
+
+  /* Accordion Box */
+  .assumptions-catalogue {
+    border: 1px solid var(--cat-border);
+    border-radius: 6px;
+    background-color: var(--cat-bg);
+    overflow: hidden;
+    margin-bottom: 2em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .assumptions-catalogue details {
+    border-bottom: 1px solid var(--cat-border);
+  }
+  .assumptions-catalogue details:last-child {
+    border-bottom: none; 
+  }
+
+  /* Summary (Header) Styling */
+  .assumptions-catalogue summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    transition: background-color 0.2s ease;
+    color: var(--cat-text); 
+  }
+  .assumptions-catalogue summary::-webkit-details-marker { display: none; }
+  
+  .family-summary {
+    padding: 0.8em 1em;
+    background-color: rgba(0, 0, 0, 0.02); /* Faint tint for headers */
+  }
+  .family-summary:hover { 
+    background-color: rgba(0, 0, 0, 0.05); /* Slightly darker tint on hover */
+  }
+  details[open] > .family-summary { 
+    border-bottom: 1px solid var(--cat-border); 
+  }
+
+  .subfamily-summary {
+    padding: 0;
+    margin-bottom: 0.2em;
+    opacity: 0.8; /* Naturally mutes the text color */
+  }
+  .subfamily-summary:hover { opacity: 0.5; }
+
+  /* Animated Chevron */
+  .assumptions-catalogue summary::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--cat-text); 
+    border-bottom: 2px solid var(--cat-text);
+    transform: rotate(45deg); 
+    transition: transform 0.3s ease;
+    margin-left: 1em;
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+  .assumptions-catalogue details[open] > summary::after {
+    transform: rotate(225deg); 
+    margin-top: 4px; 
+  }
+
+  /* Tree-Line Aesthetics */
+  .tree-list {
+    list-style: none;
+    padding: 0 0 0 0.5em;
+    margin: 0.5em 1em 1em 1em; 
+  }
+  .tree-list .tree-list {
+    margin: 0; 
+  }
+  .tree-list li {
+    position: relative;
+    margin: 0; 
+    padding-left: 1.5em; 
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+  }
+
+  /* Vertical Trunk */
+  .tree-list li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-left: 2px solid var(--cat-border); 
+  }
+  
+  /* Cut vertical trunk for the last item */
+  .tree-list li:last-child::before {
+    bottom: auto;
+    height: 1.2em; 
+  }
+
+  /* Horizontal Branch */
+  .tree-list li::after {
+    content: "";
+    position: absolute;
+    top: 1.2em; 
+    left: 0;
+    width: 1em;
+    border-top: 2px solid var(--cat-border); 
+  }
+
+  /* Subpage Link Icon */
+  .subpage-link {
+    text-decoration: none;
+    font-size: 0.85em;
+    margin-left: 0.5em;
+    color: var(--cat-text) !important;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .subpage-link:hover { opacity: 1; }
+</style>
+
+{{ content }}
+
+{% if page.group_type %}
+  
+  {% assign family_total = page.assumptions.size %}
+  {% assign standard_implied_count = 0 %}
+  
+  {% for assumption in page.assumptions %}
+    {% assign status = assumption.assumption_status | downcase %}
+    {% if status == 'standard' or status == 'implied' %}
+      {% assign standard_implied_count = standard_implied_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  <p>
+    The Lattice Assumption Zoo currently catalogues {{ family_total }} {% if page.group_type == 'family' %}{{ page.family_name }}-based {% else %}{{ page.subfamily_name }}-{% endif %}assumption{% if family_total != 1 %}s{% endif %}; {{ standard_implied_count }} of them {% if standard_implied_count == 1 %}is a standard assumption{% else %}are standard assumptions{% endif %} or implied by standard assumptions.
+  </p>
+{% endif %}
+
+{% if page.group_type == nil %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em;">
+  <h3 style="margin: 0 !important;">List of Catalogued Assumptions</h3>
+  <button id="toggle-all-btn" class="btn btn--info btn--small" style="margin: 0 !important;">Expand All</button>
+</div>
+{% endif %}
+
+{% assign assumptions_to_render = site.assumptions %}
+{% if page.group_type %}
+  {% assign assumptions_to_render = page.assumptions %}
+{% endif %}
+
+{% assign grouped_by_family = assumptions_to_render | group_by: "family" %}
+<div class="assumptions-catalogue">
+{% for family in grouped_by_family %}
+  <details {% if page.group_type %}open{% endif %}>
+    <summary class="family-summary">
+      <span>
+        <strong>{{ family.name }}-Based Assumptions</strong>
+        {% if page.group_type == nil %}
+          <a href="/catalogue/{{ family.name | slugify }}/" class="subpage-link" title="Go to family page">&#8599;</a>
+        {% endif %}
+      </span>
+    </summary>
+    
+    {% assign grouped_by_subfamily = family.items | group_by: "subfamily" %}
+    <ul class="tree-list">
+    {% for subfamily in grouped_by_subfamily %}
+      {% if subfamily.name == "" or subfamily.name == nil %}
+        {% for assumption in subfamily.items %}
+          <li>
+            <a href="{{ assumption.url }}">{{ assumption.title }}</a>
+            {% if assumption.assumption_status %}
+            <span class="status-badge status-{{ assumption.assumption_status | downcase }}">
+              {{ assumption.assumption_status }}
+            </span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      {% else %}
+        <li>
+          <details {% if page.group_type %}open{% endif %}>
+            <summary class="subfamily-summary">
+              <span>
+                {{ subfamily.name }}
+                {% if page.group_type != 'subfamily' %}
+                  <a href="/catalogue/{{ family.name | slugify }}/{{ subfamily.name | slugify }}/" class="subpage-link" title="Go to subfamily page">&#8599;</a>
+                {% endif %}
+              </span>
+            </summary>
+            <ul class="tree-list">
+            {% for assumption in subfamily.items %}
+              <li>
+                <a href="{{ assumption.url }}">{{ assumption.title }}</a>
+                {% if assumption.assumption_status %}
+                <span class="status-badge status-{{ assumption.assumption_status | downcase }}">
+                  {{ assumption.assumption_status }}
+                </span>
+                {% endif %}
+              </li>
+            {% endfor %}
+            </ul>
+          </details>
+        </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </details>
+{% endfor %}
+</div>
+
+{% if page.group_type %}
+  <p style="margin-top: 2em;">
+    <a href="/catalogue/" class="btn btn--info">&larr; Back to Full Catalogue</a>
+  </p>
+{% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('toggle-all-btn');
+    if (!toggleBtn) return;
+    const catalogue = document.querySelector('.assumptions-catalogue');
+    toggleBtn.addEventListener('click', function() {
+      const allDetails = catalogue.querySelectorAll('details');
+      const isExpanding = toggleBtn.innerText === 'Expand All';
+      allDetails.forEach(detail => {
+        if (isExpanding) { detail.setAttribute('open', ''); } 
+        else { detail.removeAttribute('open'); }
+      });
+      toggleBtn.innerText = isExpanding ? 'Collapse All' : 'Expand All';
+    });
+  });
+</script>

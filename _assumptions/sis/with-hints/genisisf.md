@@ -23,14 +23,14 @@ The Generalised ISIS$$_f$$ assumption (GenISIS$$_f$$) was introduced by Dubois, 
 
 ### GenISIS$$_{f}$$
 _Let $$(n,m,q,\beta,k,s,\mathcal{R})$$ be public parameters, matrix $$\mat{A} \in \mathcal{R}_q^{n \times m}$$ be chosen uniformly at random, $$f$$ be a keyed function $$f: \mathcal{K} \times D \rightarrow \mathcal{R}_q^n$$, and $$\chi$$ be a distribution over $$D$$. The challenger chooses a key $$\kappa \sample \mathcal{K}$$ uniformly and generates $$k$$ hints $$(x_i, \vec{s}_i)$$ in the following way._
-- $$x_i \sample \chi$$
-- $$\vec{s}_i \sample \mat{A}_s^{-1}(f(\kappa, x_i))$$
+- $$x_i \sample \chi$$,
+- $$\vec{s}_i \sample \mat{A}_s^{-1}(f(\kappa, x_i))$$.
 
 _Given the matrix $$\mat{A}$$, the key $$\kappa$$, and the set of hints $$\set{(x_i, \vec{s}_i)}_{i \in [k]}$$, the adversary is asked to find a new tuple $$(x^{*}, \vec{s}^{*}) \in D \times \mathcal{R}^m$$ satisfying_
 
 $$ \mat{A} \cdot \vec{s}^{*} = f(\kappa, x^{*}) \bmod q \land \norm{\vec{s}^{*}} \leq \beta \land (x^{*}, \vec{s}^{*}) \notin \set{(x_i, \vec{s}_i)}_{i \in [k]}. $$
 
-The provided definition {% cite EPRINT:2026/291 %} simplifies notation and removes the condition $$\vec{s}^{*} \neq \vec{0}$$ compared to {% cite PKC:DKLW25 %}.
+The provided definition {% cite PKC:NguSie26 %} simplifies notation and removes the condition $$\vec{s}^{*} \neq \vec{0}$$ compared to {% cite PKC:DKLW25 %}.
 
 **Intuition.** GenISIS$$_f$$ essentially expects the adversary to either successfully solve [ISIS](/sis/#inhomogeneous-sis) or compute a preimage of the function $$f(\kappa, \cdot)$$. Thus, the hardness of GenISIS$$_f$$ depends on the choice of $$f$$. We list few examples for insecure choices of $$f$$.
 - Additively homomorphic functions imply trivial solutions by adding or subtracting two hints.
@@ -42,9 +42,9 @@ Compared to ISIS$$_f$$, GenISIS$$_f$$ allows hints to be chosen from any distrib
 ### Interactive GenISIS$$_f$$
 _Let $$(n,m,\ell,q,\beta_s,\beta_m,s,\mathcal{R})$$ be public parameters, matrices $$\mat{A} \in \mathcal{R}_q^{n \times m}$$, $$\mat{C} \in \mathcal{R}_q^{n \times \ell}$$ be chosen uniformly at random, $$f$$ be a keyed function $$f: \mathcal{K} \times D \rightarrow \mathcal{R}_q^n$$, $$\chi$$ be a distribution over $$D$$, $$\mathcal{H} = \emptyset$$, and a uniformly chosen key $$\kappa \in \mathcal{K}$$. Given the matrices $$\mat{A}$$, $$\mat{C}$$, and the key $$\kappa$$, an adversary is able to query an oracle $$O_\text{pre}$$ adaptively, which on input $$\vec{m} \in \mathcal{R}^\ell$$ proceeds as follows._
 1. if $$\norm{\vec{m}} > \beta_m$$ then return $$\perp$$
-2. $$x \sample \chi$$
-3. $$\vec{s} \sample \mat{A}_s^{-1}(f(x) + \mat{C} \cdot \vec{m})$$
-4. $$\mathcal{H} \leftarrow \mathcal{H} \cup \set{x,\vec{s},\vec{m}}$$
+2. $$x \sample \chi$$,
+3. $$\vec{s} \sample \mat{A}_s^{-1}(f(x) + \mat{C} \cdot \vec{m})$$,
+4. $$\mathcal{H} \leftarrow \mathcal{H} \cup \set{x,\vec{s},\vec{m}}$$,
 5. return $$(x, \vec{s})$$
 
 _An adversary is asked to find a new tuple $$(x^{*}, \vec{s}^{*}, \vec{m}^{*})$$ satisfying_
@@ -56,9 +56,9 @@ Compared to the interactive version of ISIS$$_f$$, interactive GenISIS$$_f$$ int
 
 ## Hardness
 
-If $$f$$ is a random oracle then the GenISIS$$_f$$ instance, is at least as hard as SIS {% cite STOC:GenPeiVai08 %}. Furthermore, Lemma C.1 in {% cite EPRINT:2026/291 %} shows that the standard-model signature given in {% cite EC:MicPei12 %} can be adapted to GenISIS$$_f$$ s.t. the adapted GenISIS$$_f$$ instance is at least as hard as SIS in the standard model.
+If $$f$$ is a random oracle then the GenISIS$$_f$$ instance, is at least as hard as SIS {% cite STOC:GenPeiVai08 %}. Furthermore, Lemma C.1 in {% cite PKC:NguSie26 %} shows that the standard-model signature given in {% cite EC:MicPei12 %} can be adapted to GenISIS$$_f$$ s.t. the adapted GenISIS$$_f$$ instance is at least as hard as SIS in the standard model.
 
-Dubois et al. {% cite PKC:DKLW25 %} provide a translation of Theorem 3.3 from {% cite C:BLNS23 %} to GenISIS$$_f$$, which states that interactive GenISIS$$_f$$ is at least as hard as GenISIS$$_f$$. This reduction comes with a polynomial loss factor within the size of queries to $$O_\text{pre}$$. This polynomial loss-factor is removed in a tight reduction given in Theorem 4.3 of {% cite EPRINT:2026/291 %}.
+Dubois et al. {% cite PKC:DKLW25 %} provide a translation of Theorem 3.3 from {% cite C:BLNS23 %} to GenISIS$$_f$$, which states that interactive GenISIS$$_f$$ is at least as hard as GenISIS$$_f$$. This reduction comes with a polynomial loss factor within the size of queries to $$O_\text{pre}$$. This polynomial loss-factor is removed in a tight reduction given in Theorem 4.3 of {% cite PKC:NguSie26 %}.
 
 Otherwise, the authors {% cite PKC:DKLW25 %} show in Theorem 7 that GenISIS$$_f$$ is equivalent to the sEUF-RMA experiment for signatures based on vanishing SIS, which are introduced in the same work.
 
@@ -67,7 +67,7 @@ Otherwise, the authors {% cite PKC:DKLW25 %} show in Theorem 7 that GenISIS$$_f$
 Bootle et al. {% cite C:BLNS23 %} provide a framework to generically build the following constructions from any interactive ISIS$$_f$$ instance. As any ISIS$$_f$$ instance is also a GenISIS$$_f$$ instance, GenISIS$$_f$$ inherits this framework.
 - Signatures {% cite C:BLNS23 %}
 - Group signatures {% cite C:BLNS23 %}
-- Blind signatures {% cite C:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
+- (Non-interactive batched) blind signatures {% cite C:BLNS23 %}{% cite CCS:LyuSeiSte24 %}{% cite PKC:BalGoyYad26 %}
 - Anonymous credentials {% cite C:BLNS23 %}{% cite CCS:LyuSeiSte24 %}
 
 ## Related Assumptions

@@ -4,7 +4,7 @@ seo_title: "Concise title without math"
 family: "SIS"
 subfamily: "SIS with Hints"
 graph_id: "ID-in-graph"
-assumption_status: "standard|broken|remove-this-attribute"
+assumption_status: "standard|implied|broken|remove-this-attribute"
 
 last_modified_at: 2026-04-02
 published: false

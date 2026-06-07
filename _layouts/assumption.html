@@ -31,6 +31,7 @@ classes: wide
     cursor: pointer;
   }
   .status-broken { background-color: #d9534f; }
+  .status-implied { background-color: #5c9abd; }
   .status-standard { background-color: #5cb85c; }
 
   .status-badge:hover {
@@ -89,7 +90,8 @@ classes: wide
 
               {% capture tooltip_text %}
                 {% case page.assumption_status | downcase %}
-                  {% when "standard" %}This is a standard assumption or there is a reduction from a standard assumption that does not impose unusually strict conditions on the parameters.
+                  {% when "standard" %}This assumption can be reduced to long-standing, open problems and has undergone significant cryptanalytic effort.
+                  {% when "implied" %}There is a reduction from a standard assumption that does not impose unusually strict conditions on parameter choices.
                   {% when "broken" %}This assumption has been compromised by known attacks.
                   {% else %}Unknown assumption status.
                 {% endcase %}

@@ -4,7 +4,7 @@ seo_title: "Hollow LWE"
 family: "LWE"
 subfamily: "LWE with Distributional Constraints"
 graph_id: "Hollow-LWE"
-assumption_status: "standard"
+assumption_status: "implied"
 
 last_modified_at: 2026-05-03
 redirect_from:

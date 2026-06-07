@@ -3,7 +3,7 @@ title: "Learning with Rounding (LWR)"
 seo_title: "Learning with Rounding"
 family: "LWE"
 graph_id: "LWR"
-assumption_status: "standard"
+assumption_status: "implied"
 
 last_modified_at: 2026-04-11
 redirect_from:
@@ -32,12 +32,17 @@ By rounding to the nearest integer modulo $$p$$, the challenger implicitly intro
 _Let matrix $$\mat{A} \in \ZZ_q^{m \times n}$$ and secret vector $$\vec{s} \in \ZZ_q^n$$ be chosen uniformly at random. An adversary is asked to distinguish between the LWR distribution $$(\mat{A}, \lfloor \vec{b} \rceil_p = \lfloor \mat{A} \cdot \vec{s} \rceil_p)$$ and a uniformly random distribution over $$\ZZ_q^{m \times n} \times \ZZ_p^m$$._
 
 In {% cite EC:BanPeiRos12 %}, they define a ring-version of LWR and build a PSF from it. Similarly, there exists a module-version defined in {% cite AFRICACRYPT:DKRV18 %}.
+LWR can also be formulated where the secret does follow another secret distribution than the uniform distribution.
 
 ## Hardness
 
-There are several papers providing a reduction from LWE to LWR. The first one required the modulus $$q$$ and the modulus-to-error ratio to grow super-polynomial {% cite EC:BanPeiRos12 %}. These requirement could be improved in {% cite C:AKPW13 %} to polynomially sized moduli and modulus-to-error ratios. Further follow-up work has since improved on the provable security of LWR {% cite TCC:BGMRR16 %}.
+There are several papers providing a reduction from LWE to LWR. The first one required the modulus $$q$$ and the modulus-to-error ratio to grow super-polynomial {% cite EC:BanPeiRos12 %}. These requirement could be improved in {% cite C:AKPW13 %} to polynomially sized moduli and modulus-to-error ratios. Further follow-up works have since improved on the provable security of LWR {% cite EPRINT:AlpApo16 %} {% cite TCC:BGMRR16 %} {% cite JC:BLRSSS18 %}.
 
-Note that the reductions presented above were not generalised to the ring- or module-setting. An attempt to prove Ring-LWR secure was made in {% cite AC:CheZhaZha18 %} by giving a reduction from Ring-LWE to a modified version of R-LWR.
+Note that not all of the reductions presented above were generalised to the ring- or module-setting. 
+The original reduction from {% cite EC:BanPeiRos12 %} works for Ring-LWR as well.
+The reduction proven in {% cite EPRINT:AlpApo16 %} works for Module-LWR, but not for Ring-LWR.
+An attempt to prove Ring-LWR secure was made in {% cite AC:CheZhaZha18 %} by giving a reduction from Ring-LWE to a modified version of Ring-LWR.
+For specific rounding functions it was improved in {% cite C:LiuWan20 %}.
 
 ## Constructions built from LWR {#constructions}
 

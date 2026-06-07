@@ -11,9 +11,9 @@ redirect_from:
   - /basis_augmented_sis/
 ---
 
-$$\newcommand{\rand}{\text{rand}}\newcommand{\struct}{\text{struct}}\newcommand{\power}{\text{power}}$$
 The Basis-Augmented SIS (BASIS) problem was introduced in 2023 by Wee and Wu {% cite EC:WeeWu23a %}.
 They consider several instantiations of their proposed framework and utilise it to construct vector commitments, functional commitments, aggregatable commitments, and combinations thereof.
+$$\newcommand{\rand}{\text{rand}}\newcommand{\struct}{\text{struct}}\newcommand{\power}{\text{power}}$$
 
 ## Definition
 
@@ -28,7 +28,7 @@ The trapdoor allows the adversary to sample preimages of $$\mat{B}$$ and thus, i
 ## Variants
 There are three concrete instantiations of the sampling algorithm $$\mathsf{Samp}$$.
 
-### BASIS$$_\text{rand}$$ <a href="#" class="status-badge status-standard" data-tooltip="This is a standard assumption or there is a reduction from a standard assumption that does not impose unusually strict conditions on the parameters.">standard</a> {#BASIS_rand}
+### BASIS$$_\text{rand}$$ <a href="#" class="status-badge status-implied" data-tooltip="There is a reduction from a standard assumption that does not impose unusually strict conditions on parameter choices.">implied</a> {#BASIS_rand}
 _The sampling algorithm $$\mathsf{Samp}(\mat{A})$$ samples $$i^{*} \sample [\ell], \mat{A}_i \sample \ZZ_q^{(n+1) \times m}$$ for all $$i \neq i^{*}, \vec{a} \sample \ZZ_q^m$$, sets $$\mat{A}_{i^{*}}^T = \begin{bmatrix} \vec{a} & \mat{A}^T \end{bmatrix}$$, and outputs_
 
 $$ \mat{B} = \left[ \begin{array}{ccc|c}

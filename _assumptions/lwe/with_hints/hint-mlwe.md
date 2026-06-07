@@ -4,7 +4,7 @@ seo_title: "Hint-LWE"
 family: "LWE"
 subfamily: "LWE with Hints"
 graph_id: "Hint-LWE"
-assumption_status: "standard"
+assumption_status: "implied"
 
 last_modified_at: 2026-04-30
 redirect_from:

@@ -4,7 +4,7 @@ seo_title: "k-LWE"
 family: "LWE"
 subfamily: "LWE with Hints"
 graph_id: "k-LWE"
-assumption_status: "standard"
+assumption_status: "implied"
 
 last_modified_at: 2026-04-30
 redirect_from:
@@ -28,11 +28,11 @@ $$ \exists \vec{z} \in \ZZ^n: \begin{bmatrix} \vec{u}^T \\ \mat{A} \end{bmatrix}
 
 In other words, the short values $$\langle \vec{x}_i, \vec{y} \rangle$$ from the left distribution would be easily distinguishable from uniform values. $$k$$-LWE handles this issue by replacing $$U(\ZZ_q^{m+1})$$ by $$U\left( \text{span}_{i\leq k}\left( \begin{bmatrix} 1 \\ \vec{x}_i \end{bmatrix}^\bot \right) \right)$$.
 
-Please find the module version of $$k$$-LWE in Definition 2.22 of {% cite EPRINT:2025/1852 %}.
+Please find the module version of $$k$$-LWE in Definition 2.22 of {% cite EC:AFLLW26 %}.
 
 ## Hardness
 
-Ling et al. {% cite C:LPSS14 %} proved that $$k$$-LWE is at least as hard as LWE for $$k \in \bigO{m}$$. This result was extended to the module-version of $$k$$-LWE in Section 7 of {% cite EPRINT:2025/1852 %}.
+Ling et al. {% cite C:LPSS14 %} proved that $$k$$-LWE is at least as hard as LWE for $$k \in \bigO{m}$$. This result was extended to the module-version of $$k$$-LWE in Section 7 of {% cite EC:AFLLW26 %}.
 
 ## Constructions built from $$k$$-LWE {#constructions}
 
