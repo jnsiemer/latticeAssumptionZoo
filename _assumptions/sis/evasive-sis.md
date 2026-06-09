@@ -14,6 +14,9 @@ redirect_from:
 table.no-lines {
   margin: 0 auto 2em auto;
   width: max-content;
+  max-width: 100%;
+  display: block;
+  overflow-x: auto;
 
   tbody tr:not(:last-child) td {
     border-bottom: none !important;
