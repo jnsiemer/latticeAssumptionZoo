@@ -122,6 +122,8 @@ assumption('ISIS', 'Inhomogeneous SIS', 1997, ['Commitment', 'ZK', 'Sign'], '/si
 
 assumption('ApproxSIS', 'Approximate SIS', 2019, ['Sign'], '/approxsis/', 'SIS');
 
+assumption('Asymmetric-SIS', 'Asymmetric SIS', 2020, ['Sign'], '/asymmetric-sis/', 'SIS');
+
 assumption('Split-SIS', 'Split-SIS', 2015, ['PrivEnhSign'], '/split-sis/', 'SIS');
 assumption('Extended-Split-SIS', 'Extended Split-SIS', 2016, ['PrivEnhSign'], '/split-sis/#extended-split-sis', 'SIS', true);
 assumptionFamily('Split-SIS', ['Split-SIS', 'Extended-Split-SIS']);
@@ -174,6 +176,8 @@ assumption('Binary-Matrix-LWE', 'Binary-Matrix LWE', 2013, ['PKE'], '/binary-mat
 
 assumption('k-LWE', 'k-LWE', 2014, ['PKE'], '/klwe/', 'LWE');
 
+assumption('Asymmetric-LWE', 'Asymmetric LWE', 2020, ['Sign', 'PKE'], '/asymmetric-lwe/', 'LWE');
+
 assumption('elLWE', 'LWE with Error-Leakage', 2023, ['FuncEnc'], '/ellwe/', 'LWE');
 assumption('Hint-LWE', 'Hint Learning with Errors', 2022, ['Commitment', 'ZK', 'Sign', 'TresholdSign'], '/hint-mlwe/', 'LWE');
 assumption('Coset-Hint-LWE', 'Coset Hint Learning with Errors', 2025, ['TresholdEnc'], '/hint-mlwe/#coset-hint-mlwe', 'LWE', true);
@@ -212,6 +216,8 @@ reducesTo('SIS', 'ISIS');
 
 reducesTo('SIS', 'ApproxSIS');
 
+reducesTo('SIS', 'Asymmetric-SIS');
+
 reducesTo('SIS', 'Split-SIS');
 reducesTo('SIS', 'Extended-Split-SIS');
 
@@ -244,6 +250,8 @@ reducesTo('LWR', 'LWE');
 reducesTo('LWE', 'Binary-Matrix-LWE');
 
 reducesTo('LWE', 'k-LWE');
+
+reducesTo('LWE', 'Asymmetric-LWE');
 
 reducesTo('LWE', 'elLWE');
 reducesTo('LWE', 'Hint-LWE');
