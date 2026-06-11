@@ -194,6 +194,8 @@ assumption('l-succinct-LWE', 'l-succinct LWE', 2024, ['FuncEnc', 'EffEnhEnc'], '
 assumption('Sparse-Matrix-LWE', 'Sparse Matrix LWE', 2024, ['COED'], '/sparse-matrix-lwe/', 'LWE');
 assumption('Hollow-LWE', 'Hollow LWE', 2025, ['PKE'], '/hollow-lwe/', 'LWE');
 
+assumption('Circular-LWE', 'Circular (Small-Secret) LWE', 2023, ['FuncEnc'], '/circular-lwe/', 'LWE');
+
 assumption('Tensor-LWE', 'Tensor LWE', 2022, ['FuncEnc', 'EffEnhEnc'], '/tensor-lwe/', 'LWE');
 assumption('Strong-Tensor-LWE', 'Strong Tensor LWE', 2023, ['FuncEnc', 'EffEnhEnc'], '/tensor-lwe/#strong-tensor-lwe', 'LWE', true);
 assumption('Circular-Tensor-LWE', 'Circular Tensor LWE', 2024, ['FuncEnc'], '/tensor-lwe/#circular-tensor-lwe', 'LWE', true);
@@ -247,10 +249,12 @@ reducesTo('BASIS_power', 'h-PRISIS');
 reducesTo('k-M-ISIS', 'BASIS_struct');
 reducesTo('BASIS_struct', 'l-succinct-SIS');
 
+reducesTo('Circular-LWE', 'LWE');
+
 // LWE
 reducesTo('LWE', 'SIS', 1000);
 reducesTo('ssLWE', 'LWE');
-reducesTo('LWR', 'LWE');
+reducesTo('LWE', 'LWR');
 
 reducesTo('LWE', 'Binary-Matrix-LWE');
 
