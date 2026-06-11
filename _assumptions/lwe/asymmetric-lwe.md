@@ -30,7 +30,7 @@ The reduction from [Short Secret LWE](/lwe/#short-secret-lwe)$$_{n,m,q,\chi_{\mi
 - $$D_{\Lambda_0, s_0} + D_{\Lambda_1, s_1}$$ is statistically close to $$D_{\Lambda_0 + \Lambda_1, \sqrt{s_0^2 + s_1^2}}$$ according to Lemma 4.12 in {% cite PKC:BonFre11 %}
 - $$\mathsf{Bin}(x, p) + \mathsf{Bin}(y, p) = \mathsf{Bin}(x+y, p)$$, which is a [well-known fact](https://en.wikipedia.org/wiki/Binomial_distribution#Sums_of_binomials){:target="_blank"}.
 
-However, a reduction from LWE would introduce a loss in LWE samples $$m$$ and for several distributions, it is unclear whether a reduction exists. Therefore, the authors of {% cite PKC:ZYFZY20 %} describe further cryptanalytic approaches against Asymmetric LWE in Section 5.
+However, a reduction from LWE would introduce a loss in LWE samples $$m$$ and for several distributions, it is unclear whether a reduction exists. Therefore, the authors of {% cite PKC:ZYFZY20 %} describe further cryptanalytic approaches against Asymmetric LWE in Section 5. Further cryptanalysis can be found in {% cite IET-IFS:HuDonDon21 %}.
 
 
 ## Constructions built from Asymmetric LWE {#constructions}
