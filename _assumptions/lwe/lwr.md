@@ -52,4 +52,5 @@ For specific rounding functions it was improved in {% cite C:LiuWan20 %}.
 
 ## Related Assumptions
 
+- [Learning with Alternating Moduli](/learning-with-alternating-moduli/) removes the rounding operation and immediately applies a second modulus.
 - [Learning with Errors](/lwe/) uses random noise rather than deterministic rounding compared to LWR.

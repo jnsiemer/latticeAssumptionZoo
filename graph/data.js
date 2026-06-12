@@ -175,6 +175,7 @@ assumption('Evasive-SIS', 'Evasive SIS', 2022, ['Sign'], '/evasive-sis/', 'SIS')
 assumption('LWE', 'Learning with Errors', 2005, ['PKE', 'FuncEnc', 'COED'], '/lwe/', 'LWE');
 assumption('ssLWE', 'Short secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/#short-secret-lwe', 'LWE', true);
 assumption('LWR', 'Learning with Rounding', 2012, ['PKE'], '/lwr/', 'LWE');
+assumption('LwAM', 'Learning with Alternating Moduli', 2025, ['Commitment'], '/lwam/', 'LWE'); // list of constructions is "PRF" right now, which doesn't really fit into any current category
 
 assumption('Binary-Matrix-LWE', 'Binary-Matrix LWE', 2013, ['PKE'], '/binary-matrix-lwe/', 'LWE');
 
@@ -259,6 +260,7 @@ reducesTo('Decomposed-SIS', 'Extended-Decomposed-SIS', 300);
 reducesTo('LWE', 'SIS', 1000);
 reducesTo('ssLWE', 'LWE');
 reducesTo('LWE', 'LWR');
+reducesTo('LWE', 'LwAM');
 
 reducesTo('LWE', 'Binary-Matrix-LWE');
 
