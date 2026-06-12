@@ -38,3 +38,7 @@ Trivially, LWE implies $$\ell$$-succinct LWE$$_{n, m, \ell m, q, \chi, \poly{\la
 - [$$\ell$$-succinct SIS](/l-succinct-sis/) is the SIS version of $$\ell$$-succinct LWE.
 - [Public-coin evasive LWE](/TODO/) implies $$\ell$$-succinct LWE.
 - [BASIS$$_\text{struct}$$](/basis/#BASIS_struct) inspired $$\ell$$-succinct LWE.
+
+## Further Reading Suggestions
+
+- [Workshop session from Simons Institute](https://simons.berkeley.edu/talks/david-wu-ut-austin-2025-06-24) by David Wu.

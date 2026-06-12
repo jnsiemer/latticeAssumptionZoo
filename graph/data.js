@@ -164,6 +164,10 @@ assumption('h-PRISIS', 'h-PRISIS', 2024, ['Commitment'], '/h-basis/#h-prisis', '
 assumption('l-succinct-SIS', 'l-succinct SIS', 2024, ['Commitment'], '/l-succinct-sis/', 'SIS');
 assumptionFamily('BASIS', ['BASIS', 'BASIS_rand', 'BASIS_struct', 'BASIS_power', 'h-BASIS', 'h-PRISIS', 'l-succinct-SIS']);
 
+assumption('Decomposed-SIS', 'Decomposed SIS', 2026, ['Commitment'], '/decomposed-sis/', 'SIS'); // list of constructions is "Hash functions" right now, which doesn't really fit into any current category
+assumption('Extended-Decomposed-SIS', 'Extended Decomposed SIS', 2026, ['Commitment'], '/decomposed-sis/#extended-decomposed-sis', 'SIS', true);
+assumptionFamily('Decomposed-SIS', ['Decomposed-SIS', 'Extended-Decomposed-SIS']);
+
 assumption('Evasive-SIS', 'Evasive SIS', 2022, ['Sign'], '/evasive-sis/', 'SIS');
 
 
@@ -249,7 +253,7 @@ reducesTo('BASIS_power', 'h-PRISIS');
 reducesTo('k-M-ISIS', 'BASIS_struct');
 reducesTo('BASIS_struct', 'l-succinct-SIS');
 
-reducesTo('Circular-LWE', 'LWE');
+reducesTo('Decomposed-SIS', 'Extended-Decomposed-SIS', 300);
 
 // LWE
 reducesTo('LWE', 'SIS', 1000);
@@ -271,10 +275,13 @@ reducesTo('LWE','Leaky-LWE');
 reducesTo('Evasive-LWE', 'l-succinct-LWE'); // to come
 
 reducesTo('Decomposed-LWE', 'ssE-Decomposed-LWE');
+reducesTo('Decomposed-LWE', 'Decomposed-SIS');
 
 reducesTo('LWE', 'Hollow-LWE');
 
 reducesTo('LWE', 'Sparse-Matrix-LWE');
+
+reducesTo('Circular-LWE', 'LWE', 400);
 
 // NTRU
 reducesTo('NTRU', 'LWE', 500);

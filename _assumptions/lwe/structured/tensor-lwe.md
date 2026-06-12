@@ -51,4 +51,4 @@ For further details, we refer to Section 3.2 and 3.3 in {% cite C:ARYY23 %}.
 
 ## Related Assumptions
 
-- [Decomposed LWE](/decomposed-lwe/) also adds some structure to LWE but does not utilise tensor products.
+- [Decomposed LWE](/decomposed-lwe/) also adds some structure to LWE.

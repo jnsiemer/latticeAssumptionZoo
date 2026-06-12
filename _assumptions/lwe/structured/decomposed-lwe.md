@@ -72,6 +72,7 @@ The targets of the Decomposed instance are constructed as $$\vec{b}_{i,j}' = \ve
 
 ## Related Assumptions
 
+- [Decomposed SIS](/decomposed-sis/) is the SIS version of Decomposed LWE.
 - [$$\ell$$-succinct LWE](/l-succinct-lwe/) shows similarities to Decomposed LWE.
 
 ## Further Reading Suggestions
