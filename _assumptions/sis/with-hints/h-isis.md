@@ -68,3 +68,7 @@ Further, the authors {% cite EPRINT:2026/187 %} essentially provide a lower boun
 
 - [One-More-ISIS](/om-isis/) provides an adaptive ISIS-solver but expects one more solution than queries made to the ISIS-solver.
 - [$$k$$-SIS](/ksis/) provides a small number of SIS hints and restricts the space of solutions to non-linear combinations of the given hints.
+
+## Further Reading Suggestions
+
+- [Blog article](https://martinralbrecht.wordpress.com/2026/06/12/hardness-of-hinted-isis-from-the-space-time-hardness-of-lattice-problems/) by Martin Albrecht on the hardness of hinted ISIS

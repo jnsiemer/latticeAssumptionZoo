@@ -183,6 +183,10 @@ assumption('k-LWE', 'k-LWE', 2014, ['PKE'], '/klwe/', 'LWE');
 
 assumption('Asymmetric-LWE', 'Asymmetric LWE', 2020, ['Sign', 'PKE'], '/asymmetric-lwe/', 'LWE');
 
+assumption('Extended-LWE', 'Extended LWE', 2011, ['ZK', 'PKE', 'FuncEnc'], '/extended-lwe/', 'LWE');
+assumption('MH-Ext-LWE', 'Multi-Hint Extended LWE', 2016, ['ZK', 'PKE', 'FuncEnc'], '/extended-lwe/#multi-hint-extended-lwe', 'LWE', true);
+assumptionFamily('Extended-LWE', ['Extended-LWE', 'MH-Ext-LWE']);
+
 assumption('elLWE', 'LWE with Error-Leakage', 2023, ['FuncEnc'], '/ellwe/', 'LWE');
 assumption('Hint-LWE', 'Hint Learning with Errors', 2022, ['Commitment', 'ZK', 'Sign', 'TresholdSign'], '/hint-mlwe/', 'LWE');
 assumption('Coset-Hint-LWE', 'Coset Hint Learning with Errors', 2025, ['TresholdEnc'], '/hint-mlwe/#coset-hint-mlwe', 'LWE', true);
@@ -267,6 +271,9 @@ reducesTo('LWE', 'Binary-Matrix-LWE');
 reducesTo('LWE', 'k-LWE');
 
 reducesTo('LWE', 'Asymmetric-LWE');
+
+reducesTo('LWE', 'Extended-LWE', 200);
+reducesTo('LWE', 'MH-Ext-LWE', 200);
 
 reducesTo('LWE', 'elLWE');
 reducesTo('LWE', 'Hint-LWE');

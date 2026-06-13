@@ -20,7 +20,7 @@ The Learning with Alternating Moduli (LwAM) problem was introduced by Chen, Ji, 
 _Let $$q_0 > q_1 \geq 2$$ and $$\mathsf{gcd}(q_0,q_1) = 1$$. Let $$\vec{s} \in \ZZ_{q_0}^n$$ and $$\mat{A} \sample \ZZ_{q_0}^{m \times n}$$. Given $$\mat{A}$$ and $$(\mat{A} \cdot \vec{s} \bmod q_0) \bmod q_1$$, an adversary is asked to find the secret vector $$\vec{s}$$.
 
 ### Decisional LwAM$$_{n,m,q_0,q_1}$$ {#decision-lwam}
-_Let $$q_0 > q_1 \geq 2$$ and $$\mathsf{gcd}(q_0,q_1) = 1$$. Let $$\vec{s} \in \ZZ_{q_0}^n$$ and $$\mat{A} \sample \ZZ_{q_0}^{m \times n}$$. Given $$\mat{A}$$ and $$(\mat{A} \cdot \vec{s} \bmod q_0) \bmod q_1$$, an adversary is asked to distinguish between the LwAM distribution_
+_Let $$q_0 > q_1 \geq 2$$ and $$\mathsf{gcd}(q_0,q_1) = 1$$. Let $$\vec{s} \in \ZZ_{q_0}^n$$ and $$\mat{A} \sample \ZZ_{q_0}^{m \times n}$$. An adversary is asked to distinguish between the distributions_
 
 $$\left(\mat{A}, (\mat{A} \cdot \vec{s} \bmod q_0) \bmod q_1 \right) \text{ and } \mathcal{U}\left( \ZZ_{q_0}^{n \times m} \right) \times \left( \mathcal{U}\left(\ZZ_{q_0}^m \right) \bmod q_1 \right).$$
 
