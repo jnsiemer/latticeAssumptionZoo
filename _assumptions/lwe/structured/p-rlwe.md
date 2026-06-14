@@ -2,6 +2,7 @@
 title: "Power Ring-LWE (P-RLWE)"
 seo_title: "Power Ring-LWE"
 family: "LWE"
+subfamily: "Structured LWE"
 graph_id: "P-RLWE"
 
 last_modified_at: 2026-06-14

@@ -2,6 +2,7 @@
 title: "Secret-Power Ring-LWE (SP-RLWE)"
 seo_title: "Secret-Power Ring-LWE"
 family: "LWE"
+subfamily: "Structured LWE"
 graph_id: "SP-RLWE"
 
 last_modified_at: 2026-06-13

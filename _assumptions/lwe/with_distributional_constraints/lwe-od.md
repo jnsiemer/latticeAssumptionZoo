@@ -2,6 +2,7 @@
 title: "Learning with Errors with Output Dependencies (LWE-OD)"
 seo_title: "Learning with Errors with Output Dependencies"
 family: "LWE"
+subfamily: "LWE with Distributional Constraints"
 graph_id: "LWE-OD"
 
 last_modified_at: 2026-06-13
