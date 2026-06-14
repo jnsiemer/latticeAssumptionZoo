@@ -3,7 +3,6 @@ title: "Learning with Errors with Output Dependencies (LWE-OD)"
 seo_title: "Learning with Errors with Output Dependencies"
 family: "LWE"
 graph_id: "LWE-OD"
-assumption_status: "implied"
 
 last_modified_at: 2026-06-13
 redirect_from:

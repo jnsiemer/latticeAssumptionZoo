@@ -212,6 +212,9 @@ assumption('Strong-Tensor-LWE', 'Strong Tensor LWE', 2023, ['FuncEnc', 'EffEnhEn
 assumption('Circular-Tensor-LWE', 'Circular Tensor LWE', 2024, ['FuncEnc'], '/tensor-lwe/#circular-tensor-lwe', 'LWE', true);
 assumptionFamily('Tensor-LWE', ['Tensor-LWE', 'Strong-Tensor-LWE', 'Circular-Tensor-LWE']);
 
+assumption('SP-RLWE', 'Secret-Power Ring-LWE', 2026, ['PrivEnhEnc'], '/sp-rlwe/', 'LWE');
+assumption('wSP-RLWE', 'Weak Secret-Power Ring-LWE', 2026, ['PrivEnhEnc'], '/sp-rlwe/#wsp-rlwe', 'LWE', true);
+
 // Standalone assumptions - family, i.e. last parameter is always 'Standalone'
 assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['Sign', 'PKE', 'COED'], '/ntru/', 'Standalone');
 assumption('LIP', 'Lattice Isomorphism Problem', 2022, ['Sign', 'PKE', 'FuncEnc', 'COED'], '/lip/', 'Standalone'); /*First consideration in crypto-context*/
@@ -289,6 +292,8 @@ reducesTo('LWE', 'Hollow-LWE');
 reducesTo('LWE', 'Sparse-Matrix-LWE');
 
 reducesTo('Circular-LWE', 'LWE', 400);
+
+reducesTo('SP-RLWE', 'wSP-RLWE');
 
 // NTRU
 reducesTo('NTRU', 'LWE', 500);
