@@ -200,6 +200,8 @@ assumptionFamily('Decomposed-LWE', ['Decomposed-LWE', 'ssE-Decomposed-LWE', 'ssC
 
 assumption('l-succinct-LWE', 'l-succinct LWE', 2024, ['FuncEnc', 'EffEnhEnc'], '/l-succinct-lwe/', 'LWE');
 
+assumption('Adaptive-LWE', 'Adaptive LWE', 2018, ['FuncEnc'], '/adaptive-lwe/', 'LWE');
+
 assumption('Sparse-Matrix-LWE', 'Sparse Matrix LWE', 2024, ['COED'], '/sparse-matrix-lwe/', 'LWE');
 assumption('Hollow-LWE', 'Hollow LWE', 2025, ['PKE'], '/hollow-lwe/', 'LWE');
 
@@ -328,6 +330,8 @@ partiallyReducesTo('LWE', 'Tensor-LWE', 'If all x_i are equal', 400);
 
 // LWE
 partiallyReducesTo('LWE', 'l-succinct-LWE', 'If W is wide and embeds a trapdoor', 300);
+
+partiallyReducesTo('LWE', 'Adaptive-LWE', 'If k is constant', 400);
 
 partiallyReducesTo('l-succinct-LWE', 'Decomposed-LWE', 'For super-polynomial modulus to noise ratio');
 
