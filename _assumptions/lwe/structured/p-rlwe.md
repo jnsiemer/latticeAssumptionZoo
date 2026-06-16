@@ -21,7 +21,7 @@ The Power Ring-LWE (P-RLWE) assumption was introduced by Abram, Roy, and Scholl 
 ### P-RLWE$$_{q,\chi,m,\mathcal{R}}$$ {#p-rlwe}
 _Let $$\mathcal{R}_q = \ZZ_q[X] / I\langle f(X) \rangle$$, where $$f$$ is a monic polynomial and let $$\Gamma$$ and $$\chi$$ be distributions over $$\mathcal{R}_q$$. Sample $$a \sample \Gamma$$, $$w \sample \mathcal{R}_q$$, $$e_i \sample \chi$$, and $$v_i \sample \mathcal{R}_q$$ for $$i \in \set{0,\dots,m}$$. An adversary is asked to distinguish between the distribution_
 
-$$ \left( a, \set{a^i \cdot w^i + e_i}_{i \in \set{0,\dots,m}} \right) \text{ and } \left( a, \set{v_i}_{i \in \set{0,\dots,m}} \right). $$
+$$ \left( a, \set{a^i \cdot w + e_i}_{i \in \set{0,\dots,m}} \right) \text{ and } \left( a, \set{v_i}_{i \in \set{0,\dots,m}} \right). $$
 
 Please note that the assumption described above follows the original definition from {% cite EC:AbrRoySch24 %}. Other papers {% cite C:IshLiLin25 %}{% cite AC:LXYYZ25 %} claim to specialise this assumption, call it Power Ring-LWE, and define a circular version of it. However, their assumption does not capture the nature of Abram, Roy, and Scholl's definition and is closer to [Secret-Power Ring-LWE](/sp-rlwe/). Thus, we list them on the [Secret-Power Ring-LWE page](/sp-rlwe/) as variants.
 
