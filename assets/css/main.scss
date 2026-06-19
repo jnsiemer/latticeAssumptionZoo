@@ -1,7 +1,5 @@
 ---
 ---
-
-@charset "utf-8";
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
 
@@ -24,3 +22,17 @@
 .status-broken { background-color: #d9534f; }
 .status-implied { background-color: #5c9abd; }
 .status-standard { background-color: #5cb85c; }
+
+/* Lighthouse NO_FCP Patch */
+.masthead,
+.breadcrumbs,
+#main,
+.page__footer,
+.search-content__inner-wrap,
+.page__hero,
+.page__hero--overlay,
+.archive {
+  -webkit-animation: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+}

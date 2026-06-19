@@ -315,12 +315,10 @@
       const container = document.getElementById("mynetwork");
       const options = {
         physics: {
-          stabilization: {
-            enabled: true,
-            iterations: 50,
-          },
+          stabilization: false,
           barnesHut: {
             springConstant: 0.03,
+            damping: 0.15,
           }
         },
         interaction: {
@@ -329,22 +327,16 @@
         },
         nodes: {
           borderWidth: 2,
-          shadow: {
-            enabled: true,
-            size: 5,
-            x: 0,
-            y: 0,
-          },
+          shadow: false,
         },
         edges: {
           arrows: "to",
           width: 2,
-          shadow: {
-            enabled: true,
-            size: 2,
-            x: 0,
-            y: 0,
-          },
+          shadow: false,
+          smooth: {
+            // "continuous" requires significantly less math than "dynamic"
+            type: "continuous" 
+          }
         },
         groups: {
           SIS: { color: "#FFD6A5" },

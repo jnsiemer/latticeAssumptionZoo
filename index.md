@@ -13,6 +13,7 @@ This interactive graph visualises the landscape of lattice-based assumptions, il
 
 <div style="position: relative; width: 100%; aspect-ratio: 2 / 1; max-height: 600px;">
   <iframe src="/graph/index.html" 
+          loading="lazy"
           style="width: 100%; height: 100%; border: 1px solid #ccc; border-radius: 5px;" 
           title="Lattice Assumption Graph">
   </iframe>
@@ -23,7 +24,6 @@ This interactive graph visualises the landscape of lattice-based assumptions, il
      class="btn btn--info">
     View Full Graph & Filters
   </a>
-
 </div>
 
 ## 📋 List of Catalogued Assumptions
