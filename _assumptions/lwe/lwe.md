@@ -34,6 +34,8 @@ _Let $$\mathcal{R}_q$$ be the polynomial ring $$\ZZ_q[X]/(f(X))$$. Let $$\vec{a}
 Ring-LWE (R-LWE) {% cite EC:LyuPeiReg10 %} adds more structure to LWE by replacing matrix-vector multiplications with polynomial multiplications. In applications, this results in reduced key sizes and accelerated execution times (using the [NTT](https://en.wikipedia.org/wiki/Discrete_Fourier_transform_over_a_ring#Number-theoretic_transform){:target="_blank"}).
 The polynomial $$f(X)$$ is typically a [cyclotomic polynomial](https://en.wikipedia.org/wiki/Cyclotomic_polynomial){:target="_blank"}, such as $$X^d + 1$$ where $$d$$ is a power of 2.
 
+Note that the history of definitions of Ring-LWE is a bit chaotic as the given definition was preceeded by Polynomial Ring-LWE {% cite AC:SSTX09 %}, which requires $$f$$ to be a monic and irreducible. Similar to this deviation, some versions were referred to as Dual- and Primal-LWE. The papers {% cite EC:RosSteWal18 %} and {% cite JC:PeiPep24 %} provide a structured overview and reductions.
+
 ### Module-LWE$$_{n,m,q,\chi,\mathcal{R}}$$ {#module-lwe}
 _Let $$\mat{A} \in \mathcal{R}_q^{m \times n}$$ be a uniformly random matrix and $$\vec{s} \in \mathcal{R}_q^n$$ be a random secret vector. Let $$\vec{e} \in \mathcal{R}_q^m$$ be sampled from the error distribution $$\chi$$. The adversary is asked to distinguish the LWE distribution $$(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e})$$ from a uniformly random distribution over $$\mathcal{R}_q^{m \times n} \times \mathcal{R}_q^m$$._
 
