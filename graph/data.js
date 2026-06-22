@@ -173,7 +173,7 @@ assumption('Evasive-SIS', 'Evasive SIS', 2022, ['Sign'], '/evasive-sis/', 'SIS')
 
 // LWE-based assumptions - family, i.e. last parameter is always 'LWE'
 assumption('LWE', 'Learning with Errors', 2005, ['PKE', 'FuncEnc', 'COED'], '/lwe/', 'LWE');
-assumption('ssLWE', 'Short secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/#short-secret-lwe', 'LWE', true);
+assumption('ssLWE', 'Small-secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/#small-secret-lwe', 'LWE', true);
 assumption('LWR', 'Learning with Rounding', 2012, ['PKE'], '/lwr/', 'LWE');
 assumption('LWAM', 'Learning with Alternating Moduli', 2025, ['Commitment'], '/lwam/', 'LWE'); // list of constructions is "PRF" right now, which doesn't really fit into any current category
 

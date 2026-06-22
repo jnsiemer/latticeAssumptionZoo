@@ -39,7 +39,7 @@ $$ \left\{\mat{W},\mat{B},\mat{Q},\mat{M},\vec{s}^\intercal\cdot \mat{M} + \vec{
 
 $$ \mathcal{U}\left(\ZZ_q^{(n\cdot \ell) \times m}\right) \times D_{\sigma_\mat{B}}^{m \times (\hat{m} \cdot \ell)} \times \mathsf{GL}_n(\ZZ_q) \times \mathcal{U}\left(\ZZ_q^{n \times t}\right) \times \mathcal{U}\left(\ZZ_q^{1 \times t}\right) \times \mathcal{U}\left(\ZZ_q^{\ell \times (\hat{m} \cdot \ell)}\right). $$
 
-As the name suggests, this version utilises a short-secret. Additionally, it extends the assumption via an invertible matrix $$\mat{Q}$$ and $$t$$ additional LWE samples with respect to the matrix $$\mat{M}$$. According to Theorem 4.4 in {% cite C:AbrMalRoy25 %}, Small-Secret Extended Decomposed LWE is at least as hard as Decomposed LWE if $$\sigma_{\vec{s}} / (\sigma_{\mat{B}} \cdot \sigma_{\mat{E}}) \in \lambda^{\omega(1)}$$ and $$\ell \in \poly{\lambda}$$.
+As the name suggests, this version utilises a small-secret. Additionally, it extends the assumption via an invertible matrix $$\mat{Q}$$ and $$t$$ additional LWE samples with respect to the matrix $$\mat{M}$$. According to Theorem 4.4 in {% cite C:AbrMalRoy25 %}, Small-Secret Extended Decomposed LWE is at least as hard as Decomposed LWE if $$\sigma_{\vec{s}} / (\sigma_{\mat{B}} \cdot \sigma_{\mat{E}}) \in \lambda^{\omega(1)}$$ and $$\ell \in \poly{\lambda}$$.
 
 ### Small-Secret Circular Decomposed LWE$$_{n,m,\hat{m},q,\ell,\sigma_\mat{B},\sigma_{\vec{s}},\sigma_{\mat{E}},\sigma_{\bar{\vec{e}}},t}$$ {#ssc-decomposed-lwe}
 

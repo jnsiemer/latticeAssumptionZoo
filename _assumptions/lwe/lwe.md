@@ -5,10 +5,11 @@ family: "LWE"
 graph_id: "LWE"
 assumption_status: "standard"
 
-last_modified_at: 2026-04-11
+last_modified_at: 2026-06-22
 redirect_from:
   - /learning_with_errors/
   - /learning-with-errors/
+  - /learningwitherrors/
 ---
 
 Learning with errors (LWE) is a computational, average-case problem introduced in 2005 by Oded Regev {% cite STOC:Regev05 %}, which is a generalisation of the [Learning Parity with Noise](/lpn/) problem. Regev showed that solving LWE is hard to solve on average if a version of the [shortest vector problem](https://en.wikipedia.org/wiki/Lattice_problem#Shortest_vector_problem_.28SVP.29){:target="_blank"} is hard in its worst-case.
@@ -40,17 +41,17 @@ By using vectors/matrices over the ring $$\mathcal{R}_q$$, Module-LWE (M-LWE) {%
 
 ## Variants
 
-### Short Secret LWE$$_{n,m,q,\chi}$$ {#short-secret-lwe}
+### Small Secret LWE$$_{n,m,q,\chi}$$ {#small-secret-lwe}
 _Let matrix $$\mat{A} \in \ZZ_q^{m \times n}$$ be chosen uniformly at random. Let the **short** secret vector $$\vec{s} \in \ZZ_q^n$$ and $$\vec{e} \in \ZZ_q^m$$ be sampled from the error distribution $$\chi$$. An adversary is asked to distinguish between the LWE distribution $$(\mat{A}, \vec{b} = \mat{A} \cdot \vec{s} + \vec{e} \bmod q)$$ and a uniformly random distribution over $$\ZZ_q^{m \times n} \times \ZZ_q^m$$._
 
-Short secret LWE (ssLWE) is also known as normal-form LWE and often referred to as LWE itself due to its frequent usage.
+Small secret LWE (ssLWE) is also known as (Hermite) normal-form LWE or short secret LWE and often referred to as LWE itself due to its frequent usage.
 
 Applebaum et al. {% cite C:ACPS09 %} showed that ssLWE is at least as hard as standard LWE. The reduction utilises an invertible submatrix $$\mat{A}_0$$ from the LWE challenge matrix $$\mat{A} = \begin{bmatrix} \mat{A}_0^T &\mat{A}_1^T \end{bmatrix}^T$$. It defines the ssLWE challenge as $$(-\mat{A}_1 \cdot \mat{A}_0^{-1}, \vec{b}_1 - \mat{A}_1 \cdot \mat{A}_0^{-1} \cdot \vec{b}_0)$$ s.t. the resulting distribution
 
 $$\begin{align}\vec{b}_1 - \mat{A}_1 \cdot \mat{A}_0^{-1} \cdot \vec{b}_0 &= \mat{A}_1 \cdot \vec{s} + \vec{e}_1 - \mat{A}_1 \cdot \mat{A}_0^{-1} \cdot \left( \mat{A}_0 \cdot \vec{s} + \vec{e}_0 \right) \\
 &= - \mat{A}_1 \cdot \mat{A}_0^{-1} \cdot \vec{e}_0 + \vec{e}_1\end{align}$$
 
-uses a short secret $$\vec{e}_0$$ sampled from the error distribution $$\chi$$ by splitting $$\vec{b} = \begin{bmatrix} \vec{b}_0^T &\vec{b}_1^T \end{bmatrix}^T$$ and $$\vec{e} = \begin{bmatrix} \vec{e}_0^T &\vec{e}_1^T \end{bmatrix}^T$$.
+uses a small secret $$\vec{e}_0$$ sampled from the error distribution $$\chi$$ by splitting $$\vec{b} = \begin{bmatrix} \vec{b}_0^T &\vec{b}_1^T \end{bmatrix}^T$$ and $$\vec{e} = \begin{bmatrix} \vec{e}_0^T &\vec{e}_1^T \end{bmatrix}^T$$.
 
 ## Hardness
 

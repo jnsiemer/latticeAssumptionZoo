@@ -58,7 +58,7 @@ If the leakage is only revealing information over the LWE error $$\vec{e}$$, the
 
 The value of the bound $$\beta$$ depends on the chosen standard deviations. Please find further details in Section 4.1 of {% cite CiC:LaiSwaWoo25 %}.
 
-The idea of the proofs follows the original proof from [Hint-MLWE](/hint-mlwe/) with an additional analysis of the statistical closeness of the constructed hints. The proof also differs in that it is a direct reduction from [M-LWE](/lwe/#module-lwe) rather than short secret M-LWE.
+The idea of the proofs follows the original proof from [Hint-MLWE](/hint-mlwe/) with an additional analysis of the statistical closeness of the constructed hints. The proof also differs in that it is a direct reduction from [M-LWE](/lwe/#module-lwe) rather than small secret M-LWE.
 
 ## Constructions built from Leaky MLWE {#constructions}
 

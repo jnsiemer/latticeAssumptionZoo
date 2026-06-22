@@ -27,7 +27,7 @@ The second and third elements contain the circular terms.
 
 ## Hardness
 
-In Lemma 3 of {% cite FOCS:HsiLinLuo23 %}, they state several (trivial) reductions between Circular LWE, [short-secret LWE](/lwe/#short-secret-lwe), and [LWE](/lwe/). However, these reductions only provide uppper bounds on the hardness of Circular LWE.
+In Lemma 3 of {% cite FOCS:HsiLinLuo23 %}, they state several (trivial) reductions between Circular LWE, [small-secret LWE](/lwe/#small-secret-lwe), and [LWE](/lwe/). However, these reductions only provide uppper bounds on the hardness of Circular LWE.
 
 ## Constructions built from Circular LWE {#constructions}
 

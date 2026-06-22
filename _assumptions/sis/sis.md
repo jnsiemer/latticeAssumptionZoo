@@ -9,6 +9,7 @@ last_modified_at: 2026-03-26
 redirect_from:
   - /short_integer_solution/
   - /short-integer-solution/
+  - /shortintegersolution/
 ---
 
 Short Integer Solution (SIS) is an average-case problem, which was introduced in 1996 by Miklós Ajtai {% cite STOC:Ajtai96 %}. He introduced a family of one-way functions based on SIS and showed that SIS is hard to solve on average if a version of the [shortest vector problem](https://en.wikipedia.org/wiki/Lattice_problem#Shortest_vector_problem_.28SVP.29){:target="_blank"} is hard in a worst-case scenario.

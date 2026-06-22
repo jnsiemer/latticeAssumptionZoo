@@ -26,7 +26,7 @@ Asymmetric LWE allows the secret vector and error vector to be drawn from differ
 
 In {% cite PKC:ZYFZY20 %}, they claim that Asymmetric LWE$$_{n,m,q,\chi,\alpha_s,\alpha_e}$$ is at least as hard as [LWE](/lwe/)$$_{n,m,q,\chi_{\min(\alpha_s,\alpha_e)}}$$ and at most as hard as LWE$$_{n,m,q,\chi_{\max(\alpha_s,\alpha_e)}}$$ w.r.t. "all known solving algorithms despite the absence of a general proof".
 
-The reduction from [Short Secret LWE](/lwe/#short-secret-lwe)$$_{n,m,q,\chi_{\min(\alpha_s,\alpha_e)}}$$ to Asymmetric LWE$$_{n,m,q,\chi,\alpha_s,\alpha_e}$$ holds for discrete Gaussian and (centered) binomial distributions. These hold due to the fact that
+The reduction from [Small Secret LWE](/lwe/#small-secret-lwe)$$_{n,m,q,\chi_{\min(\alpha_s,\alpha_e)}}$$ to Asymmetric LWE$$_{n,m,q,\chi,\alpha_s,\alpha_e}$$ holds for discrete Gaussian and (centered) binomial distributions. These hold due to the fact that
 - $$D_{\Lambda_0, s_0} + D_{\Lambda_1, s_1}$$ is statistically close to $$D_{\Lambda_0 + \Lambda_1, \sqrt{s_0^2 + s_1^2}}$$ according to Lemma 4.12 in {% cite PKC:BonFre11 %}
 - $$\mathsf{Bin}(x, p) + \mathsf{Bin}(y, p) = \mathsf{Bin}(x+y, p)$$, which is a [well-known fact](https://en.wikipedia.org/wiki/Binomial_distribution#Sums_of_binomials){:target="_blank"}.
 

@@ -5,10 +5,11 @@ family: "LWE"
 graph_id: "LWR"
 assumption_status: "implied"
 
-last_modified_at: 2026-04-11
+last_modified_at: 2026-06-02
 redirect_from:
   - /learning_with_rounding/
   - /learning-with-rounding/
+  - /learningwithrounding/
 ---
 
 The Learning with Rounding (LWR) problem was introduced by Banerjee, Peikert, and Rosen {% cite EC:BanPeiRos12 %} as a derandomized alternative to [Learning with Errors](/lwe/). Instead of hiding the linear structure of the underlying lattice by adding random noise, LWR obfuscates it by deterministically rounding the product from a larger modulus $$q$$ to a smaller modulus $$p$$.
