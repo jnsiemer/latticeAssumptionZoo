@@ -12,7 +12,7 @@
 
     <script
       type="text/javascript"
-      src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+      src="/graph/vis-network.min.js"
     ></script>
     <script type="text/javascript" src="data.js"></script>
     <script type="text/javascript">
@@ -315,12 +315,10 @@
       const container = document.getElementById("mynetwork");
       const options = {
         physics: {
-          stabilization: {
-            enabled: true,
-            iterations: 50,
-          },
+          stabilization: false,
           barnesHut: {
             springConstant: 0.03,
+            damping: 0.15,
           }
         },
         interaction: {
@@ -329,29 +327,23 @@
         },
         nodes: {
           borderWidth: 2,
-          shadow: {
-            enabled: true,
-            size: 5,
-            x: 0,
-            y: 0,
-          },
+          shadow: false,
         },
         edges: {
           arrows: "to",
           width: 2,
-          shadow: {
-            enabled: true,
-            size: 2,
-            x: 0,
-            y: 0,
-          },
+          shadow: false,
+          smooth: {
+            // "continuous" requires significantly less math than "dynamic"
+            type: "continuous" 
+          }
         },
         groups: {
           SIS: { color: "#FFD6A5" },
           LWE: { color: "#A0C4FF" },
-          NTRU: { color: "#CAFFBF" },
-          LIP: { color: "#FDFFB6" },
-          LPN: { color: "#9BF6FF" },
+          Standalone: { color: "#CAFFBF" },
+          // LIP: { color: "#FDFFB6" },
+          // LPN: { color: "#9BF6FF" },
           // Further colors from palette: #FFADAD, #BDB2FF, #FFC6FF
         }
       };

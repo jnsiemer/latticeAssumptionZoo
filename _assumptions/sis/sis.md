@@ -17,7 +17,7 @@ SIS is one of the, if not the single most fundamental computational assumption i
 ## Definition
 
 ### SIS$$_{n,m,q,\beta}$$ {#sis}
-_Let matrix $$\mat{A} \in \ZZ_q^{n \times m}$$ be chosen uniformly at random. An adversary is asked to find a short non-zero vector $$\vec{s} \in \ZZ_q^m$$ satisfying $$\mat{A} \cdot \vec{s} = \vec{0} \bmod q \land 0 < \norm{\vec{s}} \leq \beta$$._
+_Let matrix $$\mat{A} \in \ZZ_q^{n \times m}$$ be chosen uniformly at random. An adversary is asked to find a short non-zero vector $$\vec{s} \in \ZZ^m$$ satisfying $$\mat{A} \cdot \vec{s} = \vec{0} \bmod q \land 0 < \norm{\vec{s}} \leq \beta$$._
 
 SIS intuitively states that it is hard to find a short vector in the kernel of matrix $$\mat{A}$$.
 A solution to SIS without the condition $$\norm{\vec{s}} \leq \beta$$ can be found using [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination){:target="_blank"}. Thus, the condition $$\beta < q$$ is required as otherwise $$(q, 0, \dots, 0) \in \ZZ^m$$ yields a trivial solution.

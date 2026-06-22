@@ -149,7 +149,7 @@ layout: single
   {% endfor %}
 
   <p>
-    The Lattice Assumption Zoo currently catalogues {{ family_total }} {% if page.group_type == 'family' %}{{ page.family_name }}-based {% else %}{{ page.subfamily_name }}-{% endif %}assumption{% if family_total != 1 %}s{% endif %}; {{ standard_implied_count }} of them {% if standard_implied_count == 1 %}is a standard assumption{% else %}are standard assumptions{% endif %} or implied by standard assumptions.
+    The Lattice Assumption Zoo currently catalogues {{ family_total }} {% if page.group_type == 'family' %}{% if page.family_name == "Standalone" %}standalone{% else %}{{ page.family_name }}-based{% endif %} {% else %}{{ page.subfamily_name }}-{% endif %}assumption{% if family_total != 1 %}s{% endif %}; {{ standard_implied_count }} of them {% if standard_implied_count == 1 %}is a standard assumption{% else %}are standard assumptions{% endif %} or implied by standard assumptions.
   </p>
 {% endif %}
 
@@ -171,7 +171,7 @@ layout: single
   <details {% if page.group_type %}open{% endif %}>
     <summary class="family-summary">
       <span>
-        <strong>{{ family.name }}-Based Assumptions</strong>
+        <strong>{% if family.name == "Standalone" %} Standalone Assumptions {% else %} {{ family.name }}-Based Assumptions {% endif %}</strong>
         {% if page.group_type == nil %}
           <a href="/catalogue/{{ family.name | slugify }}/" class="subpage-link" title="Go to family page">&#8599;</a>
         {% endif %}

@@ -1,7 +1,7 @@
 ---
 title: "Learning Parity with Noise (LPN)"
 seo_title: "LPN"
-family: "LPN"
+family: "Standalone"
 graph_id: "LPN"
 assumption_status: "standard"
 

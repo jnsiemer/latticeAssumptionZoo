@@ -1,7 +1,7 @@
 ---
 title: "Lattice Isomorphism Problem (LIP)"
 seo_title: "LIP"
-family: "LIP"
+family: "Standalone"
 graph_id: "LIP"
 
 last_modified_at: 2026-03-31

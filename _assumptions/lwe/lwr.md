@@ -36,7 +36,7 @@ LWR can also be formulated where the secret does follow another secret distribut
 
 ## Hardness
 
-There are several papers providing a reduction from LWE to LWR. The first one required the modulus $$q$$ and the modulus-to-error ratio to grow super-polynomial {% cite EC:BanPeiRos12 %}. These requirement could be improved in {% cite C:AKPW13 %} to polynomially sized moduli and modulus-to-error ratios. Further follow-up works have since improved on the provable security of LWR {% cite EPRINT:AlpApo16 %} {% cite TCC:BGMRR16 %} {% cite JC:BLRSSS18 %}.
+There are several papers providing a reduction from LWE to LWR. The first one required the modulus $$q$$ and the modulus-to-error ratio to grow super-polynomial {% cite EC:BanPeiRos12 %}. These requirement could be improved in {% cite C:AKPW13 %} to polynomially sized moduli and modulus-to-error ratios. Further follow-up works have since improved on the provable security of LWR {% cite EPRINT:AlpApo16 %} {% cite TCC:BGMRR16 %} {% cite JC:BLRSSS18 %} {% cite PQCrypto:HMRS26 %}.
 
 Note that not all of the reductions presented above were generalised to the ring- or module-setting. 
 The original reduction from {% cite EC:BanPeiRos12 %} works for Ring-LWR as well.
@@ -52,4 +52,5 @@ For specific rounding functions it was improved in {% cite C:LiuWan20 %}.
 
 ## Related Assumptions
 
+- [Learning with Alternating Moduli](/learning-with-alternating-moduli/) removes the rounding operation and immediately applies a second modulus.
 - [Learning with Errors](/lwe/) uses random noise rather than deterministic rounding compared to LWR.

@@ -1,5 +1,7 @@
 ---
 title: Lattice Assumption Zoo
+layout: single
+last_updated_at: 2026-06-19
 ---
 
 This comprehensive wiki catalogues average-case lattice assumptions so that cryptography-affine readers can quickly build an intuition for each assumption, understand the rationale behind its hardness, and explore its applications. Additionally, it serves as a centralised repository for essential literature related to novel assumptions, and provides a platform for publishing relevant cryptanalysis.
@@ -13,6 +15,7 @@ This interactive graph visualises the landscape of lattice-based assumptions, il
 
 <div style="position: relative; width: 100%; aspect-ratio: 2 / 1; max-height: 600px;">
   <iframe src="/graph/index.html" 
+          loading="lazy"
           style="width: 100%; height: 100%; border: 1px solid #ccc; border-radius: 5px;" 
           title="Lattice Assumption Graph">
   </iframe>
@@ -23,7 +26,6 @@ This interactive graph visualises the landscape of lattice-based assumptions, il
      class="btn btn--info">
     View Full Graph & Filters
   </a>
-
 </div>
 
 ## 📋 List of Catalogued Assumptions
@@ -43,7 +45,7 @@ If you prefer a list as a structured format, you can find a searchable index of 
 
 ## 🚧 Under Construction
 Please note that this wiki does not cover all lattice-based assumptions yet.
-A list of assumptions that we are aware of and plan to add to the zoo, can be found [here](https://github.com/jnsiemer/latticeAssumptionZoo/issues/1).
+We maintain a [list of assumptions](https://github.com/jnsiemer/latticeAssumptionZoo/issues/1) that will be added to the zoo.
 Of course, contributions of any kind are welcome!
 
 ## ✏️ Contribute

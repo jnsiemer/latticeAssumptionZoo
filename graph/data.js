@@ -122,6 +122,8 @@ assumption('ISIS', 'Inhomogeneous SIS', 1997, ['Commitment', 'ZK', 'Sign'], '/si
 
 assumption('ApproxSIS', 'Approximate SIS', 2019, ['Sign'], '/approxsis/', 'SIS');
 
+assumption('Asymmetric-SIS', 'Asymmetric SIS', 2020, ['Sign'], '/asymmetric-sis/', 'SIS');
+
 assumption('Split-SIS', 'Split-SIS', 2015, ['PrivEnhSign'], '/split-sis/', 'SIS');
 assumption('Extended-Split-SIS', 'Extended Split-SIS', 2016, ['PrivEnhSign'], '/split-sis/#extended-split-sis', 'SIS', true);
 assumptionFamily('Split-SIS', ['Split-SIS', 'Extended-Split-SIS']);
@@ -163,6 +165,10 @@ assumption('h-PRISIS', 'h-PRISIS', 2024, ['Commitment'], '/h-basis/#h-prisis', '
 assumption('l-succinct-SIS', 'l-succinct SIS', 2024, ['Commitment'], '/l-succinct-sis/', 'SIS');
 assumptionFamily('BASIS', ['BASIS', 'BASIS_rand', 'BASIS_struct', 'BASIS_power', 'h-BASIS', 'h-PRISIS', 'l-succinct-SIS']);
 
+assumption('Decomposed-SIS', 'Decomposed SIS', 2026, ['Commitment'], '/decomposed-sis/', 'SIS'); // list of constructions is "Hash functions" right now, which doesn't really fit into any current category
+assumption('Extended-Decomposed-SIS', 'Extended Decomposed SIS', 2026, ['Commitment'], '/decomposed-sis/#extended-decomposed-sis', 'SIS', true);
+assumptionFamily('Decomposed-SIS', ['Decomposed-SIS', 'Extended-Decomposed-SIS']);
+
 assumption('Evasive-SIS', 'Evasive SIS', 2022, ['Sign'], '/evasive-sis/', 'SIS');
 
 
@@ -170,10 +176,21 @@ assumption('Evasive-SIS', 'Evasive SIS', 2022, ['Sign'], '/evasive-sis/', 'SIS')
 assumption('LWE', 'Learning with Errors', 2005, ['PKE', 'FuncEnc', 'COED'], '/lwe/', 'LWE');
 assumption('ssLWE', 'Short secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/#short-secret-lwe', 'LWE', true);
 assumption('LWR', 'Learning with Rounding', 2012, ['PKE'], '/lwr/', 'LWE');
+assumption('LWAM', 'Learning with Alternating Moduli', 2025, ['Commitment'], '/lwam/', 'LWE'); // list of constructions is "PRF" right now, which doesn't really fit into any current category
 
 assumption('Binary-Matrix-LWE', 'Binary-Matrix LWE', 2013, ['PKE'], '/binary-matrix-lwe/', 'LWE');
 
 assumption('k-LWE', 'k-LWE', 2014, ['PKE'], '/klwe/', 'LWE');
+
+assumption('Asymmetric-LWE', 'Asymmetric LWE', 2020, ['Sign', 'PKE'], '/asymmetric-lwe/', 'LWE');
+
+assumption('qLWE', 'qLWE', 2025, ['PKE'], '/qlwe/', 'LWE'); // list of constructions is empty unless one counts constructions from LWE
+
+assumption('FAE-LWE', 'First-are-errorless LWE', 2013, ['COED'], '/first-are-errorless-lwe/', 'LWE');
+
+assumption('Extended-LWE', 'Extended LWE', 2011, ['ZK', 'PKE', 'FuncEnc'], '/extended-lwe/', 'LWE');
+assumption('MH-Ext-LWE', 'Multi-Hint Extended LWE', 2016, ['ZK', 'PKE', 'FuncEnc'], '/extended-lwe/#multi-hint-extended-lwe', 'LWE', true);
+assumptionFamily('Extended-LWE', ['Extended-LWE', 'MH-Ext-LWE']);
 
 assumption('elLWE', 'LWE with Error-Leakage', 2023, ['FuncEnc'], '/ellwe/', 'LWE');
 assumption('Hint-LWE', 'Hint Learning with Errors', 2022, ['Commitment', 'ZK', 'Sign', 'TresholdSign'], '/hint-mlwe/', 'LWE');
@@ -181,10 +198,10 @@ assumption('Coset-Hint-LWE', 'Coset Hint Learning with Errors', 2025, ['Treshold
 assumption('Leaky-LWE', 'Leaky Learning with Errors', 2023, ['FuncEnc', 'TresholdEnc'], '/leaky-lwe/', 'LWE');
 assumptionFamily('LeakyLWE', ['Leaky-LWE', 'Hint-MLWE','Coset-Hint-LWE', 'elLWE']);
 
-assumption('l-Decomposed-LWE', 'l-Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/', 'LWE');
-assumption('ssE-l-Decomposed-LWE', 'Small-Secret Extended l-Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/#sse-decomposed-lwe', 'LWE', true);
-assumption('ssC-l-Decomposed-LWE', 'Small-Secret Circular l-Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/#ssc-decomposed-lwe', 'LWE', true);
-assumptionFamily('l-Decomposed-LWE', ['l-Decomposed-LWE', 'ssE-l-Decomposed-LWE', 'ssC-l-Decomposed-LWE']);
+assumption('Decomposed-LWE', 'Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/', 'LWE');
+assumption('ssE-Decomposed-LWE', 'Small-Secret Extended Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/#sse-decomposed-lwe', 'LWE', true);
+assumption('ssC-Decomposed-LWE', 'Small-Secret Circular Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/#ssc-decomposed-lwe', 'LWE', true);
+assumptionFamily('Decomposed-LWE', ['Decomposed-LWE', 'ssE-Decomposed-LWE', 'ssC-Decomposed-LWE']);
 
 assumption('AOM-MLWE', 'Algebraic One-More MLWE', 2025, ['TresholdSign'], '/aom-lwe/', 'LWE');
 assumption('AOM-UMLWE', 'Algebraic One-More Uniform-MLWE', 2025, ['TresholdSign'], '/aom-lwe/#algebraic-one-more-uniform-mlwe', 'LWE', true);
@@ -192,19 +209,33 @@ assumptionFamily('AOM-MLWE', ['AOM-MLWE','AOM-UMLWE']);
 
 assumption('l-succinct-LWE', 'l-succinct LWE', 2024, ['FuncEnc', 'EffEnhEnc'], '/l-succinct-lwe/', 'LWE');
 
+assumption('Adaptive-LWE', 'Adaptive LWE', 2018, ['FuncEnc'], '/adaptive-lwe/', 'LWE');
+
 assumption('Sparse-Matrix-LWE', 'Sparse Matrix LWE', 2024, ['COED'], '/sparse-matrix-lwe/', 'LWE');
 assumption('Hollow-LWE', 'Hollow LWE', 2025, ['PKE'], '/hollow-lwe/', 'LWE');
 
-// NTRU-based assumptions - family, i.e. last parameter is always 'NTRU'
-assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['Sign', 'PKE', 'COED'], '/ntru/', 'NTRU');
+assumption('Circular-LWE', 'Circular (Small-Secret) LWE', 2023, ['FuncEnc'], '/circular-lwe/', 'LWE');
 
+assumption('LWE-OD', 'Learning with Errors with Output Dependencies', 2026, ['PKE'], '/lwe-od/', 'LWE'); // list of constructions is empty unless one counts constructions from LWE and LWR
 
-// LIP-based assumptions - family, i.e. last parameter is always 'LIP'
-assumption('LIP', 'Lattice Isomorphism Problem', 2022, ['Sign', 'PKE', 'FuncEnc', 'COED'], '/lip/', 'LIP'); /*First consideration in crypto-context*/
+assumption('Tensor-LWE', 'Tensor LWE', 2022, ['FuncEnc', 'EffEnhEnc'], '/tensor-lwe/', 'LWE');
+assumption('Strong-Tensor-LWE', 'Strong Tensor LWE', 2023, ['FuncEnc', 'EffEnhEnc'], '/tensor-lwe/#strong-tensor-lwe', 'LWE', true);
+assumption('Circular-Tensor-LWE', 'Circular Tensor LWE', 2024, ['FuncEnc'], '/tensor-lwe/#circular-tensor-lwe', 'LWE', true);
+assumptionFamily('Tensor-LWE', ['Tensor-LWE', 'Strong-Tensor-LWE', 'Circular-Tensor-LWE']);
 
+assumption('SP-RLWE', 'Secret-Power Ring-LWE', 2026, ['PrivEnhEnc'], '/sp-rlwe/', 'LWE');
+assumption('wSP-RLWE', 'Weak Secret-Power Ring-LWE', 2026, ['PrivEnhEnc'], '/sp-rlwe/#wsp-rlwe', 'LWE', true);
+assumption('SSP-RLWE', 'Specialised Secret-Power Ring-LWE', 2025, ['PrivEnhEnc'], '/sp-rlwe/#ssp-rlwe', 'LWE', true);
+assumption('SCSP-RLWE', 'Specialised Circular Secret-Power Ring-LWE', 2025, ['PrivEnhEnc'], '/sp-rlwe/#scsp-rlwe', 'LWE', true);
+assumption('P-RLWE', 'Power Ring-LWE', 2024, ['PrivEnhEnc'], '/p-rlwe/', 'LWE');
+assumptionFamily('Power-LWE', ['SP-RLWE', 'wSP-RLWE', 'SSP-RLWE', 'SCSP-RLWE', 'P-RLWE']);
 
-// LPN-based assumptions - family, i.e. last parameter is always 'LPN'
-assumption('LPN', 'Learning Parity with Noise', 2000, ['Commitment', 'ZK'], '/lpn/', 'LPN'); /*First consideration in crypto-context*/
+// Standalone assumptions - family, i.e. last parameter is always 'Standalone'
+assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['Sign', 'PKE', 'COED'], '/ntru/', 'Standalone');
+assumption('LIP', 'Lattice Isomorphism Problem', 2022, ['Sign', 'PKE', 'FuncEnc', 'COED'], '/lip/', 'Standalone'); /*First consideration in crypto-context*/
+assumption('LPN', 'Learning Parity with Noise', 2000, ['Commitment', 'ZK'], '/lpn/', 'Standalone'); /*First consideration in crypto-context*/
+assumption('LVP', 'Large Vector Problem', 2021, ['PKE'], '/lvp/', 'Standalone');
+assumptionFamily('Standalone Problems', ['NTRU', 'LIP', 'LPN', 'LVP'], 100);
 
 
 
@@ -216,6 +247,8 @@ reducesTo('SIS', 'NFSIS');
 reducesTo('SIS', 'ISIS');
 
 reducesTo('SIS', 'ApproxSIS');
+
+reducesTo('SIS', 'Asymmetric-SIS');
 
 reducesTo('SIS', 'Split-SIS');
 reducesTo('SIS', 'Extended-Split-SIS');
@@ -241,14 +274,27 @@ reducesTo('BASIS_power', 'h-PRISIS');
 reducesTo('k-M-ISIS', 'BASIS_struct');
 reducesTo('BASIS_struct', 'l-succinct-SIS');
 
+reducesTo('Decomposed-SIS', 'Extended-Decomposed-SIS', 300);
+
 // LWE
 reducesTo('LWE', 'SIS', 1000);
 reducesTo('ssLWE', 'LWE');
-reducesTo('LWR', 'LWE');
+reducesTo('LWE', 'LWR');
+reducesTo('LWE', 'LWAM');
 
 reducesTo('LWE', 'Binary-Matrix-LWE');
 
 reducesTo('LWE', 'k-LWE');
+
+reducesTo('LWE', 'Asymmetric-LWE');
+
+reducesTo('LWE', 'qLWE');
+
+reducesTo('LWE', 'FAE-LWE');
+reducesTo('FAE-LWE', 'Extended-LWE');
+
+reducesTo('LWE', 'Extended-LWE', 200);
+reducesTo('LWE', 'MH-Ext-LWE', 200);
 
 reducesTo('LWE', 'elLWE');
 reducesTo('LWE', 'Hint-LWE');
@@ -258,7 +304,8 @@ reducesTo('LWE','Leaky-LWE');
 
 reducesTo('Evasive-LWE', 'l-succinct-LWE'); // to come
 
-reducesTo('l-Decomposed-LWE', 'ssE-l-Decomposed-LWE');
+reducesTo('Decomposed-LWE', 'ssE-Decomposed-LWE');
+reducesTo('Decomposed-LWE', 'Decomposed-SIS');
 
 reducesTo('LWE', 'Hollow-LWE');
 
@@ -268,6 +315,9 @@ reducesTo('AOM-UMLWE','AOM-MLWE');
 reducesTo('AOM-MSIS','AOM-MLWE');
 reducesTo('SIS','AOM-MSIS');
 reducesTo('LWE','AOM-MSIS');
+reducesTo('Circular-LWE', 'LWE', 400);
+
+reducesTo('SP-RLWE', 'wSP-RLWE');
 
 // NTRU
 reducesTo('NTRU', 'LWE', 500);
@@ -292,10 +342,16 @@ partiallyReducesTo('SIS', 'h-PRISIS', 'M-SIS reduces to h-PRISIS for l=2', 300);
 
 partiallyReducesTo('Evasive-LWE', 'Evasive-SIS', 'Public-coin Evasive LWE (quantumly) heuristically reduces to Evasive SIS', 300); // to come
 
+partiallyReducesTo('LWE', 'LWE-OD', 'Constraints detailed in Theorem 3 of the paper', 300);
+
+partiallyReducesTo('LWE', 'Tensor-LWE', 'If all x_i are equal', 400);
+
 // LWE
 partiallyReducesTo('LWE', 'l-succinct-LWE', 'If W is wide and embeds a trapdoor', 300);
 
-partiallyReducesTo('l-succinct-LWE', 'l-Decomposed-LWE', 'For super-polynomial modulus to noise ratio');
+partiallyReducesTo('LWE', 'Adaptive-LWE', 'If k is constant', 400);
+
+partiallyReducesTo('l-succinct-LWE', 'Decomposed-LWE', 'For super-polynomial modulus to noise ratio');
 
 
 // Generalisations - "generalised by"
@@ -311,6 +367,8 @@ generalisedBy('BASIS', 'h-BASIS', 250);
 
 // LWE
 generalisedBy('Hint-LWE', 'Leaky-LWE');
+
+generalisedBy('Tensor-LWE', 'Strong-Tensor-LWE');
 
 // NTRU
 

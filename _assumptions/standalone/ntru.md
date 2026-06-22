@@ -1,6 +1,7 @@
 ---
 title: "NTRU"
-family: "NTRU"
+seo_title: "NTRU"
+family: "Standalone"
 graph_id: "NTRU"
 
 last_modified_at: 2026-03-27
