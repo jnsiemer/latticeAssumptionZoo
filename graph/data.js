@@ -179,7 +179,11 @@ assumption('ssLWE', 'Small-secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/
 assumption('LWR', 'Learning with Rounding', 2012, ['PKE'], '/lwr/', 'LWE');
 assumption('LWAM', 'Learning with Alternating Moduli', 2025, ['Commitment'], '/lwam/', 'LWE'); // list of constructions is "PRF" right now, which doesn't really fit into any current category
 
-assumption('Binary-Matrix-LWE', 'Binary-Matrix LWE', 2013, ['PKE'], '/binary-matrix-lwe/', 'LWE');
+assumption('Non-Uniform-LWE', 'Non-Uniform (Matrix) LWE', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#binary-matrix-lwe', 'LWE'); // also constructs a PRF
+assumption('Binary-Matrix-LWE', 'Binary-Matrix LWE', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#binary-matrix-lwe', 'LWE', true);
+assumption('LWE-with-low-norm', 'LWE with low norm', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#lwe-with-low-norm', 'LWE', true);
+assumption('Subspace-LWE', 'Subspace LWE', 2012, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#subspace-lwe', 'LWE', true);
+assumptionFamily('Non-Uniform-LWE', ['Non-Uniform-LWE', 'Binary-Matrix-LWE', 'LWE-with-low-norm', 'Subspace-LWE']);
 
 assumption('k-LWE', 'k-LWE', 2014, ['PKE'], '/klwe/', 'LWE');
 
@@ -285,7 +289,10 @@ reducesTo('ssLWE', 'LWE');
 reducesTo('LWE', 'LWR');
 reducesTo('LWE', 'LWAM');
 
-reducesTo('LWE', 'Binary-Matrix-LWE');
+reducesTo('LWE', 'Binary-Matrix-LWE', 200);
+reducesTo('LWE', 'LWE-with-low-norm', 200);
+reducesTo('LWE', 'Subspace-LWE', 200);
+reducesTo('LWE', 'Non-Uniform-LWE', 250);
 
 reducesTo('LWE', 'k-LWE');
 
@@ -342,7 +349,7 @@ partiallyReducesTo('SIS', 'SelfTargetMSIS', 'If H=RO');
 partiallyReducesTo('SIS', 'GenISISf', 'f = RO or f = A_m * x + u', 300);
 partiallyReducesTo('SIS', 'ISISf', 'f = RO', 300);
 
-partiallyReducesTo('SIS', 'BASIS', 'SIS reduces to BASIS_rand and M-SIS to PRISIS for l=2');
+partiallyReducesTo('SIS', 'BASIS', 'SIS reduces to BASIS_rand and M-SIS to PRISIS for l=2', 250);
 partiallyReducesTo('SIS', 'BASIS_power', 'M-SIS reduces to PRISIS for l=2', 300);
 partiallyReducesTo('SIS', 'h-PRISIS', 'M-SIS reduces to h-PRISIS for l=2', 300);
 
@@ -372,6 +379,10 @@ generalisedBy('h-PRISIS', 'h-BASIS');
 generalisedBy('BASIS', 'h-BASIS', 250);
 
 // LWE
+generalisedBy('Binary-Matrix-LWE', 'Non-Uniform-LWE');
+generalisedBy('LWE-with-low-norm', 'Non-Uniform-LWE');
+generalisedBy('Subspace-LWE', 'Non-Uniform-LWE');
+
 generalisedBy('Hint-LWE', 'Leaky-LWE');
 
 generalisedBy('Tensor-LWE', 'Strong-Tensor-LWE');
