@@ -155,6 +155,8 @@ assumption('OM-ISIS', 'One-More-ISIS', 2022, ['Sign', 'PrivEnhSign'], '/omisis/'
 assumption('rOM-ISIS', 'Randomised One-More-ISIS', 2024, ['Sign', 'PrivEnhSign'], '/romisis/', 'SIS');
 assumptionFamily('OM-ISIS', ['OM-ISIS', 'rOM-ISIS']);
 
+assumption('AOM-MISIS', 'Algebraic One-More Module-ISIS', 2025, ['TresholdSign'], '/aom-misis/', 'SIS');
+
 assumption('BASIS', 'Basis-Augmented SIS', 2023, ['Commitment'], '/basis/', 'SIS');
 assumption('BASIS_rand', 'BASIS_rand', 2023, ['Commitment'], '/basis/#BASIS_rand', 'SIS', true);
 assumption('BASIS_struct', 'BASIS_struct', 2023, ['Commitment'], '/basis/#BASIS_struct', 'SIS', true);
@@ -201,6 +203,12 @@ assumption('Decomposed-LWE', 'Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','Tr
 assumption('ssE-Decomposed-LWE', 'Small-Secret Extended Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/#sse-decomposed-lwe', 'LWE', true);
 assumption('ssC-Decomposed-LWE', 'Small-Secret Circular Decomposed-LWE', 2025, ['FuncEnc', 'EffEnhEnc','TresholdEnc'], '/decomposed-lwe/#ssc-decomposed-lwe', 'LWE', true);
 assumptionFamily('Decomposed-LWE', ['Decomposed-LWE', 'ssE-Decomposed-LWE', 'ssC-Decomposed-LWE']);
+
+assumption('AOM-MLWE', 'Algebraic One-More Module-LWE', 2025, ['TresholdSign'], '/aom-mlwe/', 'LWE');
+assumption('SAOM-MLWE', 'Selective Algebraic One-More Module-LWE', 2025, ['TresholdSign'], '/aom-mlwe/#saom-mlwe', 'LWE', true);
+assumption('AOM-UMLWE', 'Algebraic One-More Uniform-Module-LWE', 2025, ['TresholdSign'], '/aom-mlwe/#aom-umlwe', 'LWE', true);
+assumption('SAOM-UMLWE', 'Selective Algebraic One-More Uniform-Module-LWE', 2025, ['TresholdSign'], '/aom-mlwe/#variants', 'LWE', true);
+assumptionFamily('AOM-MLWE', ['AOM-MLWE','AOM-UMLWE', 'SAOM-MLWE', 'SAOM-UMLWE']);
 
 assumption('l-succinct-LWE', 'l-succinct LWE', 2024, ['FuncEnc', 'EffEnhEnc'], '/l-succinct-lwe/', 'LWE');
 
@@ -305,6 +313,13 @@ reducesTo('Decomposed-LWE', 'Decomposed-SIS');
 reducesTo('LWE', 'Hollow-LWE');
 
 reducesTo('LWE', 'Sparse-Matrix-LWE');
+
+reducesTo('AOM-UMLWE','AOM-MLWE');
+reducesTo('AOM-MISIS','AOM-MLWE');
+reducesTo('SIS','AOM-MISIS', 600);
+reducesTo('LWE','AOM-MISIS', 600);
+reducesTo('SIS', 'SAOM-UMLWE', 625);
+reducesTo('LWE', 'SAOM-UMLWE', 625);
 
 reducesTo('Circular-LWE', 'LWE', 400);
 

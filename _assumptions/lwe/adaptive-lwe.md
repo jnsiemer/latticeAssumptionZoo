@@ -25,7 +25,7 @@ $$ \set{\mathcal{U}\left(\ZZ_q^{n \times m}\right) \times \mathcal{U}\left(\ZZ_q
 
 ## Hardness
 
-Quach et al. {% cite FOCS:QuaWeeWic18 %} note that the hardness of Adaptive LWE would immediately follow from [LWE](/lwe/) if the adversary would be forced to choose $$\vec{x}$$ before seeing $$\set{\mat{A}_i}_{i \in [k]}$$. Alternatively, they argue about the hardness of the assumption by providing a reduction with exponential loss-factor $$2^{k}$$, where the reduction guesses the choice of $$\vec{x}$$ in advance. Then, they present a more optimistic choice of parameters.
+Quach et al. {% cite FOCS:QuaWeeWic18 %} note that the hardness of Adaptive LWE would immediately follow from [LWE](/lwe/) if the adversary would be forced to choose $$\vec{x}$$ before seeing $$\set{\mat{A}_i}_{i \in [k]}$$. Alternatively, they argue about the hardness of the assumption by providing a reduction with exponential loss-factor $$2^{k}$$ assuming the subexponential hardness of LWE, where the reduction guesses the choice of $$\vec{x}$$ in advance. Then, they present a more optimistic choice of parameters.
 
 In Section 7 of {% cite STOC:AbrMalRoy25 %}, Abram, Malavolta, and Roy provide an attack on the aforementioned optimistic choice of parameters. They exploit the fact that $$\vec{x}$$ can be chosen after $$\adv$$.
 
