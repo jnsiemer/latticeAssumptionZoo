@@ -173,6 +173,7 @@ assumptionFamily('Decomposed-SIS', ['Decomposed-SIS', 'Extended-Decomposed-SIS']
 assumption('Evasive-SIS', 'Evasive SIS', 2022, ['Sign'], '/evasive-sis/', 'SIS');
 
 assumption('PV-SIS', 'Partial Vandermonde SIS - closely related to Partial Fourier Recovery Problem', 2014, ['Sign', 'EffEnhSign'], '/pv-sis/', 'SIS');
+assumption('PNTT-PSIS', 'Partial-NTT Polynomial-SIS', 2022, ['Sign', 'EffEnhSign'], '/pv-sis/#pntt-psis', 'SIS', true);
 
 
 // LWE-based assumptions - family, i.e. last parameter is always 'LWE'
@@ -240,7 +241,8 @@ assumption('P-RLWE', 'Power Ring-LWE', 2024, ['PrivEnhEnc'], '/p-rlwe/', 'LWE');
 assumptionFamily('Power-LWE', ['SP-RLWE', 'wSP-RLWE', 'SSP-RLWE', 'SCSP-RLWE', 'P-RLWE']);
 
 assumption('PV-LWE', 'Partial Vandermonde LWE - closely related to Partial Fourier Recovery Problem', 2022, ['Sign', 'EffEnhSign', 'PKE'], '/pv-lwe/', 'LWE');
-assumptionFamily('Partial Vandermonde', ['PV-SIS', 'PV-LWE']);
+assumption('PNTT-PLWE', 'Partial-NTT Polynomial-LWE', 2022, ['Sign', 'EffEnhSign', 'PKE'], '/pv-lwe/#pntt-plwe', 'LWE', true);
+assumption('Hybrid-PV-P', 'Hybrid between Partial Vandermonde LWE and Polynomial-LWE', 2022, ['Sign', 'EffEnhSign', 'PKE'], '/pv-lwe/#hybrid-pv-p', 'LWE', true);
 
 
 // Standalone assumptions - family, i.e. last parameter is always 'Standalone'
@@ -288,6 +290,9 @@ reducesTo('k-M-ISIS', 'BASIS_struct');
 reducesTo('BASIS_struct', 'l-succinct-SIS');
 
 reducesTo('Decomposed-SIS', 'Extended-Decomposed-SIS', 300);
+
+reducesTo('PV-SIS', 'PNTT-PSIS');
+reducesTo('PNTT-PSIS', 'PNTT-PLWE');
 
 // LWE
 reducesTo('LWE', 'SIS', 1000);
@@ -338,8 +343,13 @@ reducesTo('Circular-LWE', 'LWE', 400);
 
 reducesTo('SP-RLWE', 'wSP-RLWE');
 
+reducesTo('PV-LWE', 'PV-SIS');
+reducesTo('PNTT-PLWE', 'Hybrid-PV-P');
+
 // NTRU
 reducesTo('NTRU', 'LWE', 500);
+
+reducesTo('NTRU', 'PNTT-PSIS', 300);
 
 
 // Partial Reductions - "partially reduces to"

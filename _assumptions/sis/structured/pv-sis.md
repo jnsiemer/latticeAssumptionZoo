@@ -2,6 +2,7 @@
 title: "Partial Vandermonde SIS (PV-SIS)"
 seo_title: "Partial Vandermonde SIS"
 family: "SIS"
+subfamily: "Structured SIS"
 graph_id: "PV-SIS"
 
 last_modified_at: 2026-06-24
@@ -44,9 +45,22 @@ _Sample $$\Omega \sample \mathcal{U}(\mathcal{P}_t)$$. Given $$\bar{\mat{V}}_\Om
 
 $$ \bar{\mat{V}}_\Omega \cdot \vec{a} = \vec{0} \land 0 < \norm{a}_2 \leq \beta. $$
 
+## Variants
+
+### PNTT-PSIS$$_{n,q,\beta,\nu,t}$$ {#pntt-psis}
+_Sample $$\Omega \sample \mathcal{U}(\mathcal{P}_t)$$ and $$\vec{b} \sample \mathcal{R}_q$$. Given $$\bar{\mat{V}}_\Omega$$, an adversary is asked to find $$(\vec{z}_1,\vec{z}_2) \in \mathcal{R}$$ s.t._
+
+$$ \bar{\mat{V}}_\Omega \cdot \left( \vec{z}_1 + \vec{b} \cdot \vec{z}_2 \right) = \vec{0} \land 0 < \norm{(\vec{z}_1, \vec{z}_2)}_2 \leq \beta, $$
+
+_where $$\vec{z}_1 + \vec{b} \cdot \vec{z}_2 = \vec{0} \bmod \mathcal{I}_{\Omega,q}$$ with $$\mathcal{I}_{\Omega, q} = \prod_{\omega_j \in \Omega} \langle q, x-\omega_j \rangle$$._
+
+Partial-NTT Polynomial-SIS (PNTT-PSIS) is a relaxation of [Ring-SIS](/sis/#ring-sis) (known as Polynomial-SIS), which instead of requiring $$\vec{z}_1 + \vec{b} \cdot \vec{z}_2$$ to be $$\vec{0}$$ in $$\mathcal{R}_q$$, it only requires $$t$$ out of $$n$$ NTT coefficients to be zero. According to Lemma 9 of {% cite DCC:BouSakSte22 %}, PNTT-PSIS is hard if PV-SIS and [NTRU](/ntru/) are hard.
+
 ## Hardness
 
-As a specialisation of the Partial Vandermonde Knapsack problem w.r.t. the Euclidean norm, PV-SIS can at most be as hard as PV-Knapsack. 
+Lemma 8 of {% cite DCC:BouSakSte22 %} states that PV-SIS is at least as hard as [PV-LWE](/pv-lwe/).
+
+As a specialisation of the Partial Vandermonde Knapsack problem (w.r.t. the Euclidean norm), PV-SIS can at most be as hard as PV-Knapsack. 
 However, Boudgoust, Gachon, and Pellet-Mary {% cite C:BouGacPel22 %} present an efficient distinguisher for some proposed sets of parameters and a polynomial-time distinguisher for the decisional PV-Knapsack problem, which works for random instances of $$\Omega$$ with non-negligible probability. Further, they reduce the bit-security of parameter sets drastically. Subsequent work {% cite EC:DasJou24 %} provides a key recovery attack, i.e. a polynomial-time algorithm to find $$\vec{a}$$, for a non-negligible (but efficiently identifiable) number of weak keys.
 
 ## Constructions built from PV-SIS {#constructions}

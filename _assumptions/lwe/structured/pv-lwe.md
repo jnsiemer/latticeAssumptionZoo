@@ -2,6 +2,7 @@
 title: "Partial Vandermonde LWE (PV-LWE)"
 seo_title: "Partial Vandermonde LWE"
 family: "LWE"
+subfamily: "Structured LWE"
 graph_id: "PV-LWE"
 
 last_modified_at: 2026-06-24
@@ -40,9 +41,25 @@ _where $$\omega_{i_j} \in \Omega$$ for $$j \in [t]$$ and $$\omega_{i_{t+k}} \in 
 Define the set $$\mathcal{P}_t := \set{\Omega \subset \set{\omega_j}_{j \in [n]} : \abs{\Omega} = t}$$ of all subsets of primitive $$\nu$$-th roots of unity in $$\ZZ_q$$ of size $$t$$.
 
 ### PV-LWE$$_{n,q,\beta,\nu,t,\chi}$$ {#pv-lwe}
-_Let $$\chi$$ be a distribution over $$\ZZ^n$$ and fix $$\vec{s} \in \ZZ_q^t$$. Sample $$\Omega \sample \mathcal{U}(\mathcal{P}_t)$$, $$\vec{e} \sample \chi$$, and $$\vec{u} \sample \ZZ_q^n$$. An adversary is asked to distinguish between the distribution_
+_Let $$\chi$$ be a distribution over $$\ZZ^n$$. Sample $$\Omega \sample \mathcal{U}(\mathcal{P}_t)$$, $$\vec{s} \sample \ZZ_q^t$$, $$\vec{e} \sample \chi$$, and $$\vec{u} \sample \ZZ_q^n$$. An adversary is asked to distinguish between the distribution_
 
 $$ \left( \bar{\mat{V}}_\Omega, \bar{\mat{V}}_\Omega^T \cdot \vec{s} + \vec{e} \right) \text{ and } \left( \bar{\mat{V}}_\Omega, \vec{u} \right). $$
+
+## Variants
+
+### PNTT-PLWE$$_{n,q,\beta,\nu,t,\chi}$$ {#pntt-plwe}
+_Let $$\chi$$ denote a distribution over $$\RR$$. Sample $$\Omega \sample \mathcal{U}(\mathcal{P}_t)$$, $$\vec{s} \sample \ZZ_q^t$$, $$\vec{b} \sample \mathcal{R}_q$$, $$\vec{e}_1, \vec{e}_2 \sample \chi^n$$, and $$\vec{y}_1, \vec{y}_2 \sample \mathcal{R}_q$$. An adverary is asked to distinguish between the distribution_
+
+$$ \left( \bar{\mat{V}}_\Omega, \vec{b}, \bar{\mat{V}}_\Omega^T \cdot \vec{s} + \vec{e}_1, \mathsf{rot}(\vec{b}) \cdot \bar{\mat{V}}_\Omega^T \cdot \vec{s} + \vec{e}_2 \right) \text{ and } \left( \bar{\mat{V}}_\Omega, \vec{b}, \vec{y}_1, \vec{y}_2 \right). $$
+
+Partial-NTT Polynomial-LWE (PNTT-PLWE) is a relaxed version of [Ring-LWE](/lwe/#ring-lwe) (referred to as _Polynomial LWE_ in the corresponding paper), which is dual to [PNTT-PSIS](/pv-sis/#pntt-psis). Moreover, the search version of PNTT-PLWE is at least as hard as PNTT-PSIS according to Lemma 10 of {% cite DCC:BouSakSte22 %}.
+
+### Hybrid-PV-P$$_{n,q,\beta,\nu,t,\chi_r,\chi_e}$$ {#hybrid-pv-p}
+_Let $$n$$ be a power of two and $$q$$ be a prime s.t. $$q = 1 \bmod 2n$$, defining $$\mathcal{R}_q := \ZZ_q[X] / (X^n + 1)$$. Let $$\chi_r$$, $$\chi_e$$ be distributions over $$\ZZ$$. Sample $$\Omega \sample \mathcal{U}(\mathcal{P}_t)$$, $$\vec{b} \sample \mathcal{R}_q$$, $$\vec{r} \sample \chi_r^n$$, $$\vec{e} \sample \chi_e^n$$, $$\vec{u} \sample \ZZ_q^t$$, and $$\vec{v} \sample \mathcal{R}_q$$. Define $$\tilde{\vec{r}} = (r_0, -r_{n-1}, \dots, -r_1)^T$$. An adversary is asked to distinguish between the distribution_
+
+$$ \left( \bar{\mat{V}}_\Omega, \vec{b}, \bar{\mat{V}}_\Omega \cdot \vec{r}, \vec{b} \cdot \tilde{\vec{r}} + \vec{e} \right) \text{ and } \left( \bar{\mat{V}}_\Omega, \vec{b}, \vec{u}, \vec{v} \right). $$
+
+Hybrid-PV-P is a combination of [Ring-LWE](/lwe/#ring-lwe) and PV-LWE, where the underlying secrets of both instances are related. According to Lemma 11 in {% cite DCC:BouSakSte22 %}, Hybrid-PV-P is at least as hard as [PNTT-PLWE](#pntt-plwe).
 
 ## Hardness
 
