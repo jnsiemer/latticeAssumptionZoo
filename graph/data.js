@@ -190,6 +190,10 @@ assumptionFamily('Non-Uniform-LWE', ['Non-Uniform-LWE', 'Binary-Matrix-LWE', 'LW
 
 assumption('Binary-Secret-LWE', 'Binary-Secret LWE', 2018, ['PKE'], '/binary-secret-lwe/', 'LWE');
 
+assumption('Continuous-LWE', 'Continuous LWE', 2021, ['PKE'], '/continuous-lwe/', 'LWE');
+assumption('Hom-Continuous-LWE', 'Homogeneous Continuous LWE', 2021, ['PKE'], '/continuous-lwe/#hclwe', 'LWE', true);
+assumptionFamily('Continuous-LWE', ['Continuous-LWE', 'Hom-Continuous-LWE']);
+
 assumption('k-LWE', 'k-LWE', 2014, ['PKE'], '/klwe/', 'LWE');
 
 assumption('Asymmetric-LWE', 'Asymmetric LWE', 2020, ['Sign', 'PKE'], '/asymmetric-lwe/', 'LWE');
@@ -308,6 +312,9 @@ reducesTo('LWE', 'Subspace-LWE', 200);
 reducesTo('LWE', 'Non-Uniform-LWE', 250);
 
 reducesTo('LWE', 'Binary-Secret-LWE', 175);
+
+reducesTo('Binary-Secret-LWE', 'Continuous-LWE', 200);
+reducesTo('Binary-Secret-LWE', 'Hom-Continuous-LWE', 225);
 
 reducesTo('LWE', 'k-LWE');
 
