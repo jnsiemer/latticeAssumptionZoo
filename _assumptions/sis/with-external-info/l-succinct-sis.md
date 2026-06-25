@@ -27,7 +27,7 @@ Intuitively, the assumption states that it is hard to solve [SIS](/sis/) w.r.t. 
 ## Hardness
 Wee proved that $$\ell$$-succinct SIS is at least as hard as [BASIS$$_{\text{struct}}$$](/basis/#BASIS_struct) for the same choice of $$\ell$$ in Lemma 2 of {% cite C:Wee24 %}.
 
-Furthermore, [$$\ell$$-succinct LWE](/l-succinct-lwe/) trivially implies $$\ell$$-succinct SIS {% cite C:Wee24 %}. As $$\ell$$-succinct LWE was shown to be at least as hard as Evasive LWE according to Lemma 3 in {% cite C:Wee24 %}, this might suggest that a similar reduction from [Evasive SIS](/TODO/) to $$\ell$$-succinct SIS exists.
+Furthermore, [$$\ell$$-succinct LWE](/l-succinct-lwe/) trivially implies $$\ell$$-succinct SIS {% cite C:Wee24 %}. As $$\ell$$-succinct LWE was shown to be at least as hard as Evasive LWE according to Lemma 3 in {% cite C:Wee24 %}, this might suggest that a similar reduction from [Evasive SIS](/evasive-sis/) to $$\ell$$-succinct SIS exists.
 
 ## Constructions built from $$\ell$$-succinct SIS {#constructions}
 

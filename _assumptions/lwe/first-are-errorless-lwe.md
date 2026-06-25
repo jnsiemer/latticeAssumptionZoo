@@ -26,7 +26,7 @@ redirect_from:
   - /saelwe/
 ---
 
-The _first-is-errorless LWE_ problem was introduced by Brakerski, Langlois, Peikert, Regev, and Stehlé in 2013 {% cite STOC:BLPRS13 %}. They utilise the problem as an intermediate reduction step towards [Extended LWE](/extended-lwe/) and [Binary Secret LWE](/TODO/). In subsequent work, the assumption was generalised to _first-are-errorless LWE_ and its module version {% cite C:AgrLibSte16 %}{% cite CTRSA:BJRW21 %}.
+The _first-is-errorless LWE_ problem was introduced by Brakerski, Langlois, Peikert, Regev, and Stehlé in 2013 {% cite STOC:BLPRS13 %}. They utilise the problem as an intermediate reduction step towards [Extended LWE](/extended-lwe/) and [Binary-Secret LWE](/binary-secret-lwe/). In subsequent work, the assumption was generalised to _first-are-errorless LWE_ and its module version {% cite C:AgrLibSte16 %}{% cite CTRSA:BJRW21 %}.
 
 ## Definition
 

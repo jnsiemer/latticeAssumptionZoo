@@ -188,6 +188,8 @@ assumption('LWE-with-low-norm', 'LWE with low norm', 2013, ['PKE', 'FuncEnc'], '
 assumption('Subspace-LWE', 'Subspace LWE', 2012, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#subspace-lwe', 'LWE', true);
 assumptionFamily('Non-Uniform-LWE', ['Non-Uniform-LWE', 'Binary-Matrix-LWE', 'LWE-with-low-norm', 'Subspace-LWE']);
 
+assumption('Binary-Secret-LWE', 'Binary-Secret LWE', 2018, ['PKE'], '/binary-secret-lwe/', 'LWE');
+
 assumption('k-LWE', 'k-LWE', 2014, ['PKE'], '/klwe/', 'LWE');
 
 assumption('Asymmetric-LWE', 'Asymmetric LWE', 2020, ['Sign', 'PKE'], '/asymmetric-lwe/', 'LWE');
@@ -304,6 +306,8 @@ reducesTo('LWE', 'Binary-Matrix-LWE', 200);
 reducesTo('LWE', 'LWE-with-low-norm', 200);
 reducesTo('LWE', 'Subspace-LWE', 200);
 reducesTo('LWE', 'Non-Uniform-LWE', 250);
+
+reducesTo('LWE', 'Binary-Secret-LWE', 175);
 
 reducesTo('LWE', 'k-LWE');
 
