@@ -195,6 +195,8 @@ assumption('Binary-Secret-LWE', 'Binary-Secret LWE', 2018, ['PKE'], '/binary-sec
 assumption('Known-Norm-LWE', 'Known-Norm LWE', 2024, ['PKE', 'ThresholdEnc'], '/known-norm-lwe/', 'LWE');
 assumption('Known-Covariance-RLWE', 'Known-Covariance Ring-LWE', 2024, ['PKE', 'ThresholdEnc'], '/known-norm-lwe/#known-covariance-rlwe', 'LWE', true);
 
+assumption('Reused-A-LWE', 'Reused-A LWE', 2024, ['PKE', 'ThresholdEnc'], '/reused-a-lwe/', 'LWE');
+
 assumption('Continuous-LWE', 'Continuous LWE', 2021, ['PKE'], '/continuous-lwe/', 'LWE');
 assumption('Hom-Continuous-LWE', 'Homogeneous Continuous LWE', 2021, ['PKE'], '/continuous-lwe/#hclwe', 'LWE', true);
 assumptionFamily('Continuous-LWE', ['Continuous-LWE', 'Hom-Continuous-LWE']);
@@ -214,8 +216,8 @@ assumption('MH-Ext-LWE', 'Multi-Hint Extended LWE', 2016, ['ZK', 'PKE', 'FuncEnc
 assumptionFamily('Extended-LWE', ['Extended-LWE', 'MH-Ext-LWE']);
 
 assumption('elLWE', 'LWE with Error-Leakage', 2023, ['FuncEnc'], '/ellwe/', 'LWE');
-assumption('Hint-LWE', 'Hint Learning with Errors', 2022, ['Commitment', 'ZK', 'Sign', 'TresholdSign'], '/hint-mlwe/', 'LWE');
-assumption('Coset-Hint-LWE', 'Coset Hint Learning with Errors', 2025, ['TresholdEnc'], '/hint-mlwe/#coset-hint-mlwe', 'LWE', true);
+assumption('Hint-LWE', 'Hint Learning with Errors', 2022, ['Commitment', 'ZK', 'Sign', 'TresholdSign'], '/hint-lwe/', 'LWE');
+assumption('Coset-Hint-LWE', 'Coset Hint Learning with Errors', 2025, ['TresholdEnc'], '/hint-lwe/#coset-hint-mlwe', 'LWE', true);
 assumption('Leaky-LWE', 'Leaky Learning with Errors', 2023, ['FuncEnc', 'TresholdEnc'], '/leaky-lwe/', 'LWE');
 assumptionFamily('LeakyLWE', ['Leaky-LWE', 'Hint-MLWE','Coset-Hint-LWE', 'elLWE']);
 
@@ -332,6 +334,8 @@ reducesTo('LWE', 'Binary-Secret-LWE', 175);
 reducesTo('LWE', 'Known-Norm-LWE', 200);
 reducesTo('LWE', 'Known-Covariance-RLWE', 250);
 
+reducesTo('LWE', 'Reused-A-LWE', 300);
+
 reducesTo('Binary-Secret-LWE', 'Continuous-LWE', 200);
 reducesTo('Binary-Secret-LWE', 'Hom-Continuous-LWE', 225);
 
@@ -433,6 +437,8 @@ generalisedBy('LWE-with-low-norm', 'Non-Uniform-LWE');
 generalisedBy('Subspace-LWE', 'Non-Uniform-LWE');
 
 generalisedBy('Known-Norm-LWE', 'Known-Covariance-RLWE');
+
+generalisedBy('Reused-A-LWE', 'Hint-LWE', 175);
 
 generalisedBy('Hint-LWE', 'Leaky-LWE');
 

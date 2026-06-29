@@ -14,7 +14,7 @@ redirect_from:
   - /leakylwe/
 ---
 
-Following new works on relaxed versions of [LWE](/lwe/), Lai, Swarnakar, and Woo introduced the Leaky LWE assumption in 2025 {% cite CiC:LaiSwaWoo25 %}. This assumption follows the idea of generalising the classical [LWE](/lwe/) assumption with additional linear information over the secret and/or the error with fewer restrictions than the standard [Hint-MLWE](/hint-mlwe/) and the [Error-Leakage LWE](/ellwe/) assumptions. This Leaky LWE definition encompasses both the previous assumptions.
+Following new works on relaxed versions of [LWE](/lwe/), Lai, Swarnakar, and Woo introduced the Leaky LWE assumption in 2025 {% cite CiC:LaiSwaWoo25 %}. This assumption follows the idea of generalising the classical [LWE](/lwe/) assumption with additional linear information over the secret and/or the error with fewer restrictions than the standard [Hint-MLWE](/hint-lwe/) and the [Error-Leakage LWE](/ellwe/) assumptions. This Leaky LWE definition encompasses both the previous assumptions.
 
 The key points of Leaky LWE compared to the previous assumptions is that it only requires the leaked variables to follow discrete Gaussian distributions rather than both, together with giving the ability to the adversary to choose the hint-matrices.
 
@@ -29,7 +29,7 @@ _Finally, the adversary is asked to distinguish between the LWE distribution $$(
 
 ## Hardness
 
-The hardness of Leaky MLWE was proven by Lai, Swarnakar, and Woo {% cite CiC:LaiSwaWoo25 %} for two parameter regimes encompassing both [Hint-MLWE](/hint-mlwe/) and [Error-Leakage LWE](/ellwe/). Their proofs are more permissive and enable the choice of better parameters.
+The hardness of Leaky MLWE was proven by Lai, Swarnakar, and Woo {% cite CiC:LaiSwaWoo25 %} for two parameter regimes encompassing both [Hint-MLWE](/hint-lwe/) and [Error-Leakage LWE](/ellwe/). Their proofs are more permissive and enable the choice of better parameters.
 
 More concretely, there is a reduction from MLWE$$_{n,m,q,\chi_\mathbf{s'},\chi_\mathbf{e'},\mathcal{R}}$$ to Leaky MLWE$$^{\ell,\chi_\mathbf{y}, \Gamma}_{n,m,q,\chi_\mathbf{s},\chi_\mathbf{e},\mathcal{R}}$$ if the parameters satisfy any of the conditions below.
 
@@ -58,7 +58,7 @@ If the leakage is only revealing information over the LWE error $$\vec{e}$$, the
 
 The value of the bound $$\beta$$ depends on the chosen standard deviations. Please find further details in Section 4.1 of {% cite CiC:LaiSwaWoo25 %}.
 
-The idea of the proofs follows the original proof from [Hint-MLWE](/hint-mlwe/) with an additional analysis of the statistical closeness of the constructed hints. The proof also differs in that it is a direct reduction from [M-LWE](/lwe/#module-lwe) rather than small secret M-LWE.
+The idea of the proofs follows the original proof from [Hint-MLWE](/hint-lwe/) with an additional analysis of the statistical closeness of the constructed hints. The proof also differs in that it is a direct reduction from [M-LWE](/lwe/#module-lwe) rather than small secret M-LWE.
 
 ## Constructions built from Leaky MLWE {#constructions}
 
@@ -67,5 +67,5 @@ The idea of the proofs follows the original proof from [Hint-MLWE](/hint-mlwe/) 
 
 ## Related Assumptions
 
-- [Hint-MLWE](/hint-mlwe/) is a specialised instance of Leaky LWE, i.e. $$\textsf{Hint-MLWE}^{\ell,(\chi_\mathbf{y})_{i \in [\ell]}, \mathcal{U}(\mathcal{\Gamma})}_{n,m,q,\chi^{n+m}} := \textsf{Leaky-MLWE}^{\ell,\chi_\mathbf{y}, \mathcal{\Gamma}}_{n,m,q,\chi^n,\chi^m}$$ according to [Condition 1](#condition-1).
+- [Hint-MLWE](/hint-lwe/) is a specialised instance of Leaky LWE, i.e. $$\textsf{Hint-MLWE}^{\ell,(\chi_\mathbf{y})_{i \in [\ell]}, \mathcal{U}(\mathcal{\Gamma})}_{n,m,q,\chi^{n+m}} := \textsf{Leaky-MLWE}^{\ell,\chi_\mathbf{y}, \mathcal{\Gamma}}_{n,m,q,\chi^n,\chi^m}$$ according to [Condition 1](#condition-1).
 - [Error-Leakage LWE](/ellwe/) is a specialised instance Leaky LWE (in the [Condition 2](#condition-2) regime), which only allow error leakages.

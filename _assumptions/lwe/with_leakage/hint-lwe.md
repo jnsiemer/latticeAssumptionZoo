@@ -9,7 +9,6 @@ assumption_status: "implied"
 last_modified_at: 2026-04-30
 redirect_from:
   - /hint-mlwe/
-  - /hint-lwe/
   - /hintmlwe/
   - /hintlwe/
 ---

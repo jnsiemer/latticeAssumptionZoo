@@ -36,4 +36,4 @@ LWE with Error-Leakage is at least as hard as [LWE](/lwe/) for discrete Gaussian
 ## Related Assumptions
 
 - [Leaky LWE](/leaky-lwe/) generalises elLWE and provides a tighter reduction from LWE.
-- [Hint MLWE](/hint-mlwe/) also supports error-leakage in LWE instances.
+- [Hint MLWE](/hint-lwe/) also supports error-leakage in LWE instances.

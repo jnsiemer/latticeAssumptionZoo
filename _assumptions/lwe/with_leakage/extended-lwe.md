@@ -12,7 +12,7 @@ redirect_from:
   - /extendedlwe/
 ---
 
-Extended LWE was proposed by O'Neill, Peikert, and Waters in 2011 {% cite C:ONePeiWat11 %}. Since then, the assumption has been given in several flavours with the same core idea of providing a hint on the LWE error. This idea and assumption has since been generalised by [Error-Leakage LWE](/ellwe/), [Hint-MLWE](/hint-mlwe/), and [Leaky LWE](/leaky-lwe/). However, the assumption itself was utilised to provide optimised zero-knowledge proofs, advanced public-key encryption and functional encryption.
+Extended LWE was proposed by O'Neill, Peikert, and Waters in 2011 {% cite C:ONePeiWat11 %}. Since then, the assumption has been given in several flavours with the same core idea of providing a hint on the LWE error. This idea and assumption has since been generalised by [Error-Leakage LWE](/ellwe/), [Hint-MLWE](/hint-lwe/), and [Leaky LWE](/leaky-lwe/). However, the assumption itself was utilised to provide optimised zero-knowledge proofs, advanced public-key encryption and functional encryption.
 
 ## Definition
 
@@ -54,5 +54,5 @@ Due to the varying definitions of Extended LWE, we group the results by definiti
 ## Related Assumptions
 
 - [LWE with Error-Leakage](/ellwe/) is a direct generalisation of Extended LWE and closely related to Multi-Hint Extended LWE.
-- [Hint-MLWE](/hint-mlwe/) can accomodate for some leakage of the LWE error.
+- [Hint-MLWE](/hint-lwe/) can accomodate for some leakage of the LWE error.
 - [Leaky LWE](/leaky-lwe/) generalises (Multi-Hint) Extended LWE and additionally allows for some leakage of the LWE secret.

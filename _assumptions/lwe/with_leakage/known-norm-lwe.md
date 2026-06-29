@@ -17,7 +17,7 @@ Known-Norm LWE was introduced by Micciancio and Suhl in 2024 {% cite CiC:MicSuh2
 ## Definition
 
 ### Known-Norm LWE$$_{n,m,q,\chi}$$ {#known-norm-lwe}
-_Let $$\chi$$ be a distribution over $$\mathcal{R}$$. Sample $$\mat{A} \sample \ZZ_q^{m \times n}$$, $$\vec{s} \sample \chi^n$$, and $$\vec{e} \sample \chi^m$$. An adversary is asked to distinguish between the distribution_
+_Let $$\chi$$ be a distribution over $$\ZZ$$. Sample $$\mat{A} \sample \ZZ_q^{m \times n}$$, $$\vec{s} \sample \chi^n$$, and $$\vec{e} \sample \chi^m$$. An adversary is asked to distinguish between the distribution_
 
 $$ (\mat{A}, \mat{A} \cdot \vec{s} + \vec{e}, \norm{\vec{s}}^2 + \norm{\vec{e}}^2) \text{ and } \left( \mat{A}, \mathcal{U}(\ZZ_q^m), \norm{\vec{s}}^2 + \norm{\vec{e}}^2 \right). $$
 
