@@ -33,9 +33,18 @@ $$ ( \vec{a} = s^{-1}\cdot (\vec{b} - \vec{e}), \vec{b} ) \text{ and } \mathcal{
 
 The authors {% cite EC:OPPW25 %} note in Remark 2.7 that {0,1}-CRT-LWE can be thought of as lying [Ring-LWE](/lwe/#ring-lwe) and [NTRU](/ntru/).
 
+## Variants
+
+### Stronger {0,1}-CRT-LWE$$_{\mathcal{R},m,q,s}$$ {#scrt-lwe}
+_On input a message $$\vec{m} \in \mathcal{R}_q^m$$. Sample $$s \sample \mathcal{R}_q$$, $$\vec{b} \sample \mathcal{B}^m$$ and $$\vec{e} \sample D_{\mathcal{R},s}^m$$. An adversary is asked to distinguish between the distribution_
+
+$$ ( \vec{a} = s^{-1}\cdot (\vec{b} - \vec{e} - \vec{m}), \vec{b} ) \text{ and } \mathcal{U}\left( \mathcal{R}_q^m \times \mathcal{R}_q^m \right). $$
+
+In order to prove the security of their BV-style construction, Okada et al. {% cite EC:OPPW25 %} require a slightly stronger assumption to hide message(s) $$\vec{m} \in \mathcal{R}_q^m$$ due to the fact that $$\mathcal{U}(\mathcal{B})$$ is not $$\mathcal{U}(\mathcal{R}_q)$$.
+
 ## Hardness
 
-Theorem 7.1 of {% cite EC:OPPW25 %} states that {0,1}-CRT-LWE is at least as hard as [Ring-LWE](/lwe/#ring-lwe), where the error of the {0,1}-CRT-LWE instance is increased by a constant factor.
+Theorem 7.1 of {% cite EC:OPPW25 %} states that {0,1}-CRT-LWE is at least as hard as [Ring-LWE](/lwe/#ring-lwe) if the R-LWE error is of size $$q/\poly{n}$$ then the {0,1}-CRT-LWE instance is only increased by a constant additive factor.
 
 Furthermore, Okada et al. present some cryptanalysis of {0,1}-CRT-LWE by considering existing (geometric, combinatorial, and algebraic) attacks. They were only capable of improving the combinatorial attack slightly based on the additional structure of the problem but their findings do not alter the concrete security.
 

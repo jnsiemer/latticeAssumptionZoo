@@ -228,6 +228,8 @@ assumption('SAOM-UMLWE', 'Selective Algebraic One-More Uniform-Module-LWE', 2025
 assumptionFamily('AOM-MLWE', ['AOM-MLWE','AOM-UMLWE', 'SAOM-MLWE', 'SAOM-UMLWE']);
 
 assumption('{0,1}-CRT-LWE', '{0,1}-CRT-LWE', 2025, ['COED'], '/01-crt-lwe/', 'LWE');
+assumption('s{0,1}-CRT-LWE', 'Stronger {0,1}-CRT-LWE', 2025, ['COED'], '/01-crt-lwe/#scrt-lwe', 'LWE', true);
+assumptionFamily('{0,1}-CRT-LWE', ['{0,1}-CRT-LWE', 's{0,1}-CRT-LWE']);
 
 assumption('l-succinct-LWE', 'l-succinct LWE', 2024, ['FuncEnc', 'EffEnhEnc'], '/l-succinct-lwe/', 'LWE');
 
