@@ -227,6 +227,8 @@ assumption('AOM-UMLWE', 'Algebraic One-More Uniform-Module-LWE', 2025, ['Treshol
 assumption('SAOM-UMLWE', 'Selective Algebraic One-More Uniform-Module-LWE', 2025, ['TresholdSign'], '/aom-mlwe/#variants', 'LWE', true);
 assumptionFamily('AOM-MLWE', ['AOM-MLWE','AOM-UMLWE', 'SAOM-MLWE', 'SAOM-UMLWE']);
 
+assumption('{0,1}-CRT-LWE', '{0,1}-CRT-LWE', 2025, ['COED'], '/01-crt-lwe/', 'LWE');
+
 assumption('l-succinct-LWE', 'l-succinct LWE', 2024, ['FuncEnc', 'EffEnhEnc'], '/l-succinct-lwe/', 'LWE');
 
 assumption('Adaptive-LWE', 'Adaptive LWE', 2018, ['FuncEnc'], '/adaptive-lwe/', 'LWE');
@@ -342,6 +344,8 @@ reducesTo('LWE', 'Hint-LWE');
 reducesTo('Hint-LWE', 'Coset-Hint-LWE');
 
 reducesTo('LWE','Leaky-LWE');
+
+reducesTo('LWE', '{0,1}-CRT-LWE', 225);
 
 reducesTo('Evasive-LWE', 'l-succinct-LWE'); // to come
 
