@@ -41,4 +41,4 @@ Lemma 9 of {% cite CiC:MicSuh24 %} states that Known-Norm LWE is as hard as [sma
 
 ## Related Assumptions
 
-- [Yet-Another LWE](/TODO/)
+- [Yet-Another LWE](/yet-another-lwe/) combines Known-Norm LWE with [Reused-A LWE](/reused-a-lwe/).

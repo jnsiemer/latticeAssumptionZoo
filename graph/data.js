@@ -213,6 +213,8 @@ assumption('k-LWE', 'k-LWE', 2014, ['PKE'], '/klwe/', 'LWE');
 
 assumption('Asymmetric-LWE', 'Asymmetric LWE', 2020, ['Sign', 'PKE'], '/asymmetric-lwe/', 'LWE');
 
+assumption('Truncated-LWE', 'Truncated LWE', 2025, ['PKE'], '/truncated-lwe/', 'LWE');
+
 assumption('qLWE', 'qLWE', 2025, ['PKE'], '/qlwe/', 'LWE'); // list of constructions is empty unless one counts constructions from LWE
 
 assumption('FAE-LWE', 'First-are-errorless LWE', 2013, ['COED'], '/first-are-errorless-lwe/', 'LWE');
@@ -354,6 +356,9 @@ reducesTo('LWE', 'k-LWE');
 
 reducesTo('LWE', 'Asymmetric-LWE');
 
+reducesTo('Hint-LWE', 'Truncated-LWE');
+reducesTo('NTRU', 'Truncated-LWE', 300);
+
 reducesTo('LWE', 'qLWE');
 
 reducesTo('LWE', 'FAE-LWE');
@@ -424,6 +429,8 @@ partiallyReducesTo('LWE', 'LWE-OD', 'Constraints detailed in Theorem 3 of the pa
 partiallyReducesTo('LWE', 'Tensor-LWE', 'If all x_i are equal', 400);
 
 // LWE
+partiallyReducesTo('LWE', 'Truncated-LWE', 'For certain choices of parameters', 500);
+
 partiallyReducesTo('LWE', 'l-succinct-LWE', 'If W is wide and embeds a trapdoor', 300);
 
 partiallyReducesTo('LWE', 'Adaptive-LWE', 'If k is constant', 400);

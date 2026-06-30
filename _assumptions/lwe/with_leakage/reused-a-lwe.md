@@ -37,3 +37,4 @@ Further, they provide a conrete attack for Reused-A LWE where the error is chose
 ## Related Assumptions
 
 - [Hint LWE](/hint-lwe/) generalises the Reused-A LWE assumption.
+- [Yet-Another LWE](/yet-another-lwe/) combines Reused-A LWE with [Known-Norm LWE](/known-norm-lwe/).
