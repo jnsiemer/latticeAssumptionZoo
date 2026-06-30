@@ -2,6 +2,7 @@
 title: "First-Are-Errorless LWE (FAE-LWE)"
 seo_title: "First-Are-Errorless LWE"
 family: "LWE"
+subfamily: "LWE with Leakage"
 graph_id: "FAE-LWE"
 assumption_status: "implied"
 

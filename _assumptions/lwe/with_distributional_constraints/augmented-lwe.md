@@ -2,6 +2,7 @@
 title: "Augmented LWE"
 seo_title: "Augmented LWE"
 family: "LWE"
+subfamily: "LWE with Distributional Constraints"
 graph_id: "Augmented-LWE"
 assumption_status: "implied"
 

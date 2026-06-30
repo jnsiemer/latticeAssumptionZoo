@@ -197,6 +197,8 @@ assumption('Known-Covariance-RLWE', 'Known-Covariance Ring-LWE', 2024, ['PKE', '
 
 assumption('Reused-A-LWE', 'Reused-A LWE', 2024, ['PKE', 'ThresholdEnc'], '/reused-a-lwe/', 'LWE');
 
+assumption('FMS-LWE', 'Fixed-Matrix Shifted LWE', 2024, ['PKE', 'ThresholdEnc'], '/fms-lwe/', 'LWE');
+
 assumption('Continuous-LWE', 'Continuous LWE', 2021, ['PKE'], '/continuous-lwe/', 'LWE');
 assumption('Hom-Continuous-LWE', 'Homogeneous Continuous LWE', 2021, ['PKE'], '/continuous-lwe/#hclwe', 'LWE', true);
 assumptionFamily('Continuous-LWE', ['Continuous-LWE', 'Hom-Continuous-LWE']);
@@ -335,6 +337,8 @@ reducesTo('LWE', 'Known-Norm-LWE', 200);
 reducesTo('LWE', 'Known-Covariance-RLWE', 250);
 
 reducesTo('LWE', 'Reused-A-LWE', 300);
+
+reducesTo('LWE', 'FMS-LWE', 225);
 
 reducesTo('Binary-Secret-LWE', 'Continuous-LWE', 200);
 reducesTo('Binary-Secret-LWE', 'Hom-Continuous-LWE', 225);
