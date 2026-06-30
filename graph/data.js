@@ -197,6 +197,10 @@ assumption('Known-Covariance-RLWE', 'Known-Covariance Ring-LWE', 2024, ['PKE', '
 
 assumption('Reused-A-LWE', 'Reused-A LWE', 2024, ['PKE', 'ThresholdEnc'], '/reused-a-lwe/', 'LWE');
 
+assumption('Yet-Another-LWE', 'Yet-Another LWE', 2024, ['ThresholdEnc', 'COED'], '/yet-another-lwe/', 'LWE');
+assumption('Yet-Another^2-LWE', 'Yet-Another^2 LWE', 2024, ['ThresholdEnc', 'COED'], '/yet-another-lwe/#yet-another2-lwe', 'LWE', true);
+assumptionFamily('Yet-Another-LWE', ['Yet-Another-LWE', 'Yet-Another^2-LWE']);
+
 assumption('FMS-LWE', 'Fixed-Matrix Shifted LWE', 2024, ['PKE', 'ThresholdEnc'], '/fms-lwe/', 'LWE');
 
 assumption('Continuous-LWE', 'Continuous LWE', 2021, ['PKE'], '/continuous-lwe/', 'LWE');
@@ -337,6 +341,9 @@ reducesTo('LWE', 'Known-Norm-LWE', 200);
 reducesTo('LWE', 'Known-Covariance-RLWE', 250);
 
 reducesTo('LWE', 'Reused-A-LWE', 300);
+
+reducesTo('Known-Norm-LWE', 'Yet-Another-LWE');
+reducesTo('Reused-A-LWE', 'Yet-Another-LWE');
 
 reducesTo('LWE', 'FMS-LWE', 225);
 

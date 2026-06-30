@@ -19,7 +19,7 @@ Fixed-Matrix Shifted LWE (FMS-LWE) was introduced by Micciancio and Suhl in 2024
 
 ## Definition
 
-### Fixed-Matrix Shifted LWE$$_{n,q,\sigma,\Phi}$$ {#known-norm-lwe}
+### Fixed-Matrix Shifted LWE$$_{n,q,\sigma,\Phi}$$ {#fms-lwe}
 _Let $$\Phi$$ be a distribution over $$\ZZ^n$$. Fix a matrix $$\mat{A} \sample \ZZ_q^{n \times n}$$ and sample $$\vec{c},\vec{d} \sample \Phi$$, $$\vec{s} \sample D_{\ZZ^n, \vec{c},\sigma}$$, and $$\vec{e} \sample D_{\ZZ^n, \vec{d},\sigma}$$. Given the matrix $$\mat{A}$$, an adversary is asked to distinguish between samples from the distribution_
 
 $$ (\vec{s} \mat{A} + \vec{e}, \vec{c}, \vec{d}) \text{ and } \left( \mathcal{U}\left(\ZZ_q^n\right), \vec{c}, \vec{d} \right). $$

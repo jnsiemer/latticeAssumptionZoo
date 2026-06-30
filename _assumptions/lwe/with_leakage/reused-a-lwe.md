@@ -16,7 +16,7 @@ Reused-$$\mat{A}$$ LWE was introduced by Micciancio and Suhl in 2024 {% cite CiC
 
 ## Definition
 
-### Reused-$$\mat{A}$$ LWE$$_{n,m,q,\sigma_1,\sigma_2}$$ {#known-norm-lwe}
+### Reused-$$\mat{A}$$ LWE$$_{n,m,q,\sigma_1,\sigma_2}$$ {#reused-a-lwe}
 _Let $$\chi$$ be a distribution over $$\ZZ$$. Sample $$\mat{A} \sample \ZZ_q^{m \times n}$$, $$\vec{s} \sample \ZZ_q^n$$, $$\vec{e}_1 \sample \mathcal{N}_{\sigma_1}^m$$, $$\vec{e}_2 \sample \mathcal{N}_{\sigma_2}^m$$, $$\vec{b}' \sample \ZZ_q^m$$, and $$\vec{c} \sample \mathcal{N}_\sqrt{\sigma_1^2 + \sigma_2^2}^m$$. An adversary is asked to distinguish between the distribution_
 
 $$ (\mat{A}, \mat{A} \cdot \vec{s} + \vec{e}_1, \mat{A} \cdot \vec{s} + \vec{e}_2) \text{ and } \left( \mat{A}, \vec{b}', \vec{b}' + \vec{c} \right). $$
