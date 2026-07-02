@@ -15,7 +15,7 @@ Whether you have found an error, want to make a minor revision, add a new assump
 
 ## Hosting Locally
 
-We are providing two options to host the site locally: Using a [Docker container](#using-docker) or through a [manual installation](#manual-installation).
+We are providing two options to host the site locally: Using a [Docker container](#using-docker) (recommended) or through a [manual installation](#manual-installation).
 
 ### Using Docker
 1. Ensure you have [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) (also bundled in [Docker Desktop](https://www.docker.com/products/docker-desktop/)) installed and _running_ on your machine.
@@ -25,9 +25,11 @@ We are providing two options to host the site locally: Using a [Docker container
 docker compose up
 ```
 4. Preview the site at `http://localhost:4000`.
-5. Stop the container with `CTRL+C` or detach it using `d` to stop it using `docker compose down`.
+5. Stop the container with `CTRL+C` or detach it using `d`. To stop it then, use `docker compose down`.
 
-_Note:_ This is configured with live-reload. Any changes will automatically trigger a rebuild and refresh your browser.
+**Live Reload & Troubleshooting:** The Docker environment is configured with incremental builds and live-reload. Any changes will automatically trigger a partial rebuild and refresh your browser.
+
+_Important:_ The incremental reloader might not recompile all necessary files if you change more fundamental files such as `references.bib`. Therefore, if the local site appears out-of-sync, simply stop the Docker container and run `docker compose up` again. It will wipe all cached directories and guarantee a clean build. If this happens multiple times, you may want to remove the argument `--incremental` temporarily from your local `Dockerfile`, at the cost of accepting longer compilation and reload times.
 
 ### Manual Installation
 You can test and preview the wiki locally by setting up Jekyll and its plugins as follows:
@@ -35,8 +37,15 @@ You can test and preview the wiki locally by setting up Jekyll and its plugins a
 1. Ensure you have [Ruby](https://www.ruby-lang.org/) 2.7.0 or higher installed by running `ruby --version`. (Avoid using `sudo` for the following commands to prevent permission issues.)
 2. Install the bundler gem via `gem install bundler`.
 3. In the project root (where the Gemfile is located), install all dependencies by executing `bundle install`.
-4. Run the site locally: `bundle exec jekyll serve --livereload`.
+4. Run the site locally: `bundle exec jekyll serve --livereload --incremental`.
 5. Preview the local site at `http://localhost:4000`.
+
+**Live Reload & Troubleshooting:** Just like the Docker setup, if you edit fundamental files (e.g. `references.bib`) or experience caching anomalies, you must wipe the cache before restarting the server. To force a clean state, stop the server and run:
+```bash
+bundle exec jekyll clean
+bundle exec jekyll serve --livereload --incremental
+```
+If you experience this issue multiple times, you may consider removing the argument `--incremental` in step 4, at the cost of accepting longer compilation and reload times.
 
 For more information, we refer to Jekyll's official [GitHub help page](https://help.github.com/en/github/working-with-github-pages/testing-your-github-pages-site-locally-with-jekyll).
 

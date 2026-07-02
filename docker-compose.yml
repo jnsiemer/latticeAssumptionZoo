@@ -1,8 +1,6 @@
 services:
   laz:
     build: .
-    # prevents root-owned files from being created on the host machine
-    user: "${UID:-1000}:${GID:-1000}"
     ports:
       - "4000:4000"
       - "35729:35729" # Port for live reload
@@ -11,6 +9,7 @@ services:
       # Prevents container's installed gems from being overwritten 
       # if a user has a local vendor/bundle directory
       - bundle_cache:/usr/local/bundle
+      - /etc/localtime:/etc/localtime:ro
     environment:
       - BUNDLE_USER_HOME=/usr/local/bundle
 
