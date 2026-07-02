@@ -12,12 +12,12 @@ module Jekyll
       families.each do |family, family_docs|
         next if family.nil? || family.strip.empty?
         
-        # 1. Generate Family Pages
+        # Generate Family Pages
         family_slug = Utils.slugify(family)
         family_dir = File.join('catalogue', family_slug)
         site.pages << GroupPage.new(site, site.source, family_dir, family, nil, 'family', family_docs)
 
-        # 2. Generate Subfamily Pages
+        # Generate Subfamily Pages
         subfamilies = family_docs.group_by { |doc| doc.data['subfamily'] }
         subfamilies.each do |subfamily, sub_docs|
           next if subfamily.nil? || subfamily.strip.empty?

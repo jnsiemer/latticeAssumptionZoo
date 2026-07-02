@@ -7,7 +7,7 @@ last_updated_at: 2026-06-19
 This comprehensive wiki catalogues average-case lattice assumptions so that cryptography-affine readers can quickly build an intuition for each assumption, understand the rationale behind its hardness, and explore its applications. Additionally, it serves as a centralised repository for essential literature related to novel assumptions, and provides a platform for publishing relevant cryptanalysis.
 
 Furthermore, this resource is built with two additional goals in mind:
-- For **designers**: This website facilitates keeping track of novel assumptions (e.g., by following our [RSS-Feed](/feed.xml)) to encourage reusing established assumptions rather than introducing new, ad-hoc ones.
+- For **designers**: This website encourages reusing existing assumptions rather than introducing new, ad-hoc ones by simplifying the process of finding and understanding existing assumptions. It also makes tracking novel assumptions effortless via our [RSS feed](/feed.xml).
 - For **cryptanalysts**: This repository serves as an organised index of targets, simplifying the identification of compelling assumptions to analyse.
 
 ## 🧭 Explore the Lattice Assumption Graph

@@ -46,7 +46,7 @@ As authors deviate from these conventions for several reasons, some pages in thi
 | Notation | Definition |
 | --- | --- |
 | $$\mathcal{U}(S)$$ or $$a \sample S$$ | Uniform distribution over the set $$S$$. |
-| $$D_{\Lambda,s,\vec{c}}$$ or $$\mathcal{D}_{\Lambda,s,\vec{c}}$$ | Discrete Gaussian distribution over the lattice $$\Lambda$$ centered around $$\vec{c}$$ with Gaussian parameter $$s$$ determining the width of the distribution. |
+| $$D_{\Lambda,s,\vec{c}}$$ or $$\mathcal{D}_{\Lambda,s,\vec{c}}$$ | Discrete Gaussian distribution over the lattice $$\Lambda$$ centered around $$\vec{c}$$ with Gaussian parameter $$s$$ determining the width of the distribution. A definition can be found in Section 2.3 of {% cite FTTCS:Peikert16 %}. |
 | $$\mathcal{N}_{s,c}$$ or $$\mathcal{N}(c,s)$$ | Continuous [Normal / Gaussian distribution](https://en.wikipedia.org/wiki/Normal_distribution){:target="_blank"} centered around $$c$$ with parameter $$s=\sqrt{2\pi}\sigma$$ determining the width of the distribution. |
 | $$\mathsf{Ber}(p)$$ | Bernoulli distribution with probability $$p$$ of outputting $$1$$. |
 | $$\mathsf{Bin}(n,p)$$ | Binomial distribution with $$n$$ independent Bernoulli experiments, each with probability $$p$$ of outputting $$1$$. |

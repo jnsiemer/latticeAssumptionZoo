@@ -8,6 +8,8 @@ main:
       url: /catalogue/
 - title: News
   url: /news/
+- title: About
+  url: /about/
 - title: GitHub
   url: https://github.com/jnsiemer/latticeassumptionzoo
   target: _blank
