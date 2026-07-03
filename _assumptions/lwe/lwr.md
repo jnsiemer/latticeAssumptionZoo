@@ -53,5 +53,6 @@ For specific rounding functions it was improved in {% cite C:LiuWan20 %}.
 
 ## Related Assumptions
 
-- [Learning with Alternating Moduli](/learning-with-alternating-moduli/) removes the rounding operation and immediately applies a second modulus.
+- [Learning with Alternating Moduli](/lwam/) removes the rounding operation and immediately applies a second modulus.
+- [Learning with Physical Rounding](/lwpr/) can be viewed as a physical version of LWR, where the rounding is performed by a leakage function.
 - [Learning with Errors](/lwe/) uses random noise rather than deterministic rounding compared to LWR.

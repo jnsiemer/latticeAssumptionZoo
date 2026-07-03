@@ -183,6 +183,8 @@ assumption('LWE', 'Learning with Errors', 2005, ['PKE', 'FuncEnc', 'COED'], '/lw
 assumption('ssLWE', 'Small-secret LWE', 2009, ['PKE', 'FuncEnc', 'COED'], '/lwe/#small-secret-lwe', 'LWE', true);
 assumption('LWR', 'Learning with Rounding', 2012, ['PKE'], '/lwr/', 'LWE');
 assumption('LWAM', 'Learning with Alternating Moduli', 2025, ['Commitment'], '/lwam/', 'LWE'); // list of constructions is "PRF" right now, which doesn't really fit into any current category
+assumption('LWPR', 'Learning with Physical Rounding', 2021, ['Commitment'], '/lwpr/', 'LWE'); // list of constructions is "PRF" right now, which doesn't really fit into any current category
+assumptionFamily('LWR', ['LWR', 'LWPR'], 75);
 
 assumption('Non-Uniform-LWE', 'Non-Uniform (Matrix) LWE', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#binary-matrix-lwe', 'LWE'); // also constructs a PRF
 assumption('Binary-Matrix-LWE', 'Binary-Matrix LWE', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#binary-matrix-lwe', 'LWE', true);

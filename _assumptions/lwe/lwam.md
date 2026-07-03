@@ -45,3 +45,4 @@ To avoid confusion, we only list constructions built from the formalised LWAM as
 ## Related Assumptions
 
 - [Learning with Rounding](/lwr/) applies another rounding operation before applying the second modulus.
+- [Learning with Physical Rounding](/lwpr/) is also motivated by crypto dark matter.
