@@ -4,7 +4,7 @@ seo_title: "Vanishing SIS"
 family: "SIS"
 graph_id: "vSIS"
 
-last_modified_at: 2026-05-03
+last_modified_at: 2026-07-04
 redirect_from:
   - /v-sis/
   - /v_sis/
