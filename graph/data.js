@@ -281,6 +281,10 @@ assumption('Hybrid-PV-P', 'Hybrid between Partial Vandermonde LWE and Polynomial
 
 assumption('Equivocal-LWE', 'Equivocal LWE', 2025, ['PrivEnhEnc', 'FuncEnc'], '/equivocal-lwe/', 'LWE');
 
+assumption('Evasive-LWE', 'Public-Coin Evasive LWE', 2022, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/', 'LWE');
+assumption('Circular-Evasive-LWE', 'Circular Evasive LWE', 2022, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#circular-evasive-lwe', 'LWE', true);
+assumptionFamily('Evasive-LWE', ['Evasive-LWE', 'Circular-Evasive-LWE']);
+
 
 // Standalone assumptions - family, i.e. last parameter is always 'Standalone'
 assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['Sign', 'PKE', 'COED'], '/ntru/', 'Standalone');
@@ -390,7 +394,7 @@ reducesTo('LWE','Leaky-LWE', 250);
 
 reducesTo('LWE', '{0,1}-CRT-LWE', 225);
 
-reducesTo('Evasive-LWE', 'l-succinct-LWE'); // to come
+reducesTo('Evasive-LWE', 'l-succinct-LWE', 200);
 
 reducesTo('Decomposed-LWE', 'ssE-Decomposed-LWE');
 reducesTo('Decomposed-LWE', 'Decomposed-SIS');
