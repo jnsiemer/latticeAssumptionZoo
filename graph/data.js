@@ -279,6 +279,8 @@ assumption('PV-LWE', 'Partial Vandermonde LWE - closely related to Partial Fouri
 assumption('PNTT-PLWE', 'Partial-NTT Polynomial-LWE', 2022, ['Sign', 'EffEnhSign', 'PKE'], '/pv-lwe/#pntt-plwe', 'LWE', true);
 assumption('Hybrid-PV-P', 'Hybrid between Partial Vandermonde LWE and Polynomial-LWE', 2022, ['Sign', 'EffEnhSign', 'PKE'], '/pv-lwe/#hybrid-pv-p', 'LWE', true);
 
+assumption('Threshold-LWE', 'Threshold LWE', 2025, ['TresholdEnc'], '/threshold-lwe/', 'LWE');
+
 assumption('Equivocal-LWE', 'Equivocal LWE', 2025, ['PrivEnhEnc', 'FuncEnc'], '/equivocal-lwe/', 'LWE');
 
 
@@ -413,6 +415,8 @@ reducesTo('SP-RLWE', 'wSP-RLWE');
 
 reducesTo('PV-LWE', 'PV-SIS');
 reducesTo('PNTT-PLWE', 'Hybrid-PV-P');
+
+reducesTo('LWE', 'Threshold-LWE', 300);
 
 // NTRU
 reducesTo('NTRU', 'LWE', 500);
