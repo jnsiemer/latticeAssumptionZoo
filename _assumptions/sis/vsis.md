@@ -49,7 +49,7 @@ $$  \begin{bmatrix} 1 & a_1 & a_1^2 & a_1^3 & a_1^4 & a_1^5 & a_1^6 & a_1^7 \\ 1
 
 ## Hardness
 
-There are clear pathological examples of $$\mathcal{F}$$ for which vSIS is not hard, e.g. when $$\mathcal{F}$$ consists of constant functions. The strong linear independent criteria (Definition 6 of {% cite PKC:DKLW25 %}) is designed to rule out choices of $$\mathcal{F}$$ for which vSIS is easy. Roughly, $$\mathcal{F}$$ is said to be strongly linearly independent if the probability of any fixed non-zero function in the linear span of $$\mathcal{F}$$ vanishing at a random point is negligible. 
+There are clear pathological examples of $$\mathcal{F}$$ for which vSIS is not hard, e.g. when $$\mathcal{F}$$ consists of constant functions. The Strong Linear Independent criterion (Definition 6 of {% cite PKC:DKLW25 %}) is designed to rule out choices of $$\mathcal{F}$$ for which vSIS is easy. Roughly, $$\mathcal{F}$$ is said to be strongly linearly independent if the probability of any fixed non-zero function in the linear span of $$\mathcal{F}$$ vanishing at a random point is negligible. 
 
 For "reasonable" choices of $$\mathcal{F}$$ where $$\abs{\mathcal{F}} = m$$, the hardness of $$\mathsf{vSIS}_{\mathcal{R},n,k,q,\beta,\mathcal{F}}$$ is currently {% cite AC:KLNO24 %}{% cite AC:KLNO25 %} heuristically measured by $$\mathsf{SIS}_{\mathcal{R},n,m,q,\beta}$$, i.e. assuming that the structure of $$\mathcal{F}(\mat{A})$$ does not make solving SIS easier.
 
@@ -93,4 +93,4 @@ The hinted variants of vSIS was introduced and used in {% cite PKC:DKLW25 %} to 
 ## Related Assumptions
 
 - [GenISIS$$_f$$](/genisisf/) is in a sense a dual of Hinted vSIS in that the roles of functions and inputs are swapped. 
-- [k-M-ISIS](/kmisis/) is essentially Hinted vSIS with $$\mathcal{Q} = \mathcal{H}$$ and $$\mathcal{G} = \mathcal{H} \cup \{g^*\}$$.
+- [k-M-ISIS](/kmisis/) is essentially Hinted vSIS with $$\mathcal{Q} = \mathcal{H}$$ and $$\mathcal{G} = \{g^*\}$$.
