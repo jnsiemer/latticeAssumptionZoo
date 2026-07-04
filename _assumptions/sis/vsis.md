@@ -12,7 +12,7 @@ redirect_from:
   - /vanishing_sis/
 ---
 
-The SIS problem can be interpreted in the following way: Find a linear function with short coefficients which vanishes at the given points. The Vanishing SIS (vSIS) problem, introduced by Cini, Lai, and Malavolta in 2023 {% cite C:CinLaiMal23 %}, generalises the SIS problem by allowing other classes of admissible functions. A typical instantiation requires the adversary to find a polynomial with short coefficients which vanishes at the given point(s). So far, vSIS has been utilised to construct succinct arguments and signatures and homomorphic signatures for low-degree polynomials. Its hinted variants are used to construct proof-friendly signatures.
+The SIS problem can be interpreted in the following way: Find a linear function with short coefficients which vanishes at the given points. From this perspective, the Vanishing SIS (vSIS) problem, introduced by Cini, Lai, and Malavolta in 2023 {% cite C:CinLaiMal23 %}, generalises the SIS problem by allowing other classes of admissible functions. A typical instantiation requires the adversary to find a polynomial with short coefficients which vanishes at the given point(s). So far, vSIS has been utilised to construct succinct arguments and signatures and homomorphic signatures for low-degree polynomials. Its hinted variants are used to construct proof-friendly signatures.
 
 ## Definition
 
@@ -38,9 +38,22 @@ The vSIS problem is a family of problems parametrised by the set of functions $$
 | $$\{X^{-d+1}, \ldots, X^{-1}, 1,X,\ldots,X^{d-1}\}$$ | Laurent monomials |
 | $$\{1,X_1,X_2,\ldots,X_\mu,X_1 X_2, X_1 X_3, \ldots, X_1 X_2 \cdots X_\mu\}$$ | multilinear monomials |
 
-These instantiations are useful in constructing succinct arguments because the matrix $$\mathcal{F}(\mat{A})$$ can be expressed as a row-tensor product
+Instantiations of $$\mathcal{F}$$ for which $$\mathcal{F}(\mat{A})$$ can be expressed as a row-tensor product, i.e. 
 
 $$ \mathcal{F}(\mat{A}) = \mat{F}_1 \bullet \cdots \bullet \mat{F}_\mu. $$
+
+are particularly useful for constructing succinct arguments {% cite AC:KLNO24 %}{% cite AC:KLNO25 %}. For example,
+
+$$  \begin{bmatrix} 1 & a_1 & a_1^2 & a_1^3 & a_1^4 & a_1^5 & a_1^6 & a_1^7 \\ 1 & a_2 & a_2^2 & a_2^3 & a_2^4 & a_2^5 & a_2^6 & a_2^7 \\ 1 & a_3 & a_3^2 & a_3^3 & a_3^4 & a_3^5 & a_3^6 & a_3^7 \end{bmatrix} = \begin{bmatrix} 1 & a_1^4 \\ 1 & a_2^4 \\ 1 & a_3^4 \end{bmatrix} \bullet \begin{bmatrix} 1 & a_1^2 \\ 1 & a_2^2 \\ 1 & a_3^2 \end{bmatrix} \bullet \begin{bmatrix} 1 & a_1 \\ 1 & a_2 \\ 1 & a_3 \end{bmatrix}. $$
+
+
+## Hardness
+
+There are clear pathological examples of $$\mathcal{F}$$ for which vSIS is not hard, e.g. when $$\mathcal{F}$$ consists of constant functions. The strong linear independent criteria (Definition 6 of {% cite PKC:DKLW25 %}) is designed to rule out choices of $$\mathcal{F}$$ for which vSIS is easy. Roughly, $$\mathcal{F}$$ is said to be strongly linearly independent if the probability of any fixed non-zero function in the linear span of $$\mathcal{F}$$ vanishing at a random point is negligible. 
+
+For "reasonable" choices of $$\mathcal{F}$$ where $$\abs{\mathcal{F}} = m$$, the hardness of $$\mathsf{vSIS}_{\mathcal{R},n,k,q,\beta,\mathcal{F}}$$ is currently {% cite AC:KLNO24 %}{% cite AC:KLNO25 %} heuristically measured by $$\mathsf{SIS}_{\mathcal{R},n,m,q,\beta}$$, i.e. assuming that the structure of $$\mathcal{F}(\mat{A})$$ does not make solving SIS easier.
+
+Reductions from more established problems to vSIS are currently rare. For the special case where $$n=1$$ and $$\mathcal{F}$$ consists of low-degree univariate monomials, Section 3 of {% cite PKC:JyrLai25 %} shows a reduction of vSIS from IdHSVP. However, beside the restrictions vSIS in parameters, the reduction is only worst-case to worst-case and is restricted to IdHSVP instances of a specific form.
 
 ## Hinted Variants
 
@@ -65,17 +78,10 @@ _The strong random hinted vSIS assumption is identical to the strong hinted vSIS
 
 TODO: Explain relationship to main version, motivation behind it, and reductions specific to this variant
 
-## Hardness
-
-TODO
-
-Any reductions or cryptanalytic results providing confidence in the hardness of this assumption belong in this section. If possible, describe a brief description of the reduction(s) and/or cryptanalysis. Please refer to specific lemmas/theorems/sections in the paper(s) s.t. readers can find them quickly.
-
-Any reductions in this section should be reflected as an edge in the [`graph`](/graph/).
 
 ## Constructions built from vSIS {#constructions}
 
-- Succinct non-interactive argument of knowledge (SNARK) {% cite C:CinLaiMal23 %}
+- Succinct non-interactive argument of knowledge (SNARK) {% cite C:CinLaiMal23 %}{% cite AC:KLNO24 %}{% cite AC:KLNO25 %}
 - Proof-friendly signatures {% cite PKC:DKLW25 %}
 - Homomorphic Signatures for Low-Degree Polynomials {% cite PKC:JyrLai25 %}
 
@@ -86,12 +92,4 @@ TODO
 If there are any immediately related assumptions, list them here (potentially with a brief description of their relationship or key differences), e.g.
 - [Randomised One-More-ISIS](/rom-isis/) doubles the length of matrix $$\mathbf{A}$$ and requires the vector multiplied by the second part to be binary (compared to One-More-ISIS).
 - [GenISIS$$_f$$](/genisisf/)
-
-## Further Reading Suggestions (Optional)
-
-TODO
-
-If there are any specific sections in papers, lecture notes, or well-written websites, which provide more insights on this assumption or immediately related topics, can be listed here, e.g.
-- [Lecture notes](https://people.csail.mit.edu/vinodv/CS294/){:target="_blank"} by Vinod Vaikuntanathan
-  - Lecture 3 on _Smoothing Parameter and Worst-case to Average-case Reduction for SIS_
-  - Lecture 10 on _Ideal Lattices and Ring Learning with Errors_
+- The LWE analogue
