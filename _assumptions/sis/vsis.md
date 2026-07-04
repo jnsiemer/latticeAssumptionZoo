@@ -12,7 +12,7 @@ redirect_from:
   - /vanishing_sis/
 ---
 
-The SIS problem can be interpreted in the following way: Find a linear function with short coefficients which vanishes at the given points. From this perspective, the Vanishing SIS (vSIS) problem, introduced by Cini, Lai, and Malavolta in 2023 {% cite C:CinLaiMal23 %}, generalises the SIS problem by allowing other classes of admissible functions. A typical instantiation requires the adversary to find a polynomial with short coefficients which vanishes at the given point(s). So far, vSIS has been utilised to construct succinct arguments and signatures and homomorphic signatures for low-degree polynomials. Its hinted variants are used to construct proof-friendly signatures.
+The SIS problem can be interpreted in the following way: Find a linear function with short coefficients which vanishes at the given points. From this perspective, the Vanishing SIS (vSIS) problem, introduced by Cini, Lai, and Malavolta in 2023 {% cite C:CinLaiMal23 %}, generalises the SIS problem by allowing other classes of admissible functions. A typical instantiation requires the adversary to find a polynomial with short coefficients which vanishes at the given point(s). So far, vSIS has been utilised to construct succinct arguments and signatures and homomorphic signatures for low-degree polynomials. Its hinted variants {% cite PKC:DKLW25 %} are used to construct proof-friendly signatures.
 
 ## Definition
 
@@ -30,7 +30,7 @@ _where $$\mathcal{F}(\mat{A}) = \begin{bmatrix} f_1(\vec{a}_1) & \cdots & f_m(\v
 
 ## Instantiations of $$\mathcal{F}$$
 
-The vSIS problem is a family of problems parametrised by the set of functions $$\mathcal{F}$$. When $$k = m$$ and $$f_i(X_1,\ldots,X_k) = X_i$$ for all $$i \in [m]$$, $$\mathsf{vSIS}_{\mathcal{R},n,k,q,\beta,\mathcal{F}} = \mathsf{SIS}_{\mathcal{R},n,m,q,\beta}$$, recovering the standard SIS problem. Some other notable instantiations are as follows.
+The vSIS problem is a family of problems parametrised by the set of functions $$\mathcal{F}$$. When $$k = m$$ and $$\mathcal{F}_{\mathsf{sis}} = \{f_i : i \in [m]\}$$ where $$f_i(X_1,\ldots,X_k) = X_i$$ for all $$i \in [m]$$, $$\mathsf{vSIS}_{\mathcal{R},n,k,q,\beta,\mathcal{F}_{\mathsf{sis}}} = \mathsf{SIS}_{\mathcal{R},n,m,q,\beta}$$, recovering the standard SIS problem. Some other notable instantiations are as follows.
 
 | $$\mathcal{F}$$ | Description |
 | --- | --- |
@@ -57,39 +57,40 @@ Reductions from more established problems to vSIS are currently rare. For the sp
 
 ## Hinted Variants
 
-Let $$s$$ denote a Gaussian parameter, $$\mathcal{F}, \mathcal{G}, \mathcal{H}$$ be $$k$$-variate rational functions over $$\mathcal{R}_q$$ s.t. $$Q \leq \abs{\mathcal{H}}$$, and $$\mathcal{P}$$ is a predicate over sets of $$k$$-variate rational functions.
+Hinted vSIS is a hinted version of SIS in the same sense of [k-M-ISIS](/kmisis/) being a hinted version of [M-ISIS](/sis/). It is introduced by Bubois, Klooß, Lai and Woo in 2025 {% cite PKC:DKLW25 %} for the purpose of constructing proof-friendly signatures. A Hinted vSIS problem is further parametrised by a Gaussian parameter $$s$$, two sets of functions $$\mathcal{G},\mathcal{H}$$ from $$\mathcal{R}_q^k$$ to $$\mathcal{R}_q$$, an upper bound $$Q \leq \abs{\mathcal{H}}$$ for the number of hints and a predicate $$\mathcal{P}$$ over sets of functions from $$\mathcal{R}_q^k$$ to $$\mathcal{R}_q$$. When $$\mathcal{F} = \mathcal{F}_{\mathsf{sis}}$$, the Hinted vSIS problem is essentially the same as the k-M-ISIS problem up to flavours.
 
 ### Hint-vSIS$$_{\mathcal{R},n,k,q,Q,\beta,s,\mathcal{F},\mathcal{G},\mathcal{H},\mathcal{P}}$$ {#hint-vsis}
-_Let adversary $$\adv$$ output $$(\mathcal{Q},g^*)$$ with $$\mathcal{Q} \subseteq_Q \mathcal{H}$$ and $$g^* \in \mathcal{G} \setminus \mathcal{Q}$$ first.Sample matrix $$\mat{A} \in \mathcal{R}_q^{n\times k}$$ uniformly at random and vectors $$\vec{u}_i \sample D_{\Lambda_q^{\vec{v}_i}(\mathcal{F}(\mat{A})),s}$$ for all $$i \in [Q]$$. Set $$\mat{V} = \mathcal{Q}(\mat{A}) \bmod q$$. Given $$\mat{A}$$ and hints $$\set{\vec{u}_i}_{i \in [Q]}$$, an adversary is asked to find a short non-zero vector $$\vec{u}^*$$ s.t._
+_Let adversary $$\adv$$ output $$(\mathcal{Q},g^*)$$ with $$\mathcal{Q} \subseteq_Q \mathcal{H}$$ and $$g^* \in \mathcal{G} \setminus \mathcal{Q}$$ first. Sample matrix $$\mat{A} \in \mathcal{R}_q^{n\times k}$$ uniformly at random and vectors $$\vec{u}_i \sample D_{\Lambda_q^{\vec{v}_i}(\mathcal{F}(\mat{A})),s}$$ for all $$i \in [Q]$$. Set $$\mat{V} = \mathcal{Q}(\mat{A}) \bmod q$$. Given $$\mat{A}$$ and hints $$\set{\vec{u}_i}_{i \in [Q]}$$, an adversary is asked to find a short non-zero vector $$\vec{u}^*$$ s.t._
 
 $$ \mathcal{F}(\mat{A}) \cdot \vec{u}^* = g^*(\mat{A}) \bmod q \land 0 < \norm{\vec{u}^*} \leq \beta \land \mathcal{P}(\mathcal{F} \cup \mathcal{Q} \cup (\set{g^*} \setminus \set{0})) = 1. $$
 
-TODO: Explain relationship to main version, motivation behind it, and reductions specific to this variant
+A strategy to attack the Hinted vSIS problem is to find a lattice trapdoor of $$\mathcal{F} \cup \mathcal{Q} \cup \set{g^*}$$, which is a harder problem than solving vSIS for the set of functions $$\mathcal{F} \cup \mathcal{Q} \cup \set{g^*}$$. The predicate $$\mathcal{P}$$ serves to rule out pathological counterexamples. Under the Evasive SIS assumption, this is the only feasible attack strategy (Theorem 2 of {% cite PKC:DKLW25 %}).
+
+In the above "standard" version of Hinted vSIS, the target function $$g^*$$ is chosen "selectively". The following "strong" version of Hinted vSIS instead allows the adversary to pick $$g^*$$ after seeing the instance $$\mat{A}$$ and the hints. The Strong Hinted vSIS problem is strong in the same sense as in the Strong Diffie Hellman problem.   
 
 ### s-Hint-vSIS$$_{\mathcal{R},n,k,q,Q,\beta,s,\mathcal{F},\mathcal{G},\mathcal{H},\mathcal{P}}$$ {#s-hint-vsis}
 _Let adversary $$\adv$$ output $$\mathcal{Q}$$ with $$\mathcal{Q} \subseteq_Q \mathcal{H}$$ first. Sample matrix $$\mat{A} \in \mathcal{R}_q^{n\times k}$$ uniformly at random and vectors $$\vec{u}_i \sample D_{\Lambda_q^{\vec{v}_i}(\mathcal{F}(\mat{A})),s}$$ for all $$i \in [Q]$$. Set $$\mat{V} = \mathcal{Q}(\mat{A}) \bmod q$$. Given $$\mat{A}$$ and hints $$\set{\vec{u}_i}_{i \in [Q]}$$, an adversary is asked to find $$(g^*, \vec{u}^*)$$ with $$g^* \in \mathcal{G} \setminus \mathcal{Q}$$ s.t._
 
 $$ \mathcal{F}(\mat{A}) \cdot \vec{u}^* = g^*(\mat{A}) \bmod q \land 0 < \norm{\vec{u}^*} \leq \beta \land \mathcal{P}(\mathcal{F} \cup \mathcal{Q} \cup (\set{g^*} \setminus \set{0})) = 1. $$
 
-TODO: Explain relationship to main version, motivation behind it, and reductions specific to this variant
+A relaxation of Strong Hinted vSIS, called Strong Random-Hinted vSIS, is where the queries chosen randomly rather than by the adversary. Certain instances of Strong Random-Hinted vSIS is implied (Theorem 8 of {% cite PKC:DKLW25 %}) by [GenISIS$$_f$$](/genisisf/) for appropriately chosen $$f$$. 
 
 ### s-$Hint-vSIS$$_{\mathcal{R},n,k,q,Q,\beta,s,\mathcal{F},\mathcal{G},\mathcal{H},\mathcal{P}}$$ {#s-random-hint-vsis}
 _The strong random hinted vSIS assumption is identical to the strong hinted vSIS assumption, except that $$\mathcal{Q}$$ is sampled as a uniformly random $$Q$$-subset of $$\mathcal{H}$$, i.e. it is not chosen by $$\adv$$._
 
-TODO: Explain relationship to main version, motivation behind it, and reductions specific to this variant
-
-
 ## Constructions built from vSIS {#constructions}
 
-- Succinct non-interactive argument of knowledge (SNARK) {% cite C:CinLaiMal23 %}{% cite AC:KLNO24 %}{% cite AC:KLNO25 %}
+The vSIS problem was introduced for the purpose of constructing lattice-based fully succinct argument systems {% cite C:CinLaiMal23 %}{% cite AC:KLNO24 %}{% cite AC:KLNO25 %}, where the verifier runtime is polylogarithmic in the witness size (possibly after preprocessing). This is achieved by exploiting the row-tensor structure of $$\mathcal{F}(\mat{A})$$ for appropriate choices of $$\mathcal{F}$$.
+
+Lai and Jyrkinen {% cite PKC:JyrLai25 %} extended the NTRU trapdoor algorithm to a vSIS trapdoor algorithm: It samples $$\mat{A}$$ together with a lattice trapdoor of $$\mathcal{F}(\mat{A})$$ in the setting where $$n = 1$$ and $$\mathcal{F}$$ is a set of low-degree univariate monomials. They then used the vSIS trapdoor to give an alternative construction of homomorphic signatures for low-degree polynomials. 
+
+The hinted variants of vSIS was introduced and used in {% cite PKC:DKLW25 %} to construct proof-friendly signatures, i.e. signature schemes verification relation admits efficient lattice-based zero-knowledge proofs. The basic idea is to translate the pairing-based Boneh-Boyen-Shacham (BBS) signatures to the lattice setting.
+
+- Fully-succinct arguments {% cite C:CinLaiMal23 %}{% cite AC:KLNO24 %}{% cite AC:KLNO25 %}
 - Proof-friendly signatures {% cite PKC:DKLW25 %}
-- Homomorphic Signatures for Low-Degree Polynomials {% cite PKC:JyrLai25 %}
+- Homomorphic signatures for low-degree polynomials {% cite PKC:JyrLai25 %}
 
 ## Related Assumptions
 
-TODO
-
-If there are any immediately related assumptions, list them here (potentially with a brief description of their relationship or key differences), e.g.
-- [Randomised One-More-ISIS](/rom-isis/) doubles the length of matrix $$\mathbf{A}$$ and requires the vector multiplied by the second part to be binary (compared to One-More-ISIS).
-- [GenISIS$$_f$$](/genisisf/)
-- The LWE analogue
+- [GenISIS$$_f$$](/genisisf/) is in a sense a dual of Hinted vSIS in that the roles of functions and inputs are swapped. 
+- [k-M-ISIS](/kmisis/) is essentially Hinted vSIS with $$\mathcal{Q} = \mathcal{H}$$ and $$\mathcal{G} = \mathcal{H} \cup \{g^*\}$$.

@@ -193,6 +193,8 @@ reducesTo('SIS', 'ApproxSIS');
 reducesTo('SIS', 'k-SIS');
 reducesTo('k-M-ISIS', 'Twin-k-M-ISIS');
 
+reducesTo('s-Hint-vSIS', 's-$Hint-vSIS');
+
 reducesTo('ISISf', 'GenISISf');
 reducesTo('ISISf', 'IntISISf');
 reducesTo('GenISISf', 'IntGenISISf');
@@ -233,7 +235,9 @@ partiallyReducesTo('SIS', 'ISISf', 'f = RO', 300);
 partiallyReducesTo('SIS', 'BASIS', 'SIS reduces to BASIS_rand and M-SIS to PRISIS for l=2');
 partiallyReducesTo('SIS', 'BASIS_power', 'M-SIS reduces to PRISIS for l=2', 300);
 partiallyReducesTo('SIS', 'h-PRISIS', 'M-SIS reduces to h-PRISIS for l=2', 300);
-partiallyReducesTo('SIS', 'vSIS', 'SIS reduces to vSIS for k=m and F = the set of projections to each of the m coefficients', 300);
+partiallyReducesTo('vSIS', 'Hint-vSIS', 'Assuming Evasive SIS', 300);
+partiallyReducesTo('GenISISf', 's-$Hint-vSIS', 'Certain instantiations only', 300);
+
 
 // LWE
 partiallyReducesTo('LWE', 'l-succinct-LWE', 'If W is wide and embeds a trapdoor', 300);
@@ -248,6 +252,9 @@ generalisedBy('BASIS_struct', 'BASIS');
 generalisedBy('BASIS_power', 'BASIS');
 generalisedBy('h-PRISIS', 'h-BASIS');
 generalisedBy('BASIS', 'h-BASIS', 250);
+
+generalisedBy('SIS', 'vSIS');
+generalisedBy('Hint-vSIS', 's-Hint-vSIS');
 
 // LWE
 generalisedBy('Hint-LWE', 'Leaky-LWE');
