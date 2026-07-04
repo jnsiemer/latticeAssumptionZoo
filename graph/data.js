@@ -233,6 +233,7 @@ partiallyReducesTo('SIS', 'ISISf', 'f = RO', 300);
 partiallyReducesTo('SIS', 'BASIS', 'SIS reduces to BASIS_rand and M-SIS to PRISIS for l=2');
 partiallyReducesTo('SIS', 'BASIS_power', 'M-SIS reduces to PRISIS for l=2', 300);
 partiallyReducesTo('SIS', 'h-PRISIS', 'M-SIS reduces to h-PRISIS for l=2', 300);
+partiallyReducesTo('SIS', 'vSIS', 'SIS reduces to vSIS for k=m and F = the set of projections to each of the m coefficients', 300);
 
 // LWE
 partiallyReducesTo('LWE', 'l-succinct-LWE', 'If W is wide and embeds a trapdoor', 300);
