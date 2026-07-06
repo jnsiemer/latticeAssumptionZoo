@@ -239,7 +239,8 @@ assumption('Extended-LWE', 'Extended LWE', 2011, ['ZK', 'PKE', 'FuncEnc'], '/ext
 assumption('MH-Ext-LWE', 'Multi-Hint Extended LWE', 2016, ['ZK', 'PKE', 'FuncEnc'], '/extended-lwe/#multi-hint-extended-lwe', 'LWE', true);
 assumptionFamily('Extended-LWE', ['Extended-LWE', 'MH-Ext-LWE']);
 
-assumption('elLWE', 'LWE with Error-Leakage', 2023, ['FuncEnc'], '/ellwe/', 'LWE');
+assumption('elLWE', 'LWE with Error-Leakage', 2023, ['FuncEnc', 'PrivEnhEnc'], '/ellwe/', 'LWE');
+assumption('Noisy-elLWE', 'Noisy Error-Leakage LWE', 2026, ['FuncEnc', 'PrivEnhEnc'], '/ellwe/#noisy-el-lwe', 'LWE', true);
 assumption('Hint-LWE', 'Hint Learning with Errors', 2022, ['Commitment', 'ZK', 'Sign', 'TresholdSign'], '/hint-lwe/', 'LWE');
 assumption('Coset-Hint-LWE', 'Coset Hint Learning with Errors', 2025, ['TresholdEnc'], '/hint-lwe/#coset-hint-mlwe', 'LWE', true);
 assumption('Leaky-LWE', 'Leaky Learning with Errors', 2023, ['FuncEnc', 'TresholdEnc'], '/leaky-lwe/', 'LWE');
@@ -498,6 +499,7 @@ generalisedBy('Known-Norm-LWE', 'Known-Covariance-RLWE');
 
 generalisedBy('Reused-A-LWE', 'Hint-LWE', 175);
 
+generalisedBy('Noisy-elLWE', 'elLWE');
 generalisedBy('Hint-LWE', 'Leaky-LWE');
 generalisedBy('elLWE', 'Leaky-LWE');
 

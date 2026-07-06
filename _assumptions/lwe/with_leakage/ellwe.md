@@ -25,6 +25,13 @@ _Let $$\mathcal{L}$$ be an efficiently decidable set and $$\adv = (\adv_0, \adv_
 
 $$ (\mat{A}, \vec{y}^T = \vec{s}^T \cdot \mat{A} + \vec{e}^T, \vec{l}^T = \vec{e}^T \cdot \mat{Z} + \bar{\vec{e}}^T) \text{ from } (\mat{A}, \vec{x}^T, \vec{l}^T). $$
 
+## Variants
+
+### Noisy Error-Leakage LWE {#noisy-el-lwe}
+_Noisy Error-Leakage LWE is a special case of elLWE, where $$\mat{Z} = \mat{I}_m$$._
+
+The specialisation was introduced by Yin, Zhang, Dong, Wojtczak, and Lim in 2026 {% cite EPRINT:YZDWL26 %}. They describe the assumption as a special case of [Leaky LWE](/leaky-lwe/), which is itself a generalisation of elLWE and [Hint-LWE](/hint-lwe/) with tighter reductions.
+
 ## Hardness
 
 LWE with Error-Leakage is at least as hard as [LWE](/lwe/) for discrete Gaussian error distributions and small losses in parameter choices according to Theorem 3 in {% cite EC:DKLLMR23 %}.
@@ -32,6 +39,7 @@ LWE with Error-Leakage is at least as hard as [LWE](/lwe/) for discrete Gaussian
 ## Constructions built from elLWE {#constructions}
 
 - Laconic and Registration-Based Encryption {% cite EC:DKLLMR23 %}
+- Proxy Re-Encryption {% cite EPRINT:YZDWL26 %}
 
 ## Related Assumptions
 

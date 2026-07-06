@@ -18,7 +18,7 @@ Oracle MLWE was introduced by Liu, Sotiraki, Tromer, and Wang in 2025 {% cite AC
 
 ## Definition
 
-### Oracle MLWE$$_{n,N,q,\mathcal{D},\chi_\sigma,p}$$ {#oracle-mlwe}
+### Oracle MLWE$$_{n,N,q,\mathcal{D},\chi_\sigma,p,w_1,w_2,w_\adv}$$ {#oracle-mlwe}
 _Let $$\mathcal{R} = \ZZ[X]/(X^N + 1)$$ be a power-of-two cyclotomic ring and $$H: \mathcal{R}_p \rightarrow \mathcal{K}$$ be a random oracle. Let $$\mathcal{D}$$ and $$\chi_\sigma$$ denote distributions over $$\mathcal{R}_q$$. Sample $$\mat{A}_1\sample \mathcal{R}_q^{w_1 \times n}$$, $$\mat{A}_2\sample \mathcal{R}_q^{w_2 \times n}$$, $$\mat{A}_\adv\gets \adv(\mat{A}_1, \mat{A}_2) \in \mathcal{R}_q^{w_\adv \times n}$$, $$\vec{s} \sample \mathcal{D}^n$$, $$\vec{e}_1 \sample \chi_\sigma^{\omega_1}$$, $$\vec{e}_2 \sample \chi_\sigma^{\omega_2}$$, $$\vec{e}_\adv \sample \chi_\sigma^{\omega_\adv}$$, $$\vec{r}_2 \sample \mathcal{R}_q^{w_2}$$, $$\vec{u}_2 \sample \mathcal{R}_q^{w_2}$$, and $$\vec{u}_\adv \sample \mathcal{R}_q^{w_\adv}$$. An adversary $$\adv$$ is asked to distinguish between the distribution_
 
 $$ \begin{align*}
