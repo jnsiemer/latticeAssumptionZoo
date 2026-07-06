@@ -195,6 +195,8 @@ assumptionFamily('LWR', ['LWR', 'LWPR'], 75);
 assumption('Generalised-LWE', 'Generalised-LWE', 2019, ['PKE'], '/generalised-lwe/', 'LWE');
 assumption('Order-LWE', 'Order-LWE', 2018, ['PKE'], '/generalised-lwe/#order-lwe', 'LWE', true);
 
+assumption('I-PLWE', 'Integer Polynomial LWE', 2017, ['PKE'], '/int-poly-lwe/', 'LWE');
+
 assumption('Non-Uniform-LWE', 'Non-Uniform (Matrix) LWE', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#binary-matrix-lwe', 'LWE'); // also constructs a PRF
 assumption('Binary-Matrix-LWE', 'Binary-Matrix LWE', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#binary-matrix-lwe', 'LWE', true);
 assumption('LWE-with-low-norm', 'LWE with low norm', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#lwe-with-low-norm', 'LWE', true);
@@ -463,6 +465,8 @@ partiallyReducesTo('LWE', 'LWE-OD', 'Constraints detailed in Theorem 3 of the pa
 partiallyReducesTo('LWE', 'Tensor-LWE', 'If all x_i are equal', 400);
 
 // LWE
+partiallyReducesTo('LWE', 'I-PLWE', 'For an inefficient choice of parameters.', 300);
+
 partiallyReducesTo('LWE', 'Truncated-LWE', 'For certain choices of parameters', 500);
 
 partiallyReducesTo('LWE', 'l-succinct-LWE', 'If W is wide and embeds a trapdoor', 300);
