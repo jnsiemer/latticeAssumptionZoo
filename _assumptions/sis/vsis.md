@@ -12,6 +12,16 @@ redirect_from:
   - /vanishing_sis/
 ---
 
+<style>
+table {
+  margin: 0 auto 2em auto;
+  width: max-content;
+  max-width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+</style>
+
 The SIS problem can be interpreted in the following way: Find a linear function with short coefficients which vanishes at the given points. From this perspective, the Vanishing SIS (vSIS) problem, introduced by Cini, Lai, and Malavolta in 2023 {% cite C:CinLaiMal23 %}, generalises the SIS problem by allowing other classes of admissible functions. A typical instantiation requires the adversary to find a polynomial with short coefficients which vanishes at the given point(s). So far, vSIS has been utilised to construct succinct arguments, proof-friendly signatures, and homomorphic signatures for low-degree polynomials. Its hinted variants {% cite PKC:DKLW25 %} are used to construct proof-friendly signatures.
 
 ## Definition
