@@ -26,7 +26,7 @@ As authors deviate from these conventions for several reasons, some pages in thi
 | $$\vec{0}$$ | Zero vector of appropriate dimension. |
 | $$\mat{I}_n$$ | Identity matrix $$\mat{I}_n \in \set{0,1}^{n \times n}$$ of dimension $$n$$. |
 | $$\vec{e}_i$$ | Denotes the $$i$$-th unit vector. |
-| $$\vec{e}_i \oplus \mat{I}_n$$ | The Tensor product (also [Kronecker product](https://en.wikipedia.org/wiki/Kronecker_product){:target="_blank"}). Frequently used to construct block matrices. |
+| $$\vec{e}_i \otimes \mat{I}_n$$ | The Tensor product (also [Kronecker product](https://en.wikipedia.org/wiki/Kronecker_product){:target="_blank"}). Frequently used to construct block matrices. |
 | $$\mat{G}$$ | Defines the gadget matrix $$\mat{I}_n \otimes \vec{g}^T$$, where $$\vec{g}^T = \begin{bmatrix} 1 &2 &4 &\dots &2^{\ceil{\log q} - 1} \end{bmatrix}$$. Note that base-2 is standard, but one can deviate to reduce the number of columns of $$\mat{G}$$. |
 
 ## Algebraic Structures and Lattices
@@ -39,7 +39,8 @@ As authors deviate from these conventions for several reasons, some pages in thi
 | $$\mathcal{R}_q$$ | Describes the ring modulo $$q$$, i.e. $$\mathcal{R}_q = \ZZ_q[X]/f(X)$$. |
 | $$\Lambda_q^\perp(\mat{A})$$ | Lattice defined by $$\set{\vec{b} \in \ZZ^m : \mat{A} \cdot \vec{b} = \vec{0} \bmod q}$$. |
 | $$\Lambda_q^{\vec{t}}(\mat{A})$$ | Lattice coset defined by $$\set{\vec{b} \in \ZZ^m : \mat{A} \cdot \vec{b} = \vec{t} \bmod q}$$. |
-| $$\Lambda^*$$ | The dual lattice of $$\Lambda$$ defined by $$\Lambda^* = \set{\vec{x} \in \RR^n : \forall \vec{v} \in \Lambda, \langle \vec{x}, \vec{v} \rangle \in \ZZ}$$. |
+| $$\Lambda^\vee$$ or $$\Lambda^*$$ | The dual lattice of $$\Lambda$$ defined by $$\Lambda^* = \set{\vec{x} \in \RR^n : \forall \vec{v} \in \Lambda, \langle \vec{x}, \vec{v} \rangle \in \ZZ}$$. |
+| $$\mathcal{R}^*$$ | Invertible elements in the ring $$\mathcal{R}$$. |
 
 ## Distributions
 
@@ -59,8 +60,8 @@ As authors deviate from these conventions for several reasons, some pages in thi
 | $$a \leftarrow \adv^{O}(A)$$ | Algorithm $$\adv$$ outputs some value $$a$$ on input $$A$$ with oracle access to some oracle $$O$$. |
 | $$m = \poly{n}$$ | Denotes $$m \in \poly{n}$$, i.e. $$m$$ is an arbitrary polynomial function of $$n$$, e.g. $$m = n^3 + 2n$$. Authors frequently abuse equality, writing e.g. $$m = \mathcal{O}(n)$$ to denote $$m \in \mathcal{O}(n)$$. |
 | $$\epsilon = \negl{n}$$ | Denotes $$\epsilon \in \negl{n}$$, i.e. $$\epsilon$$ is an arbitrary negligible function of $$n$$, e.g. $$\epsilon = 2^{-n}$$. |
-| $$a$$ is superpolynomial in $$n$$ | There exists no constant $$c > 0$$ s.t. $$a \in \mathcal{O}(n^c)$$. |
-| $$a$$ is subexponential in $$n$$ | $$a$$ grows slower than an exponential function of $$n$$, e.g. $$a = 2^{\sqrt{n}}$$. |
+| $$f$$ is superpolynomial in $$n$$ | $$f$$ grows faster than any polynomial of $$n$$, i.e. there exists no constant $$c > 0$$ s.t. $$f \in \mathcal{O}(n^c)$$. |
+| $$f$$ is subexponential in $$n$$ | $$f$$ grows slower than an exponential function of $$n$$, e.g. $$f = 2^{\sqrt{n}}$$. |
 | $$\eta_\epsilon(\Lambda)$$ | Denotes the smoothing parameter of the lattice $$\Lambda$$. An explanation can be found in Section 2.3 of {% cite FTTCS:Peikert16 %}. |
 
 

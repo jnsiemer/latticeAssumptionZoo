@@ -186,6 +186,9 @@ assumption('LWAM', 'Learning with Alternating Moduli', 2025, ['Commitment'], '/l
 assumption('LWPR', 'Learning with Physical Rounding', 2021, ['Commitment'], '/lwpr/', 'LWE'); // list of constructions is "PRF" right now, which doesn't really fit into any current category
 assumptionFamily('LWR', ['LWR', 'LWPR'], 75);
 
+assumption('Generalised-LWE', 'Generalised-LWE', 2019, ['PKE'], '/generalised-lwe/', 'LWE');
+assumption('Order-LWE', 'Order-LWE', 2018, ['PKE'], '/generalised-lwe/#order-lwe', 'LWE', true);
+
 assumption('Non-Uniform-LWE', 'Non-Uniform (Matrix) LWE', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#binary-matrix-lwe', 'LWE'); // also constructs a PRF
 assumption('Binary-Matrix-LWE', 'Binary-Matrix LWE', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#binary-matrix-lwe', 'LWE', true);
 assumption('LWE-with-low-norm', 'LWE with low norm', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#lwe-with-low-norm', 'LWE', true);
@@ -469,6 +472,10 @@ generalisedBy('h-PRISIS', 'h-BASIS');
 generalisedBy('BASIS', 'h-BASIS', 250);
 
 // LWE
+generalisedBy('Order-LWE', 'Generalised-LWE');
+generalisedBy('LWE', 'Generalised-LWE', 300);
+generalisedBy('MP-LWE', 'Generalised-LWE'); // to come
+
 generalisedBy('Binary-Matrix-LWE', 'Non-Uniform-LWE');
 generalisedBy('LWE-with-low-norm', 'Non-Uniform-LWE');
 generalisedBy('Subspace-LWE', 'Non-Uniform-LWE');
