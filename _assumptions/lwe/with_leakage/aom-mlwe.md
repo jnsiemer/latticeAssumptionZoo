@@ -22,7 +22,7 @@ redirect_from:
   - /aommlwe/
 ---
 
-Algebraic One-More-MLWE (AOM-MLWE) was introduced in 2024 by Espitau, Katsumata, and Takemure {% cite JC:EspKatTak25 %}. Given [M-LWE](/lwe/#module-lwe) samples (for $$Q$$ secrets) and access to an oracle that on input a vector $$\vec{b} \in \mathcal{R}^Q$$ responds with a linear combination of its secret and error terms, the assumption states that it remains hard to find a short secret and error that the matrix $$\mat{A}$$ maps to a bounded linear combination of the given samples; excluding trivially induced solutions by the queries.
+Algebraic One-More-MLWE (AOM-MLWE) was introduced in 2024 by Espitau, Katsumata, and Takemure {% cite C:EspKatTak24 %}. Given [M-LWE](/lwe/#module-lwe) samples (for $$Q$$ secrets) and access to an oracle that on input a vector $$\vec{b} \in \mathcal{R}^Q$$ responds with a linear combination of its secret and error terms, the assumption states that it remains hard to find a short secret and error that the matrix $$\mat{A}$$ maps to a bounded linear combination of the given samples; excluding trivially induced solutions by the queries.
 
 The non-algebraic version One-More MLWE is not known to be hard, however this algebraic variant has been reduced from [Module-SIS](/sis/#module-sis) and [Module-LWE](/lwe/#module-lwe) recently by Zhu, and Tessaro {% cite C:ZhuTes25 %}.
 
@@ -53,13 +53,13 @@ The definition only differs from AOM-MLWE by sampling $$\vec{s}_i$$ uniformly fr
 
 ## Hardness
 
-In order to gain confidence in the assumption, Espitau, Katsumata, and Takemure {% cite JC:EspKatTak25 %} reduce the hardness of _Selective_ AOM-Uniform MLWE from M-SIS and M-LWE in Section 4.4. This result only holds if secrets and errors are sampled from discrete Gaussian distributions. Further, the authors reduce AOM-Uniform MLWE to AOM-MLWE in their adaptive and selective versions in Section 4.2.2. Overall, they provide an extensive discussion of the assumption in Section 4 of {% cite JC:EspKatTak25 %}, which also includes trivially insecure examples and constraints on parameters.
+In order to gain confidence in the assumption, Espitau, Katsumata, and Takemure {% cite C:EspKatTak24 %} reduce the hardness of _Selective_ AOM-Uniform MLWE from M-SIS and M-LWE in Section 4.4. This result only holds if secrets and errors are sampled from discrete Gaussian distributions. Further, the authors reduce AOM-Uniform MLWE to AOM-MLWE in their adaptive and selective versions in Section 4.2.2. Overall, they provide an extensive discussion of the assumption in Section 4 of {% cite C:EspKatTak24 %}, which also includes trivially insecure examples and constraints on parameters.
 
 The hardness of AOM-MLWE was later reduced to its dual assumption, called [Algebraic-One-More-MISIS](/aom-misis/), by Tessaro and Zhu in Lemma 7 of {% cite C:ZhuTes25 %}. They improve the previously conjectured parameters by their reduction from both [M-SIS](/sis/#module-sis) and [M-LWE](/lwe/#module-lwe).
 
 ## Constructions built from Algebraic One-More-MLWE {#constructions}
 
-- Threshold signatures {% cite JC:EspKatTak25 %}{% cite C:ZhuTes25 %}{% cite EPRINT:2026/419 %}
+- Threshold signatures {% cite C:EspKatTak24 %}{% cite C:ZhuTes25 %}{% cite EPRINT:2026/419 %}
 
 ## Related Assumptions
 

@@ -72,7 +72,7 @@ Cryptanalytically there are two families of strategies to solve LWE, which can b
 ## Constructions built from LWE {#constructions}
 
 This is a non-exhaustive list of constructions, whose security is or can be based on LWE (or R-LWE and M-LWE).
-- Public-key encryption {% cite STOC:Regev05 %}{% cite STOC:GenPeiReg08 %}{% cite CTRSA:LinPei11 %}
+- Public-key encryption {% cite STOC:Regev05 %}{% cite STOC:GenPeiVai08 %}{% cite CTRSA:LinPei11 %}
 - Key Encapsulation Mechanisms, including [ML-KEM](https://doi.org/10.6028/NIST.FIPS.203){:target="_blank"} ([Kyber](https://pq-crystals.org/kyber/){:target="_blank"})
 - Fully Homomorphic Encryption {% cite FOCS:BraVai11 %}{% cite ITCS:BraGenVai12 %}
 - Oblivious Transfer {% cite C:PeiVaiWat08 %}

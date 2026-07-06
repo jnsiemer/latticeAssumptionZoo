@@ -42,7 +42,7 @@ The hardness of AOM-MISIS was proven in Theorem 1 by Tessaro, and Zhu {% cite C:
 
 ## Constructions built from Algebraic One-More-ISIS {#constructions}
 
-- Threshold signatures {% cite AC:ChaTesZhu24 %}{% cite JC:EspKatTak25 %}{% cite C:ZhuTes25 %}{% cite EPRINT:2026/419 %}
+- Threshold signatures {% cite AC:ChaTesZhu24 %}{% cite C:EspKatTak24 %}{% cite C:ZhuTes25 %}{% cite EPRINT:2026/419 %}
 
 ## Related Assumptions
 
