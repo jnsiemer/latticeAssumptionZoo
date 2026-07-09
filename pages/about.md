@@ -2,7 +2,7 @@
 title: "About the Zoo"
 permalink: /about/
 layout: single
-last_updated: 2026-07-01
+last_updated: 2026-07-09
 ---
 
 The Lattice Assumption Zoo is an ongoing effort to catalogue, categorise, and track the evolving landscape of lattice-based cryptographic assumptions, their hardness guarantees and their relations.

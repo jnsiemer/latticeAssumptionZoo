@@ -1,8 +1,21 @@
 ---
 title: Lattice Assumption Zoo
 layout: single
-last_updated_at: 2026-06-19
+last_updated_at: 2026-07-09
 ---
+
+<script>
+  const assumptionUrls = [
+    {% for assumption in site.assumptions %}
+      "{{ assumption.url | relative_url }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  function goToRandomAssumption(event) {
+    event.preventDefault(); // Prevents the page from jumping to the top
+    window.location.href = assumptionUrls[Math.floor(Math.random() * assumptionUrls.length)];
+  }
+</script>
 
 This comprehensive wiki catalogues average-case lattice assumptions so that cryptography-affine readers can quickly build an intuition for each assumption, understand the rationale behind its hardness, and explore its applications. Additionally, it serves as a centralised repository for essential literature related to novel assumptions, and provides a platform for publishing relevant cryptanalysis.
 
@@ -29,9 +42,9 @@ This interactive graph visualises the landscape of lattice-based assumptions, il
 </div>
 
 ## 📋 List of Catalogued Assumptions
-If you prefer a list as a structured format, you can find a searchable index of all catalogued assumptions on the following page.
+If you prefer a list as a structured format, you can find a searchable index of all catalogued assumptions on the following page, or let chance decide where you start.
 
-[Catalogued Assumptions](/catalogue/){: .btn .btn--info}
+[Catalogued Assumptions](/catalogue/){: .btn .btn--info} or discover a [Random Assumption](#){: .btn .btn--info onclick="goToRandomAssumption(event)" }
 
 ## 📣 [Latest News](/news/){: style="text-decoration: none; color: inherit;"}
 
