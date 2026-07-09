@@ -241,6 +241,8 @@ assumption('Extended-LWE', 'Extended LWE', 2011, ['ZK', 'PKE', 'FuncEnc'], '/ext
 assumption('MH-Ext-LWE', 'Multi-Hint Extended LWE', 2016, ['ZK', 'PKE', 'FuncEnc'], '/extended-lwe/#multi-hint-extended-lwe', 'LWE', true);
 assumptionFamily('Extended-LWE', ['Extended-LWE', 'MH-Ext-LWE']);
 
+assumption('Oracle-MLWE', 'Oralce Module-LWE', 2025, ['EffEnhEnc', 'PrivEnhEnc'], '/oracle-mlwe/', 'LWE');
+
 assumption('elLWE', 'LWE with Error-Leakage', 2023, ['FuncEnc', 'PrivEnhEnc'], '/ellwe/', 'LWE');
 assumption('Noisy-elLWE', 'Noisy Error-Leakage LWE', 2026, ['FuncEnc', 'PrivEnhEnc'], '/ellwe/#noisy-el-lwe', 'LWE', true);
 assumption('Hint-LWE', 'Hint Learning with Errors', 2022, ['Commitment', 'ZK', 'Sign', 'TresholdSign'], '/hint-lwe/', 'LWE');
@@ -468,6 +470,8 @@ partiallyReducesTo('LWE', 'Tensor-LWE', 'If all x_i are equal', 400);
 partiallyReducesTo('LWE', 'I-PLWE', 'For an inefficient choice of parameters.', 300);
 
 partiallyReducesTo('LWE', 'Truncated-LWE', 'For certain choices of parameters', 500);
+
+partiallyReducesTo('LWE', 'Oracle-MLWE', 'For certain choices of parameters', 400);
 
 partiallyReducesTo('LWE', 'l-succinct-LWE', 'If W is wide and embeds a trapdoor', 300);
 

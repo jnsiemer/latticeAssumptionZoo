@@ -46,6 +46,7 @@ If there are any questions, please reach out to [Jan Niklas Siemer](https://jnsi
 # The Zoo in Numbers
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
 <style>
   .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
@@ -77,18 +78,63 @@ If there are any questions, please reach out to [Jan Niklas Siemer](https://jnsi
   </div>
 </div>
 
+<div class="chart-container">
+  <h4 style="text-align: center;">Introduced Assumptions by Year</h4>
+  <p style="text-align: center; font-size: 0.85em; color: #666; margin-top: -10px;">Click on any bar to see the specific assumptions introduced that year.</p>
+  <canvas id="introChart" style="max-height: 300px;"></canvas>
+
+  <div id="year-details-container" style="display: none; margin-top: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e0e0e0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
+      <h4 id="inspector-title" style="margin: 0; color: #333;">Assumptions Introduced in <span id="inspector-year"></span></h4>
+      <button onclick="document.getElementById('year-details-container').style.display='none'" style="background: none; border: none; font-size: 1.2em; cursor: pointer; color: #888;">&times;</button>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <h5 style="color: #0A9396; margin-top: 0;">Base Assumptions</h5>
+        <ul id="inspector-base-list" style="font-size: 0.9em; padding-left: 20px; margin: 0; line-height: 1.6;"></ul>
+      </div>
+      <div>
+        <h5 style="color: #EE9B00; margin-top: 0;">Variants</h5>
+        <ul id="inspector-variant-list" style="font-size: 0.9em; padding-left: 20px; margin: 0; line-height: 1.6;"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="chart-row">
   <div class="chart-container">
     <h4 style="text-align: center;">Assumption Families</h4>
+    <p style="text-align: center; font-size: 0.85em; color: #666; margin-top: -10px;">Click to inspect families.</p>
     <div style="position: relative; height: 350px; width: 100%; display: flex; justify-content: center;">
       <canvas id="familiesChart"></canvas> 
     </div>
+    
+    <div id="family-inspector-container" style="display: none; margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e0e0e0;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 10px;">
+        <h5 id="family-inspector-title" style="margin: 0; color: #333;"></h5>
+        <button onclick="document.getElementById('family-inspector-container').style.display='none'" style="background: none; border: none; font-size: 1.2em; cursor: pointer; color: #888;">&times;</button>
+      </div>
+      <p id="family-inspector-count" style="font-size: 0.9em; color: #666; margin: 0 0 15px 0;"></p>
+      <a id="family-inspector-link" href="#" style="display: block; text-align: center; background: #0A9396; color: white; padding: 10px; border-radius: 5px; text-decoration: none; font-weight: bold;">Go to Catalogue Page</a>
+    </div>
   </div>
+
   <div class="chart-container">
     <h4 style="text-align: center;">Assumption Status</h4>
+    <p style="text-align: center; font-size: 0.85em; color: #666; margin-top: -10px;">Click to inspect the specific assumptions.</p>
     <div style="position: relative; height: 350px; width: 100%; display: flex; justify-content: center;">
       <canvas id="statusChart"></canvas>
     </div>
+    
+    <div id="status-inspector-container" style="display: none; margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e0e0e0;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
+        <h5 id="status-inspector-title" style="margin: 0; color: #333; text-transform: capitalize;"></h5>
+        <button onclick="document.getElementById('status-inspector-container').style.display='none'" style="background: none; border: none; font-size: 1.2em; cursor: pointer; color: #888;">&times;</button>
+      </div>
+      <ul id="status-inspector-list" style="font-size: 0.9em; padding-left: 20px; margin: 0; line-height: 1.6;"></ul>
+    </div>
+
   </div>
 </div>
 
@@ -138,19 +184,23 @@ document.addEventListener("DOMContentLoaded", function() {
   // EXTRACT DATA FROM YAML Front-Matter
   // ==========================================
   const familyData = {};
-  const statusData = { 'standard': 0, 'implied': 0, 'broken': 0, 'unassigned': 0 };
+  const statusData = { 
+    'standard': { count: 0, items: [] }, 
+    'implied': { count: 0, items: [] }, 
+    'broken': { count: 0, items: [] }, 
+    'unassigned': { count: 0, items: [] } 
+  };
 
   {% for assumption in site.assumptions %}
-  { // <-- The curly brace isolates the scope for each loop iteration
+  { 
     let stat = "{{ assumption.assumption_status | downcase | strip }}";
+    let listItem = `<li><a href="{{ assumption.url | relative_url }}" style="color: #333; text-decoration: none;"><strong>{{ assumption.seo_title | default: assumption.title | escape }}</strong></a></li>`;
     
-    // Increment the correct status counter safely
-    if (stat === "standard") statusData.standard++;
-    else if (stat === "implied") statusData.implied++;
-    else if (stat === "broken") statusData.broken++;
-    else statusData.unassigned++;
+    if (stat === "standard") { statusData.standard.count++; statusData.standard.items.push(listItem); }
+    else if (stat === "implied") { statusData.implied.count++; statusData.implied.items.push(listItem); }
+    else if (stat === "broken") { statusData.broken.count++; statusData.broken.items.push(listItem); }
+    else { statusData.unassigned.count++; statusData.unassigned.items.push(listItem); }
     
-    // Extract Families
     let fam = "{{ assumption.family | default: 'Uncategorised' | escape }}";
     let subfam = "{{ assumption.subfamily | default: 'Unclassified' | escape }}";
     
@@ -163,14 +213,39 @@ document.addEventListener("DOMContentLoaded", function() {
   // ==========================================
   // EXTRACT METRICS FROM GRAPH
   // ==========================================
+  const baseYears = {};
+  const variantYears = {};
+  const nodesByYear = {};
+  let totalNodes = 0;
+
   if (typeof assumptions !== 'undefined') {
-    // Filter out the hidden 'anchor' nodes used for assumption families
-    const variants = assumptions.filter(node => node.hidden !== true);
-    
-    // Update the DOM element
+    assumptions.forEach(node => {
+      if (node.hidden === true) return; 
+
+      const year = parseInt(node.year_published);
+      if (!year || isNaN(year)) return;
+
+      // Initialize the year array if it doesn't exist yet
+      if (!nodesByYear[year]) {
+        nodesByYear[year] = { base: [], variants: [] };
+      }
+
+      totalNodes++;
+
+      if (node.is_variant === true) {
+        variantYears[year] = (variantYears[year] || 0) + 1;
+        nodesByYear[year].variants.push(node);
+      } else {
+        baseYears[year] = (baseYears[year] || 0) + 1;
+        nodesByYear[year].base.push(node);
+      }
+    });
+
     const variantsEl = document.getElementById('val-variants');
-    if (variantsEl) variantsEl.innerText = variants.length;
+    if (variantsEl) variantsEl.innerText = totalNodes;
   }
+
+  
 
   // ==========================================
   // INJECT BIBTEX DATA FOR CHARTS
@@ -192,25 +267,58 @@ document.addEventListener("DOMContentLoaded", function() {
   // RENDER CHART.JS DIAGRAMS
   // ==========================================
   
-  // Horizontal Bar Chart (Assumption Status)
+  // 1. Assumption Status Chart (With Mobile Labels & Click Inspector)
+  const statusLabels = ['Standard', 'Implied', 'Broken', 'Unassigned'];
+  const statusKeys = ['standard', 'implied', 'broken', 'unassigned']; // For routing to data
+
   new Chart(document.getElementById('statusChart'), {
     type: 'doughnut',
+    plugins: [ChartDataLabels], // <--- Local registration prevents it from breaking your Literature charts!
     data: {
-      labels: ['Standard', 'Implied', 'Broken', 'Unassigned'],
+      labels: statusLabels,
       datasets: [{
-        data: [statusData.standard, statusData.implied, statusData.broken, statusData.unassigned],
+        data: [statusData.standard.count, statusData.implied.count, statusData.broken.count, statusData.unassigned.count],
         backgroundColor: ['#5cb85c', '#5c9abd', '#d9534f', '#6f777d'],
         borderWidth: 2
       }]
     },
-    options: { 
+    options: {
       responsive: true,
       plugins: { 
-        legend: { 
-          display: false,
-          position: 'bottom'
-        } 
-      } 
+        legend: { display: false },
+        // Standard tooltips work fine here, so we remove the buggy custom callback
+        datalabels: {
+          // ONLY display the numbers inside the pie if the screen is mobile-sized (< 768px)
+          display: function(context) {
+            return window.innerWidth < 768 && context.dataset.data[context.dataIndex] > 0;
+          },
+          color: '#ffffff',
+          font: { weight: 'bold', size: 14 }
+        }
+      },
+      onHover: (event, chartElement) => {
+        event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+      },
+      // Click handler to open the Inspector Panel
+      onClick: (event, elements) => {
+        if (elements.length > 0) {
+          const index = elements[0].index;
+          const statusName = statusLabels[index];
+          const key = statusKeys[index];
+          const items = statusData[key].items;
+
+          document.getElementById('status-inspector-title').innerText = `${statusName} Assumptions`;
+          
+          if (items.length === 0) {
+            document.getElementById('status-inspector-list').innerHTML = '<li style="color: #999; list-style: none; margin-left: -20px;">None found.</li>';
+          } else {
+            // Sort alphabetically before injecting
+            document.getElementById('status-inspector-list').innerHTML = items.sort().join('');
+          }
+          
+          document.getElementById('status-inspector-container').style.display = 'block';
+        }
+      }
     }
   });
 
@@ -293,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function() {
       onHover: (event, chartElement) => {
         event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
       },
-      // Handle the routing on click
+      // Smart routing: Panel for Mobile, Instant Navigation for Desktop
       onClick: (event, elements, chart) => {
         if (elements.length > 0) {
           const datasetIndex = elements[0].datasetIndex;
@@ -301,29 +409,109 @@ document.addEventListener("DOMContentLoaded", function() {
           const dataset = chart.data.datasets[datasetIndex];
           
           let url = '/catalogue/';
+          let name = "";
+          let count = dataset.data[dataIndex];
           
-          if (datasetIndex === 1) {
-            // Clicked Inner Ring -> Go to Family (e.g., /catalogue/lwe/)
+          // Determine URL and Name based on which ring was clicked
+          if (datasetIndex === 1) { // Inner Ring (Main Families)
+            name = dataset.customLabels[dataIndex];
             url += slugify(dataset.customFam[dataIndex]) + '/';
-          } else if (datasetIndex === 0) {
-            // Clicked Outer Ring -> Go to Subfamily
+          } else if (datasetIndex === 0) { // Outer Ring (Subfamilies)
             const familySlug = slugify(dataset.customParentFam[dataIndex]);
             const rawSubFam = dataset.customLabels[dataIndex];
+            name = rawSubFam;
             
-            // ROUTING EXCEPTION: Catch "Unclassified" and route to parent family
             if (rawSubFam === 'Unclassified') {
               url += `${familySlug}/`;
+              name = `${dataset.customParentFam[dataIndex]} (Unclassified)`;
             } else {
-              const subFamSlug = slugify(rawSubFam);
-              url += `${familySlug}/${subFamSlug}/`;
+              url += `${familySlug}/${slugify(rawSubFam)}/`;
             }
           }
-          
-          window.location.href = url;
+
+          // Reliably detect if user is on a mobile device / touch screen
+          const isTouchDevice = window.matchMedia("(hover: none), (max-width: 768px)").matches;
+
+          if (isTouchDevice) {
+            // Mobile: Show the Inspector Panel with info and link
+            document.getElementById('family-inspector-title').innerText = name;
+            document.getElementById('family-inspector-count').innerText = `Contains ${count} assumption${count > 1 ? 's' : ''}.`;
+            document.getElementById('family-inspector-link').href = url;
+            document.getElementById('family-inspector-container').style.display = 'block';
+          } else {
+            // Desktop: Navigate immediately
+            window.location.href = url;
+          }
         }
       }
     }
   });
+
+  // ==========================================
+  // ASSUMPTION TIMELINE CHART & INSPECTOR
+  // ==========================================
+  const allIntroYears = new Set([...Object.keys(baseYears).map(Number), ...Object.keys(variantYears).map(Number)]);
+  const sortedIntroYears = Array.from(allIntroYears).sort();
+
+  if (sortedIntroYears.length > 0) {
+    const minIntroYear = Math.min(...sortedIntroYears);
+    const maxIntroYear = Math.max(...sortedIntroYears);
+    const completeIntroYears = [];
+    const baseCounts = [];
+    const variantCounts = [];
+
+    for (let y = minIntroYear; y <= maxIntroYear; y++) {
+      completeIntroYears.push(y);
+      baseCounts.push(baseYears[y] || 0);
+      variantCounts.push(variantYears[y] || 0);
+    }
+
+    new Chart(document.getElementById('introChart'), {
+      type: 'bar',
+      data: {
+        labels: completeIntroYears,
+        datasets: [
+          { label: 'Base Assumptions', data: baseCounts, backgroundColor: '#0A9396' },
+          { label: 'Variants', data: variantCounts, backgroundColor: '#EE9B00' }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } },
+        plugins: { legend: { position: 'bottom' } },
+        // 1. Change cursor to pointer to indicate clickability
+        onHover: (event, chartElement) => {
+          event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+        },
+        // 2. Handle the click to open the inspector
+        onClick: (event, elements, chart) => {
+          if (elements.length > 0) {
+            const index = elements[0].index;
+            const clickedYear = chart.data.labels[index];
+            const dataForYear = nodesByYear[clickedYear];
+            
+            if (dataForYear) {
+              document.getElementById('inspector-year').innerText = clickedYear;
+              
+              // Helper to generate the list items
+              const buildList = (items) => {
+                if (items.length === 0) return '<li style="color: #999; list-style: none; margin-left: -20px;">None</li>';
+                return items.sort((a,b) => a.title.localeCompare(b.title))
+                            .map(n => `<li><a href="${n.url}" style="color: #333; text-decoration: none;"><strong>${n.label}</strong>: ${n.title}</a></li>`)
+                            .join('');
+              };
+
+              document.getElementById('inspector-base-list').innerHTML = buildList(dataForYear.base);
+              document.getElementById('inspector-variant-list').innerHTML = buildList(dataForYear.variants);
+              
+              // Reveal the panel
+              document.getElementById('year-details-container').style.display = 'block';
+            }
+          }
+        }
+      }
+    });
+  }
 
   // Literature Charts
   function renderLiteratureCharts(yearData, venueData) {
@@ -393,14 +581,15 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // ==========================================
-  // SANITY CHECKS
+  // SANITY CHECKS (Development Only)
   // ==========================================
+  {% if jekyll.environment == "development" %}
   function runSanityChecks() {
     const errors = [];
     const totalAssumptionPages = {{ site.assumptions | size | default: 0 }};
     
     // Test 1: Do the Statuses sum to the Total Assumptions?
-    const sumStatuses = statusData.standard + statusData.implied + statusData.broken + statusData.unassigned;
+    const sumStatuses = statusData.standard.count + statusData.implied.count + statusData.broken.count + statusData.unassigned.count;
     if (sumStatuses !== totalAssumptionPages) {
       errors.push(`Status Mismatch: Statuses sum to ${sumStatuses}, but there are ${totalAssumptionPages} pages.`);
     }
@@ -410,7 +599,7 @@ document.addEventListener("DOMContentLoaded", function() {
     for (const [fam, subObj] of Object.entries(familyData)) {
       let famTotal = 0;
       for (const count of Object.values(subObj)) {
-        famTotal += count; // Sums subfamilies
+        famTotal += count; 
       }
       sumFamilies += famTotal;
     }
@@ -418,30 +607,67 @@ document.addEventListener("DOMContentLoaded", function() {
       errors.push(`Family Mismatch: Subfamilies sum to ${sumFamilies}, but there are ${totalAssumptionPages} pages.`);
     }
 
-    // Tests 3 & 4: Do the Bibliography extractions match the Total Papers?
-    if (yearData && venueData) {
-      // Sum the venues
+    // Test 3 & 4: Do the Bibliography extractions match the Total Papers?
+    if (typeof yearData !== 'undefined' && typeof venueData !== 'undefined') {
       const sumVenues = Object.values(venueData).reduce((acc, v) => acc + v.count, 0);
       if (sumVenues !== totalPapers) {
         errors.push(`Venue Mismatch: Venue counts sum to ${sumVenues}, but the bib file has ${totalPapers} papers.`);
       }
 
-      // Sum the years
       const sumYears = Object.values(yearData).reduce((acc, count) => acc + count, 0);
       if (sumYears !== totalPapers) {
         errors.push(`Year Mismatch: Year counts sum to ${sumYears}, but the bib file has ${totalPapers} papers.`);
       }
     }
 
+    // Test 5: Graph Extraction vs Markdown Extraction Count
+    const totalBaseInGraph = Object.values(baseYears).reduce((a, b) => a + b, 0);
+    if (totalBaseInGraph !== totalAssumptionPages) {
+      errors.push(`Integrity Error: You have ${totalAssumptionPages} markdown files, but ${totalBaseInGraph} base assumptions in data.js.`);
+    }
+
+    // Test 6: Cross-Origin ID Mapping
+    const jekyllDocs = [
+      {% for a in site.assumptions %}
+        { title: "{{ a.title | escape }}", graph_id: "{{ a.graph_id | escape }}" }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+    
+    if (typeof assumptions !== 'undefined') {
+      const graphNodes = assumptions.filter(n => n.hidden !== true && n.is_variant !== true);
+      const graphIds = graphNodes.map(n => n.id || n.label);
+      const jekyllIds = jekyllDocs.map(d => d.graph_id);
+
+      // Check Markdown against data.js
+      const missingInDataJs = jekyllDocs.filter(doc => !graphIds.includes(doc.graph_id));
+      if (missingInDataJs.length > 0) {
+        missingInDataJs.forEach(doc => {
+          errors.push(`Orphaned Markdown: "${doc.title}" has graph_id "${doc.graph_id}", but no matching base node exists in data.js.`);
+        });
+      }
+
+      // Check data.js against Markdown
+      const missingInJekyll = graphNodes.filter(node => !jekyllIds.includes(node.id || node.label));
+      if (missingInJekyll.length > 0) {
+        missingInJekyll.forEach(node => {
+          errors.push(`Missing Markdown: Base node "${node.id || node.label}" exists in data.js, but no Markdown file references it.`);
+        });
+      }
+    }
+
     // If error, then log in console
     if (errors.length > 0) {
-      console.group("Zoo Statistics Sanity Checks FAILED", "color: #d9534f; font-size: 1.2em; font-weight: bold;");
+      console.group("Zoo Statistics Sanity Checks FAILED");
       errors.forEach(err => console.error(err));
       console.groupEnd();
+    } else {
+      console.log("Zoo Statistics Sanity Checks Passed");
     }
   }
 
   // Execute the tests
   runSanityChecks();
+  {% endif %}
+
 });
 </script>
