@@ -28,8 +28,13 @@ table.no-lines {
 }
 </style>
 
-Evasive LWE was first proposed by Wee in 2022 {% cite EC:Wee22 %}. TODO: Whatever seems to be a good, short introduction.
-$$\newcommand{\aux}{\mathsf{aux}} \newcommand{\Samp}{\mathsf{Samp}}$$
+$$\newcommand{\aux}{\mathsf{aux}} \newcommand{\Samp}{\mathsf{Samp}} \newcommand{\tr}{\mathsf{T}}$$
+
+Evasive LWE was first proposed by Wee in 2022 {% cite EC:Wee22 %}. The assumption intends to relate the hardness of two LWE problems with and without preimages. 
+
+**Intuition**: Given a Gaussian preimage matrix $$\mat{U}$$ satisfying $$\mat{A} \cdot \mat{U} = \mat{P} \bmod q$$ for some target matrix $$\mat{P}$$ and some challenge $$\vec{c}^\tr$$ which is either LWE samples $$\vec{s}^\tr \cdot \mat{A} + \vec{e}^\tr \bmod q$$ or uniformly random, the assumption asserts that the only meaningful use of $$\mat{U}$$ is to right-multiply it to $$\vec{c}^\tr$$, obtaining $$\vec{s}^\tr \cdot \mat{P} + \text{error} \bmod q$$, and attempt to distinguish the LWE problem together with the latter. 
+
+Formally, this is captured by a pair of $$\mathsf{Pre}$$ and $$\mathsf{Post}$$ experiments, where $$\mathsf{Post}$$ represents the LWE-with-preimages problem, and $$\mathsf{Pre}$$ represents an LWE problem induced by the said right-multiplication operation, which is without preimages and models the resulting product as a fresh LWE sample. 
 
 ## Definition
 
@@ -37,30 +42,37 @@ Define two experiments: $$\mathsf{Pre}$$ and $$\mathsf{Post}$$.
 
 | $$\mathsf{Pre}_\adv\left(1^\lambda\right)$$ | $$\mathsf{Post}_\bdv\left(1^\lambda\right)$$ |
 | --- | --- |
-| $$(\mat{P}, \mat{A}, \aux) \gets \Samp\left(1^\lambda\right)$$ | $$(\mat{P}, \mat{A}, \aux) \gets \Samp\left(1^\lambda\right)$$ |
-| $$\mat{B} \sample \mathcal{R}_q^{n \times m}$$ | $$\mat{B} \sample \mathcal{R}_q^{n \times m}$$ |
-| **assert** $$\mat{P} \in \mat{B}\mathcal{R}_q^{m \times m_P}$$ | **assert** $$\mat{P} \in \mat{B}\mathcal{R}_q^{m \times m_P}$$ |
-| $$(\mat{S},\mat{S}_A) \sample \mathcal{S}$$ | $$(\mat{S},\mat{S}_A) \sample \mathcal{S}$$ |
+| $$(\mat{P}, \mat{B}, \aux) \gets \Samp\left(1^\lambda\right)$$ | $$(\mat{P}, \mat{B}, \aux) \gets \Samp\left(1^\lambda\right)$$ |
+| $$\mat{A} \sample \ZZ_q^{n \times m}$$ | $$\mat{A} \sample \ZZ_q^{n \times m}$$ |
+| $$\vec{s} \sample \ZZ_q^{n}$$ | $$\vec{s} \sample \ZZ_q^{n}$$ |
 | **if** $$b=0$$ **then** | **if** $$b=0$$ **then** |
-| $$\quad \mat{E}_A \sample \chi_A, \mat{E}_B \sample \chi_B, \mat{E}_P \sample \chi_P$$ | $$\quad \mat{E}_A \sample \chi_A, \mat{E}_B \sample \chi_B, \mat{E}_P \sample \chi_P$$ |
-| $$\quad \mat{C}_A = \mat{S}_A \mat{A} + \mat{E}_A$$ | $$\quad \mat{C}_A = \mat{S}_A \mat{A} + \mat{E}_A$$ |
-| $$\quad \mat{C}_B = \mat{S} \mat{B} + \mat{E}_B$$ | $$\quad \mat{C}_B = \mat{S} \mat{B} + \mat{E}_B$$ |
-| $$\quad \mat{C}_P = \mat{S} \mat{P} + \mat{E}_P$$ | $$\quad \mat{U} \sample D_{\Lambda_q^{\mat{P}}(\mat{B}), \Sigma}$$ |
+| $$\quad \vec{e}_A \sample D_{\ZZ,\chi_A}^{m}, \vec{e}_B \sample D_{\ZZ,\chi_B}^{m_B}, \vec{e}_P \sample D_{\ZZ,\chi_P}^{m_P}$$ | $$\quad \vec{e}_A \sample D_{\ZZ,\chi_A}^{m}, \vec{e}_B \sample D_{\ZZ,\chi_B}^{m_B}, \vec{e}_P \sample D_{\ZZ,\chi_P}^{m_P}$$ |
+| $$\quad \vec{c}_A^\tr = \vec{s}^\tr \mat{A} + \vec{e}_A^\tr \bmod q$$ | $$\quad \vec{c}_A^\tr = \vec{s}^\tr \mat{A} + \vec{e}_A^\tr \bmod q$$ |
+| $$\quad \vec{c}_B^\tr = \vec{s}^\tr \mat{B} + \vec{e}_B^\tr \bmod q$$ | $$\quad \vec{c}_B^\tr = \vec{s}^\tr \mat{B} + \vec{e}_B^\tr \bmod q$$ |
+| $$\quad \vec{c}_P^\tr = \vec{s}^\tr \mat{P} + \vec{e}_P^\tr \bmod q$$ | $$\quad \mat{U} \sample D_{\Lambda_q^{\mat{P}}(\mat{A}), \sigma}$$ |
 | **if** $$b=1$$ **then** | **if** $$b=1$$ **then** |
-| $$\quad \mat{C}_A \sample \mathcal{R}_q^{t_A \times m_A}$$ | $$\quad \mat{C}_A \sample \mathcal{R}_q^{t_A \times m_A}$$ |
-| $$\quad \mat{C}_B \sample \mathcal{R}_q^{t \times m}$$ | $$\quad \mat{C}_B \sample \mathcal{R}_q^{t \times m}$$ |
-| $$\quad \mat{C}_P \sample \mathcal{R}_q^{t \times m_P}$$ | $$\quad \mat{U} \sample D_{\Lambda_q^{\mat{P}}(\mat{B}), \Sigma}$$ |
-| **return** $$b = \adv(\mat{A}, \mat{B}, \mat{P}, \aux, \mat{C}_A, \mat{C}_B, \mat{C}_P)$$ | **return** $$b = \bdv(\mat{A}, \mat{B}, \mat{P}, \aux, \mat{C}_A, \mat{C}_B, \mat{U})$$ |
+| $$\quad \vec{c}_A \sample \ZZ_q^{m}$$ | $$\quad \vec{c}_A \sample \ZZ_q^{m}$$ |
+| $$\quad \vec{c}_B \sample \ZZ_q^{m_B}$$ | $$\quad \vec{c}_B \sample \ZZ_q^{m_B}$$ |
+| $$\quad \vec{c}_P \sample \ZZ_q^{m_P}$$ | $$\quad \mat{U} \sample D_{\Lambda_q^{\mat{P}}(\mat{A}), \sigma}$$ |
+| **return** $$b = \adv(\mat{A}, \mat{B}, \mat{P}, \vec{c}_A, \vec{c}_B, \vec{c}_P, \aux)$$ | **return** $$b = \bdv(\mat{A}, \mat{B}, \mat{P}, \vec{c}_A, \vec{c}_B, \mat{U}, \aux)$$ |
 {: .no-lines }
 
-### Evasive LWE$$_{\mathcal{R},q,n,n_A,m,m_P,m_A,t,t_A,\mathcal{S},\chi_B,\chi_P,\chi_A,\Sigma}$$ {#evasive-lwe}
-_Let $$\mathcal{R}$$ be a ring admitting an embedding as a lattice in $$\RR^\varphi$$ for some $$\varphi \in \NN$$. Let $$\Samp$$ be a ppt algorithm which, on input $$1^\lambda$$, outputs $$(\mat{P}, \mat{A}, \aux)$$ $$\in$$ $$\mathcal{R}_q^{n \times m_P} \times \mathcal{R}_q^{n_A \times m_A} \times \set{0,1}^*$$, where $$\aux$$ contains all coin tosses used by $$\Samp$$. Let $$\mathcal{S}$$, $$\chi_B$$, $$\chi_P$$, and $$\chi_A$$ be distributions over $$\mathcal{R}_q^{t \times n} \times \mathcal{R}_q^{t_A\times n_A}$$, $$\mathcal{R}_q^{t \times m}$$, $$\mathcal{R}_q^{t \times m_P}$$, and $$\mathcal{R}_q^{t_A \times m_A}$$ respectively with positive semidefinite matrix $$\Sigma$$. The Evasive LWE assumption states that for any ppt $$\Samp$$ and $$\bdv$$ there exists a ppt $$\adv$$ such that_
+### Evasive LWE$$_{q,n,m,m_P,m_B,\chi_A,\chi_P,\chi_B,\sigma}$$ {#evasive-lwe}
+_Let $$\Samp$$ be a ppt algorithm which, on input $$1^\lambda$$, outputs $$(\mat{P}, \mat{B}, \aux)$$ $$\in$$ $$\ZZ_q^{n \times m_P} \times \ZZ_q^{n \times m_B} \times \set{0,1}^*$$, where $$\aux$$ contains all coin tosses used by $$\Samp$$. Let $$\chi_A$$, $$\chi_P$$, $$\chi_B$$, and $$\sigma$$ be positive Gaussian widths. The Evasive LWE assumption states that for any ppt $$\Samp$$ and $$\bdv$$ there exists a ppt $$\adv$$, a polynomial $$\poly{}$$ and a negligible function $$\negl{}$$, such that_
 
 $$ \mathsf{Adv}_\adv^\mathsf{Pre}(\lambda) \geq \mathsf{Adv}_\bdv^\mathsf{Post}(\lambda) / \poly{\lambda} - \negl{\lambda}. $$
 
-Note that the above definition is the original definition by Wee {% cite EC:Wee22 %}. Due to the large number of variants, this assumption is also referred to as _Public-Coin Evasive LWE_ as it outputs all random coins computed in $$\Samp$$.
+**Note 1**: The above definition is adapted from {% cite EC:Wee22 %} with the following changes: (1) each of the error vector $$\vec{e}$$ and the preimage matrix $$\mat{U}$$ is equipped with its own Gaussian width parameter, and (2) the distinguishers $$\mathcal{A}$$ and $$\mathcal{B}$$ are explicitly given $$\mat{P}$$ as input.
+The first is to allow for more general parameter settings, for the potential of more fine-grained analyses on different settings. The latter is only for clarity and does not change the assumption, since $$\mat{P}$$ is recoverable from the coin tosses of $$\Samp$$, the latter included in $$\aux$$. 
+There are also minor presentation and notational changes, which does not affect the actual assumption and are there to increase consistency with other contents in this Zoo.
 
-TODO: Intuition
+**Note 2**: In Remark 2 of {% cite EC:Wee22 %}, it is noted that the Gaussian widths $$\chi_A,\chi_B,\chi_P$$ and $$\sigma$$ influence the assumption strength, in that larger error and preimage widths in $$\mathsf{Post}$$, and/or smaller error widths in $$\mathsf{Pre}$$, lead to a weaker assumption. In {% cite TCC:ARYY25 %} it is shown that if the errors in $$\mathsf{Pre}$$ is super-polynomially larger than the error and preimage widths in $$\mathsf{Post}$$, then there are simple counterexamples to the statement. This counterexample crucially relies on the contrive parameter choices and does not apply otherwise.
+
+IW: Below is WIP.
+
+Due to the large number of variants, this assumption is also referred to as _Public-Coin Evasive LWE_ as it outputs all random coins computed in $$\Samp$$.
+
+IW: I'd argue against called it "Public-Coin Evasive LWE'', since there are many different versions of "public-coin evasive LWE'' in the literature. There are also many that does not have a name but just called "evasive LWE'' by the paper which introduced them. I wonder if it is necessary to give each assumption and its variant a name. For example, what do you think if a variant is named just by the paper which introduced them? E.g. the one above would be called ``Evasive LWE (Wee22)'' or something in this direction.
 
 JNS: I'd argue that we state all of the results regarding hardness, counterexamples / attacks directly below each variant on this page to keep the information grouped at one spot.
 
