@@ -34,9 +34,9 @@ Evasive LWE was first proposed by Wee in 2022 {% cite EC:Wee22 %}. The assumptio
 
 **Intuition**: Given a Gaussian preimage matrix $$\mat{U}$$ satisfying $$\mat{A} \cdot \mat{U} = \mat{P} \bmod q$$ for some target matrix $$\mat{P}$$ and some challenge $$\vec{c}^\tr$$ which is either LWE samples $$\vec{s}^\tr \cdot \mat{A} + \vec{e}^\tr \bmod q$$ or uniformly random, the assumption asserts that the only meaningful use of $$\mat{U}$$ is to right-multiply it to $$\vec{c}^\tr$$, obtaining $$\vec{s}^\tr \cdot \mat{P} + \text{error} \bmod q$$, and attempt to distinguish the LWE problem together with the latter. 
 
-Formally, this is captured by a pair of $$\mathsf{Pre}$$ and $$\mathsf{Post}$$ experiments, where $$\mathsf{Post}$$ represents the LWE-with-preimages problem, and $$\mathsf{Pre}$$ represents an LWE problem induced by the said right-multiplication operation, which is without preimages and models the resulting product as a fresh LWE sample. 
+Formally, this is captured by a pair of $$\mathsf{Pre}$$ and $$\mathsf{Post}$$ experiments, where $$\mathsf{Post}$$ represents the LWE-with-preimages problem, and $$\mathsf{Pre}$$ represents an LWE problem induced by the said right-multiplication operation, which is without preimages and models the resulting product as fresh LWE samples. 
 
-## Definition
+## Definition {% cite EC:Wee22 %}
 
 Define two experiments: $$\mathsf{Pre}$$ and $$\mathsf{Post}$$.
 
@@ -46,7 +46,7 @@ Define two experiments: $$\mathsf{Pre}$$ and $$\mathsf{Post}$$.
 | $$\mat{A} \sample \ZZ_q^{n \times m}$$ | $$\mat{A} \sample \ZZ_q^{n \times m}$$ |
 | $$\vec{s} \sample \ZZ_q^{n}$$ | $$\vec{s} \sample \ZZ_q^{n}$$ |
 | **if** $$b=0$$ **then** | **if** $$b=0$$ **then** |
-| $$\quad \vec{e}_A \sample D_{\ZZ,\chi_A}^{m}, \vec{e}_B \sample D_{\ZZ,\chi_B}^{m_B}, \vec{e}_P \sample D_{\ZZ,\chi_P}^{m_P}$$ | $$\quad \vec{e}_A \sample D_{\ZZ,\chi_A}^{m}, \vec{e}_B \sample D_{\ZZ,\chi_B}^{m_B}, \vec{e}_P \sample D_{\ZZ,\chi_P}^{m_P}$$ |
+| $$\quad \vec{e}_A \sample D_{\ZZ,\chi_A}^{m}, \vec{e}_B \sample D_{\ZZ,\chi_B}^{m_B}, \vec{e}_P \sample D_{\ZZ,\chi_P}^{m_P}$$ | $$\quad \vec{e}_A \sample D_{\ZZ,\chi_A}^{m}, \vec{e}_B \sample D_{\ZZ,\chi_B}^{m_B}$$ |
 | $$\quad \vec{c}_A^\tr = \vec{s}^\tr \mat{A} + \vec{e}_A^\tr \bmod q$$ | $$\quad \vec{c}_A^\tr = \vec{s}^\tr \mat{A} + \vec{e}_A^\tr \bmod q$$ |
 | $$\quad \vec{c}_B^\tr = \vec{s}^\tr \mat{B} + \vec{e}_B^\tr \bmod q$$ | $$\quad \vec{c}_B^\tr = \vec{s}^\tr \mat{B} + \vec{e}_B^\tr \bmod q$$ |
 | $$\quad \vec{c}_P^\tr = \vec{s}^\tr \mat{P} + \vec{e}_P^\tr \bmod q$$ | $$\quad \mat{U} \sample D_{\Lambda_q^{\mat{P}}(\mat{A}), \sigma}$$ |
@@ -57,8 +57,8 @@ Define two experiments: $$\mathsf{Pre}$$ and $$\mathsf{Post}$$.
 | **return** $$b = \adv(\mat{A}, \mat{B}, \mat{P}, \vec{c}_A, \vec{c}_B, \vec{c}_P, \aux)$$ | **return** $$b = \bdv(\mat{A}, \mat{B}, \mat{P}, \vec{c}_A, \vec{c}_B, \mat{U}, \aux)$$ |
 {: .no-lines }
 
-### Evasive LWE$$_{q,n,m,m_P,m_B,\chi_A,\chi_P,\chi_B,\sigma}$$ {#evasive-lwe}
-_Let $$\Samp$$ be a ppt algorithm which, on input $$1^\lambda$$, outputs $$(\mat{P}, \mat{B}, \aux)$$ $$\in$$ $$\ZZ_q^{n \times m_P} \times \ZZ_q^{n \times m_B} \times \set{0,1}^*$$, where $$\aux$$ contains all coin tosses used by $$\Samp$$. Let $$\chi_A$$, $$\chi_P$$, $$\chi_B$$, and $$\sigma$$ be positive Gaussian widths. The Evasive LWE assumption states that for any ppt $$\Samp$$ and $$\bdv$$ there exists a ppt $$\adv$$, a polynomial $$\poly{}$$ and a negligible function $$\negl{}$$, such that_
+### Evasive LWE$$_{q,n,m,m_B,m_P,\chi_A,\chi_B,\chi_P,\sigma}$$ {#evasive-lwe}
+_Let $$\Samp$$ be a ppt algorithm which, on input $$1^\lambda$$, outputs $$(\mat{P}, \mat{B}, \aux)$$ $$\in$$ $$\ZZ_q^{n \times m_P} \times \ZZ_q^{n \times m_B} \times \set{0,1}^*$$, where $$\aux$$ contains all coin tosses used by $$\Samp$$. Let $$\chi_A$$, $$\chi_P$$, $$\chi_B$$, and $$\sigma$$ be positive Gaussian widths. The Evasive LWE assumption states that for any ppt $$\Samp$$ and $$\bdv$$ there exists a ppt $$\adv$$, a polynomial $$\poly{\cdot}$$ and a negligible function $$\negl{\cdot}$$, such that_
 
 $$ \mathsf{Adv}_\adv^\mathsf{Pre}(\lambda) \geq \mathsf{Adv}_\bdv^\mathsf{Post}(\lambda) / \poly{\lambda} - \negl{\lambda}. $$
 
@@ -66,7 +66,7 @@ $$ \mathsf{Adv}_\adv^\mathsf{Pre}(\lambda) \geq \mathsf{Adv}_\bdv^\mathsf{Post}(
 The first is to allow for more general parameter settings, for the potential of more fine-grained analyses on different settings. The latter is only for clarity and does not change the assumption, since $$\mat{P}$$ is recoverable from the coin tosses of $$\Samp$$, the latter included in $$\aux$$. 
 There are also minor presentation and notational changes, which does not affect the actual assumption and are there to increase consistency with other contents in this Zoo.
 
-**Note 2**: In Remark 2 of {% cite EC:Wee22 %}, it is noted that the Gaussian widths $$\chi_A,\chi_B,\chi_P$$ and $$\sigma$$ influence the assumption strength, in that larger error and preimage widths in $$\mathsf{Post}$$, and/or smaller error widths in $$\mathsf{Pre}$$, lead to a weaker assumption. In {% cite TCC:ARYY25 %} it is shown that if the errors in $$\mathsf{Pre}$$ is super-polynomially larger than the error and preimage widths in $$\mathsf{Post}$$, then there are simple counterexamples to the statement. This counterexample crucially relies on the contrive parameter choices and does not apply otherwise.
+**Note 2**: In Remark 2 of {% cite EC:Wee22 %}, it is noted that the Gaussian widths of the errors and preimages influence the assumption strength, in that larger error and preimage widths in $$\mathsf{Post}$$, and/or smaller error widths in $$\mathsf{Pre}$$, lead to a weaker assumption. In {% cite TCC:AMYY25 %} it is shown that if the error width $$\chi_P$$ in $$\mathsf{Pre}$$ is super-polynomially larger than the error and preimage widths $$\chi_A,\sigma$$ in $$\mathsf{Post}$$, then there are simple counterexamples to the statement. This counterexample crucially relies on the contrive parameter choices and does not apply otherwise.
 
 IW: Below is WIP.
 
