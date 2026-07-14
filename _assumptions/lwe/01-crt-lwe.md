@@ -18,7 +18,7 @@ redirect_from:
 
 ## Definition
 
-Let $$\mathcal{R} := \ZZ[X]/(X^n + 1)$$ be a power-of-two cyclotomic number ring and $$\zeta \in \FF_q$$ a primitive $$n$$-th root of unity. If $$p = 1 \bmod 2n$$ for all $$p \mid q$$, we get the double-CRT isomorphism
+Let $$\mathcal{R} := \ZZ[X]/(X^n + 1)$$ be a power-of-two cyclotomic number ring and $$\zeta \in \ZZ_q$$ a primitive $$n$$-th root of unity. If $$p = 1 \bmod 2n$$ for all $$p \mid q$$, we get the double-CRT isomorphism
 
 $$ \iota: \mathcal{R}_q \stackrel{\sim}{\rightarrow} \bigoplus_{i \in (\ZZ/2n\ZZ)^*}  \bigoplus_{p | q} \FF_p, a \mapsto (a \bmod (p, X - \zeta^i))_{i,p}. $$
 

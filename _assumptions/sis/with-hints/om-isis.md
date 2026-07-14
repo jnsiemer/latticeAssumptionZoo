@@ -17,7 +17,7 @@ One-More-ISIS (OM-ISIS) was introduced in 2022 by Agrawal, Kirshanova, Stehlé, 
 ## Definition
 
 ### One-More-ISIS$$_{n,m,q,\beta,s}$$ {#one-more-isis}
-_Let matrix $$\mat{A} \in \ZZ_q^{n \times m}$$ and $$T \subset \ZZ_q^n$$ be chosen uniformly at random. Given the challenge matrix $$\mat{A}$$ and the set of target vectors $$T$$, an adversary can query a preimage oracle $$O_\text{pre}$$ adaptively, which on input $$\hat{\vec{t}} \in \ZZ_q^n$$ outputs a preimage $$\hat{\vec{s}} \sample \mat{A}_s^{-1}(\hat{\vec{s}})$$. Let $$k \in \NN_0$$ denote the number of times $$O_\text{pre}$$ was queried. Then, an adversary is asked to output a set $$\set{\vec{s}_i}_{i \in [k+1]}$$ of $$k+1$$ short preimages of target vectors in $$T$$ satisfying_
+_Let matrix $$\mat{A} \in \ZZ_q^{n \times m}$$ and $$T \subset \ZZ_q^n$$ be chosen uniformly at random. Given the challenge matrix $$\mat{A}$$ and the set of target vectors $$T$$, an adversary can query a preimage oracle $$O_\text{pre}$$ adaptively, which on input $$\hat{\vec{t}} \in \ZZ_q^n$$ outputs a preimage $$\hat{\vec{s}} \sample \mat{A}_s^{-1}(\hat{\vec{t}})$$. Let $$k \in \NN_0$$ denote the number of times $$O_\text{pre}$$ was queried. Then, an adversary is asked to output a set $$\set{\vec{s}_i}_{i \in [k+1]}$$ of $$k+1$$ short preimages of target vectors in $$T$$ satisfying_
 
 $$ \forall i \in [k+1]: \mat{A}\cdot \vec{s}_i \in T \land \norm{\vec{s}_i} \leq \beta. $$
 
