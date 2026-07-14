@@ -297,6 +297,18 @@ assumption('Threshold-LWE', 'Threshold LWE', 2025, ['TresholdEnc'], '/threshold-
 
 assumption('Equivocal-LWE', 'Equivocal LWE', 2025, ['PrivEnhEnc', 'FuncEnc'], '/equivocal-lwe/', 'LWE');
 
+assumption('Evasive-LWE', 'Public-Coin Evasive LWE', 2022, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/', 'LWE');
+assumption('WWW22-Evasive-LWE', 'Evasive LWE by WWW22', 2022, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#www22', 'LWE', true);
+assumption('VWW22-Evasive-LWE', 'Evasive LWE by VWW22', 2022, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#vww22', 'LWE', true);
+assumption('HLL23-Evasive-LWE', 'Evasive LWE by HLL23', 2023, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#hll23', 'LWE', true);
+assumption('ARYY23-Evasive-LWE', 'Evasive LWE by ARYY23', 2023, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#aryy23', 'LWE', true);
+assumption('Wee24-Evasive-LWE', 'Evasive LWE by Wee24', 2024, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#wee24', 'LWE', true);
+assumption('BÜW24-PubCoin-Evasive-LWE', 'Evasive LWE by BÜW24 (Public-Coin)', 2024, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#büw24-def7', 'LWE', true);
+assumption('BÜW24-PrivCoin-Evasive-LWE', 'Evasive LWE by BÜW24 (Private-Coin)', 2024, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#büw24-def8-9', 'LWE', true);
+assumption('BDJMMPV25-Evasive-LWE', 'Evasive LWE by BDJMMPV25', 2025, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#bdjmmpv25', 'LWE', true);
+assumption('AKY25-Evasive-LWE', 'Evasive LWE by AKY25', 2025, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#aky25', 'LWE', true);
+assumptionFamily('Evasive-LWE', ['Evasive-LWE', 'WWW22-Evasive-LWE', 'VWW22-Evasive-LWE', 'HLL23-Evasive-LWE', 'ARYY23-Evasive-LWE', 'Wee24-Evasive-LWE', 'BÜW24-PubCoin-Evasive-LWE', 'BÜW24-PrivCoin-Evasive-LWE', 'BDJMMPV25-Evasive-LWE', 'BDJMMPV25-Evasive-LWE', 'AKY25-Evasive-LWE'], 100);
+
 
 // Standalone assumptions - family, i.e. last parameter is always 'Standalone'
 assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['Sign', 'PKE', 'COED'], '/ntru/', 'Standalone');
@@ -408,7 +420,7 @@ reducesTo('LWE','Leaky-LWE', 250);
 
 reducesTo('LWE', '{0,1}-CRT-LWE', 225);
 
-reducesTo('Evasive-LWE', 'l-succinct-LWE'); // to come
+reducesTo('Evasive-LWE', 'l-succinct-LWE', 200);
 
 reducesTo('Decomposed-LWE', 'ssE-Decomposed-LWE');
 reducesTo('Decomposed-LWE', 'Decomposed-SIS');
