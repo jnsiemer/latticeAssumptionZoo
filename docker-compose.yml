@@ -6,12 +6,3 @@ services:
       - "35729:35729" # Port for live reload
     volumes:
       - .:/app
-      # Prevents container's installed gems from being overwritten 
-      # if a user has a local vendor/bundle directory
-      - bundle_cache:/usr/local/bundle
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      - BUNDLE_USER_HOME=/usr/local/bundle
-
-volumes:
-  bundle_cache:

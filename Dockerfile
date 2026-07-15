@@ -1,9 +1,8 @@
 FROM ruby:3.2-slim
 
 # Install system dependencies required for Ruby gems and gosu
-RUN apt-get update -qq && apt-get install -y \
+RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     build-essential \
-    git \
     gosu \
     && rm -rf /var/lib/apt/lists/*
 
@@ -18,7 +17,8 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 COPY Gemfile Gemfile.lock ./
 
 # Install bundler and project dependencies
-RUN gem install bundler && bundle install
+RUN gem install bundler --no-document \
+ && bundle install --retry 5
 
 # Copy project into the container
 COPY . .
