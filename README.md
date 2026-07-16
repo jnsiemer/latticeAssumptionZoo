@@ -15,6 +15,8 @@ Whether you have found an error, want to make a minor revision, add a new assump
 
 ## Hosting Locally
 
+A more extensive step-by-step installation guide (preparing contributions) is available in the [INSTALL.md](INSTALL.md).
+
 We are providing two options to host the site locally: Using a [Docker container](#using-docker) (recommended) or through a [manual installation](#manual-installation).
 
 ### Using Docker
