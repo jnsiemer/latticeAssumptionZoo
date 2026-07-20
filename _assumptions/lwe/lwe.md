@@ -61,7 +61,7 @@ Regev {% cite STOC:Regev05 %} proved a worst-case hardness theorem for LWE.
 
 **Theorem** _For any $$m=\poly{n}$$, any modulus $$q \leq 2^{\poly{n}}$$, and any (discretised) Gaussian error distribution $$\chi$$ of parameter $$\alpha q \geq 2\sqrt{n}$$ where $$0 < \alpha < 1$$, solving the decision-LWE$$_{n,m,q,\chi}$$ problem is at least as hard as quantumly solving GapSVP$$_\gamma$$ and SIVP$$_\gamma$$ on arbitrary $$n$$-dimensional lattices, for some $$\gamma = \bigO{n/\alpha}$$._
 
-Later, a completely _classical_ reduction to LWE was established {% cite STOC:Peikert09 %} and a dimension-modulus trade-off in the classical reduction established {% cite STOC:BLPRS13 %}.
+Later, a completely _classical_ reduction to LWE was established {% cite STOC:Peikert09 %} for exponential modulus. Then {% cite STOC:BLPRS13 %} provided a classical reduction for polynomial modulus using a dimension-modulus trade-off. 
 
 Similar reductions exist for R-LWE and M-LWE for cyclotomic rings but their hardness relies on the worst-case hardness of GapSVP and SIVP over ideal and module lattices respectively {% cite EC:LyuPeiReg10 %}{% cite DCC:LanSte15 %}. Furthermore, R-LWE is at least as hard as [NTRU](/ntru/) as sketched in Section 4.4.4 of {% cite FTTCS:Peikert16 %}.
 

@@ -408,6 +408,8 @@ reducesTo('LWE', 'qLWE');
 
 reducesTo('LWE', 'FAE-LWE');
 reducesTo('FAE-LWE', 'Extended-LWE');
+reducesTo('Extended-LWE', 'Binary-Secret-LWE');
+
 
 reducesTo('LWE', 'Extended-LWE', 200);
 reducesTo('LWE', 'MH-Ext-LWE', 200);
