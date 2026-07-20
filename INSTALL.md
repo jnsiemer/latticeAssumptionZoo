@@ -36,7 +36,7 @@ If you don't have Homebrew yet, install it first, then re-run the command above.
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-Once installed, open Docker from Spotlight or Applications and grant the permissions it requests.
+Once installed, open Docker from Spotlight or Applications and grant the permissions it requests. Due to prior issues, ensure on MacOS that Docker Desktop can use enough resources under Settings → Resources (≥ 4 CPU cores, ≥ 4 GB Memory, ≥ 2 GB Swap, ≥ 5 GB disk space; higher values might be required based on other containers). Some setups struggle when installing `build-essentials` without enough resources!
 
 No Homebrew, or prefer a GUI? Download the `.dmg` from [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/) -- it's your responsibility to choose the appropriate build that matches your CPU. Check via the Apple menu → *About This Mac* → the *Chip* / *Processor* line. Ensure whether it's an Intel chip or an Apple Silicon CPU.
 
@@ -84,7 +84,7 @@ Log out and back in (or reboot). Then, check the daemon with `sudo systemctl sta
 
 ---
 
-## 2. Confirm Docker is installed and running
+## 2. Confirm Docker is installed, running, and has enough resources
 Two different checks -- run both:
 ```bash
 docker --version
@@ -99,6 +99,8 @@ docker info
 - **Not running:** prints something like `Cannot connect to the Docker daemon … Is the docker daemon running?`
 
 If you get that error, start the engine: open **Docker Desktop** (Windows/macOS, or Linux Desktop), or if you went with Docker + Compose, run `sudo systemctl start docker`. Wait for it to report running, then re-run `docker info`. Continue.
+
+**Important:** Ensure that Docker Desktop provides enough resources: Settings → Resources (≥ 4 CPU cores, ≥ 4 GB Memory, ≥ 2 GB Swap, ≥ 5 GB disk space; higher values might be required based on other containers). Some setups struggle when installing `build-essentials` without enough resources!
 
 ---
 

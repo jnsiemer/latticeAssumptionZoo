@@ -19,8 +19,8 @@ A more extensive step-by-step installation guide (preparing contributions) is av
 
 We are providing two options to host the site locally: Using a [Docker container](#using-docker) (recommended) or through a [manual installation](#manual-installation).
 
-### Using Docker
-1. Ensure you have [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) (also bundled in [Docker Desktop](https://www.docker.com/products/docker-desktop/)) installed and _running_ on your machine.
+### Using Docker (Recommended)
+1. Ensure you have [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) (also bundled in [Docker Desktop](https://www.docker.com/products/docker-desktop/)) installed and _running_ on your machine. Further, verify that Docker Desktop provides enough resources: Settings → Resources (≥ 4 CPU cores, ≥ 4 GB Memory, ≥ 2 GB Swap, ≥ 5 GB disk space; higher values might be required based on other containers).
 2. Open your terminal in the project root directory.
 3. Build and start the local server by running:
 ```bash
@@ -37,7 +37,7 @@ _Important:_ The incremental reloader might not recompile all necessary files if
 You can test and preview the wiki locally by setting up Jekyll and its plugins as follows:
 
 1. Ensure you have [Ruby](https://www.ruby-lang.org/) 2.7.0 or higher installed by running `ruby --version`. (Avoid using `sudo` for the following commands to prevent permission issues.)
-2. Install the bundler gem via `gem install bundler`.
+2. Install the bundler gem via `gem install bundler`. If you want to keep the dependencies in the local directory, please execute `bundle config set --local path 'vendor/bundle'` before running the next command.
 3. In the project root (where the Gemfile is located), install all dependencies by executing `bundle install`.
 4. Run the site locally: `bundle exec jekyll serve --livereload --incremental`.
 5. Preview the local site at `http://localhost:4000`.
