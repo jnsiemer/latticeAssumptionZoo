@@ -62,6 +62,7 @@ Lemma 8 of {% cite DCC:BouSakSte22 %} states that PV-SIS is at least as hard as 
 
 As a specialisation of the Partial Vandermonde Knapsack problem (w.r.t. the Euclidean norm), PV-SIS can at most be as hard as PV-Knapsack. 
 However, Boudgoust, Gachon, and Pellet-Mary {% cite C:BouGacPel22 %} present an efficient distinguisher for some proposed sets of parameters and a polynomial-time distinguisher for the decisional PV-Knapsack problem, which works for random instances of $$\Omega$$ with non-negligible probability. Further, they reduce the bit-security of parameter sets drastically. Subsequent work {% cite EC:DasJou24 %} provides a key recovery attack, i.e. a polynomial-time algorithm to find $$\vec{a}$$, for a non-negligible (but efficiently identifiable) number of weak keys.
+These attacks are devestating in the case of adversarially chosen $$\Omega$$ and therefore, choosing the set $$\Omega$$ at random is crucial.
 
 ## Constructions built from PV-SIS {#constructions}
 

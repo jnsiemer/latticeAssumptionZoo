@@ -14,9 +14,7 @@ redirect_from:
 
 Binary-Secret LWE was introduced in 2010 by Goldwasser, Kalai, Peikert, and Vaikuntanathan {% cite  ICS:GKPV10 %}, and was later proven in {% cite STOC:BLPRS13 %}. The name of the assumption is descriptive as Binary-Secret LWE literally restricts LWE to choosing its secret as a binary vector. 
 
-The definition can naively be extended to both the ring and the module setting but hardness is only provided for the classical [LWE](/lwe/) and a special regime of [MLWE](/lwe/#module-lwe) (which leaves unproven the hardness for the ring variant).
-
-
+The definition can naively be extended to both the ring and the module setting but hardness is only provided for the classical [LWE](/lwe/) and a special regime of [MLWE](/lwe/#module-lwe) (which leaves the hardness for the ring variant unproven).
 
 ## Definition
 

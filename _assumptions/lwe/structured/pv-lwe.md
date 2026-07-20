@@ -65,6 +65,7 @@ Hybrid-PV-P is a combination of [Ring-LWE](/lwe/#ring-lwe) and PV-LWE, where the
 
 Boudgoust et al. show that PV-LWE is equivalent to the decision version of PV-Knapsack in Lemma 6 and 7 of {% cite DCC:BouSakSte22 %}.
 In subsequent work, Boudgoust, Gachon, and Pellet-Mary {% cite C:BouGacPel22 %} present an efficient distinguisher for some proposed sets of parameters and a polynomial-time distinguisher for the decisional PV-Knapsack problem, which works for random instances of $$\Omega$$ with non-negligible probability. Further, they reduce the bit-security of parameter sets drastically. Further, Das and Joux {% cite EC:DasJou24 %} provide a key recovery attack for a non-negligible (but efficiently identifiable) number of weak keys.
+These attacks are devestating in the case of adversarially chosen $$\Omega$$ and therefore, choosing the set $$\Omega$$ at random is crucial.
 
 ## Constructions built from PV-LWE {#constructions}
 
