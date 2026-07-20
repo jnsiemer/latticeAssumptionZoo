@@ -29,6 +29,13 @@ The hardness of One-More-ISIS is analysed using direct cryptanalysis in the orig
 
 **Lattice Attack.** The adversary requests more than $$m$$ preimages of zero. Then, the adversary can produce a short basis trapdoor for $$\mat{A}$$. This trapdoor is of degraded quality relative to the trapdoor used by the challenger. They explore further options to improve the quality of the short basis trapdoor.
 
+## Open Questions
+
+- Can we find a better lattice reduction for One-More-ISIS (as we already have a pretty good basis)?
+- Can we exploit the knowledge of a short generating set better than with Babai's Nearest Plane algorithm?
+- Can we also give a reduction in the other direction: from [Randomised One-More-ISIS](/rom-isis/) to One-More-ISIS?
+<!-- List of open questions given in a talk by Elena Kirshanova -->
+
 ## Constructions built from One-More-ISIS {#constructions}
 
 - Blind signature {% cite CCS:AKSY22 %}

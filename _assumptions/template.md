@@ -34,9 +34,9 @@ Any reductions or cryptanalytic results providing confidence in the hardness of 
 
 Any reductions in this section should be reflected as an edge in the [`graph`](/graph/).
 
-## Open Problems (Optional)
+## Open Questions (Optional)
 
-This section should contain open problems around this assumption (if the context doesn't provide enough information to motivate the open research question, please provide it here).
+This section should contain (a list of) the most pressing open problems and questions around this assumption (if the context doesn't provide enough information to motivate the open research question, please provide it here).
 
 ## Constructions built from AssumptionName (Optional) {#constructions}
 

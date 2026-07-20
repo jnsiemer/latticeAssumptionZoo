@@ -28,6 +28,12 @@ Wee proved that $$\ell$$-succinct LWE is at least as hard as [public-coin evasiv
 
 Trivially, LWE implies $$\ell$$-succinct LWE$$_{n, m, \ell m, q, \chi, \poly{\lambda, \ell, m}}$$ and 1-succinct LWE by following the trapdoor delegation approach {% cite EC:CHKP10 %} and sampling $$\mat{W}$$ along with a trapdoor to derive a trapdoor for $$\mat{B}$$.
 
+## Open Questions
+
+- Can we find concrete hardness results when the width of $$\mat{W}$$ is $$\omega(1)$$ and $$\bigO{\ell n \log q}$$?
+- Can we find a $$\poly{\ell}$$ improvement in attack algorithms over a generic SIS / LWE algorithm?
+<!-- List of open questions given in a talk by David Wu --> 
+
 ## Constructions built from $$\ell$$-succinct LWE {#constructions}
 
 - Distributed Broadcast Encryption {% cite TCC:ChaWu24 %}{% cite C:WeeWu25 %}

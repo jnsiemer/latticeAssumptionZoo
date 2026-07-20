@@ -62,6 +62,13 @@ $$\mat{T} = \begin{bmatrix} \mat{T}_{0,0} & \cdots & \mat{T}_{0,t-1} \\ \vdots &
 The trapdoor $$\mat{T}$$ is a Gaussian preimage such that $$\mat{AT}_{i,j} = \delta_{i,j} \cdot \mat{G} - \mat{W}_i\mat{B}_j$$.
 The targets of the Decomposed instance are constructed as $$\vec{b}_{i,j}' = \vec{b}\mat{T}_{i,j} + \vec{e}_{i,j}$$ where $$\vec{e}_{i,j} \sample D_{\sigma_\vec{e}}^m$$. With an appropriate choice of Gaussian parameters, $$\vec{e}_{i,j}$$ will flood the noise of $$\vec{b}$$ (multiplied by $$\mat{T}_{i,j}$$). Finally, the Decomposed LWE instance is defined as $$\{-\mat{W}_i, \mat{B}_j,\vec{b}_{i,j}'\}_{i,j \in [\ell]}$$.
 
+## Open Questions
+
+- Can we find concrete hardness results when the width of $$\mat{W}$$ is $$\omega(1)$$ and $$\bigO{\ell n \log q}$$?
+- Can we find a $$\poly{\ell}$$ improvement in attack algorithms over a generic SIS / LWE algorithm?
+- What is the hardness of SIS / LWE w.r.t. $$\mat{A}$$ and can we establish it from some worst-case lattice problem?
+<!-- List of open questions given in a talk by David Wu --> 
+
 ## Constructions built from Decomposed LWE {#constructions}
 
 - Succinct Randomised Encodings {% cite C:AbrMalRoy25 %}

@@ -60,6 +60,14 @@ The reduction from worst-case approximate SVP first reduces to SIS. Then, a H-IS
 
 Further, the authors {% cite EPRINT:2026/187 %} essentially provide a lower bound on the hardness of H-ISIS by reducing [One-More-ISIS](/om-isis/) to H-ISIS.
 
+## Open Questions
+
+- How hard, concretely or theoretically, is H-SIS when the hints are sensibly distributed?
+- Our bound to determine cliques and our use of Motzkin–Strauss are loose. Can we improve them?
+- Can the chaining assumption be weakened or removed?
+- Can we (meaningfully) relate other hinted lattice assumptions to this framework?
+<!-- List of open questions given in a talk by Eamonn Postlethwaite -->
+
 ## Constructions built from H-ISIS {#constructions}
 
 - H-ISIS suggests that double-signing for GPV-style signatures with tight norm bound and without any salt should be secure 
