@@ -51,6 +51,16 @@ Subspace LWE (or Non-Uniform LWE with $$\eta = \mathcal{U}(V)$$) was introduced 
 ## Hardness
 
 Boneh et al. discuss the hardness of Non-Uniform LWE in Section 4 of {% cite C:BLMR13 %}. They provide a generic reduction from LWE to Non-Uniform LWE if $$\eta$$ follows a _Coset Sampleable Distribution_ in Theorem 4.3 and then they provide three examples for Coset Sampleable Distributions, namely the three ones described above. The notion of a Coset Sampleable Distribution is closely related to Preimage Sampleable Functions. Additionally, they discuss how the given reductions can adapted to the [small-secret LWE](/lwe/#small-secret-lwe) case. Further details can be found in Section 4 of {% cite C:BLMR13 %}.
+The proofs are only given for [LWE](/lwe/) over $$\mathbb{Z}_q$$.
+
+### Attacks on Ring-LWE with Binary Matrix
+In Section 7.6 of {% cite SELF:Galbraith13 %} an attack against [Ring-LWE](/lwe/) with binary matrix is sketched.
+Intuitively, it uses the following observation.
+Given two samples $$(a,b)$$ and $$(a',b')$$ of Ring-LWE with binary matrix, where $$a,a'$$ are both polynomials of the ring $$R_q$$ (where typically $$R_q = \mathbb{Z}[X]/\langle X^n+1 \rangle$$ and $$n$$ a power-of-two degree) with binary coefficients.
+Then, one computes $$a \cdot b' - a' \cdot b$$.
+If $$b,b'$$ are Ring-LWE samples, then $$a \cdot b' - a' \cdot b = a(a's+e') - a'(as+e)= a \cdot e' - a' \cdot e$$, which is small with respect to the modulus $$q$$.
+If $$b,b'$$ are uniform samples, this is not the case.
+Given many samples, one can recover $$e$$ through statistical analysis (and thus recover $$s$$).
 
 ## Constructions built from Non-Uniform LWE {#constructions}
 
