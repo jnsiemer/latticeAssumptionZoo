@@ -87,10 +87,12 @@ The hardness was also proven for non-noisy leakages for some specific regimes (w
 ## Constructions built from Hint-MLWE {#constructions}
 
 - NIZK and commit-and-prove protocols {% cite C:KLSS23b %}{% cite INDOCRYPT:DouRou25 %}
+- Updatable Public-Key Encryption {% cite AC:HPS23 %}
 - Signatures such as Racoon {% cite C:PKPR24 %}, Plover {% cite EC:EENPSS24 %}
 - Threshold signatures (with additionnal properties) {% cite C:EspNioPre24 %}{% cite EC:PKMMPS24 %}{% cite C:KatReiTak24 %}{% cite C:PKNRT25 %}
 - Polynomial commitment schemes {% cite C:HwaSeoSon24 %}
-- KEM (with properties): Katana {% cite EC:DJKPS25 %}, {% cite AC:LapPre25 %}
+- KEM (with properties): Katana {% cite EC:DJKPS25 %}
+- Threshold IND-CCA KEM: {% cite AC:LapPre25 %}, {% cite PKC:BPLP26 %}
 
 ## Related Assumptions
 The adaptive case has been studied in {% cite PQC:BouKel25 %} and {% cite CiC:LaiSwaWoo25 %}.
