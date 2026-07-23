@@ -35,10 +35,13 @@ The specialisation was introduced by Yin, Zhang, Dong, Wojtczak, and Lim in 2026
 ## Hardness
 
 LWE with Error-Leakage is at least as hard as [LWE](/lwe/) for discrete Gaussian error distributions and small losses in parameter choices according to Theorem 3 in {% cite EC:DKLLMR23 %}.
+A much looser reduction can be obtained via statistical noise flooding {% cite C:ONePeiWat11 %}.
 
 ## Constructions built from elLWE {#constructions}
 
+- Bi-deniable Public-Key Encryption {% cite C:ONePeiWat11 %}
 - Laconic and Registration-Based Encryption {% cite EC:DKLLMR23 %}
+- Updatable Public-Key Encryption {% cite AC:HPS23 %}
 - Proxy Re-Encryption {% cite EPRINT:YZDWL26 %}
 
 ## Related Assumptions
