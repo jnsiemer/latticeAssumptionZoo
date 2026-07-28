@@ -26,7 +26,7 @@ The LWE-OD problem allows the distribution of the error to depend on the output 
 
 ## Hardness
 
-Theorem 3 of {% cite PQCrypto:HMRS26 %} provides a reduction from LWE to LWE-OD under a very detailed set of conditions.
+Theorem 3 of {% cite PQCrypto:HMRS26 %} provides a reduction from LWE to LWE-OD under a very detailed set of conditions. This reduction can be decomposed into a reduction from [LWE](/LWE/) to [qLWE](/q-LWE/) and another conditional one from [qLWE](/q-LWE/) to LWE-OD.
 
 ## Constructions built from LWE-OD {#constructions}
 
@@ -36,3 +36,4 @@ As LWE-OD generalises LWE and LWR, this list could theoretically be a combinatio
 
 - [Learning with Errors](/lwe/) is a special case of LWE-OD, where $$\chi_i = \chi$$ for all $$i$$.
 - [Learning with Rounding](/lwr/) is a special case of LWE-OD, where $$\chi_i$$ always outputs $$\mathsf{round}_p(i)-i$$.
+- [qLWE](/q-LWE/) is a special case of LWE-OD, where $$\chi_i = \chi_{i \bmod q}$$ for all $$i$$.

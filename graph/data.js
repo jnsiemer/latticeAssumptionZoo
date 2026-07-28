@@ -477,7 +477,7 @@ partiallyReducesTo('GenISISf', 's-$Hint-vSIS', 'Certain instantiations only', 30
 
 partiallyReducesTo('Evasive-LWE', 'Evasive-SIS', 'Public-coin Evasive LWE (quantumly) heuristically reduces to Evasive SIS', 300); // to come
 
-partiallyReducesTo('LWE', 'LWE-OD', 'Constraints detailed in Theorem 3 of the paper', 300);
+partiallyReducesTo('qLWE', 'LWE-OD', 'Constraints detailed in Theorem 3 of the paper', 300);
 
 partiallyReducesTo('LWE', 'Tensor-LWE', 'If all x_i are equal', 400);
 
