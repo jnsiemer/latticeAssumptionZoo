@@ -43,7 +43,7 @@ Define the set $$\mathcal{P}_t := \set{\Omega \subset \set{\omega_j}_{j \in [n]}
 ### PV-SIS$$_{n,q,\beta,\nu,t}$$ {#pv-sis}
 _Sample $$\Omega \sample \mathcal{U}(\mathcal{P}_t)$$. Given $$\bar{\mat{V}}_\Omega$$, an adversary is asked to find a short non-zero vector $$\vec{a} \in \ZZ_q^n$$ s.t._
 
-$$ \bar{\mat{V}}_\Omega \cdot \vec{a} = \vec{0} \land 0 < \norm{a}_2 \leq \beta. $$
+$$ \bar{\mat{V}}_\Omega \cdot \vec{a} = \vec{0} \land 0 < \norm{\vec{a}}_2 \leq \beta. $$
 
 ## Variants
 
