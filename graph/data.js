@@ -308,7 +308,7 @@ assumption('BÜW24-PrivCoin-Evasive-LWE', 'Evasive LWE by BÜW24 (Private-Coin)'
 assumption('BDJMMPV25-Evasive-LWE', 'Evasive LWE by BDJMMPV25', 2025, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#bdjmmpv25', 'LWE', true);
 assumption('AKY25-Evasive-LWE', 'Evasive LWE by AKY25', 2025, ['ZK', 'FuncEnc', 'PrivEnhEnc', 'EffEnhEnc'], '/evasive-lwe/#aky25', 'LWE', true);
 assumptionFamily('Evasive-LWE', ['Evasive-LWE', 'WWW22-Evasive-LWE', 'VWW22-Evasive-LWE', 'HLL23-Evasive-LWE', 'ARYY23-Evasive-LWE', 'Wee24-Evasive-LWE', 'BÜW24-PubCoin-Evasive-LWE', 'BÜW24-PrivCoin-Evasive-LWE', 'BDJMMPV25-Evasive-LWE', 'BDJMMPV25-Evasive-LWE', 'AKY25-Evasive-LWE'], 100);
-
+assumption('Pint-LWR', 'Pint-LWR', 2026, ['Sign'], '/pint-lwr/', 'LWE');
 
 // Standalone assumptions - family, i.e. last parameter is always 'Standalone'
 assumption('NTRU', 'Number Theorists \'R\' Us or Number Theory Research Unit', 1996, ['Sign', 'PKE', 'COED'], '/ntru/', 'Standalone');
@@ -447,6 +447,7 @@ reducesTo('PV-LWE', 'PV-SIS');
 reducesTo('PNTT-PLWE', 'Hybrid-PV-P');
 
 reducesTo('LWE', 'Threshold-LWE', 300);
+reducesTo('LWR', 'Pint-LWR', 300);
 
 // NTRU
 reducesTo('NTRU', 'LWE', 500);
@@ -476,7 +477,7 @@ partiallyReducesTo('GenISISf', 's-$Hint-vSIS', 'Certain instantiations only', 30
 
 partiallyReducesTo('Evasive-LWE', 'Evasive-SIS', 'Public-coin Evasive LWE (quantumly) heuristically reduces to Evasive SIS', 300); // to come
 
-partiallyReducesTo('LWE', 'LWE-OD', 'Constraints detailed in Theorem 3 of the paper', 300);
+partiallyReducesTo('qLWE', 'LWE-OD', 'Constraints detailed in Theorem 3 of the paper', 300);
 
 partiallyReducesTo('LWE', 'Tensor-LWE', 'If all x_i are equal', 400);
 
