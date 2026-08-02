@@ -4,10 +4,8 @@ seo_title: "Pint LWR"
 family: "LWE"
 subfamily: "LWR with Leakage"
 graph_id: "Pint-LWR"
-assumption_status: "implied"
 
-last_modified_at: 2026-07-28
-published: true
+last_modified_at: 2026-08-02
 redirect_from:
   - /pintlwr/
   - /pint-lwr/
@@ -15,34 +13,32 @@ redirect_from:
   - /pint-mlwr/
 ---
 
-The paper of Belaid, Benadjila, Devevey, Guerreau, Legavre, Martinelli, Ricosset, Rivain, and Rossi introduces the _Permuted Hint Module Learning with Rounding_ assumption, written $$\pi\mathrm{nt}\text{-}\mathrm{MLWR}$$, to argue security of the SUCRE countermeasure for masked ML-DSA rejection sampling {% cite TCHES:BBDGLMRRR26 %}.
+The paper of Belaid, Benadjila, Devevey, Guerreau, Legavre, Martinelli, Ricosset, Rivain, and Rossi introduces the _Permuted Hint Module [Learning with Rounding](/lwr/)_ assumption, written $$\pi\mathrm{nt}\text{-}\mathrm{MLWR}$$, to argue security of the SUCRE countermeasure for masked ML-DSA rejection sampling {% cite TCHES:BBDGLMRRR26 %}.
 
 Informally, the assumption starts from a standard rounded module-LWE sample and additionally reveals permutation information on rejected values produced during signing. The claim is that this extra leakage should still not help distinguish the rounded sample from uniform.
 
 ## Definition
 
 ### $$\pi\mathrm{nt}\text{-}\mathrm{MLWR}_{n,q,p,k,\ell,\gamma,\mathcal{S},\tau}$$ {#pint-mlwr}
-_Recall the standard [MLWR](/lwr/) setting over $$\mathcal{R}_q$$ with a random matrix $$\mat{A} \leftarrow \mathcal{U}(\mathcal{R}_q^{k \times \ell})$$ and a short vector $$\vec{y}$$._
+_Let $$\mathcal{S}$$ be a distribution over $$\mathcal{R}_q = \ZZ_q[X]/(X^n + 1)$$. Recall the standard [MLWR](/lwr/) setting over $$\mathcal{R}_q$$ with a random matrix $$\mat{A} \sample \mathcal{U}(\mathcal{R}_q^{k \times \ell})$$ and a short vector $$\vec{y} \sample \mathcal{S}^\ell$$._
 
-_Let $$\vec{s}_1,\vec{s}_2$$ be short secrets, let $$c$$ be a challenge, and let $$e(\cdot)$$ denote the rounding error._
+_Let $$\vec{s}_1 \sample \mathcal{S}^\ell, \vec{s}_2 \sample \mathcal{S}^k$$ be short secrets, let $$c$$ be a challenge, and let $$e(\cdot)$$ denote the rounding error._
 
-_The adversary is asked to distinguish the rounded sample $$\lfloor \mat{A}\vec{y} \rceil_p$$ from uniform, while also receiving leakage on the rejected values:_
+_An adversary is asked to distinguish between the distribution_
 
-$$
-\left(\mat{A}, \lfloor \mat{A}\vec{y} \rceil_p, \pi(\vec{y}+c\vec{s}_1 \bmod 2\gamma), \pi(e(\mat{A}\vec{y}-c\vec{s}_2)), (\vec{s}_1,\vec{s}_2), c\right)
-$$
+$$ \left(\mat{A}, \lfloor \mat{A}\vec{y} \rceil_p, \pi(\vec{y}+c\vec{s}_1 \bmod 2\gamma), \pi(e(\mat{A}\vec{y}-c\vec{s}_2)), (\vec{s}_1,\vec{s}_2), c\right) $$
 
-_versus_
+_and_
 
-$$
-\left(\mat{A}, \lfloor \vec{u} \rceil_p, \pi(\vec{y}+c\vec{s}_1 \bmod 2\gamma), \pi(e(\mat{A}\vec{y}-c\vec{s}_2)), (\vec{s}_1,\vec{s}_2), c\right),
-$$
+$$ \left(\mat{A}, \lfloor \vec{u} \rceil_p, \pi(\vec{y}+c\vec{s}_1 \bmod 2\gamma), \pi(e(\mat{A}\vec{y}-c\vec{s}_2)), (\vec{s}_1,\vec{s}_2), c\right), $$
 
 _where $$\vec{u}$$ is uniform. Here $$\pi$$ forgets the original order of coefficients; equivalently, it captures a randomly permuted view of the leaked vectors._
 
+Thus, an adversary is asked to distinguish the rounded sample $$\lfloor \mat{A}\vec{y} \rceil_p$$ from uniform, while also receiving leakage on the rejected values.
+
 ## Hardness
 
-The paper does not give a reduction from $$\pi\mathrm{nt}\text{-}\mathrm{MLWR}$$ to standard [MLWR](/lwr/). Instead, Section 4.2 of {% cite TCHES:BBDGLMRRR26 %} performs an exploratory cryptanalysis of the search variant.
+The paper does not give a reduction from standard [MLWR](/lwr/) to $$\pi\mathrm{nt}\text{-}\mathrm{MLWR}$$. Instead, Section 4.2 of {% cite TCHES:BBDGLMRRR26 %} performs an exploratory cryptanalysis of the search variant.
 
 Two attack routes are discussed. The first tries to recover the hidden permutation through algorithms for the Permuted Kernel Problem. The second treats the leaked multisets of coefficients as side information in a lattice attack, in the spirit of LWE with hints. For the ML-DSA parameter sets considered in the paper, both approaches appear to incur only a very small loss compared with the underlying MLWR instance, heuristically around one bit of security.
 
