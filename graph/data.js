@@ -197,6 +197,12 @@ assumption('Order-LWE', 'Order-LWE', 2018, ['PKE'], '/generalised-lwe/#order-lwe
 
 assumption('I-PLWE', 'Integer Polynomial LWE', 2017, ['PKE'], '/int-poly-lwe/', 'LWE');
 
+assumption('MP-LWE', 'Middle-Product LWE', 2017, ['Sign', 'PrivEnhSign', 'PKE', 'FuncEnc'], '/mp-lwe/', 'LWE');
+assumption('ssMP-LWE', 'Small-Secret Middle-Product LWE', 2020, ['Sign'], '/mp-lwe/#small-secret-mp-lwe', 'LWE', true);
+assumption('DP-MP-LWE', 'Degree-Parametrised Middle-Product LWE', 2019, ['PKE', 'FuncEnc'], '/mp-lwe/#degree-parametrised-mp-lwe', 'LWE', true);
+assumption('MP-CLWR', 'Middle-Product Computational Learning with Rounding', 2019, ['PKE'], '/mp-lwe/#mp-clwr', 'LWE', true);
+assumptionFamily('MP-LWE', ['MP-LWE', 'ssMP-LWE', 'DP-MP-LWE', 'MP-CLWR']);
+
 assumption('Non-Uniform-LWE', 'Non-Uniform (Matrix) LWE', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#binary-matrix-lwe', 'LWE'); // also constructs a PRF
 assumption('Binary-Matrix-LWE', 'Binary-Matrix LWE', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#binary-matrix-lwe', 'LWE', true);
 assumption('LWE-with-low-norm', 'LWE with low norm', 2013, ['PKE', 'FuncEnc'], '/non-uniform-lwe/#lwe-with-low-norm', 'LWE', true);
@@ -446,6 +452,12 @@ reducesTo('SP-RLWE', 'wSP-RLWE');
 reducesTo('PV-LWE', 'PV-SIS');
 reducesTo('PNTT-PLWE', 'Hybrid-PV-P');
 
+reducesTo('LWE', 'MP-LWE', 250);
+reducesTo('LWE', 'ssMP-LWE', 300);
+reducesTo('ssMP-LWE', 'MP-LWE');
+reducesTo('LWE', 'DP-MP-LWE', 300);
+reducesTo('MP-LWE', 'MP-CLWR');
+
 reducesTo('LWE', 'Threshold-LWE', 300);
 reducesTo('Pint-LWR', 'LWR', 300);
 
@@ -512,7 +524,8 @@ generalisedBy('Hint-vSIS', 's-Hint-vSIS');
 // LWE
 generalisedBy('Order-LWE', 'Generalised-LWE');
 generalisedBy('LWE', 'Generalised-LWE', 300);
-generalisedBy('MP-LWE', 'Generalised-LWE'); // to come
+generalisedBy('MP-LWE', 'Generalised-LWE');
+generalisedBy('MP-LWE', 'DP-MP-LWE');
 
 generalisedBy('Binary-Matrix-LWE', 'Non-Uniform-LWE');
 generalisedBy('LWE-with-low-norm', 'Non-Uniform-LWE');

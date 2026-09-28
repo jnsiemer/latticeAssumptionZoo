@@ -5,7 +5,7 @@ family: "LWE"
 subfamily: "LWE over Exotic Domains"
 graph_id: "Generalised-LWE"
 
-last_modified_at: 2026-07-06
+last_modified_at: 2026-09-28
 redirect_from:
   - /generalised_lwe/
   - /generalisedlwe/
@@ -57,5 +57,5 @@ None explicitly. Note that GLWE or Generalised-LWE seems to be utilised as a syn
 
 ## Related Assumptions
 
-- [Middle-Product LWE](/TODO/)
+- [Middle-Product LWE](/mp-lwe/) is an instance of Generalised-LWE w.r.t. an order-three Hankel tensor (Section 5 of {% cite JC:PeiPep24 %}).
 - [Learning with Errors](/lwe/)
